@@ -44,8 +44,8 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-gray-800 shadow-lg' 
-          : 'bg-white/10 backdrop-blur-md border-b border-white/20'
+          ? 'bg-white/90 backdrop-blur-md shadow-lg' 
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +56,9 @@ const Navbar = () => {
               <div className="h-10 w-10 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">L</span>
               </div>
-              <span className="ml-3 text-xl font-bold text-white">Logo</span>
+              <span className={`ml-3 text-xl font-bold transition-colors duration-300 ${
+                isScrolled ? 'text-blue-600' : 'text-blue-500'
+              }`}>Logo</span>
             </div>
           </div>
 
@@ -69,8 +71,8 @@ const Navbar = () => {
                     <button
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                         isScrolled 
-                          ? 'text-white hover:bg-gray-700' 
-                          : 'text-white hover:bg-white/20'
+                          ? 'text-blue-600 hover:bg-blue-50' 
+                          : 'text-blue-500 hover:bg-blue-500/10'
                       }`}
                       onClick={() => setServicesOpen(!servicesOpen)}
                       onMouseEnter={() => setServicesOpen(true)}
@@ -84,8 +86,8 @@ const Navbar = () => {
                       href={item.href}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                         isScrolled 
-                          ? 'text-white hover:bg-gray-700' 
-                          : 'text-white hover:bg-white/20'
+                          ? 'text-blue-600 hover:bg-blue-50' 
+                          : 'text-blue-500 hover:bg-blue-500/10'
                       }`}
                     >
                       {item.label}
@@ -95,24 +97,15 @@ const Navbar = () => {
                   {/* Services Dropdown */}
                   {item.dropdown && servicesOpen && (
                     <div 
-                      className="absolute left-0 mt-2 w-64 rounded-lg shadow-xl py-2 z-50"
+                      className="absolute left-0 mt-2 w-64 rounded-lg shadow-xl py-2 z-50 bg-white/95 backdrop-blur-md"
                       onMouseEnter={() => setServicesOpen(true)}
                       onMouseLeave={() => setServicesOpen(false)}
-                      style={{
-                        background: isScrolled 
-                          ? 'rgb(55, 65, 81)' 
-                          : 'rgba(255, 255, 255, 0.95)'
-                      }}
                     >
                       {servicesItems.map((service) => (
                         <a
                           key={service}
                           href="#"
-                          className={`block px-4 py-3 text-sm transition-all duration-200 ${
-                            isScrolled 
-                              ? 'text-gray-200 hover:bg-gray-700 hover:text-white' 
-                              : 'text-gray-700 hover:bg-gray-100'
-                          }`}
+                          className="block px-4 py-3 text-sm text-blue-600 hover:bg-blue-50 transition-all duration-200"
                         >
                           {service}
                         </a>
@@ -129,8 +122,8 @@ const Navbar = () => {
             <button
               className={`inline-flex items-center justify-center p-2 rounded-md ${
                 isScrolled 
-                  ? 'text-gray-300 hover:bg-gray-700' 
-                  : 'text-white hover:bg-white/20'
+                  ? 'text-blue-600 hover:bg-blue-50' 
+                  : 'text-blue-500 hover:bg-blue-500/10'
               }`}
             >
               <svg
@@ -154,22 +147,13 @@ const Navbar = () => {
       {/* Mobile Services Dropdown */}
       <div className={`md:hidden ${servicesOpen ? 'block' : 'hidden'}`}>
         <div 
-          className="px-2 pt-2 pb-3 space-y-1"
-          style={{
-            background: isScrolled 
-              ? 'rgb(55, 65, 81)' 
-              : 'rgba(255, 255, 255, 0.95)'
-          }}
+          className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md"
         >
           {servicesItems.map((service) => (
             <a
               key={service}
               href="#"
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                isScrolled 
-                  ? 'text-gray-200 hover:bg-gray-700' 
-                  : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50"
             >
               {service}
             </a>

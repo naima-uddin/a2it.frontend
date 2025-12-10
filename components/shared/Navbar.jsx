@@ -104,25 +104,36 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      className={`bg-[#0a0a12] text-[#e0e0ff] px-6 md:px-10 py-4 flex items-center justify-between relative z-50 sticky top-0 transition-all duration-300 ${
-        isScrolled
-          ? "bg-opacity-90 shadow-[0_4px_20px_0px_rgba(0,240,255,0.3)]"
-          : "bg-opacity-100 shadow-none"
-      }`}
-    >
+<nav
+  className={`px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
+    ${isScrolled
+      ? "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm"
+      : "absolute top-0 left-0 right-0 bg-transparent"
+    }`}
+>
+
       <Link href="/" className="flex items-center space-x-2">
         <Logo />
       </Link>
 
       <ul className="hidden md:flex space-x-10 items-center text-sm font-medium relative">
         <li>
-          <Link href="/" className="hover:text-[#00f0ff]">
+          <Link 
+            href="/" 
+            className={`hover:text-blue-500 transition-colors font-medium ${
+              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            }`}
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link href="/about" className="hover:text-[#00f0ff]">
+          <Link 
+            href="/about" 
+            className={`hover:text-blue-500 transition-colors font-medium ${
+              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            }`}
+          >
             About
           </Link>
         </li>
@@ -134,7 +145,9 @@ const Navbar = () => {
         >
           <button
             onClick={handleToggleClick}
-            className="flex items-center gap-1 hover:text-[#00f0ff]"
+            className={`flex items-center gap-1 hover:text-blue-500 transition-colors font-medium ${
+              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            }`}
           >
             Our Services{" "}
             <IoIosArrowDown
@@ -146,58 +159,49 @@ const Navbar = () => {
 
           {dropdownOpen && (
             <div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[95vw] sm:w-[700px] md:w-[900px] h-[60vh] sm:h-[65vh] md:h-[320px] bg-[#12121a] text-[#b0b0ff] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 rounded-xl shadow-2xl z-20 px-6 sm:px-8 py-6"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-2xl z-20 px-0 py-2 rounded-lg"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-0">
                 {services.map(([title, path, icon], idx) => (
                   <Link
                     href={path}
                     key={idx}
-                    className="flex items-start gap-3 hover:text-[#00f0ff] cursor-pointer"
+                    className="flex items-center gap-3 cursor-pointer p-3 relative overflow-hidden group hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors"
                   >
-                    <div className="bg-[#00f0ff] text-[#0a0a12] p-2 rounded-full text-sm mt-1">
-                      {icon}
+                    <div className="relative z-10 flex items-center gap-3 w-full">
+                      <div className="bg-blue-500 text-white p-2 rounded-full text-sm">
+                        {icon}
+                      </div>
+                      <div className="text-sm">
+                        {title}
+                      </div>
                     </div>
-                    <div className="text-sm leading-tight">{title}</div>
                   </Link>
                 ))}
-              </div>
-
-              <div className="bg-[#0e0e15] border border-[#00f0ff]/20 rounded-lg p-4 relative overflow-hidden">
-                <Image
-                  src="/assets/banner.avif"
-                  alt="banner img"
-                  width="400"
-                  height="400"
-                  unoptimized
-                  className="absolute inset-0 w-full h-full object-cover blur-[2px] opacity-60 rounded-md"
-                />
-
-                <div className="relative z-10">
-                  <h3 className="text-base font-semibold mb-2">
-                    Download our PDF portfolio
-                  </h3>
-                  <p className="text-sm text-[#b0b0ff] mb-4">
-                    See our project experience & offerings in detail.
-                  </p>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00f0ff] to-[#0066ff] hover:from-[#00c0ff] hover:to-[#0044ff] rounded-full text-sm font-semibold text-[#0a0a12] transition w-full justify-center">
-                    <FaDownload /> Download
-                  </button>
-                </div>
               </div>
             </div>
           )}
         </li>
 
         <li>
-          <Link href="/portfolio" className="hover:text-[#00f0ff]">
+          <Link 
+            href="/portfolio" 
+            className={`hover:text-blue-500 transition-colors font-medium ${
+              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            }`}
+          >
             Portfolio
           </Link>
         </li>
         <li>
-          <Link href="/blog" className="hover:text-[#00f0ff]">
+          <Link 
+            href="/blog" 
+            className={`hover:text-blue-500 transition-colors font-medium ${
+              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            }`}
+          >
             Blog
           </Link>
         </li>
@@ -205,32 +209,54 @@ const Navbar = () => {
 
       <Link
         href="/contact"
-        className="bg-[#0066ff] hover:bg-[#00f0ff] transition-all text-white px-3 py-2.5 rounded-full shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
+        className="bg-blue-500 hover:bg-blue-600 transition-all text-white px-4 py-2.5 rounded-lg shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
       >
         <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
       </Link>
 
       <div className="md:hidden">
         <button onClick={toggleMobileMenu} aria-label="Toggle menu">
-          {mobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          {mobileMenuOpen ? (
+            <FaTimes 
+              size={22} 
+              className={`${isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"}`} 
+            />
+          ) : (
+            <FaBars 
+              size={22} 
+              className={`${isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"}`} 
+            />
+          )}
         </button>
       </div>
 
       {mobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="absolute top-full left-0 w-full bg-[#0a0a12] text-[#e0e0ff] px-6 py-4 space-y-4 z-40"
+          className={`absolute top-full left-0 w-full backdrop-blur-md shadow-lg px-6 py-4 space-y-4 z-40 ${
+            isScrolled 
+              ? "bg-white/95 dark:bg-gray-900/95 text-gray-800 dark:text-gray-200"
+              : "bg-black/90 text-white"
+          }`}
         >
-          <Link href="/" className="block hover:text-[#00f0ff]" onClick={() => setMobileMenuOpen(false)}>
+          <Link 
+            href="/" 
+            className="block hover:text-blue-500 font-medium" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link href="/about" className="block hover:text-[#00f0ff]" onClick={() => setMobileMenuOpen(false)}>
+          <Link 
+            href="/about" 
+            className="block hover:text-blue-500 font-medium" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
             About
           </Link>
           <div>
             <button
               onClick={toggleMobileServices}
-              className="flex items-center justify-between w-full hover:text-[#00f0ff]"
+              className="flex items-center justify-between w-full hover:text-blue-500 font-medium"
             >
               Our Services{" "}
               <IoIosArrowDown
@@ -245,7 +271,7 @@ const Navbar = () => {
                   <Link
                     href={path}
                     key={idx}
-                    className="block text-sm hover:text-[#00f0ff]"
+                    className="block text-sm hover:text-blue-500"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {title}
@@ -254,15 +280,23 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <Link href="/portfolio" className="block hover:text-[#00f0ff]" onClick={() => setMobileMenuOpen(false)}>
+          <Link 
+            href="/portfolio" 
+            className="block hover:text-blue-500 font-medium" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Portfolio
           </Link>
-          <Link href="/blog" className="block hover:text-[#00f0ff]" onClick={() => setMobileMenuOpen(false)}>
+          <Link 
+            href="/blog" 
+            className="block hover:text-blue-500 font-medium" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Blog
           </Link>
           <Link
             href="/contact"
-            className="w-full mt-4 bg-gradient-to-r from-[#0066ff] to-[#00f0ff] hover:from-[#0044ff] hover:to-[#00c0ff] text-[#0a0a12] py-3 px-2 rounded-full text-sm font-semibold flex items-center justify-center gap-1"
+            className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-3 px-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-1"
             onClick={() => setMobileMenuOpen(false)}
           >
             <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
