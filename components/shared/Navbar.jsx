@@ -104,14 +104,13 @@ const Navbar = () => {
   ];
 
   return (
-<nav
-  className={`px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
-    ${isScrolled
-      ? "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm"
-      : "absolute top-0 left-0 right-0 bg-transparent"
-    }`}
->
-
+    <nav
+      className={`px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
+        ${isScrolled
+          ? "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm"
+          : "absolute top-0 left-0 right-0 bg-transparent text-black"
+        }`}
+    >
       <Link href="/" className="flex items-center space-x-2">
         <Logo />
       </Link>
@@ -159,23 +158,37 @@ const Navbar = () => {
 
           {dropdownOpen && (
             <div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-2xl z-20 px-0 py-2 rounded-lg"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[320px] bg-white text-gray-800 shadow-2xl z-20 px-0 py-1  border border-gray-200"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="space-y-0">
+              <div className="space-y-1">
                 {services.map(([title, path, icon], idx) => (
                   <Link
                     href={path}
                     key={idx}
-                    className="flex items-center gap-3 cursor-pointer p-3 relative overflow-hidden group hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center gap-3 cursor-pointer p-2 relative overflow-hidden group transition-all duration-300"
                   >
+                    {/* White background layer */}
+                    <div className="absolute inset-0 bg-white group-hover:bg-blue-50 transition-all duration-300"></div>
+                    
+                    {/* Animated blue line that expands from left to right */}
+                    <div className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-full bg-gradient-to-r from-blue-500/20 to-blue-500/5 transition-all duration-500 ease-out"></div>
+                    
+                    {/* Blue accent line on left that grows */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                    
                     <div className="relative z-10 flex items-center gap-3 w-full">
-                      <div className="bg-blue-500 text-white p-2 rounded-full text-sm">
+                      <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-1.5 rounded-lg text-sm shadow-sm group-hover:shadow-md transition-all duration-300">
                         {icon}
                       </div>
-                      <div className="text-sm">
+                      <div className="text-sm font-medium group-hover:text-blue-600 transition-colors duration-300">
                         {title}
+                      </div>
+                      <div className="ml-auto opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                        <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
                       </div>
                     </div>
                   </Link>
@@ -209,7 +222,7 @@ const Navbar = () => {
 
       <Link
         href="/contact"
-        className="bg-blue-500 hover:bg-blue-600 transition-all text-white px-4 py-2.5 rounded-lg shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
+        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white px-4 py-2.5 rounded-lg shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
       >
         <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
       </Link>
@@ -266,7 +279,7 @@ const Navbar = () => {
               />
             </button>
             {servicesOpen && (
-              <div className="mt-2 pl-4 space-y-2">
+              <div className="mt-1 pl-4 space-y-1">
                 {services.map(([title, path], idx) => (
                   <Link
                     href={path}
@@ -296,7 +309,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/contact"
-            className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-3 px-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-1"
+            className="w-full mt-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-1"
             onClick={() => setMobileMenuOpen(false)}
           >
             <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
