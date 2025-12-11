@@ -8,6 +8,7 @@ import WhoRWe from "@/components/home-page-components/WhoRWe";
 import Image from "next/image";
 import React from "react";
 import PricingPage from "./pricing/page";
+import ContactUs from "@/components/contact-page-component/ContactUs";
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
@@ -63,11 +64,12 @@ export default function Home() {
       <Banner />
       <WhoRWe />
       <PricingPage/>
-      <WhatWeOffer />
+      <ContactUs />
+      {/* <WhatWeOffer />
       <ClientShowcase />
       <StatsSection />
       <CompanyGallery />
-      <EmployeeSection />
+      <EmployeeSection /> */}
 
       {/* 🔹 Schema Markup for Home Page */}
       <script

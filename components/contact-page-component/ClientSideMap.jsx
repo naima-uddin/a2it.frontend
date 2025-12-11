@@ -64,7 +64,7 @@ const ClientSideMap = ({ position, setPosition, officeAddress }) => {
 
   if (!isClient) {
     return (
-      <div className="h-96 w-full bg-[#0e0e15] flex items-center justify-center rounded-lg">
+      <div className="h-96 w-full flex items-center justify-center rounded-lg">
         <p className="text-[#b0b0ff]">Loading map...</p>
       </div>
     );

@@ -2,7 +2,7 @@
     "services": [
         {
             "id": 1,
-            "category": "Design and Development",
+            "category": "Design & Development",
             "packages": [
                 {
                     "id": "design-special",
@@ -542,7 +542,7 @@
         },
         {
             "id": 7,
-            "category": "Server and Hosting Services",
+            "category": "Server & Hosting Services",
             "packages": [
                 {
                     "id": "hosting-special",

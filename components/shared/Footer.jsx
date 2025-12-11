@@ -1,193 +1,220 @@
-"use client";
-import React from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
+'use client';
+
 import Logo from "./Logo";
 
 const Footer = () => {
-  // Route configuration
-  const routes = {
-    HOME: "/",
-    PORTFOLIO: "/portfolio",
-    ABOUT: "/about",
-    BLOGS: "/blog",
-    PRIVACY: "/privacy-policy",
-    TERMS: "/terms-of-service",
-    SITEMAP: "/contact",
-    CONTACT: "/contact",
-  };
-
-  // Social media links
-  const socialLinks = [
-    {
-      icon: <FaFacebookF />,
-      color: "hover:text-[#1877F2]",
-      url: "https://www.facebook.com/A2ITLtd",
-    },
-    {
-      icon: <FaTwitter />,
-      color: "hover:text-[#1DA1F2]",
-      url: "https://twitter.com",
-    },
-    {
-      icon: <FaLinkedinIn />,
-      color: "hover:text-[#0A66C2]",
-      url: "https://www.linkedin.com/in/a2itlimited/",
-    }
+  const services = [
+    "Design & Development",
+    "E-Commerce",
+    "Amazon",
+    "Shopify",
+    "ERP System Development",
+    "SEO / SEM / PPC",
+    "Server and Hosting Services",
+    "E-bay"
   ];
 
-  // Quick links
-  const quickLinks = [
-    { name: "Home", path: routes.HOME },
-    { name: "Portfolio", path: routes.PORTFOLIO },
-    { name: "About Us", path: routes.ABOUT },
-    { name: "Blogs", path: routes.BLOGS },
-    { name: "Contact", path: routes.CONTACT },
-  ];
-
-  // Policy links
-  const policyLinks = [
-    { name: "Privacy Policy", path: routes.PRIVACY },
-    { name: "Terms of Service", path: routes.TERMS },
-    { name: "Sitemap", path: routes.SITEMAP },
-  ];
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a0a12] text-[#e0e0ff] pt-16 pb-8 px-6 md:px-16 relative overflow-hidden">
-      {/* Glowing orb effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute rounded-full bg-[#00f0ff] blur-3xl opacity-10 w-80 h-80 -left-40 -bottom-40 animate-pulse"></div>
-        <div className="absolute rounded-full bg-[#0066ff] blur-3xl opacity-10 w-96 h-96 -right-40 -top-40 animate-pulse"></div>
-      </div>
-
-      <div className="mx-auto relative z-10">
+    <footer className="bg-white border-t border-gray-100 pt-16 pb-8 px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-10">
+          
+          {/* Company Info */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold text-[#0a0a12]">
-                <Logo />
-              </div>
-              {/* Gradient brand name */}
-              <h2 className="text-3xl font-extrabold bg-gradient-to-r from-[#00f0ff] to-[#0066ff] bg-clip-text text-transparent drop-shadow-md">
-                A2IT Ltd
-              </h2>
+            <div>
+              <Logo/>
+              <p className="mt-1 text-blue-600 font-bold text-lg">
+                A2IT LTD 
+              </p>
             </div>
-            <p className="text-xl text-[#00f0ff] font-semibold tracking-wide">
-              Build Your Dreams
-            </p>
-            <p className="text-[#b0b0ff] leading-relaxed">
-              Transforming ideas into digital reality through innovative
-              solutions and cutting-edge technology.
-            </p>
-
             
+            {/* Contact Info */}
+            <div className="space-y-4 pt-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Call Toll Free</p>
+                  <p className="text-blue-600 font-bold">+1 (321) 800-2759</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Email Support</p>
+                  <p className="text-blue-600 font-bold">info@a2itltd.com</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-[#00f0ff] border-b-2 border-[#00f0ff]/40 inline-block">
-              Quick Links
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 relative pb-3">
+              <span className="relative">
+                Quick Links
+                <div className="absolute -bottom-1 left-0 w-12 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+              </span>
             </h3>
             <ul className="space-y-3">
-              {quickLinks.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.path}
-                    className="text-[#b0b0ff] hover:text-[#00f0ff] transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-[#00f0ff] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  Get Quote
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-[#00f0ff] border-b-2 border-[#00f0ff]/40 inline-block">
-              Contact Us
+          {/* Services */}
+          <div className="space-y-2">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 relative pb-3">
+              <span className="relative">
+                Our Services
+                <div className="absolute -bottom-1 left-0 w-12 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+              </span>
             </h3>
-            <address className="not-italic text-[#b0b0ff] space-y-4">
-              <div className="flex items-start gap-4">
-                <FaMapMarkerAlt className="text-[#00f0ff] mt-1 flex-shrink-0" />
-                <p>
-                  Plot No 470
-                  <br />
-                  Road No 06 (Old 29)
-                  <br />
-                  DOHS Mirpur, Dhaka Division, Bangladesh
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <FaPhone className="text-[#00f0ff]" />
-                <a
-                  href="tel:+8801846937397"
-                  className="hover:text-[#00f0ff] transition-colors"
-                >
-                  +880 1846-937397
-                </a>
-              </div>
-              <div className="flex items-center gap-4">
-                <FaEnvelope className="text-[#00f0ff]" />
-                <a
-                  href="mailto:info@a2itltd.com"
-                  className="hover:text-[#00f0ff] transition-colors"
-                >
-                  info@a2itltd.com
-                </a>
-              </div>
-            </address>
+            <div className="grid grid-cols-1 gap-3">
+              {services.map((service, index) => (
+                <div key={index} className="flex items-start group">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
+                  <span className="text-gray-600 font-medium group-hover:text-blue-600 transition-colors duration-300">
+                    {service}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Policy Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-[#00f0ff] border-b-2 border-[#00f0ff]/40 inline-block">
-              Policies
+          {/* Newsletter */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 relative pb-3">
+              <span className="relative">
+                Stay Updated
+                <div className="absolute -bottom-1 left-0 w-12 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+              </span>
             </h3>
-            <ul className="space-y-3">
-              {policyLinks.map((policy) => (
-                <li key={policy.name}>
-                  <a
-                    href={policy.path}
-                    className="text-[#b0b0ff] hover:text-[#00f0ff] transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-[#00f0ff] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {policy.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="flex gap-4 mt-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full bg-[#1a1a2a] flex items-center justify-center text-lg text-[#b0b0ff] ${social.color} hover:scale-110 hover:shadow-[0_0_10px_#00f0ff] transition-all duration-300`}
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <p className="text-gray-600 mb-6">
+              Subscribe to our newsletter for the latest updates and insights.
+            </p>
+            <div className="space-y-4">
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-gray-500"
+                />
+                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-sm transition-colors duration-300">
+                  Subscribe
+                </button>
+              </div>
+              <p className="text-sm text-gray-500">
+                We respect your privacy. Unsubscribe at any time.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-[#00f0ff]/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[#b0b0ff] mb-4 md:mb-0">
-            © {new Date().getFullYear()} A2It Ltd. All Rights Reserved
-          </p>
+        {/* Divider */}
+        <div className="border-t border-gray-200 my-3"></div>
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          {/* Copyright */}
+          <div className="text-gray-600">
+            <p className="font-medium">
+              © {currentYear} A2IT LTD. All rights reserved.
+            </p>
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex space-x-6">
+            <a 
+              href="#" 
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
+              Privacy Policy
+            </a>
+            <a 
+              href="#" 
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
+              Terms of Service
+            </a>
+            <a 
+              href="#" 
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
+              Cookie Policy
+            </a>
+          </div>
         </div>
+
+        {/* Optional: Back to Top */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 bg-white border border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+          aria-label="Back to top"
+        >
+          <svg 
+            className="w-5 h-5 group-hover:-translate-y-1 transition-transform" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M5 10l7-7m0 0l7 7m-7-7v18" 
+            />
+          </svg>
+        </button>
       </div>
     </footer>
   );
