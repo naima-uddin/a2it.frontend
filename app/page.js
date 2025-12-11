@@ -9,6 +9,7 @@ import Image from "next/image";
 import React from "react";
 import PricingPage from "./pricing/page";
 import ContactUs from "@/components/contact-page-component/ContactUs";
+import HomePageContactUs from "@/components/home-page-components/HomePageContactUs";
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
@@ -64,7 +65,7 @@ export default function Home() {
       <Banner />
       <WhoRWe />
       <PricingPage/>
-      <ContactUs />
+      <HomePageContactUs />
       {/* <WhatWeOffer />
       <ClientShowcase />
       <StatsSection />

@@ -14,13 +14,15 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from "./Logo";
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
   const timeoutRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
@@ -92,6 +94,12 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Check if a link is active
+  const isActive = (path) => {
+    if (path === "/") return pathname === path;
+    return pathname.startsWith(path);
+  };
+
   const services = [
     ["Design & Development", "/services/design-development", <FaLaptopCode />],
     ["E-Commerce", "/services/e-commerce", <FaLaptopCode />],
@@ -107,8 +115,8 @@ const Navbar = () => {
     <nav
       className={`px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
         ${isScrolled
-          ? "sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm"
-          : "absolute top-0 left-0 right-0 bg-transparent text-black"
+          ? "sticky top-0 bg-gray-900/80 backdrop-blur-sm shadow-sm"
+          : "absolute top-0 left-0 right-0 bg-gray-900/20 text-black"
         }`}
     >
       <Link href="/" className="flex items-center space-x-2">
@@ -116,27 +124,73 @@ const Navbar = () => {
       </Link>
 
       <ul className="hidden md:flex space-x-10 items-center text-sm font-medium relative">
+        {/* Home Link */}
         <li>
-          <Link 
-            href="/" 
-            className={`hover:text-blue-500 transition-colors font-medium ${
-              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+          <Link
+            href="/"
+            className={`relative px-2 py-1 transition-colors font-medium group ${
+              isScrolled
+                ? isActive("/")
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/")
+                ? "text-white"
+                : "text-white hover:text-blue-300"
             }`}
+            onMouseEnter={() => setHoveredItem("home")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link 
-            href="/about" 
-            className={`hover:text-blue-500 transition-colors font-medium ${
-              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
-            }`}
-          >
-            About
+            <span className="relative z-10">Home</span>
+            
+            {/* Active indicator */}
+            {isActive("/") && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
+            
+            {/* Hover animation */}
+            {hoveredItem === "home" && !isActive("/") && (
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+            )}
           </Link>
         </li>
 
+        {/* About Link */}
+        <li>
+          <Link
+            href="/about"
+            className={`relative px-2 py-1 transition-colors font-medium group ${
+              isScrolled
+                ? isActive("/about")
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/about")
+                ? "text-white"
+                : "text-white hover:text-blue-300"
+            }`}
+            onMouseEnter={() => setHoveredItem("about")}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            <span className="relative z-10">About</span>
+            
+            {/* Active indicator */}
+            {isActive("/about") && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
+            
+            {/* Hover animation */}
+            {hoveredItem === "about" && !isActive("/about") && (
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+            )}
+          </Link>
+        </li>
+
+        {/* Our Services Dropdown - EXACTLY AS BEFORE */}
         <li
           className="relative"
           onMouseEnter={handleMouseEnter}
@@ -144,21 +198,36 @@ const Navbar = () => {
         >
           <button
             onClick={handleToggleClick}
-            className={`flex items-center gap-1 hover:text-blue-500 transition-colors font-medium ${
-              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+            className={`relative px-2 py-1 flex items-center gap-1 transition-colors font-medium group ${
+              isScrolled
+                ? isActive("/services") || dropdownOpen
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/services") || dropdownOpen
+                ? "text-white"
+                : "text-white hover:text-blue-300"
             }`}
           >
-            Our Services{" "}
+            <span className="relative z-10">Our Services</span>
             <IoIosArrowDown
               className={`transition-transform duration-300 ${
                 dropdownOpen ? "rotate-180" : "rotate-0"
               }`}
             />
+            
+            {/* Active indicator for services button */}
+            {(isActive("/services") || dropdownOpen) && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
           </button>
 
+          {/* EXACTLY THE SAME SERVICES DROPDOWN AS YOUR ORIGINAL CODE */}
           {dropdownOpen && (
             <div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[320px] bg-white text-gray-800 shadow-2xl z-20 px-0 py-1  border border-gray-200"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[320px] bg-white text-gray-800 shadow-2xl z-20 px-0 py-1 border border-gray-200"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -198,35 +267,93 @@ const Navbar = () => {
           )}
         </li>
 
+        {/* Portfolio Link */}
         <li>
-          <Link 
-            href="/portfolio" 
-            className={`hover:text-blue-500 transition-colors font-medium ${
-              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+          <Link
+            href="/portfolio"
+            className={`relative px-2 py-1 transition-colors font-medium group ${
+              isScrolled
+                ? isActive("/portfolio")
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/portfolio")
+                ? "text-white"
+                : "text-white hover:text-blue-300"
             }`}
+            onMouseEnter={() => setHoveredItem("portfolio")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            Portfolio
+            <span className="relative z-10">Portfolio</span>
+            
+            {/* Active indicator */}
+            {isActive("/portfolio") && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
+            
+            {/* Hover animation */}
+            {hoveredItem === "portfolio" && !isActive("/portfolio") && (
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+            )}
           </Link>
         </li>
+
+        {/* Blog Link */}
         <li>
-          <Link 
-            href="/blog" 
-            className={`hover:text-blue-500 transition-colors font-medium ${
-              isScrolled ? "text-gray-800 dark:text-gray-200" : "text-white"
+          <Link
+            href="/blog"
+            className={`relative px-2 py-1 transition-colors font-medium group ${
+              isScrolled
+                ? isActive("/blog")
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/blog")
+                ? "text-white"
+                : "text-white hover:text-blue-300"
             }`}
+            onMouseEnter={() => setHoveredItem("blog")}
+            onMouseLeave={() => setHoveredItem(null)}
           >
-            Blog
+            <span className="relative z-10">Blog</span>
+            
+            {/* Active indicator */}
+            {isActive("/blog") && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
+            
+            {/* Hover animation */}
+            {hoveredItem === "blog" && !isActive("/blog") && (
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+            )}
           </Link>
         </li>
       </ul>
 
+      {/* Contact Button */}
       <Link
         href="/contact"
-        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white px-4 py-2.5 rounded-lg shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
+        className={`relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-white px-4 py-2.5 rounded-lg shadow-md text-sm font-semibold hidden md:flex items-center gap-1 group ${
+          isActive("/contact") ? "ring-2 ring-blue-400 ring-offset-2" : ""
+        }`}
       >
-        <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+        
+        <span className="animate-wave origin-[70%_70%]">👋</span>
+        <span className="relative">Contact Us</span>
+        
+        {/* Active indicator */}
+        {isActive("/contact") && (
+          <div className="absolute -inset-1 bg-blue-500/20 rounded-lg blur-sm animate-pulse-slow"></div>
+        )}
       </Link>
 
+      {/* Mobile Menu Button */}
       <div className="md:hidden">
         <button onClick={toggleMobileMenu} aria-label="Toggle menu">
           {mobileMenuOpen ? (
@@ -243,95 +370,226 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile Menu Content */}
       {mobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className={`absolute top-full left-0 w-full backdrop-blur-md shadow-lg px-6 py-4 space-y-4 z-40 ${
+          className={`absolute top-full left-0 w-full backdrop-blur-md shadow-lg px-6 py-4 space-y-4 z-40 animate-slide-down ${
             isScrolled 
               ? "bg-white/95 dark:bg-gray-900/95 text-gray-800 dark:text-gray-200"
               : "bg-black/90 text-white"
           }`}
         >
+          {/* Mobile Home Link */}
           <Link 
             href="/" 
-            className="block hover:text-blue-500 font-medium" 
+            className={`block px-3 py-2 rounded-lg transition-all duration-300 relative ${
+              isActive("/") ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "hover:text-blue-500"
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Home
+            <span className="flex items-center">
+              Home
+              {isActive("/") && (
+                <span className="ml-auto animate-pulse">●</span>
+              )}
+            </span>
+            {isActive("/") && (
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+            )}
           </Link>
+
+          {/* Mobile About Link */}
           <Link 
             href="/about" 
-            className="block hover:text-blue-500 font-medium" 
+            className={`block px-3 py-2 rounded-lg transition-all duration-300 relative ${
+              isActive("/about") ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "hover:text-blue-500"
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            About
+            <span className="flex items-center">
+              About
+              {isActive("/about") && (
+                <span className="ml-auto animate-pulse">●</span>
+              )}
+            </span>
+            {isActive("/about") && (
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+            )}
           </Link>
+
+          {/* Mobile Services Dropdown */}
           <div>
             <button
               onClick={toggleMobileServices}
-              className="flex items-center justify-between w-full hover:text-blue-500 font-medium"
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 ${
+                servicesOpen || isActive("/services") 
+                  ? "text-blue-600 dark:text-blue-400" 
+                  : "hover:text-blue-500"
+              }`}
             >
-              Our Services{" "}
+              <span className="flex items-center">
+                Our Services
+                {isActive("/services") && (
+                  <span className="ml-2 animate-pulse">●</span>
+                )}
+              </span>
               <IoIosArrowDown
                 className={`transition-transform duration-300 ${
                   servicesOpen ? "rotate-180" : "rotate-0"
                 }`}
               />
             </button>
+            
             {servicesOpen && (
-              <div className="mt-1 pl-4 space-y-1">
+              <div className="mt-1 pl-6 space-y-1 animate-fade-in">
                 {services.map(([title, path], idx) => (
                   <Link
                     href={path}
                     key={idx}
-                    className="block text-sm hover:text-blue-500"
+                    className={`block py-2 px-3 rounded-lg text-sm transition-all duration-300 relative ${
+                      isActive(path) 
+                        ? "text-blue-600 dark:text-blue-400 bg-blue-500/5" 
+                        : "hover:text-blue-500"
+                    }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {title}
+                    <span className="flex items-center">
+                      {title}
+                      {isActive(path) && (
+                        <span className="ml-auto text-xs animate-pulse">→</span>
+                      )}
+                    </span>
+                    {isActive(path) && (
+                      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+                    )}
                   </Link>
                 ))}
               </div>
             )}
           </div>
+
+          {/* Mobile Portfolio Link */}
           <Link 
             href="/portfolio" 
-            className="block hover:text-blue-500 font-medium" 
+            className={`block px-3 py-2 rounded-lg transition-all duration-300 relative ${
+              isActive("/portfolio") ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "hover:text-blue-500"
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Portfolio
+            <span className="flex items-center">
+              Portfolio
+              {isActive("/portfolio") && (
+                <span className="ml-auto animate-pulse">●</span>
+              )}
+            </span>
+            {isActive("/portfolio") && (
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+            )}
           </Link>
+
+          {/* Mobile Blog Link */}
           <Link 
             href="/blog" 
-            className="block hover:text-blue-500 font-medium" 
+            className={`block px-3 py-2 rounded-lg transition-all duration-300 relative ${
+              isActive("/blog") ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "hover:text-blue-500"
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Blog
+            <span className="flex items-center">
+              Blog
+              {isActive("/blog") && (
+                <span className="ml-auto animate-pulse">●</span>
+              )}
+            </span>
+            {isActive("/blog") && (
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+            )}
           </Link>
+
+          {/* Mobile Contact Button */}
           <Link
             href="/contact"
-            className="w-full mt-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-1"
+            className={`w-full mt-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-1 relative overflow-hidden group ${
+              isActive("/contact") ? "ring-2 ring-blue-400" : ""
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            <span className="animate-wave origin-[70%_70%]">👋</span>
+            <span className="relative">Contact Us</span>
+            {isActive("/contact") && (
+              <span className="ml-1 animate-ping">!</span>
+            )}
           </Link>
         </div>
       )}
 
-      <style>{`
-    @keyframes wave {
-      0% { transform: rotate(0deg); }
-      15% { transform: rotate(14deg); }
-      30% { transform: rotate(-8deg); }
-      40% { transform: rotate(14deg); }
-      50% { transform: rotate(-4deg); }
-      60% { transform: rotate(10deg); }
-      100% { transform: rotate(0deg); }
-    }
-    .animate-wave {
-      display: inline-block;
-      animation: wave 2s infinite;
-    }
-  `}</style>
+      {/* Animation Styles */}
+      <style jsx global>{`
+        @keyframes wave {
+          0% { transform: rotate(0deg); }
+          15% { transform: rotate(14deg); }
+          30% { transform: rotate(-8deg); }
+          40% { transform: rotate(14deg); }
+          50% { transform: rotate(-4deg); }
+          60% { transform: rotate(10deg); }
+          100% { transform: rotate(0deg); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.3; }
+        }
+        
+        @keyframes slide-down {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(-5px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-wave {
+          display: inline-block;
+          animation: wave 2s infinite;
+        }
+        
+        .animate-pulse {
+          animation: pulse 2s infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulse-slow 3s infinite;
+        }
+        
+        .animate-slide-down {
+          animation: slide-down 0.3s ease-out;
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out;
+        }
+      `}</style>
     </nav>
   );
 };
