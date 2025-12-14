@@ -1,8 +1,11 @@
 'use client';
 
 import Logo from "./Logo";
+import { useState } from 'react';
 
 const Footer = () => {
+  const [showAllServices, setShowAllServices] = useState(false);
+  
   const services = [
     "Design & Development",
     "E-Commerce",
@@ -14,13 +17,121 @@ const Footer = () => {
     "E-bay"
   ];
 
+  const displayedServices = showAllServices ? services : services.slice(0, 4);
   const currentYear = new Date().getFullYear();
 
+  const toggleServices = () => {
+    setShowAllServices(!showAllServices);
+  };
+
   return (
-    <footer className="bg-white border-t border-gray-100 pt-16 pb-8 px-6">
+    <footer className="bg-white border-t border-gray-100 pt-12 pb-8 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-10">
+        
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-8">
+          
+          {/* First Row: Logo + Contact Info in FLEX ROW */}
+          <div className="flex flex-row gap-6 items-start">
+            {/* Logo Section - Left side */}
+            <div className="flex-1">
+              <Logo />
+              <p className="mt-2 text-blue-600 font-bold text-lg">A2IT LTD</p>
+            </div>
+            
+            {/* Contact Info Section - Right side */}
+            <div className="flex-1 space-y-4">
+              <div className="space-y-3">
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm">Call Toll Free</p>
+                  <p className="text-blue-600 font-bold text-sm">+1 (321) 800-2759</p>
+                </div>
+                
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm">Email Support</p>
+                  <p className="text-blue-600 font-bold text-sm">info@a2itltd.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Second Row: Quick Links + Services in FLEX ROW */}
+          <div className="flex flex-row gap-6 pt-6 border-t border-gray-200">
+            {/* Quick Links - Left side */}
+            <div className="flex-1 space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Quick Links</h3>
+              <ul className="space-y-2">
+                {['Home', 'About Us', 'Services', 'Contact', 'Get Quote'].map((link, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services - Right side */}
+            <div className="flex-1 space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Our Services</h3>
+              <div className="space-y-2">
+                {displayedServices.map((service, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 mr-2 flex-shrink-0"></div>
+                    <span className="text-gray-600 text-sm">
+                      {service}
+                    </span>
+                  </div>
+                ))}
+                
+                {services.length > 4 && (
+                  <button
+                    onClick={toggleServices}
+                    className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center mt-2"
+                  >
+                    {showAllServices ? 'Show Less' : 'More Services'}
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform duration-300 ${showAllServices ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Third Row: Newsletter - Full width */}
+          <div className="pt-6 border-t border-gray-200">
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Stay Updated</h3>
+              <p className="text-gray-600 text-sm">
+                Subscribe to our newsletter for the latest updates and insights.
+              </p>
+              <div className="space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  />
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 text-sm">
+                    Subscribe
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500">
+                  We respect your privacy. Unsubscribe at any time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Layout - EXACTLY same as original */}
+        <div className="hidden md:grid md:grid-cols-4 gap-12 mb-10">
           
           {/* Company Info */}
           <div className="space-y-6">
@@ -120,7 +231,7 @@ const Footer = () => {
               </span>
             </h3>
             <div className="grid grid-cols-1 gap-3">
-              {services.map((service, index) => (
+              {displayedServices.map((service, index) => (
                 <div key={index} className="flex items-start group">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
                   <span className="text-gray-600 font-medium group-hover:text-blue-600 transition-colors duration-300">
@@ -128,6 +239,23 @@ const Footer = () => {
                   </span>
                 </div>
               ))}
+              
+              {services.length > 4 && (
+                <button
+                  onClick={toggleServices}
+                  className="flex items-center text-blue-600 hover:text-blue-700 font-medium mt-2 transition-colors duration-300 group"
+                >
+                  {showAllServices ? 'Show Less' : 'More Services'}
+                  <svg 
+                    className={`w-4 h-4 ml-2 transition-transform duration-300 ${showAllServices ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
 

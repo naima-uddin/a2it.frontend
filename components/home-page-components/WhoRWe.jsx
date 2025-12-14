@@ -99,7 +99,7 @@ const WhoRWe = () => {
   };
 
   return (
-    <section className="relative py-10 px-4 sm:px-6 md:px-16 overflow-hidden bg-gradient-to-b from-white to-blue-50 min-h-screen">
+    <section className="relative py-4 px-4 sm:px-6 md:px-16 overflow-hidden bg-gradient-to-b from-white to-blue-50">
       {/* Subtle Background Image */}
       <div 
         className="absolute inset-0 opacity-10 z-0"
@@ -146,7 +146,7 @@ const WhoRWe = () => {
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="lg:w-1/2 text-gray-800"
+          className="lg:w-1/2 text-gray-800 w-full"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -183,8 +183,220 @@ const WhoRWe = () => {
               comes to project launching.
             </p>
 
+                      {/* For Mobile & Tablet: Smaller circular layout */}
+          <div className="block lg:hidden relative w-full h-[280px] sm:h-[100px]">
+            
+            {/* Floating Stars Around */}
+            {[...Array(4)].map((_, i) => (
+              <motion.div
+                key={`star-mobile-${i}`}
+                className="absolute text-yellow-400"
+                style={{
+                  left: `${25 + i * 15}%`,
+                  top: `${15 + i * 15}%`,
+                }}
+                animate={{
+                  rotate: 360,
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              >
+                <FaStar size={10} />
+              </motion.div>
+            ))}
+
+            {/* Animated Orbit Ring */}
+            <motion.div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-dashed border-blue-200 rounded-full"
+              style={{ width: "120px", height: "120px" }}
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                duration: 40,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Services Cards with Staggered Animation */}
+            {services.map((service, index) => {
+              const radius = isActive ? 140 : 0; // Smaller radius for mobile
+              const angle = (service.angle * Math.PI) / 180;
+              const x = radius * Math.cos(angle);
+              const y = radius * Math.sin(angle);
+
+              return (
+                <motion.div
+                  key={service.name}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                  initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    scale: isActive ? 1 : 0,
+                    x: isActive ? x : 0,
+                    y: isActive ? y : 0,
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    delay: isActive ? index * 0.05 : 0,
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 25,
+                  }}
+                  whileHover={{ 
+                    scale: 1.15,
+                    transition: { 
+                      duration: 0.4,
+                      type: "spring",
+                      stiffness: 300 
+                    }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setHoveredCard(hoveredCard === index ? null : index)}
+                >
+                  <div className="relative group">
+                    {/* Animated Card Container */}
+                    <motion.div
+                      className={`bg-gradient-to-br ${service.color} p-1 rounded-xl shadow-xl`}
+                      animate={{
+                        boxShadow: hoveredCard === index 
+                          ? "0 20px 40px -12px rgba(0, 0, 0, 0.25)" 
+                          : "0 10px 20px -5px rgba(0, 0, 0, 0.1)",
+                      }}
+                    >
+                      <div className="bg-white rounded-lg p-3 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24">
+                        <motion.span 
+                          className="text-2xl sm:text-3xl mb-1 sm:mb-2"
+                          animate={{
+                            scale: hoveredCard === index ? [1, 1.2, 1] : 1,
+                            rotate: hoveredCard === index ? [0, 360] : 0,
+                          }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          {service.icon}
+                        </motion.span>
+                        <span className="font-bold text-gray-800 text-xs sm:text-sm text-center">
+                          {service.name}
+                        </span>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Enhanced Tooltip on Tap/Hover */}
+                    <AnimatePresence>
+                      {hoveredCard === index && (
+                        <motion.div
+                          className="absolute -top-24 sm:-top-28 left-1/2 transform -translate-x-1/2 z-40"
+                          initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-3 sm:p-4 rounded-xl shadow-2xl min-w-40 sm:min-w-48">
+                            <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color}`} />
+                              <h4 className="font-bold text-xs sm:text-sm">{service.name}</h4>
+                            </div>
+                            <p className="text-xs text-gray-300">{service.description}</p>
+                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-gray-800" />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              );
+            })}
+
+            {/* Center Logo for Mobile */}
+            <motion.div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
+              onClick={() => setIsActive(!isActive)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={floatingVariants.float}
+            >
+              <div className="relative">
+                {/* Pulsing Rings */}
+                <motion.div
+                  className="absolute -inset-4 sm:-inset-6 rounded-full border-2 border-blue-300"
+                  animate={{
+                    scale: isActive ? [1, 1.3, 1] : 1,
+                    opacity: isActive ? [0.3, 0.6, 0.3] : 0,
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute -inset-6 sm:-inset-8 rounded-full border border-blue-200"
+                  animate={{
+                    scale: isActive ? [1, 1.5, 1] : 1,
+                    opacity: isActive ? [0.2, 0.4, 0.2] : 0,
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+                />
+
+                {/* Logo Container */}
+                <motion.div
+                  className="relative bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-600 rounded-2xl p-1.5 sm:p-2 shadow-2xl"
+                  animate={{
+                    boxShadow: isActive 
+                      ? "0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(59, 130, 246, 0.3)" 
+                      : "0 10px 40px rgba(0, 0, 0, 0.1)",
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center w-36 h-36 sm:w-44 sm:h-44">
+                    <motion.div 
+                      className="text-4xl sm:text-5xl mb-2 sm:mb-4"
+                      animate={{ 
+                        rotate: isActive ? 360 : 0,
+                        y: isActive ? [0, -8, 0] : 0
+                      }}
+                      transition={{ 
+                        rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+                        y: { duration: 2, repeat: Infinity }
+                      }}
+                    >
+                      <FaRocket className="text-blue-600" />
+                    </motion.div>
+                    <motion.h3 
+                      className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"
+                      animate={{
+                        scale: isActive ? [1, 1.1, 1] : 1,
+                      }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      A2IT
+                    </motion.h3>
+                    <motion.h4 
+                      className="text-sm sm:text-lg font-semibold text-gray-600 mt-1"
+                      animate={{
+                        opacity: isActive ? [1, 0.7, 1] : 1,
+                      }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    >
+                      Limited
+                    </motion.h4>
+                    <motion.p 
+                      className="text-xs text-gray-500 mt-2 sm:mt-3 text-center"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {isActive ? "✨ Services Active!" : "👆 Tap to Show Services"}
+                    </motion.p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
             {/* Stats Cards with Staggered Animation */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-2 md:gap-4 lg:gap-4 mt-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -220,7 +432,7 @@ const WhoRWe = () => {
 
             {/* Social Media Links with Hover Effects */}
             <motion.div 
-              className="flex space-x-4 mt-8"
+              className="flex space-x-4 mt-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -257,9 +469,8 @@ const WhoRWe = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right Column - Enhanced Circular Services Reveal */}
-        <div className="lg:w-1/2 flex flex-col items-center justify-center relative min-h-[500px]">
-          
+        {/* Right Column - Circular Services Reveal (Same for all devices) */}
+        <div className="lg:w-1/2 flex flex-col items-center justify-center relative w-full">
           {/* Desktop View - Enhanced Circular Layout */}
           <div className="hidden lg:block relative w-full max-w-lg h-[500px]">
             

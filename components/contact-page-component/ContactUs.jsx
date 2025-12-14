@@ -9,6 +9,7 @@ import {
   FiMessageSquare,
   FiSend,
   FiClock,
+  FiMap,
 } from "react-icons/fi";
 import dynamic from "next/dynamic";
 
@@ -16,8 +17,8 @@ import dynamic from "next/dynamic";
 const ClientSideMap = dynamic(() => import("./ClientSideMap"), {
   ssr: false,
   loading: () => (
-    <div className="h-96 w-full bg-gray-100 flex items-center justify-center rounded-lg">
-      <p className="text-gray-600">Loading map...</p>
+    <div className="h-64 sm:h-72 md:h-80 lg:h-96 w-full bg-gray-100 flex items-center justify-center rounded-lg">
+      <p className="text-gray-600 text-sm sm:text-base">Loading map...</p>
     </div>
   ),
 });
@@ -99,32 +100,32 @@ const ContactUs = () => {
 
   return (
     <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      className="min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/Contact-Us.png')" }}
     >
       {/* Semi-transparent overlay for better readability */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
 
       {/* Main Content */}
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
         {/* Header */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={fadeIn}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 tracking-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 text-gray-900 tracking-tight px-2">
             CONTACT US
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto px-4">
             We work with ambitious leaders who want to define the future, not hide from it.
           </p>
         </motion.div>
 
         {/* Contact Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-8 sm:mb-10 md:mb-12">
           {/* Contact Form */}
           <motion.div
             initial="hidden"
@@ -132,16 +133,16 @@ const ContactUs = () => {
             variants={fadeIn}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200"
+            className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-200 order-2 lg:order-1"
           >
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Send us a message</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Send us a message</h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
               {/* Name Field */}
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 <label
                   htmlFor="name"
-                  className="block text-gray-800 font-semibold"
+                  className="block text-gray-800 font-semibold text-sm sm:text-base"
                 >
                   <FiUser className="inline mr-2" />
                   Name
@@ -154,17 +155,17 @@ const ContactUs = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Write your name"
-                    className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500 text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
 
               {/* Phone Field */}
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 <label
                   htmlFor="phone"
-                  className="block text-gray-800 font-semibold"
+                  className="block text-gray-800 font-semibold text-sm sm:text-base"
                 >
                   <FiPhone className="inline mr-2" />
                   Mobile Number
@@ -177,16 +178,16 @@ const ContactUs = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+880 1846-XXXXXX"
-                    className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500 text-sm sm:text-base"
                   />
                 </div>
               </div>
 
               {/* Email Field */}
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 <label
                   htmlFor="email"
-                  className="block text-gray-800 font-semibold"
+                  className="block text-gray-800 font-semibold text-sm sm:text-base"
                 >
                   <FiMail className="inline mr-2" />
                   Email address
@@ -199,17 +200,17 @@ const ContactUs = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="email@gmail.com"
-                    className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500 text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
 
               {/* Message Field */}
-              <div className="space-y-2">
+              <div className="space-y-1 sm:space-y-2">
                 <label
                   htmlFor="message"
-                  className="block text-gray-800 font-semibold"
+                  className="block text-gray-800 font-semibold text-sm sm:text-base"
                 >
                   <FiMessageSquare className="inline mr-2" />
                   Your Message
@@ -220,9 +221,9 @@ const ContactUs = () => {
                     name="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    rows="4"
+                    rows="3"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all resize-none placeholder-gray-500 text-sm sm:text-base"
                     placeholder="Write your message here..."
-                    className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all resize-none placeholder-gray-500"
                     required
                   ></textarea>
                 </div>
@@ -232,10 +233,12 @@ const ContactUs = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gray-900 text-white font-semibold py-4 px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2 mt-8"
+                className="w-full bg-gray-900 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2 mt-4 sm:mt-6 md:mt-8 text-sm sm:text-base"
               >
-                <span className="tracking-wide">{isSubmitting ? "SENDING..." : "LET'S GET TO WORK"}</span>
-                <FiSend className="ml-2" />
+                <span className="tracking-wide">
+                  {isSubmitting ? "SENDING..." : "LET'S GET TO WORK"}
+                </span>
+                <FiSend className="ml-1 sm:ml-2" size={16} />
               </button>
             </form>
           </motion.div>
@@ -247,18 +250,18 @@ const ContactUs = () => {
             variants={fadeIn}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200"
+            className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-200 order-1 lg:order-2"
           >
-            <h2 className="text-2xl font-bold mb-8 text-gray-900">Contact Information</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-gray-900">Contact Information</h2>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Address */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-start">
-                  <FiMapPin className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <FiMapPin className="text-gray-700 mt-0.5 sm:mt-1 mr-3 flex-shrink-0" size={18} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Our Address</h3>
-                    <p className="text-gray-600 leading-relaxed mt-1">
+                    <h3 className="font-bold text-base sm:text-lg text-gray-800">Our Address</h3>
+                    <p className="text-gray-600 leading-relaxed mt-1 text-sm sm:text-base">
                       Plot No 470, Road No 06 (Old 29),<br />
                       DOHS Mirpur, Dhaka Division,<br />
                       Bangladesh
@@ -268,34 +271,34 @@ const ContactUs = () => {
               </div>
 
               {/* Phone */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-start">
-                  <FiPhone className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <FiPhone className="text-gray-700 mt-0.5 sm:mt-1 mr-3 flex-shrink-0" size={18} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Phone Number</h3>
-                    <p className="text-gray-800 text-lg font-medium mt-1">+880 1846-937397</p>
+                    <h3 className="font-bold text-base sm:text-lg text-gray-800">Phone Number</h3>
+                    <p className="text-gray-800 text-base sm:text-lg font-medium mt-1">+880 1846-937397</p>
                   </div>
                 </div>
               </div>
 
               {/* Email */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-start">
-                  <FiMail className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <FiMail className="text-gray-700 mt-0.5 sm:mt-1 mr-3 flex-shrink-0" size={18} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Email Address</h3>
-                    <p className="text-gray-800 text-lg font-medium mt-1">info@a2itltd.com</p>
+                    <h3 className="font-bold text-base sm:text-lg text-gray-800">Email Address</h3>
+                    <p className="text-gray-800 text-base sm:text-lg font-medium mt-1">info@a2itltd.com</p>
                   </div>
                 </div>
               </div>
 
               {/* Working Hours */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-start">
-                  <FiClock className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <FiClock className="text-gray-700 mt-0.5 sm:mt-1 mr-3 flex-shrink-0" size={18} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Working Hours</h3>
-                    <p className="text-gray-600 mt-1">
+                    <h3 className="font-bold text-base sm:text-lg text-gray-800">Working Hours</h3>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">
                       Saturday - Friday: 10AM - 7PM
                     </p>
                   </div>
@@ -304,8 +307,8 @@ const ContactUs = () => {
             </div>
 
             {/* Quote */}
-            <div className="mt-12 pt-8 border-t border-gray-300">
-              <p className="text-gray-700 text-center italic font-medium">
+            <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-gray-300">
+              <p className="text-gray-700 text-center italic font-medium text-sm sm:text-base">
                 "We work with ambitious leaders who want to define the future, not hide from it."
               </p>
             </div>
@@ -319,18 +322,20 @@ const ContactUs = () => {
           variants={fadeIn}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-200"
+          className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg overflow-hidden border border-gray-200"
         >
-          <div className="p-6">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
-              <FiMapPin className="mr-3" />
+          <div className="p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900 flex items-center">
+              <FiMap className="mr-2 sm:mr-3" />
               Find Us on Map
             </h2>
-            <ClientSideMap
-              position={position}
-              setPosition={setPosition}
-              officeAddress={officeAddress}
-            />
+            <div className="w-full h-64 sm:h-72 md:h-80 lg:h-96 rounded-lg overflow-hidden">
+              <ClientSideMap
+                position={position}
+                setPosition={setPosition}
+                officeAddress={officeAddress}
+              />
+            </div>
           </div>
         </motion.div>
       </div>
