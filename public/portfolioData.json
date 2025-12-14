@@ -1,0 +1,761 @@
+{
+    "portfolio": {
+        "affiliateProjects": [
+            {
+                "id": 10,
+                "title": "Commercial Tyre",
+                "category": "B2B Platform",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Commercial Tyre Solutions Inc.",
+                "year": "2023",
+                "duration": "6 months",
+                "teamSize": "8 members",
+                "description": "A specialized platform for managing commercial tyre sales, distribution, and service tracking across multiple locations.",
+                "detailedDescription": "Developed a comprehensive B2B platform for commercial tyre management featuring real-time inventory tracking, automated order processing, supplier management, and advanced analytics. The system handles sales distribution, service scheduling, and customer relationship management for tyre dealerships nationwide.",
+                "businessChallenge": "Manual processes for inventory management and order tracking were causing delays and errors in the supply chain.",
+                "solution": "Built a cloud-based platform with automated workflows, real-time tracking, and predictive analytics for inventory management.",
+                "results": "Streamlined operations by 70%, reduced inventory errors by 95%, and increased sales efficiency by 45%.",
+                "technologies": [
+                    "Next.js",
+                    "Node.js",
+                    "PostgreSQL",
+                    "AWS",
+                    "Stripe",
+                    "Redis",
+                    "Docker",
+                    "GraphQL"
+                ],
+                "images": [
+                    "/assets/Portfolio/commercial-tyre-1.jpg",
+                    "/assets/Portfolio/commercial-tyre-2.jpg",
+                    "/assets/Portfolio/commercial-tyre-3.jpg",
+                    "/assets/Portfolio/commercial-tyre-4.jpg"
+                ],
+                "features": [
+                    "Real-time inventory tracking",
+                    "Automated order processing",
+                    "Supplier management portal",
+                    "Advanced analytics dashboard",
+                    "Mobile-responsive design",
+                    "Multi-location management",
+                    "Automated reporting",
+                    "CRM integration"
+                ],
+                "performance": [
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%",
+                        "icon": "📊"
+                    },
+                    {
+                        "label": "Process Efficiency",
+                        "value": "70%",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Client ROI",
+                        "value": "3.2X",
+                        "icon": "💰"
+                    },
+                    {
+                        "label": "User Adoption",
+                        "value": "98%",
+                        "icon": "👥"
+                    }
+                ],
+                "testimonial": {
+                    "text": "This platform revolutionized our tyre distribution business. The automation and real-time tracking have saved us countless hours and significantly reduced errors.",
+                    "author": "John Smith",
+                    "position": "CEO, Commercial Tyre Solutions",
+                    "company": "Commercial Tyre Solutions Inc."
+                }
+            },
+            {
+                "id": 11,
+                "title": "Asian Import Export Portal",
+                "category": "E-commerce Platform",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Asian Trade Connect Ltd.",
+                "year": "2023",
+                "duration": "8 months",
+                "teamSize": "10 members",
+                "description": "A business management and e-commerce solution for import-export operations across Asia with multi-currency support.",
+                "detailedDescription": "Developed a comprehensive import-export portal connecting Asian manufacturers with global buyers. Features include product catalog management, automated documentation, shipping integration, payment processing in multiple currencies, and compliance management for international trade.",
+                "businessChallenge": "Fragmented systems for documentation, payments, and logistics were hindering international trade operations.",
+                "solution": "Created an integrated platform with automated documentation, multi-currency payments, and logistics management.",
+                "results": "Increased international transactions by 200%, reduced processing time by 65%, and improved customer satisfaction by 40%.",
+                "technologies": [
+                    "React.js",
+                    "Python/Django",
+                    "PostgreSQL",
+                    "Docker",
+                    "AWS",
+                    "Stripe",
+                    "WebSocket",
+                    "Redis"
+                ],
+                "images": [
+                    "/assets/Portfolio/import-export-1.png",
+                    "/assets/Portfolio/import-export-2.png",
+                    "/assets/Portfolio/import-export-3.png",
+                    "/assets/Portfolio/import-export-4.png"
+                ],
+                "features": [
+                    "Multi-currency payment processing",
+                    "Automated documentation",
+                    "Shipping integration",
+                    "Compliance management",
+                    "Real-time tracking",
+                    "Multi-language support",
+                    "Advanced search",
+                    "Analytics dashboard"
+                ],
+                "performance": [
+                    {
+                        "label": "Transaction Growth",
+                        "value": "200%",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Processing Time",
+                        "value": "65% faster",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "User Satisfaction",
+                        "value": "4.8/5",
+                        "icon": "⭐"
+                    },
+                    {
+                        "label": "Revenue Increase",
+                        "value": "150%",
+                        "icon": "💰"
+                    }
+                ],
+                "testimonial": {
+                    "text": "The platform transformed our import-export business. The automated documentation alone saved us 20 hours per week.",
+                    "author": "Lisa Wang",
+                    "position": "Operations Director",
+                    "company": "Asian Trade Connect Ltd."
+                }
+            },
+            {
+                "id": 17,
+                "title": "Asian Import Export E-commerce",
+                "category": "Web Development",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Global Trade Partners",
+                "year": "2023",
+                "duration": "5 months",
+                "teamSize": "6 members",
+                "description": "E-commerce platform for import-export businesses to manage products, sales, and logistics efficiently.",
+                "detailedDescription": "Built a scalable e-commerce platform specifically designed for import-export businesses, featuring product management, order processing, logistics integration, and international payment gateways.",
+                "businessChallenge": "Existing e-commerce solutions lacked specialized features for international trade businesses.",
+                "solution": "Custom-built platform with trade-specific features, logistics integration, and multi-region compliance.",
+                "results": "Increased sales by 180%, reduced order processing time by 60%, and expanded to 15 new countries.",
+                "technologies": [
+                    "Shopify Plus",
+                    "Next.js",
+                    "Node.js",
+                    "MongoDB",
+                    "AWS Lambda",
+                    "Stripe",
+                    "PayPal"
+                ],
+                "images": [
+                    "/assets/Portfolio/asia-ecom-1.jpg",
+                    "/assets/Portfolio/asia-ecom-2.jpg",
+                    "/assets/Portfolio/asia-ecom-3.jpg",
+                    "/assets/Portfolio/asia-ecom-4.jpg"
+                ],
+                "features": [
+                    "International shipping integration",
+                    "Multi-currency support",
+                    "Custom duty calculator",
+                    "Bulk order processing",
+                    "Supplier portal",
+                    "Real-time inventory",
+                    "Analytics dashboard",
+                    "Mobile app"
+                ],
+                "performance": [
+                    {
+                        "label": "Sales Growth",
+                        "value": "180%",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Order Processing",
+                        "value": "60% faster",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Market Expansion",
+                        "value": "15 countries",
+                        "icon": "🌍"
+                    },
+                    {
+                        "label": "Customer Retention",
+                        "value": "85%",
+                        "icon": "👥"
+                    }
+                ],
+                "testimonial": {
+                    "text": "This platform helped us expand our business internationally with features specifically designed for import-export.",
+                    "author": "Robert Chen",
+                    "position": "Managing Director",
+                    "company": "Global Trade Partners"
+                }
+            }
+        ],
+        "featuredProjects": [
+            {
+                "id": 1,
+                "title": "E-Commerce Platform",
+                "category": "Web Development",
+                "type": "featured",
+                "status": "live",
+                "client": "Retail Solutions Corp",
+                "year": "2023",
+                "duration": "9 months",
+                "teamSize": "12 members",
+                "description": "A full-featured e-commerce platform with advanced analytics and inventory management.",
+                "detailedDescription": "Built a scalable e-commerce platform from scratch featuring advanced analytics, real-time inventory management, personalized recommendations, and seamless payment integration.",
+                "technologies": [
+                    "React",
+                    "Node.js",
+                    "MongoDB",
+                    "Stripe",
+                    "Redis",
+                    "AWS",
+                    "Docker",
+                    "GraphQL"
+                ],
+                "images": [
+                    "/assets/Portfolio/ecommerce-1.jpg",
+                    "/assets/Portfolio/ecommerce-2.jpg",
+                    "/assets/Portfolio/ecommerce-3.jpg"
+                ],
+                "features": [
+                    "Advanced analytics dashboard",
+                    "Real-time inventory management",
+                    "Personalized recommendations",
+                    "Multi-vendor support",
+                    "Mobile-responsive design",
+                    "Payment gateway integration",
+                    "Order tracking",
+                    "Customer reviews"
+                ],
+                "performance": [
+                    {
+                        "label": "Concurrent Users",
+                        "value": "10K+",
+                        "icon": "👥"
+                    },
+                    {
+                        "label": "Revenue Generated",
+                        "value": "$2M+",
+                        "icon": "💰"
+                    },
+                    {
+                        "label": "Conversion Rate",
+                        "value": "4.2%",
+                        "icon": "📊"
+                    },
+                    {
+                        "label": "Page Load Time",
+                        "value": "1.2s",
+                        "icon": "⚡"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "FitTrack Mobile App",
+                "category": "Mobile Development",
+                "type": "featured",
+                "status": "live",
+                "client": "HealthTech Innovations",
+                "year": "2023",
+                "duration": "7 months",
+                "teamSize": "8 members",
+                "description": "A comprehensive fitness tracking mobile application with AI-powered workout recommendations.",
+                "detailedDescription": "Developed a fitness tracking app with AI-powered workout plans, nutrition tracking, progress analytics, and social features for community engagement.",
+                "technologies": [
+                    "React Native",
+                    "Firebase",
+                    "TensorFlow",
+                    "Express.js",
+                    "MongoDB",
+                    "AWS",
+                    "Redux"
+                ],
+                "images": [
+                    "/assets/Portfolio/fittrack-1.jpg",
+                    "/assets/Portfolio/fittrack-2.jpg",
+                    "/assets/Portfolio/fittrack-3.jpg"
+                ],
+                "features": [
+                    "AI workout recommendations",
+                    "Nutrition tracking",
+                    "Progress analytics",
+                    "Social community",
+                    "Wearable integration",
+                    "Video tutorials",
+                    "Goal setting",
+                    "Health insights"
+                ],
+                "performance": [
+                    {
+                        "label": "Downloads",
+                        "value": "50K+",
+                        "icon": "📱"
+                    },
+                    {
+                        "label": "App Store Rating",
+                        "value": "4.6",
+                        "icon": "⭐"
+                    },
+                    {
+                        "label": "User Retention",
+                        "value": "65%",
+                        "icon": "📊"
+                    },
+                    {
+                        "label": "Workout Completion",
+                        "value": "78%",
+                        "icon": "💪"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Business Analytics Dashboard",
+                "category": "Web Development",
+                "type": "featured",
+                "status": "live",
+                "client": "Enterprise Solutions Inc.",
+                "year": "2023",
+                "duration": "6 months",
+                "teamSize": "10 members",
+                "description": "An enterprise-level analytics dashboard providing real-time insights and data visualization.",
+                "detailedDescription": "Created an enterprise analytics dashboard with real-time data visualization, predictive analytics, and custom reporting for business intelligence.",
+                "technologies": [
+                    "Vue.js",
+                    "D3.js",
+                    "Python",
+                    "PostgreSQL",
+                    "FastAPI",
+                    "Redis",
+                    "Docker"
+                ],
+                "images": [
+                    "/assets/Portfolio/analytics-1.jpg",
+                    "/assets/Portfolio/analytics-2.jpg",
+                    "/assets/Portfolio/analytics-3.jpg"
+                ],
+                "features": [
+                    "Real-time data visualization",
+                    "Predictive analytics",
+                    "Custom reporting",
+                    "Data export",
+                    "Role-based access",
+                    "Automated alerts",
+                    "Integration APIs",
+                    "Mobile access"
+                ],
+                "performance": [
+                    {
+                        "label": "Faster Reporting",
+                        "value": "75%",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Data Accuracy",
+                        "value": "99.9%",
+                        "icon": "📊"
+                    },
+                    {
+                        "label": "User Adoption",
+                        "value": "95%",
+                        "icon": "👥"
+                    },
+                    {
+                        "label": "Decision Speed",
+                        "value": "60% faster",
+                        "icon": "🚀"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "title": "AI Chat Interface",
+                "category": "AI/ML",
+                "type": "featured",
+                "status": "live",
+                "client": "Customer Support Solutions",
+                "year": "2023",
+                "duration": "5 months",
+                "teamSize": "7 members",
+                "description": "An intelligent chatbot interface with natural language processing and context awareness.",
+                "detailedDescription": "Developed an AI-powered chatbot with natural language processing, sentiment analysis, and multi-channel support for customer service automation.",
+                "technologies": [
+                    "React",
+                    "OpenAI API",
+                    "WebSocket",
+                    "Redis",
+                    "Node.js",
+                    "MongoDB",
+                    "TensorFlow"
+                ],
+                "images": [
+                    "/assets/Portfolio/aichat-1.jpg",
+                    "/assets/Portfolio/aichat-2.jpg",
+                    "/assets/Portfolio/aichat-3.jpg"
+                ],
+                "features": [
+                    "Natural language processing",
+                    "Sentiment analysis",
+                    "Multi-channel support",
+                    "Context awareness",
+                    "Automated responses",
+                    "Human handoff",
+                    "Analytics dashboard",
+                    "Custom training"
+                ],
+                "performance": [
+                    {
+                        "label": "User Satisfaction",
+                        "value": "92%",
+                        "icon": "😊"
+                    },
+                    {
+                        "label": "Daily Conversations",
+                        "value": "1K+",
+                        "icon": "💬"
+                    },
+                    {
+                        "label": "Resolution Rate",
+                        "value": "85%",
+                        "icon": "✅"
+                    },
+                    {
+                        "label": "Cost Reduction",
+                        "value": "40%",
+                        "icon": "💰"
+                    }
+                ]
+            }
+        ],
+        "portfolioProjects": [
+            {
+                "id": 5,
+                "title": "Photo Detection App",
+                "category": "AI/ML",
+                "type": "portfolio",
+                "status": "live",
+                "description": "An AI-powered photo detection application that identifies objects and scenes in images.",
+                "technologies": [
+                    "React",
+                    "OpenAI API",
+                    "WebSocket",
+                    "Redis",
+                    "TensorFlow",
+                    "Node.js"
+                ],
+                "image": "/assets/Portfolio/photodetect-1.jpg",
+                "performance": [
+                    {
+                        "label": "Daily Scans",
+                        "value": "1K+"
+                    },
+                    {
+                        "label": "Accuracy Rate",
+                        "value": "94%"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "title": "Corporate Design System",
+                "category": "UI/UX Design",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A comprehensive design system and component library for enterprise applications.",
+                "technologies": [
+                    "Figma",
+                    "Storybook",
+                    "React",
+                    "TypeScript",
+                    "CSS Modules"
+                ],
+                "image": "/assets/Portfolio/designsystem-1.jpg",
+                "performance": [
+                    {
+                        "label": "Faster Development",
+                        "value": "60%"
+                    },
+                    {
+                        "label": "Reusable Components",
+                        "value": "100+"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "title": "FinTech Trading Platform",
+                "category": "Web Development",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A real-time trading platform with advanced charting and portfolio management features.",
+                "technologies": [
+                    "React.js",
+                    "WebSocket",
+                    "Chart.js",
+                    "Node.js",
+                    "PostgreSQL"
+                ],
+                "image": "/assets/Portfolio/fintech-1.jpg",
+                "performance": [
+                    {
+                        "label": "Daily Trading Volume",
+                        "value": "$100M+"
+                    },
+                    {
+                        "label": "Data Latency",
+                        "value": "100ms"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "title": "eCommerce Development Solutions",
+                "category": "E-commerce",
+                "type": "portfolio",
+                "status": "live",
+                "description": "Custom eCommerce development tailored to your business needs with integrated payments, inventory, and SEO tools.",
+                "technologies": [
+                    "Shopify",
+                    "WooCommerce",
+                    "Magento",
+                    "React",
+                    "Node.js"
+                ],
+                "image": "/assets/Portfolio/ecomdev-1.jpg",
+                "performance": [
+                    {
+                        "label": "Customer Growth",
+                        "value": "120%"
+                    },
+                    {
+                        "label": "Conversion Rate Increase",
+                        "value": "30%"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "title": "Digital Marketing Platform",
+                "category": "Marketing",
+                "type": "portfolio",
+                "status": "live",
+                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
+                "technologies": [
+                    "Google Ads API",
+                    "Meta Ads API",
+                    "SEMRush",
+                    "Ahrefs",
+                    "Python"
+                ],
+                "image": "/assets/Portfolio/marketing-1.jpg",
+                "performance": [
+                    {
+                        "label": "Organic Traffic",
+                        "value": "2X"
+                    },
+                    {
+                        "label": "Return on Ad Spend",
+                        "value": "5X"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "title": "Best E-bike App",
+                "category": "Mobile Development",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A mobile app to track e-bike performance, battery usage, and GPS navigation.",
+                "technologies": [
+                    "React Native",
+                    "Firebase",
+                    "Google Maps API",
+                    "Redux"
+                ],
+                "image": "/assets/Portfolio/ebike-1.jpg",
+                "performance": [
+                    {
+                        "label": "Active Users",
+                        "value": "10K+"
+                    },
+                    {
+                        "label": "Battery Accuracy",
+                        "value": "98%"
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "title": "Gym Equipment Tracker",
+                "category": "Mobile Development",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A mobile app for gym equipment tracking, maintenance schedules, and fitness tips.",
+                "technologies": [
+                    "ReactNative",
+                    "Expo",
+                    "SQLite",
+                    "Node.js"
+                ],
+                "image": "/assets/Portfolio/gymtracker-1.jpg",
+                "performance": [
+                    {
+                        "label": "Equipment Uptime",
+                        "value": "99%"
+                    },
+                    {
+                        "label": "Maintenance Alerts",
+                        "value": "100%"
+                    }
+                ]
+            },
+            {
+                "id": 14,
+                "title": "Commercial Tyre UI/UX",
+                "category": "UI/UX Design",
+                "type": "portfolio",
+                "status": "live",
+                "description": "UI/UX design for a tyre management system with user-friendly dashboards and checkout flow.",
+                "technologies": [
+                    "Figma",
+                    "Adobe XD",
+                    "Sketch",
+                    "InVision"
+                ],
+                "image": "/assets/Portfolio/tyre-ui-1.jpg",
+                "performance": [
+                    {
+                        "label": "User Efficiency",
+                        "value": "45%"
+                    },
+                    {
+                        "label": "Task Completion",
+                        "value": "95%"
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "title": "SwiftShip Tracking",
+                "category": "Mobile Development",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A mobile app for real-time shipment tracking, notifications, and delivery management.",
+                "technologies": [
+                    "React Native",
+                    "Firebase",
+                    "Google Maps API",
+                    "Push Notifications"
+                ],
+                "image": "/assets/Portfolio/shipment-1.jpg",
+                "performance": [
+                    {
+                        "label": "Delivery Accuracy",
+                        "value": "99.5%"
+                    },
+                    {
+                        "label": "Customer Satisfaction",
+                        "value": "4.7/5"
+                    }
+                ]
+            },
+            {
+                "id": 16,
+                "title": "Jute Boutique",
+                "category": "UI/UX Design",
+                "type": "portfolio",
+                "status": "live",
+                "description": "A sustainable fashion e-commerce brand design system focused on jute-based products.",
+                "technologies": [
+                    "Figma",
+                    "Canva",
+                    "Adobe Creative Suite"
+                ],
+                "image": "/assets/Portfolio/jute-1.jpg",
+                "performance": [
+                    {
+                        "label": "Brand Recognition",
+                        "value": "3X"
+                    },
+                    {
+                        "label": "Sales Increase",
+                        "value": "80%"
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "title": "Best E-bike Store",
+                "category": "E-commerce",
+                "type": "portfolio",
+                "status": "live",
+                "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
+                "technologies": [
+                    "WooCommerce",
+                    "React",
+                    "WordPress",
+                    "Stripe"
+                ],
+                "image": "/assets/Portfolio/ebikestore-1.jpg",
+                "performance": [
+                    {
+                        "label": "Monthly Sales",
+                        "value": "$150K+"
+                    },
+                    {
+                        "label": "Conversion Rate",
+                        "value": "3.8%"
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "title": "Gym Equipment Store",
+                "category": "E-commerce",
+                "type": "portfolio",
+                "status": "live",
+                "description": "An online store for gym equipment and fitness accessories with inventory management.",
+                "technologies": [
+                    "Magento",
+                    "React",
+                    "Node.js",
+                    "MySQL"
+                ],
+                "image": "/assets/Portfolio/gymstore-1.jpg",
+                "performance": [
+                    {
+                        "label": "Inventory Turnover",
+                        "value": "4.2X"
+                    },
+                    {
+                        "label": "Customer Retention",
+                        "value": "75%"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -521,6 +521,25 @@ const Navbar = () => {
             )}
           </Link>
 
+{/* mobile pricing link  */}
+                    <Link 
+            href="/pricing" 
+            className={`block px-3 py-2 rounded-lg transition-all duration-300 relative ${
+              isActive("/pricing") ? "bg-blue-500/10 text-blue-600 dark:text-blue-400" : "hover:text-blue-500"
+            }`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span className="flex items-center">
+              Pricing
+              {isActive("/pricing") && (
+                <span className="ml-auto animate-pulse">●</span>
+              )}
+            </span>
+            {isActive("/pricing") && (
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-r-full"></div>
+            )}
+          </Link>
+
           {/* Mobile Blog Link */}
           <Link 
             href="/blog" 

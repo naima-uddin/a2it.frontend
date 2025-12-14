@@ -115,7 +115,7 @@ const HomePageContactUs = () => {
         >
           
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">
-            GET IN <span className="text-blue-400">TOUCH</span>
+            GET IN <span className="text-blue-600">TOUCH</span>
           </h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
             Connect with us to bring your digital vision to life
@@ -165,7 +165,7 @@ const HomePageContactUs = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Phone Number</h3>
-                      <p className="text-blue-300 text-xl font-bold">+880 1846-937397</p>
+                      <p className="text-gray-900 text-xl font-bold">+880 1846-937397</p>
                     </div>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ const HomePageContactUs = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Email Address</h3>
-                      <p className="text-blue-300 text-xl font-bold">info@a2itltd.com</p>
+                      <p className="text-gray-900 text-xl font-bold">info@a2itltd.com</p>
                     </div>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ const HomePageContactUs = () => {
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Working Hours</h3>
                       <p className="text-gray-200 text-base">
-                        Saturday - Friday: <span className="text-blue-300 font-semibold">10AM - 7PM</span>
+                        Saturday - Friday: <span className="text-gray-900 font-semibold">10AM - 7PM</span>
                       </p>
                     </div>
                   </div>

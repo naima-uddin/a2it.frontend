@@ -303,23 +303,18 @@ const Footer = () => {
           {/* Legal Links */}
           <div className="flex space-x-6">
             <a 
-              href="#" 
+              href="/privacy-policy" 
               className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
             >
               Privacy Policy
             </a>
             <a 
-              href="#" 
+              href="/terms-of-service" 
               className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
             >
               Terms of Service
             </a>
-            <a 
-              href="#" 
-              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
-            >
-              Cookie Policy
-            </a>
+            
           </div>
         </div>
 

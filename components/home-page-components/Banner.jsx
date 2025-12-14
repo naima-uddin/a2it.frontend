@@ -86,7 +86,7 @@ const Banner = () => {
         
         /* Neon Button Style - Fixed white background */
         .btn-neon {
-          padding: 18px 45px;
+          padding: 18px 35px;
           font-size: 18px;
           font-weight: 700;
           color: #FFFFFF;
