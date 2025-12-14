@@ -128,14 +128,14 @@ const Navbar = () => {
         <li>
           <Link
             href="/"
-            className={`relative px-2 py-1 transition-colors font-medium group ${
+            className={`relative px-2 py-1 transition-colors font-medium text-xl group ${
               isScrolled
                 ? isActive("/")
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 : isActive("/")
                 ? "text-white"
-                : "text-white hover:text-blue-300"
+                : "text-white hover:text-white"
             }`}
             onMouseEnter={() => setHoveredItem("home")}
             onMouseLeave={() => setHoveredItem(null)}
@@ -161,15 +161,15 @@ const Navbar = () => {
         <li>
           <Link
             href="/about"
-            className={`relative px-2 py-1 transition-colors font-medium group ${
+            className={`relative px-2 py-1 transition-colors font-medium text-xl group ${
               isScrolled
                 ? isActive("/about")
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 : isActive("/about")
                 ? "text-white"
-                : "text-white hover:text-blue-300"
-            }`}
+                : "text-white hover:text-white"
+            }`} 
             onMouseEnter={() => setHoveredItem("about")}
             onMouseLeave={() => setHoveredItem(null)}
           >
@@ -198,14 +198,14 @@ const Navbar = () => {
         >
           <button
             onClick={handleToggleClick}
-            className={`relative px-2 py-1 flex items-center gap-1 transition-colors font-medium group ${
+            className={`relative px-2 py-1 flex items-center gap-1 transition-colors font-medium text-xl group ${
               isScrolled
                 ? isActive("/services") || dropdownOpen
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 : isActive("/services") || dropdownOpen
                 ? "text-white"
-                : "text-white hover:text-blue-300"
+                : "text-white hover:text-white"
             }`}
           >
             <span className="relative z-10">Our Services</span>
@@ -271,14 +271,14 @@ const Navbar = () => {
         <li>
           <Link
             href="/portfolio"
-            className={`relative px-2 py-1 transition-colors font-medium group ${
+            className={`relative px-2 py-1 transition-colors font-medium text-xl group ${
               isScrolled
                 ? isActive("/portfolio")
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 : isActive("/portfolio")
                 ? "text-white"
-                : "text-white hover:text-blue-300"
+                : "text-white hover:text-white"
             }`}
             onMouseEnter={() => setHoveredItem("portfolio")}
             onMouseLeave={() => setHoveredItem(null)}
@@ -304,14 +304,14 @@ const Navbar = () => {
         <li>
           <Link
             href="/blog"
-            className={`relative px-2 py-1 transition-colors font-medium group ${
+            className={`relative px-2 py-1 transition-colors font-medium text-xl group ${
               isScrolled
                 ? isActive("/blog")
                   ? "text-blue-600 dark:text-blue-400"
                   : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
                 : isActive("/blog")
                 ? "text-white"
-                : "text-white hover:text-blue-300"
+                : "text-white hover:text-white"
             }`}
             onMouseEnter={() => setHoveredItem("blog")}
             onMouseLeave={() => setHoveredItem(null)}
