@@ -4,34 +4,37 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="w-full relative">
+    <div
+      className="relative w-full  mx-auto aspect-[16/9] sm:aspect-[16/7] md:aspect-[16/6] lg:aspect-auto lg:h-[90vh] overflow-hidden">
+      {/* Banner Image */}
       <Image
         src="/bannerImg.jpg"
         alt="Banner"
-        width={1920}
-        height={1080}
-        className="w-full h-[90vh] object-cover "
-        
+        fill
+        priority
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1920px"
+        className="object-cover"
       />
+
+      
       
       {/* Content Container - Positioned at bottom-left with padding */}
-      <div className="absolute bottom-26 left-10 md:left-20 lg:left-32">
+      <div className="absolute bottom-4 sm:bottom-26 left-1/2 sm:left-10 md:left-20 lg:left-32 transform -translate-x-1/2 sm:translate-x-0 w-full px-4 sm:px-0">
         {/* Buttons Container */}
-        <div className="flex flex-col sm:flex-row gap-6 items-start">
-          {/* Button 1: 3D Style */}
+        <div className="flex flex-row sm:flex-row gap-4 justify-center sm:justify-start"
+        >
           <button className="btn-3d">
-            Contact With Us 
+            Contact With Us
           </button>
-          
-          {/* Button 2: Neon Style */}
+
           <button className="btn-neon">
             Learn More About Us
           </button>
         </div>
       </div>
 
+
       <style jsx>{`
-        /* 3D Button Style */
         .btn-3d {
           padding: 18px 45px;
           font-size: 18px;
@@ -39,7 +42,6 @@ const Banner = () => {
           color: white;
           background: linear-gradient(145deg, #66B2FF, #000099);
           border: none;
-          // border-radius: 12px;
           cursor: pointer;
           position: relative;
           transition: all 0.3s ease;
@@ -49,6 +51,7 @@ const Banner = () => {
           letter-spacing: 0.5px;
           text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
+
         
         .btn-3d:hover {
           transform: translateY(-4px) rotateX(10deg);
@@ -145,13 +148,27 @@ const Banner = () => {
         }
         
         /* Responsive */
+        /* Responsive */
         @media (max-width: 640px) {
-          .btn-3d, .btn-neon {
-            padding: 16px 35px;
-            font-size: 16px;
-            min-width: 200px;
+          .btn-3d,
+          .btn-neon {
+            padding: 8px 10px;
+            font-size: 12px;
+            min-width: auto;     /* 🔑 allow buttons to shrink */
+            width: auto;
+            letter-spacing: 0.4px;
           }
         }
+
+        /* Extra small devices (very small phones) */
+        @media (max-width: 400px) {
+          .btn-3d,
+          .btn-neon {
+            padding: 6px 8px;
+            font-size: 10px;
+          }
+        }
+
       `}</style>
     </div>
   );
