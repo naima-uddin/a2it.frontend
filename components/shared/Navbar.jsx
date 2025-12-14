@@ -300,6 +300,39 @@ const Navbar = () => {
           </Link>
         </li>
 
+        {/* Pricing Link */}
+        <li>
+          <Link
+            href="/pricing"
+            className={`relative px-2 py-1 transition-colors font-medium text-xl group ${
+              isScrolled
+                ? isActive("/pricing")
+                  ? "text-blue-600 dark:text-blue-400"
+                  : "text-gray-800 dark:text-gray-200 hover:text-blue-500"
+                : isActive("/pricing")
+                ? "text-white"
+                : "text-white hover:text-white"
+            }`}
+            onMouseEnter={() => setHoveredItem("pricing")}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            <span className="relative z-10">Pricing</span>
+            
+            {/* Active indicator */}
+            {isActive("/pricing") && (
+              <>
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+                <div className="absolute -inset-1 bg-blue-500/10 rounded-md blur-sm animate-pulse-slow"></div>
+              </>
+            )}
+            
+            {/* Hover animation */}
+            {hoveredItem === "pricing" && !isActive("/pricing") && (
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+            )}
+          </Link>
+        </li>
+
         {/* Blog Link */}
         <li>
           <Link

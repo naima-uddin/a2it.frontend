@@ -1,4 +1,5 @@
 "use client"
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -23,12 +24,14 @@ const Banner = () => {
         {/* Buttons Container */}
         <div className="flex flex-row sm:flex-row gap-4 justify-center sm:justify-start"
         >
-          <button className="btn-3d">
+          <button className="btn-3d flex items-center gap-2 group">
             Contact With Us
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
 
-          <button className="btn-neon">
+          <button className="btn-neon flex items-center gap-2 group">
             Learn More About Us
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>

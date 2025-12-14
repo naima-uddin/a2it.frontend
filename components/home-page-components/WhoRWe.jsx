@@ -99,7 +99,7 @@ const WhoRWe = () => {
   };
 
   return (
-    <section className="relative py-4 px-4 sm:px-6 md:px-16 overflow-hidden bg-gradient-to-b from-white to-blue-50">
+    <section className="relative py-4 px-4 overflow-hidden bg-gradient-to-b from-white to-blue-50">
       {/* Subtle Background Image */}
       <div 
         className="absolute inset-0 opacity-10 z-0"
@@ -184,7 +184,7 @@ const WhoRWe = () => {
             </p>
 
                       {/* For Mobile & Tablet: Smaller circular layout */}
-          <div className="block lg:hidden relative w-full h-[280px] sm:h-[100px]">
+          <div className="block lg:hidden relative w-full h-[320px] sm:h-[100px]">
             
             {/* Floating Stars Around */}
             {[...Array(4)].map((_, i) => (

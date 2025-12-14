@@ -1,12 +1,10 @@
-import PricingPage from '@/components/home-page-components/PricingCard'
+import Pricing from '@/components/pricing-page-compoents/Pricing'
 import React from 'react'
 
 export default function page() {
   return (
     <>
-    <PricingPage />
+      <Pricing  />
     </>
   )
 }
-
-

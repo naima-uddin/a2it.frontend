@@ -1,15 +1,8 @@
-import StatsSection from "@/components/about-page-compoent/StatsSection";
 import Banner from "@/components/home-page-components/Banner";
-import ClientShowcase from "@/components/home-page-components/ClientShowcase";
-import CompanyGallery from "@/components/home-page-components/CompanyGallery";
-import EmployeeSection from "@/components/home-page-components/EmployeeSection";
-import WhatWeOffer from "@/components/home-page-components/WhatWeOffer";
 import WhoRWe from "@/components/home-page-components/WhoRWe";
-import Image from "next/image";
 import React from "react";
-import PricingPage from "./pricing/page";
-import ContactUs from "@/components/contact-page-component/ContactUs";
 import HomePageContactUs from "@/components/home-page-components/HomePageContactUs";
+import PricingPage from "@/components/home-page-components/PricingCard";
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
