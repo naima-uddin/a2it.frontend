@@ -78,97 +78,95 @@
                 }
             },
             {
-                "id": 11,
-                "title": "Asian Import Export Portal",
-                "category": "E-commerce Platform",
+                "id": 19,
+                "title": "BestProductBuy – Affiliate Product Comparison Platform",
+                "category": "Affiliate E-commerce",
                 "type": "affiliate",
                 "status": "live",
-                "client": "Asian Trade Connect Ltd.",
-                "year": "2023",
-                "duration": "8 months",
-                "teamSize": "10 members",
-                "description": "A business management and e-commerce solution for import-export operations across Asia with multi-currency support.",
-                "detailedDescription": "Developed a comprehensive import-export portal connecting Asian manufacturers with global buyers. Features include product catalog management, automated documentation, shipping integration, payment processing in multiple currencies, and compliance management for international trade.",
-                "businessChallenge": "Fragmented systems for documentation, payments, and logistics were hindering international trade operations.",
-                "solution": "Created an integrated platform with automated documentation, multi-currency payments, and logistics management.",
-                "results": "Increased international transactions by 200%, reduced processing time by 65%, and improved customer satisfaction by 40%.",
+                "client": "Best Product Buy",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
+                "detailedDescription": "Designed and developed an SEO-driven affiliate platform that aggregates top-rated products across multiple categories. The system focuses on fast performance, structured content, comparison tables, and conversion-optimized layouts to maximize affiliate revenue.",
+                "businessChallenge": "Competing in a saturated affiliate market while maintaining strong SEO rankings, fast page speed, and high user trust.",
+                "solution": "Implemented a lightweight, performance-first architecture with schema markup, optimized internal linking, and category-based content organization tailored for search intent.",
+                "results": "Achieved significant organic traffic growth, improved affiliate click-through rates, and established a scalable content framework for rapid category expansion.",
                 "technologies": [
-                    "React.js",
-                    "Python/Django",
-                    "PostgreSQL",
-                    "Docker",
-                    "AWS",
-                    "Stripe",
-                    "WebSocket",
-                    "Redis"
+                    "Next.js",
+                    "React",
+                    "Node.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "Schema Markup",
+                    "REST API",
+                    "Vercel"
                 ],
                 "images": [
-                    "/assets/Portfolio/import-export-1.png",
-                    "/assets/Portfolio/import-export-2.png",
-                    "/assets/Portfolio/import-export-3.png",
-                    "/assets/Portfolio/import-export-4.png"
+                    "/assets/Portfolio/bestproductbuy-1.png",
+                    "/assets/Portfolio/bestproductbuy-2.png"
                 ],
                 "features": [
-                    "Multi-currency payment processing",
-                    "Automated documentation",
-                    "Shipping integration",
-                    "Compliance management",
-                    "Real-time tracking",
-                    "Multi-language support",
-                    "Advanced search",
-                    "Analytics dashboard"
+                    "Product comparison tables",
+                    "Affiliate link management",
+                    "SEO-optimized category pages",
+                    "Buying guides and reviews",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Mobile-first design",
+                    "Internal linking automation",
+                    "Scalable content system"
                 ],
                 "performance": [
                     {
-                        "label": "Transaction Growth",
-                        "value": "200%",
+                        "label": "Organic Traffic Growth",
+                        "value": "3×",
                         "icon": "📈"
                     },
                     {
-                        "label": "Processing Time",
-                        "value": "65% faster",
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
                         "icon": "⚡"
                     },
                     {
-                        "label": "User Satisfaction",
-                        "value": "4.8/5",
-                        "icon": "⭐"
-                    },
-                    {
-                        "label": "Revenue Increase",
-                        "value": "150%",
-                        "icon": "💰"
+                        "label": "Content Expansion",
+                        "value": "Unlimited",
+                        "icon": "📚"
                     }
                 ],
                 "testimonial": {
-                    "text": "The platform transformed our import-export business. The automated documentation alone saved us 20 hours per week.",
-                    "author": "Lisa Wang",
-                    "position": "Operations Director",
-                    "company": "Asian Trade Connect Ltd."
+                    "text": "BestProductBuy now delivers a fast, trustworthy experience that helps users confidently choose the right products while driving consistent affiliate revenue.",
+                    "author": "Project Owner",
+                    "position": "Founder",
+                    "company": "Best Product Buy"
                 }
             },
             {
-                "id": 12,
-                "title": "Best Gear Buy- Best Drones, Smartwatches, Soundbars, Drills &amp; Earbuds",
+                "id": 14,
+                "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
                 "category": "Affiliate Platform",
                 "type": "affiliate",
                 "status": "live",
-                "client": "Asian Trade Connect Ltd.",
-                "year": "2023",
-                "duration": "8 months",
-                "teamSize": "10 members",
-                "description": "A business management and e-commerce solution for import-export operations across Asia with multi-currency support.",
-                "detailedDescription": "In today's fast-paced tech world, finding the perfect smart gadget can feel overwhelming. With hundreds of options across categories like drones, smartwatches, soundbars, and more. how do you choose what's truly best for your needs? That's where we come in. At BestGearBuy, we test, analyze, and compare 200+ smart gadgets annually so you can make informed decisions with confidence.",
-                "businessChallenge": "Fragmented systems for documentation, payments, and logistics were hindering international trade operations.",
-                "solution": "Created an integrated platform with automated documentation, multi-currency payments, and logistics management.",
-                "results": "Increased international transactions by 200%, reduced processing time by 65%, and improved customer satisfaction by 40%.",
+                "client": "Best Buyers View Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "An affiliate-driven kitchen appliance and equipment review platform helping users choose the best tools for home and professional kitchens.",
+                "detailedDescription": "Kitchen Pro Supply is a niche affiliate platform focused on kitchen appliances, cookware, and professional-grade equipment. The platform provides in-depth reviews, side-by-side comparisons, and buying guides designed to help home cooks and professionals make confident purchasing decisions while driving high-quality affiliate conversions.",
+                "businessChallenge": "Shoppers face difficulty selecting reliable kitchen equipment due to inconsistent reviews, unclear specifications, and overwhelming product choices.",
+                "solution": "Developed a structured affiliate platform featuring expert reviews, comparison tables, performance-based rankings, and schema-optimized content aligned with kitchen-specific buyer intent.",
+                "results": "Increased organic visibility across kitchen and appliance keywords, improved affiliate click-through rates, and created a scalable foundation for expanding into additional kitchen product categories.",
                 "technologies": [
                     "Next.js",
                     "React.js",
                     "Node.js",
                     "Express.js",
                     "MongoDB",
-                    "C-panel Hosting",
                     "Tailwind CSS",
                     "REST API",
                     "MVC Architecture",
@@ -176,48 +174,47 @@
                     "Schema Markup"
                 ],
                 "images": [
-                    "/assets/Portfolio/best-gear-buy-1.png",
-                    "/assets/Portfolio/best-gear-buy-2.png",
-                    "/assets/Portfolio/best-gear-buy-3.png",
-                    "/assets/Portfolio/best-gear-buy-4.png"
+                    "/assets/Portfolio/kitchenpro-supply.png",
+                    "/assets/Portfolio/kitchen-pro-supply-2.png"
                 ],
                 "features": [
-                    "Multi-currency payment processing",
-                    "Automated documentation",
-                    "Shipping integration",
-                    "Compliance management",
-                    "Real-time tracking",
-                    "Multi-language support",
-                    "Advanced search",
-                    "Analytics dashboard"
+                    "Kitchen appliance reviews",
+                    "Cookware and equipment comparisons",
+                    "SEO-optimized buying guides",
+                    "Affiliate link management",
+                    "Category-based navigation",
+                    "Mobile-first responsive design",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Internal linking automation"
                 ],
                 "performance": [
                     {
-                        "label": "Transaction Growth",
-                        "value": "200%",
+                        "label": "Organic Traffic Growth",
+                        "value": "2.6×",
                         "icon": "📈"
                     },
                     {
-                        "label": "Processing Time",
-                        "value": "65% faster",
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
                         "icon": "⚡"
                     },
                     {
-                        "label": "User Satisfaction",
-                        "value": "4.8/5",
-                        "icon": "⭐"
-                    },
-                    {
-                        "label": "Revenue Increase",
-                        "value": "150%",
-                        "icon": "💰"
+                        "label": "Mobile Optimization",
+                        "value": "100%",
+                        "icon": "📱"
                     }
                 ],
                 "testimonial": {
-                    "text": "The platform transformed our import-export business. The automated documentation alone saved us 20 hours per week.",
-                    "author": "Lisa Wang",
-                    "position": "Operations Director",
-                    "company": "Asian Trade Connect Ltd."
+                    "text": "Kitchen Pro Supply makes it easy to compare appliances and choose reliable kitchen tools with confidence.",
+                    "author": "Project Manager",
+                    "position": "Content Lead",
+                    "company": "Best Buyers View"
                 }
             }
         ],
@@ -284,6 +281,77 @@
                         "icon": "📱"
                     }
                 ]
+            },
+            {
+                "id": 13,
+                "title": "Best Fitness Shop – Fitness Gear & Equipment Review Platform",
+                "category": "Affiliate Platform",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Best Buyers View Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "An affiliate-driven fitness product review platform helping users choose the best gym equipment, accessories, and workout gear.",
+                "detailedDescription": "Best Fitness Shop is a niche affiliate platform focused on fitness and workout products, including home gym equipment, wearables, accessories, and supplements. The platform delivers expert reviews, comparison tables, and buying guides to help users make confident purchasing decisions while maximizing affiliate conversions through SEO-driven content.",
+                "businessChallenge": "Users often struggle to identify reliable fitness products due to misleading reviews, poor comparisons, and information overload.",
+                "solution": "Built a content-first affiliate platform with structured reviews, comparison tables, performance-based rankings, and schema-optimized pages tailored for fitness buyers.",
+                "results": "Improved organic visibility in fitness-related keywords, increased affiliate click-through rates, and established a scalable framework for expanding into multiple fitness subcategories.",
+                "technologies": [
+                    "Next.js",
+                    "React.js",
+                    "Node.js",
+                    "Express.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "REST API",
+                    "MVC Architecture",
+                    "SEO Optimization",
+                    "Schema Markup"
+                ],
+                "images": [
+                    "/assets/Portfolio/best-fitness-shop-1.png",
+                    "/assets/Portfolio/best-fitness-shop-2.png"
+                ],
+                "features": [
+                    "Fitness product reviews",
+                    "Comparison tables",
+                    "SEO-optimized buying guides",
+                    "Affiliate link management",
+                    "Category-based navigation",
+                    "Mobile-first responsive design",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Internal linking automation"
+                ],
+                "performance": [
+                    {
+                        "label": "Organic Traffic Growth",
+                        "value": "2.8×",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Mobile Optimization",
+                        "value": "100%",
+                        "icon": "📱"
+                    }
+                ],
+                "testimonial": {
+                    "text": "Best Fitness Shop delivers clear comparisons and trustworthy recommendations that help fitness enthusiasts choose the right equipment with confidence.",
+                    "author": "Project Manager",
+                    "position": "Content Lead",
+                    "company": "Best Buyers View"
+                }
             },
             {
                 "id": 2,
@@ -405,7 +473,41 @@
         ],
         "portfolioProjects": [
             {
-                "id": 6,
+                "id": 1,
+                "title": "Cargo Logistics Company – Corporate Website & Services Platform",
+                "category": [
+                    "WordPress",
+                    "Web Development",
+                    "Logistics"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A professional corporate website designed to present logistics services, cargo solutions, and global freight capabilities for international clients.",
+                "technologies": [
+                    "Next.js",
+                    "React",
+                    "EmailJS",
+                    "Tailwind CSS",
+                    "Node.js",
+                    "Express.js",
+                    "REST API",
+                    "C-panel Hosting",
+                    "SEO Optimization"
+                ],
+                "image": "/assets/Portfolio/cargo-logistics-1.png",
+                "performance": [
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+"
+                    },
+                    {
+                        "label": "Mobile Responsiveness",
+                        "value": "100%"
+                    }
+                ]
+            },
+            {
+                "id": 2,
                 "title": "A2IT Ltd – Corporate Website & Services Platform showcase",
                 "category": [
                     "Web Development"
@@ -437,8 +539,8 @@
                 ]
             },
             {
-                "id": 7,
-                "title": "BestBuyersView – UI/UX Design System",
+                "id": 3,
+                "title": "BestBuyersView – Discover, Compare &amp; Pick the Best Products",
                 "category": [
                     "UI/UX Design",
                     "Web Development",
@@ -468,11 +570,12 @@
                 ]
             },
             {
-                "id": 7,
+                "id": 4,
                 "title": "FinNess Trading Platform",
                 "category": [
                     "Web Development",
-                    "Affiliate Platform"
+                    "Affiliate Platform",
+                    "WordPress"
                 ],
                 "type": "portfolio",
                 "status": "live",
@@ -497,16 +600,15 @@
                 ]
             },
             {
-                "id": 8,
-                "title": "JuteCraft – Sustainable Jute E-commerce Platform",
+                "id": 5,
+                "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
                 "category": [
                     "E-commerce",
-                    "Web Development",
-                    "UI/UX Design"
+                    "WordPress"
                 ],
                 "type": "portfolio",
                 "status": "live",
-                "description": "A specialized e-commerce platform for selling eco-friendly jute products globally, with secure payments, inventory control, and export-ready logistics.",
+                "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
                 "technologies": [
                     "Shopify",
                     "React",
@@ -514,7 +616,7 @@
                     "Payment Gateway Integration",
                     "SEO Optimization"
                 ],
-                "image": "/assets/Portfolio/jute-ecommerce-1.avif",
+                "image": "/assets/Portfolio/jutecraftify-1.png",
                 "performance": [
                     {
                         "label": "International Customer Growth",
@@ -527,11 +629,12 @@
                 ]
             },
             {
-                "id": 9,
+                "id": 6,
                 "title": "Digital Marketing Platform",
                 "category": [
                     "Digital Marketing",
-                    "Affiliate Platform"
+                    "Affiliate Platform",
+                    "WordPress"
                 ],
                 "type": "portfolio",
                 "status": "live",
@@ -587,9 +690,11 @@
             },
             {
                 "id": 11,
-                "title": "Best E-bike",
+                "title": "BestGearBuy – Affiliate Product Discovery Platform",
                 "category": [
-                    "Affiliate Platform"
+                    "Affiliate Platform",
+                    "Web Development",
+                    "E-commerce"
                 ],
                 "type": "portfolio",
                 "status": "live",
@@ -600,7 +705,7 @@
                     "Google Maps API",
                     "Redux"
                 ],
-                "image": "/assets/Portfolio/bestbikereview-3.png",
+                "image": "/assets/Portfolio/best-gear-buy-3.png",
                 "performance": [
                     {
                         "label": "Active Users",
@@ -618,7 +723,7 @@
                 "category": [
                     "Mobile Development",
                     "Web Development",
-                    "E-commerce"
+                    "WordPress"
                 ],
                 "type": "portfolio",
                 "status": "live",
@@ -676,7 +781,8 @@
                 "title": "SwiftShip Tracking",
                 "category": [
                     "Mobile Development",
-                    "Web Development"
+                    "Web Development",
+                    "Logistics"
                 ],
                 "type": "portfolio",
                 "status": "live",
@@ -703,9 +809,7 @@
                 "id": 16,
                 "title": "Jute Boutique",
                 "category": [
-                    "UI/UX Design",
-                    "Web Development",
-                    "Affiliate Platform",
+                    "WordPress",
                     "E-commerce"
                 ],
                 "type": "portfolio",
@@ -733,7 +837,8 @@
                 "title": "Best E-bike Store",
                 "category": [
                     "E-commerce",
-                    "Affiliate Platform"
+                    "Affiliate Platform",
+                    "Web Development"
                 ],
                 "type": "portfolio",
                 "status": "live",

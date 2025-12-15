@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiStar, FiTrendingUp, FiUsers, FiTarget, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import ProjectModal from "./ProjectModal";
 import FeaturedSlider from "./FeaturedSlider";
+import { ChevronRight, Sparkles } from "lucide-react";
 
 const Portfolio = () => { 
   const [portfolioData, setPortfolioData] = useState(null);
@@ -18,7 +19,7 @@ const Portfolio = () => {
   const getCategoryCounts = () => {
     const allProjects = getPortfolioProjects();
 
-        const hasCategory = (project, categoryId) => {
+    const hasCategory = (project, categoryId) => {
       if (!project.category) return false;
       
       // Handle both string and array categories
@@ -31,34 +32,17 @@ const Portfolio = () => {
       // For string categories
       return project.category.toLowerCase().includes(categoryId.toLowerCase());
     };
-
-    const allCategories = [
-      "Web Development",
-      "Mobile Development", 
-      "E-commerce",
-      "E-commerce Platform",
-      "UI/UX Design",
-      "Marketing",
-      "Affiliate Platform",
-      "Finance",
-      "Corporate",
-      "Sustainability",
-      "Analytics",
-      "Digital Advertising",
-      "Real-time Platform",
-      "WordPress"
-    ];
     
     const counts = {
       all: allProjects.length,
       web: allProjects.filter(p => hasCategory(p, "web")).length,
       mobile: allProjects.filter(p => hasCategory(p, "mobile")).length,
-      ecommerce: allProjects.filter(p => hasCategory(p, "e-commerce")).length,
-      design: allProjects.filter(p => hasCategory(p, "ui/ux")).length,
-      marketing: allProjects.filter(p => hasCategory(p, "marketing")).length,
+      ecommerce: allProjects.filter(p => hasCategory(p, "e-commerce") || hasCategory(p, "ecommerce")).length,
+      design: allProjects.filter(p => hasCategory(p, "ui/ux") || hasCategory(p, "design")).length,
       affiliate: allProjects.filter(p => hasCategory(p, "affiliate")).length,
-      finance: allProjects.filter(p => hasCategory(p, "finance")).length,
       wordpress: allProjects.filter(p => hasCategory(p, "wordpress")).length,
+      logistics: allProjects.filter(p => hasCategory(p, "logistics") || hasCategory(p, "logistic")).length,
+      marketing: allProjects.filter(p => hasCategory(p, "marketing") || hasCategory(p, "digital marketing")).length,
     };
     
     return [
@@ -69,6 +53,7 @@ const Portfolio = () => {
       { id: "mobile", name: "Mobile Apps", count: counts.mobile },
       { id: "wordpress", name: "WordPress", count: counts.wordpress },
       { id: "design", name: "UI/UX Design", count: counts.design },
+      { id: "logistics", name: "Logistics", count: counts.logistics },
       { id: "marketing", name: "Marketing", count: counts.marketing },
     ];
   };
@@ -153,8 +138,7 @@ const Portfolio = () => {
             );
           case "marketing":
             return categories.some(cat => 
-              cat.includes("marketing") || cat.includes("advertising") ||
-              cat.includes("analytics")
+              cat.includes("marketing") || cat.includes("digital marketing")
             );
           case "affiliate":
             return categories.some(cat => 
@@ -164,9 +148,9 @@ const Portfolio = () => {
             return categories.some(cat => 
               cat.includes("wordpress")
             );
-          case "finance":
+          case "logistics":
             return categories.some(cat => 
-              cat.includes("finance") || cat.includes("trading")
+              cat.includes("logistic") || cat.includes("logistics")
             );
           default:
             return false;
@@ -186,11 +170,13 @@ const Portfolio = () => {
         case "design":
           return category.includes("ui") || category.includes("ux") || category.includes("design");
         case "marketing":
-          return category.includes("marketing") || category.includes("advertising");
+          return category.includes("marketing") || category.includes("digital marketing");
+        case "logistics":
+          return category.includes("logistic") || category.includes("logistics");
+        case "wordpress":
+          return category.includes("wordpress");
         case "affiliate":
           return category.includes("affiliate");
-        case "finance":
-          return category.includes("finance") || category.includes("trading");
         default:
           return false;
       }
@@ -233,23 +219,99 @@ const Portfolio = () => {
   const categories = getCategoryCounts();
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-20 pb-16">
-        <div className="container mx-auto px-4">
+    <>
+    <div className=" bg-white text-gray-900">
+      {/* Hero Section with Image */}
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/portfolio.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
+        </div>
+
+        {/* Geometric Overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-blue-400/20 rotate-45"></div>
+          <div className="absolute bottom-40 left-32 w-40 h-40 border border-purple-400/20 rotate-12"></div>
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-blue-500/10 -rotate-12"></div>
+          <div className="absolute top-1/2 right-1/3 w-48 h-48 border border-purple-500/10 rotate-45"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 md:mb-8 border border-white/20 text-xs sm:text-sm">
               <FiStar className="w-4 h-4" />
-              Portfolio Showcase
+              <span className="text-sm font-medium">{getAllProjects().length}+ Successful Projects</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Creative
-              <br />
-              <span className="text-blue-600">Digital Solutions</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-none">
+              <span className="text-white">Our Creative</span>
+              <div className="relative inline-block ml-2 sm:ml-4">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
+                  Portfolio
+                </span>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-blue-400 to-purple-400"></div>
+              </div>
             </h1>
             
-            <p className="text-xl text-gray-600 mb-12 max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 max-w-2xl leading-relaxed">
+              Explore our diverse collection of web development, mobile apps, e-commerce platforms, and digital marketing solutions. 
+              Each project represents our commitment to excellence and innovation.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <button 
+                onClick={() => document.getElementById('portfolio-projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-3d flex items-center justify-center gap-2 group w-full sm:w-auto"
+              >
+                <span className="text-sm sm:text-base">Explore Projects</span>
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
+                <span className="text-sm sm:text-base">Start Your Project</span>
+                <FiTarget className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-90 transition-transform" />
+              </button>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">{getAllProjects().length}+</div>
+                <div className="text-xs sm:text-sm text-white/70">Projects</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">100%</div>
+                <div className="text-xs sm:text-sm text-white/70">Satisfaction</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">50K+</div>
+                <div className="text-xs sm:text-sm text-white/70">Users</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="text-white text-sm font-medium mb-2">Scroll to explore</div>
+          <div className="w-px h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
+        </div>
+      </section>
+    
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="pt-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl text-center mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-1 leading-tight text-center">
+              <span className="text-blue-600">
+                Portfolio Showcase
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-12 max-w-7xl leading-relaxed text-center mx-auto">
               A curated selection of {getAllProjects().length} projects that demonstrate our approach to 
               digital innovation and user-centered design.
             </p>
@@ -382,7 +444,7 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Projects Grid */}
-       <section className="py-20 bg-gray-50">
+       <section id="portfolio-projects" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="mb-12">
             <h2 className="text-4xl font-bold text-blue-600 mb-6">Portfolio Projects</h2>
@@ -400,7 +462,7 @@ const Portfolio = () => {
                   }`}
                 >
                   {category.name}
-                  <span className="ml-2 opacity-70">{category.count}</span>
+                  
                 </button>
               ))}
             </div>
@@ -507,13 +569,7 @@ const Portfolio = () => {
                 ))}
               </div>
               
-              {/* Show active filter and count */}
-              <div className="mt-8 text-center">
-                <p className="text-gray-600">
-                  Showing <span className="font-bold text-blue-600">{getFilteredProjects().length}</span> projects 
-                  {activeFilter !== "all" && ` in "${categories.find(c => c.id === activeFilter)?.name}"`}
-                </p>
-              </div>
+              
             </>
           ) : (
             <div className="text-center py-12">
@@ -605,7 +661,9 @@ const Portfolio = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
       />
+     </div>
     </div>
+    </>
   );
 };
 
