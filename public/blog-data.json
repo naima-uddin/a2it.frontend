@@ -41,7 +41,7 @@
                 }
             ],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+                "url": "/assets/BlogImg/affiliate-marketing-beginners-guide-2024.jpg",
                 "alt": "Affiliate marketing strategy and analytics dashboard"
             },
             "categories": [
@@ -105,7 +105,7 @@
                 }
             ],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+                "url": "/assets/BlogImg/16.avif",
                 "alt": "E-commerce SEO analytics and keyword research dashboard"
             },
             "categories": [
@@ -138,7 +138,7 @@
             "description": "Comprehensive WordPress speed optimization guide covering caching, image optimization, CDN setup, and performance monitoring tools.",
             "content": [],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1555099962-4199c345e5dd",
+                "url": "/assets/BlogImg/3.avif",
                 "alt": "WordPress website speed optimization dashboard"
             },
             "categories": [
@@ -171,7 +171,7 @@
             "description": "Comprehensive review of best health and wellness affiliate programs with commission rates, cookie durations, and promotion strategies.",
             "content": [],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b",
+                "url": "/assets/BlogImg/10.avif",
                 "alt": "Health and wellness affiliate marketing"
             },
             "categories": [
@@ -204,7 +204,7 @@
             "description": "Comprehensive comparison of Shopify and WooCommerce for e-commerce businesses in 2024, including pricing analysis and feature breakdown.",
             "content": [],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+                "url": "/assets/BlogImg/14.avif",
                 "alt": "Shopify vs WooCommerce comparison"
             },
             "categories": [
@@ -237,7 +237,7 @@
             "description": "Complete local SEO guide covering Google Business Profile optimization, local citations, reviews management, and local link building.",
             "content": [],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1533750349088-cd871a92f312",
+                "url": "/assets/BlogImg/4.avif",
                 "alt": "Local SEO strategies for small businesses"
             },
             "categories": [
@@ -270,7 +270,7 @@
             "description": "Advanced content marketing strategies for 2024 including SEO optimization, content distribution, and conversion rate optimization techniques.",
             "content": [],
             "featuredImage": {
-                "url": "https://images.unsplash.com/photo-1432888622747-4eb9a8d2ea8a",
+                "url": "/assets/BlogImg/9.avif",
                 "alt": "Content marketing strategy and SEO optimization"
             },
             "categories": [
