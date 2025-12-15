@@ -5,6 +5,7 @@ import { FiExternalLink, FiStar, FiTrendingUp, FiUsers, FiTarget, FiChevronRight
 import ProjectModal from "./ProjectModal";
 import FeaturedSlider from "./FeaturedSlider";
 import { ChevronRight, Sparkles } from "lucide-react";
+import StatsSection from "./StatsSection";
 
 const Portfolio = () => { 
   const [portfolioData, setPortfolioData] = useState(null);
@@ -14,6 +15,9 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [affiliateSliderIndex, setAffiliateSliderIndex] = useState(0);
+  const [portfolioSliderIndex, setPortfolioSliderIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Update categories based on your actual data
   const getCategoryCounts = () => {
@@ -72,7 +76,30 @@ const Portfolio = () => {
     };
 
     fetchData();
+    
+    // Check screen size
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Auto slide for portfolio projects on mobile
+  useEffect(() => {
+    if (isMobile && getFilteredProjects().length > 1) {
+      const interval = setInterval(() => {
+        setPortfolioSliderIndex((prev) => 
+          (prev + 1) % getFilteredProjects().length
+        );
+      }, 6000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [isMobile, activeFilter]);
 
   // Get all projects from the new structure
   const getAllProjects = () => {
@@ -176,14 +203,14 @@ const Portfolio = () => {
         case "wordpress":
           return category.includes("wordpress");
         case "affiliate":
-          return category.includes("affiliate");
-        default:
-          return false;
-      }
+            return category.includes("affiliate");
+          default:
+            return false;
+        }
+      };
+      
+      return allPortfolioProjects.filter(matchesCategory);
     };
-    
-    return allPortfolioProjects.filter(matchesCategory);
-  };
 
   const openProjectModal = (project) => {
     setSelectedProject(project);
@@ -205,6 +232,36 @@ const Portfolio = () => {
     }
   };
 
+  // Affiliate slider navigation
+  const nextAffiliateSlide = () => {
+    const projects = getAffiliateProjects();
+    if (projects.length > 0) {
+      setAffiliateSliderIndex((prev) => (prev + 1) % projects.length);
+    }
+  };
+
+  const prevAffiliateSlide = () => {
+    const projects = getAffiliateProjects();
+    if (projects.length > 0) {
+      setAffiliateSliderIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    }
+  };
+
+  // Portfolio slider navigation
+  const nextPortfolioSlide = () => {
+    const projects = getFilteredProjects();
+    if (projects.length > 0) {
+      setPortfolioSliderIndex((prev) => (prev + 1) % projects.length);
+    }
+  };
+
+  const prevPortfolioSlide = () => {
+    const projects = getFilteredProjects();
+    if (projects.length > 0) {
+      setPortfolioSliderIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -217,10 +274,12 @@ const Portfolio = () => {
   }
 
   const categories = getCategoryCounts();
+  const affiliateProjects = getAffiliateProjects();
+  const filteredProjects = getFilteredProjects();
 
   return (
     <>
-    <div className=" bg-white text-gray-900">
+    <div className="bg-white text-gray-900">
       {/* Hero Section with Image */}
       <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -261,25 +320,11 @@ const Portfolio = () => {
               Each project represents our commitment to excellence and innovation.
             </p>
             
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-              <button 
-                onClick={() => document.getElementById('portfolio-projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-3d flex items-center justify-center gap-2 group w-full sm:w-auto"
-              >
-                <span className="text-sm sm:text-base">Explore Projects</span>
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
-                <span className="text-sm sm:text-base">Start Your Project</span>
-                <FiTarget className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-90 transition-transform" />
-              </button>
-            </div>
-
+            
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">{getAllProjects().length}+</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">120+</div>
                 <div className="text-xs sm:text-sm text-white/70">Projects</div>
               </div>
               <div className="text-center">
@@ -306,12 +351,12 @@ const Portfolio = () => {
       <section className="pt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl text-center mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-1 leading-tight text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-1 leading-tight text-center">
               <span className="text-blue-600">
                 Portfolio Showcase
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-12 max-w-7xl leading-relaxed text-center mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-7xl leading-relaxed text-center mx-auto">
               A curated selection of {getAllProjects().length} projects that demonstrate our approach to 
               digital innovation and user-centered design.
             </p>
@@ -320,21 +365,145 @@ const Portfolio = () => {
       </section>
 
       {/* Affiliate & Partnership Projects */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium mb-4">
-              <FiTarget className="w-4 h-4" />
+          <div className="text-center mb-8 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <FiTarget className="w-3 h-3 sm:w-4 sm:h-4" />
               Partnership Projects
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Affiliate & Collaboration Works</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Affiliate & Collaboration Works</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
               Special projects developed in partnership with industry leaders
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {getAffiliateProjects().map((project, index) => (
+          {/* Mobile View - Single Card with Slider */}
+          <div className="md:hidden">
+            {affiliateProjects.length > 0 && (
+              <>
+                {/* Current Card */}
+                <motion.div
+                  key={affiliateSliderIndex}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="relative"
+                  onMouseEnter={() => setHoveredAffiliate(affiliateProjects[affiliateSliderIndex]?.id)}
+                  onMouseLeave={() => setHoveredAffiliate(null)}
+                >
+                  <div className="bg-white border border-teal-100 rounded-2xl overflow-hidden shadow-lg">
+                    {/* Image with hover effect */}
+                    <div className="relative h-48 sm:h-56 overflow-hidden">
+                      <div className="relative w-full h-full">
+                        {/* Base image */}
+                        <img
+                          src={affiliateProjects[affiliateSliderIndex].images[0]}
+                          alt={affiliateProjects[affiliateSliderIndex].title}
+                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                            hoveredAffiliate === affiliateProjects[affiliateSliderIndex]?.id ? 'opacity-0' : 'opacity-100'
+                          }`}
+                        />
+                        {/* Hover image */}
+                        <img
+                          src={affiliateProjects[affiliateSliderIndex].images[1] || affiliateProjects[affiliateSliderIndex].images[0]}
+                          alt={`${affiliateProjects[affiliateSliderIndex].title} - Alternative view`}
+                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                            hoveredAffiliate === affiliateProjects[affiliateSliderIndex]?.id ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        />
+                      </div>
+                      
+                      {/* Category badge */}
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full">
+                          {affiliateProjects[affiliateSliderIndex].category}
+                        </span>
+                      </div>
+                      
+                      {/* Partnership badge */}
+                      <div className="absolute top-3 right-3">
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                          Partnership
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-4">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">{affiliateProjects[affiliateSliderIndex].title}</h3>
+                      <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                        {affiliateProjects[affiliateSliderIndex].description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          {affiliateProjects[affiliateSliderIndex].performance && 
+                           affiliateProjects[affiliateSliderIndex].performance.slice(0, 2).map((metric, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                              <span className="text-xs">
+                                <span className="font-bold text-gray-900">{metric.value}</span>
+                                <span className="text-gray-500 ml-1">{metric.label}</span>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <button
+                          onClick={() => openProjectModal(affiliateProjects[affiliateSliderIndex])}
+                          className="px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1"
+                        >
+                          View Case
+                          <FiExternalLink className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Slider Controls and Dots */}
+                {affiliateProjects.length > 1 && (
+                  <>
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                      <button
+                        onClick={prevAffiliateSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      >
+                        <FiChevronLeft className="w-5 h-5 text-gray-700" />
+                      </button>
+                      
+                      <div className="flex gap-2">
+                        {affiliateProjects.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setAffiliateSliderIndex(index)}
+                            className={`w-2 h-2 rounded-full transition-colors ${
+                              affiliateSliderIndex === index ? 'bg-blue-600' : 'bg-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      
+                      <button
+                        onClick={nextAffiliateSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      >
+                        <FiChevronRight className="w-5 h-5 text-gray-700" />
+                      </button>
+                    </div>
+                    
+                    <div className="text-center mt-2 text-sm text-gray-500">
+                      {affiliateSliderIndex + 1} / {affiliateProjects.length}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* Desktop View - Grid */}
+          <div className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8">
+            {affiliateProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -344,7 +513,7 @@ const Portfolio = () => {
                 onMouseEnter={() => setHoveredAffiliate(project.id)}
                 onMouseLeave={() => setHoveredAffiliate(null)}
               >
-                <div className="bg-white border border-teal-100 rounded-2xl overflow-hidden shadow-4xl hover:shadow-2xl transition-all duration-500">
+                <div className="bg-white border border-teal-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500">
                   {/* Image with hover effect */}
                   <div className="relative h-64 overflow-hidden">
                     <div className="relative w-full h-full">
@@ -352,7 +521,7 @@ const Portfolio = () => {
                       <img
                         src={project.images[0]}
                         alt={project.title}
-                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                           hoveredAffiliate === project.id ? 'opacity-0' : 'opacity-100'
                         }`}
                       />
@@ -360,7 +529,7 @@ const Portfolio = () => {
                       <img
                         src={project.images[1] || project.images[0]}
                         alt={`${project.title} - Alternative view`}
-                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                           hoveredAffiliate === project.id ? 'opacity-100' : 'opacity-0'
                         }`}
                       />
@@ -368,7 +537,7 @@ const Portfolio = () => {
                     
                     {/* Category badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-gray-200 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full">
                         {project.category}
                       </span>
                     </div>
@@ -417,11 +586,11 @@ const Portfolio = () => {
       </section>
 
       {/* Featured Work Slider */}
-      <section className="py-10 bg-white">
+      <section className="py-8 sm:py-10 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2">Featured Work</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Featured Work</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
               Our most impactful projects that showcase excellence in digital innovation
             </p>
           </div>
@@ -436,7 +605,7 @@ const Portfolio = () => {
               prevSlide={prevSlide}
             />
           ) : (
-            <div className="text-center py-12">
+            <div className="text-center py-8 sm:py-12">
               <p className="text-gray-500">No featured projects available</p>
             </div>
           )}
@@ -444,188 +613,320 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Projects Grid */}
-       <section id="portfolio-projects" className="py-20 bg-gray-50">
+      <section id="portfolio-projects" className="py-12 sm:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold text-blue-600 mb-6">Portfolio Projects</h2>
+          <div className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 mb-4 sm:mb-6">Portfolio Projects</h2>
             
             {/* Filter Tabs - Dynamically generated */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {categories.map(category => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveFilter(category.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
+                  onClick={() => {
+                    setActiveFilter(category.id);
+                    setPortfolioSliderIndex(0); // Reset to first slide when changing filter
+                  }}
+                  className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                     activeFilter === category.id
-                      ? "bg-blue-600 text-white shadow-lg"
+                      ? "bg-blue-600 text-white shadow-md"
                       : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
                   }`}
                 >
                   {category.name}
-                  
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Projects Grid - 4 per row */}
-          {getFilteredProjects().length > 0 ? (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
-                {getFilteredProjects().map((project, index) => (
-                  <motion.div
-                    key={`${project.id}-${index}`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                    className="group relative cursor-pointer"
-                    onClick={() => openProjectModal(project)}
-                  >
-                    {/* Image Container */}
-                    <div className="relative aspect-square overflow-hidden rounded-2xl bg-gray-100">
-                      {/* Base Image */}
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:blur-sm group-hover:scale-110 transition-all duration-500"
-                      />
+          {/* Mobile View - Single Card Slider */}
+          <div className="md:hidden">
+            {filteredProjects.length > 0 ? (
+              <>
+                {/* Current Card */}
+                <motion.div
+                  key={`${filteredProjects[portfolioSliderIndex]?.id}-${portfolioSliderIndex}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="group relative cursor-pointer"
+                  onClick={() => openProjectModal(filteredProjects[portfolioSliderIndex])}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100">
+                    {/* Base Image */}
+                    <img
+                      src={filteredProjects[portfolioSliderIndex].image}
+                      alt={filteredProjects[portfolioSliderIndex].title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:blur-sm group-hover:scale-110 transition-all duration-500"
+                    />
+                    
+                    {/* Overlay Content - Shows on hover */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center">
+                      <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">{filteredProjects[portfolioSliderIndex].title}</h3>
+                      <p className="text-gray-200 text-xs mb-3 line-clamp-2">
+                        {filteredProjects[portfolioSliderIndex].description}
+                      </p>
                       
-                      {/* Overlay Content - Shows on hover */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
-                        <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">{project.title}</h3>
-                        <p className="text-gray-200 text-sm mb-4 line-clamp-2">
-                          {project.description}
-                        </p>
-                        
-                        {/* Show first 2 categories as tags */}
-                        {project.category && (
-                          <div className="flex flex-wrap gap-2 justify-center mb-4">
-                            {(Array.isArray(project.category) ? project.category : [project.category])
-                              .slice(0, 2)
-                              .map((cat, idx) => (
-                                <span key={idx} className="px-2 py-1 bg-white/20 text-white text-xs rounded">
-                                  {cat}
-                                </span>
-                              ))}
-                          </div>
-                        )}
-                        
-                        <div className="flex flex-wrap gap-2 justify-center mb-4">
-                          {project.technologies && project.technologies.slice(0, 3).map((tech, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-white/20 text-white text-xs rounded">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        {project.performance && project.performance.length > 0 && (
-                          <div className="flex items-center gap-6">
-                            {project.performance.slice(0, 2).map((metric, idx) => (
-                              <div key={idx} className="text-center">
-                                <div className="text-lg font-bold text-white">{metric.value}</div>
-                                <div className="text-xs text-gray-300">{metric.label}</div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        
-                        <div className="mt-6 px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full">
-                          Click to view details
-                        </div>
-                      </div>
-                      
-                      {/* Category Badges - Show up to 2 categories */}
-                      <div className="absolute top-1 left-4 flex flex-wrap gap-2">
-                        {project.category && 
-                          (Array.isArray(project.category) ? project.category : [project.category])
+                      {/* Show first 2 categories as tags */}
+                      {filteredProjects[portfolioSliderIndex].category && (
+                        <div className="flex flex-wrap gap-1 justify-center mb-3">
+                          {(Array.isArray(filteredProjects[portfolioSliderIndex].category) 
+                            ? filteredProjects[portfolioSliderIndex].category 
+                            : [filteredProjects[portfolioSliderIndex].category])
                             .slice(0, 2)
                             .map((cat, idx) => (
-                              <span 
-                                key={idx} 
-                                className="px-3 py-1 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full"
-                              >
+                              <span key={idx} className="px-2 py-0.5 bg-white/20 text-white text-xs rounded">
                                 {cat}
                               </span>
-                            ))
-                        }
+                            ))}
+                        </div>
+                      )}
+                      
+                      <div className="flex flex-wrap gap-1 justify-center mb-3">
+                        {filteredProjects[portfolioSliderIndex].technologies && 
+                         filteredProjects[portfolioSliderIndex].technologies.slice(0, 3).map((tech, idx) => (
+                          <span key={idx} className="px-2 py-0.5 bg-white/20 text-white text-xs rounded">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      {filteredProjects[portfolioSliderIndex].performance && 
+                       filteredProjects[portfolioSliderIndex].performance.length > 0 && (
+                        <div className="flex items-center gap-4">
+                          {filteredProjects[portfolioSliderIndex].performance.slice(0, 2).map((metric, idx) => (
+                            <div key={idx} className="text-center">
+                              <div className="text-base font-bold text-white">{metric.value}</div>
+                              <div className="text-xs text-gray-300">{metric.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      
+                      <div className="mt-4 px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">
+                        Click to view details
                       </div>
                     </div>
                     
-                    {/* Title and categories (visible always) */}
-                    <div className="mt-1 mb-4">
-                      <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">
-                        {project.title}
-                      </h3>
-                      {project.category && (
-                        <p className="text-sm text-gray-500 mt-1 line-clamp-1">
-                          {(Array.isArray(project.category) 
-                            ? project.category.join(", ") 
-                            : project.category
-                          )}
-                        </p>
-                      )}
+                    {/* Category Badges - Show up to 2 categories */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                      {filteredProjects[portfolioSliderIndex].category && 
+                        (Array.isArray(filteredProjects[portfolioSliderIndex].category) 
+                          ? filteredProjects[portfolioSliderIndex].category 
+                          : [filteredProjects[portfolioSliderIndex].category])
+                          .slice(0, 2)
+                          .map((cat, idx) => (
+                            <span 
+                              key={idx} 
+                              className="px-2 py-0.5 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full"
+                            >
+                              {cat}
+                            </span>
+                          ))
+                      }
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                  
+                  {/* Title and categories (visible always) */}
+                  <div className="mt-3 mb-4">
+                    <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                      {filteredProjects[portfolioSliderIndex].title}
+                    </h3>
+                    {filteredProjects[portfolioSliderIndex].category && (
+                      <p className="text-xs text-gray-500 mt-1 line-clamp-1">
+                        {(Array.isArray(filteredProjects[portfolioSliderIndex].category) 
+                          ? filteredProjects[portfolioSliderIndex].category.join(", ") 
+                          : filteredProjects[portfolioSliderIndex].category
+                        )}
+                      </p>
+                    )}
+                  </div>
+                </motion.div>
+
+                {/* Slider Controls and Dots */}
+                {filteredProjects.length > 1 && (
+                  <>
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                      <button
+                        onClick={prevPortfolioSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      >
+                        <FiChevronLeft className="w-5 h-5 text-gray-700" />
+                      </button>
+                      
+                      <div className="flex gap-1.5">
+                        {filteredProjects.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setPortfolioSliderIndex(index)}
+                            className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                              portfolioSliderIndex === index ? 'bg-blue-600' : 'bg-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      
+                      <button
+                        onClick={nextPortfolioSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      >
+                        <FiChevronRight className="w-5 h-5 text-gray-700" />
+                      </button>
+                    </div>
+                    
+                    <div className="text-center mt-2 text-xs text-gray-500">
+                      Slide {portfolioSliderIndex + 1} of {filteredProjects.length} • Auto-changing in 6s
+                    </div>
+                  </>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-gray-500">No projects found for this category</p>
+                <button
+                  onClick={() => setActiveFilter("all")}
+                  className="mt-4 px-4 py-2 bg-blue-600 text-white text-sm rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  View All Projects
+                </button>
               </div>
-              
-              
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No projects found for this category</p>
-              <button
-                onClick={() => setActiveFilter("all")}
-                className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
-              >
-                View All Projects
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
+            )}
+          </div>
 
-
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { value: `${getAllProjects().length}+`, label: "Projects Delivered", icon: "🚀" },
-              { value: "100%", label: "Client Satisfaction", icon: "⭐" },
-              { value: "3", label: "Years Experience", icon: "📈" },
-              { value: "50K+", label: "Users Impacted", icon: "👥" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
-              </motion.div>
-            ))}
+          {/* Desktop View - Grid */}
+          <div className="hidden md:block">
+            {filteredProjects.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {filteredProjects.map((project, index) => (
+                    <motion.div
+                      key={`${project.id}-${index}`}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="group relative cursor-pointer"
+                      onClick={() => openProjectModal(project)}
+                    >
+                      {/* Image Container */}
+                      <div className="relative aspect-square overflow-hidden rounded-2xl bg-gray-100">
+                        {/* Base Image */}
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:blur-sm group-hover:scale-110 transition-all duration-500"
+                        />
+                        
+                        {/* Overlay Content - Shows on hover */}
+                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+                          <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">{project.title}</h3>
+                          <p className="text-gray-200 text-sm mb-4 line-clamp-2">
+                            {project.description}
+                          </p>
+                          
+                          {/* Show first 2 categories as tags */}
+                          {project.category && (
+                            <div className="flex flex-wrap gap-2 justify-center mb-4">
+                              {(Array.isArray(project.category) ? project.category : [project.category])
+                                .slice(0, 2)
+                                .map((cat, idx) => (
+                                  <span key={idx} className="px-2 py-1 bg-white/20 text-white text-xs rounded">
+                                    {cat}
+                                  </span>
+                                ))}
+                            </div>
+                          )}
+                          
+                          <div className="flex flex-wrap gap-2 justify-center mb-4">
+                            {project.technologies && project.technologies.slice(0, 3).map((tech, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-white/20 text-white text-xs rounded">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                          
+                          {project.performance && project.performance.length > 0 && (
+                            <div className="flex items-center gap-6">
+                              {project.performance.slice(0, 2).map((metric, idx) => (
+                                <div key={idx} className="text-center">
+                                  <div className="text-lg font-bold text-white">{metric.value}</div>
+                                  <div className="text-xs text-gray-300">{metric.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          
+                          <div className="mt-6 px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full">
+                            Click to view details
+                          </div>
+                        </div>
+                        
+                        {/* Category Badges - Show up to 2 categories */}
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                          {project.category && 
+                            (Array.isArray(project.category) ? project.category : [project.category])
+                              .slice(0, 2)
+                              .map((cat, idx) => (
+                                <span 
+                                  key={idx} 
+                                  className="px-3 py-1 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full"
+                                >
+                                  {cat}
+                                </span>
+                              ))
+                          }
+                        </div>
+                      </div>
+                      
+                      {/* Title and categories (visible always) */}
+                      <div className="mt-4 mb-4">
+                        <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                          {project.title}
+                        </h3>
+                        {project.category && (
+                          <p className="text-sm text-gray-500 mt-1 line-clamp-1">
+                            {(Array.isArray(project.category) 
+                              ? project.category.join(", ") 
+                              : project.category
+                            )}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-gray-500">No projects found for this category</p>
+                <button
+                  onClick={() => setActiveFilter("all")}
+                  className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  View All Projects
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
+      {/* Stats Section */}
+      <StatsSection />
+
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Create Something Amazing?</h2>
-            <p className="text-blue-100 mb-8 text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Create Something Amazing?</h2>
+            <p className="text-blue-100 mb-6 sm:mb-8 text-base sm:text-lg">
               Let's collaborate to bring your vision to life with our expertise.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button className="px-6 py-2.5 sm:px-8 sm:py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors text-sm sm:text-base">
                 Start a Project
               </button>
-              <button className="px-8 py-3 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors">
+              <button className="px-6 py-2.5 sm:px-8 sm:py-3 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors text-sm sm:text-base">
                 Schedule a Call
               </button>
             </div>
@@ -634,18 +935,18 @@ const Portfolio = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-100">
+      <footer className="py-6 sm:py-8 border-t border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-500">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
+            <div className="text-xs sm:text-sm text-gray-500">
               © {new Date().getFullYear()} Digital Portfolio. All rights reserved.
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               {['Twitter', 'LinkedIn', 'Dribbble', 'GitHub'].map((platform) => (
                 <a
                   key={platform}
                   href="#"
-                  className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                  className="text-xs sm:text-sm text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   {platform}
                 </a>
@@ -656,11 +957,13 @@ const Portfolio = () => {
       </footer>
 
       {/* Project Modal */}
-      <ProjectModal
-        project={selectedProject}
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
      </div>
     </div>
     </>

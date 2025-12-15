@@ -3,14 +3,18 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect, useMemo, useTransition } from "react";
 import Breadcrumbs from "@/ui/Breadcrumbs";
-import BackButton from "@/ui/BackButton";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function BlogPage({ initialBlogs = [] }) {
   const [blogs, setBlogs] = useState(initialBlogs);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // Get category from URL query parameters
+  const activeCategory = searchParams.get('category') || 'all';
 
   // Fetch blog data from public folder
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function BlogPage({ initialBlogs = [] }) {
 
       // Fetch from public folder
       try {
-        const response = await fetch('/extended_blogPosts.json');
+        const response = await fetch('/blog-data.json');
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
@@ -62,28 +66,41 @@ export default function BlogPage({ initialBlogs = [] }) {
     fetchBlogs();
   }, [initialBlogs]);
 
-  const featuredBlog = useMemo(() => {
-    return blogs.find(blog => blog.isFeatured) || blogs[0];
-  }, [blogs]);
+  // Filter blogs based on category from URL
+  const { featuredBlog, regularBlogs } = useMemo(() => {
+    const filtered = blogs.filter(blog => {
+      const matchesCategory = activeCategory === 'all' || 
+        blog.categories?.some(cat => 
+          (typeof cat === 'string' ? cat : cat.name).toLowerCase() === activeCategory.toLowerCase()
+        );
+      
+      const matchesSearch = searchTerm === '' ||
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.description?.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      return matchesCategory && matchesSearch;
+    });
 
-  // Optimized filtering
-  const filteredBlogs = useMemo(() => blogs.filter(blog => {
-    const matchesCategory = activeCategory === 'all' || 
-      blog.categories?.some(cat => 
-        (typeof cat === 'string' ? cat : cat.name).toLowerCase() === activeCategory
-      );
-    
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blog.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blog.description?.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    return matchesCategory && matchesSearch;
-  }), [blogs, activeCategory, searchTerm]);
+    const featured = filtered.find(blog => blog.isFeatured) || filtered[0];
+    const regular = filtered.filter(blog => blog._id !== featured?._id);
 
-  const regularBlogs = useMemo(() => 
-    filteredBlogs.filter(blog => blog._id !== featuredBlog?._id),
-    [filteredBlogs, featuredBlog]
-  );
+    return { featuredBlog: featured, regularBlogs: regular };
+  }, [blogs, activeCategory, searchTerm]);
+
+  // Update URL when category changes
+  const handleCategoryChange = (category) => {
+    if (category === 'all') {
+      router.push('/blog');
+    } else {
+      router.push(`/blog?category=${category}`);
+    }
+  };
+
+  // Handle search
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   // Memoize expensive computations
   const recentPosts = useMemo(() => 
@@ -111,18 +128,33 @@ export default function BlogPage({ initialBlogs = [] }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/10">
+    <div className="min-h-screen bg-white">
       {/* Category Filter */}
-      <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+      <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs/>
+          <Breadcrumbs />
           
+          {/* Search Bar */}
+          <div className="mb-4">
+            <div className="relative max-w-md mx-auto">
+              <input
+                type="text"
+                placeholder="Search reviews..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="w-full px-4 py-3 pl-12 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+              />
+              <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
 
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.slice(0, 8).map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category)}
                 className={`px-3 sm:px-4 py-2 rounded-xl font-medium transition-all duration-300 capitalize text-sm sm:text-base ${
                   activeCategory === category
                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
@@ -147,7 +179,7 @@ export default function BlogPage({ initialBlogs = [] }) {
           {/* Main Content Column */}
           <div className="lg:w-3/4">
             {/* Featured Blog */}
-            {featuredBlog && activeCategory === 'all' && (
+            {featuredBlog && activeCategory === 'all' && !searchTerm && (
               <FeaturedSection blog={featuredBlog} />
             )}
 
@@ -159,7 +191,7 @@ export default function BlogPage({ initialBlogs = [] }) {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 sm:py-16">
+              <div className="text-center py-12 sm:py-16 bg-white rounded-2xl border border-gray-200">
                 <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                   <svg className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -176,7 +208,7 @@ export default function BlogPage({ initialBlogs = [] }) {
                   <button
                     onClick={() => {
                       setSearchTerm('');
-                      setActiveCategory('all');
+                      handleCategoryChange('all');
                     }}
                     className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base"
                   >
@@ -189,7 +221,12 @@ export default function BlogPage({ initialBlogs = [] }) {
 
           {/* Sidebar Column */}
           <div className="lg:w-1/4">
-            <Sidebar recentPosts={recentPosts} categories={categories} />
+            <Sidebar 
+              recentPosts={recentPosts} 
+              categories={categories} 
+              activeCategory={activeCategory}
+              onCategoryChange={handleCategoryChange}
+            />
           </div>
         </div>
       </div>
@@ -198,16 +235,16 @@ export default function BlogPage({ initialBlogs = [] }) {
 }
 
 // Sidebar Component
-function Sidebar({ recentPosts, categories }) {
+function Sidebar({ recentPosts, categories, activeCategory, onCategoryChange }) {
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* Recent Posts */}
-      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2 sm:pb-3 border-b border-gray-200">
           Recent Posts
         </h3>
         <div className="space-y-3 sm:space-y-4">
-          {recentPosts.map((post, index) => (
+          {recentPosts.map((post) => (
             <Link 
               key={post._id} 
               href={`/blog/${post.slug}`}
@@ -223,7 +260,7 @@ function Sidebar({ recentPosts, categories }) {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+                  <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                     <div className="w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded flex items-center justify-center">
                       <svg className="w-2 h-2 sm:w-3 sm:h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9m0 0v3m0-3a2 2 0 012-2h2a2 2 0 012 2m-6 5v6m4-3H9" />
@@ -237,7 +274,7 @@ function Sidebar({ recentPosts, categories }) {
                   {post.title}
                 </h4>
                 <p className="text-xs text-gray-500">
-                  {new Date(post.datePublished).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  {new Date(post.datePublished || post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                 </p>
               </div>
             </Link>
@@ -246,19 +283,23 @@ function Sidebar({ recentPosts, categories }) {
       </div>
 
       {/* Categories */}
-      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2 sm:pb-3 border-b border-gray-200">
           Categories
         </h3>
         <div className="flex flex-wrap gap-2">
           {categories.filter(cat => cat !== 'all').slice(0, 10).map((category) => (
-            <Link
+            <button
               key={category}
-              href={`/blog?category=${category}`}
-              className="px-3 py-1.5 bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-700 rounded-lg text-sm font-medium transition-colors duration-200 capitalize"
+              onClick={() => onCategoryChange(category)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 capitalize ${
+                activeCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+              }`}
             >
               {category}
-            </Link>
+            </button>
           ))}
         </div>
       </div>
@@ -271,7 +312,7 @@ function FeaturedSection({ blog }) {
   const readingTime = Math.ceil((blog.content?.length || 0) / 5);
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl shadow-gray-200/50 border border-gray-100 overflow-hidden mb-8 sm:mb-12">
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-8 sm:mb-12">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Image Column */}
         <div className="lg:col-span-1">
@@ -285,7 +326,7 @@ function FeaturedSection({ blog }) {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+              <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -303,7 +344,7 @@ function FeaturedSection({ blog }) {
               {blog.categories?.slice(0, 1).map((category, index) => (
                 <span
                   key={index}
-                  className="px-2 sm:px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-700 text-xs sm:text-sm font-semibold rounded-full"
+                  className="px-2 sm:px-3 py-1 bg-white/90 text-gray-700 text-xs sm:text-sm font-semibold rounded-full border border-gray-200"
                 >
                   {typeof category === 'string' ? category : category.name}
                 </span>
@@ -315,7 +356,7 @@ function FeaturedSection({ blog }) {
         {/* Content Column */}
         <div className="lg:col-span-2 p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
           <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-gray-500">
-            <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { 
+            <span>{new Date(blog.datePublished || blog.createdAt).toLocaleDateString('en-US', { 
               year: 'numeric', 
               month: 'long', 
               day: 'numeric' 
@@ -324,7 +365,7 @@ function FeaturedSection({ blog }) {
             <span>{readingTime} min read</span>
           </div>
           
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
             {blog.title}
           </h2>
           
@@ -339,7 +380,7 @@ function FeaturedSection({ blog }) {
                 alt="Best Buyers View"
                 width={24}
                 height={24}
-                className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full object-contain border-2 border-white shadow-sm"
+                className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full object-contain border-2 border-white"
               />
               <div>
                 <p className="text-xs sm:text-sm font-semibold text-gray-900">
@@ -352,7 +393,7 @@ function FeaturedSection({ blog }) {
             <Link
               href={`/blog/${blog.slug}`}
               prefetch={true}
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 sm:hover:-translate-y-1 flex items-center gap-2 justify-center text-sm sm:text-base"
+              className="group bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow hover:shadow-md flex items-center gap-2 justify-center text-sm sm:text-base"
             >
               Read Full Analysis
               <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,7 +407,7 @@ function FeaturedSection({ blog }) {
   );
 }
 
-// Blog Card Component - Memoized for performance
+// Blog Card Component
 const BlogCard = React.memo(({ blog }) => {
   const getCategoryName = (category) => {
     return typeof category === 'string' ? category : category.name || category;
@@ -375,7 +416,7 @@ const BlogCard = React.memo(({ blog }) => {
   const readingTime = Math.ceil((blog.content?.length || 0) / 5);
 
   return (
-    <div className="group bg-white rounded-xl sm:rounded-2xl shadow-lg shadow-gray-200/50 hover:shadow-xl sm:hover:shadow-2xl sm:hover:shadow-blue-100/50 transition-all duration-500 overflow-hidden border border-gray-100 hover:border-blue-200">
+    <div className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 hover:border-blue-300">
       {/* Image */}
       <div className="relative h-40 sm:h-48 overflow-hidden">
         {blog.featuredImage?.url ? (
@@ -384,10 +425,10 @@ const BlogCard = React.memo(({ blog }) => {
             alt={blog.featuredImage.alt || blog.title}
             width={320}
             height={240}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+          <div className="w-full h-full bg-gray-100 flex items-center justify-center">
             <div className="text-center">
               <div className="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-1 sm:mb-2">
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -398,7 +439,6 @@ const BlogCard = React.memo(({ blog }) => {
             </div>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         
         {/* Categories Overlay */}
         {blog.categories && blog.categories.length > 0 && (
@@ -406,7 +446,7 @@ const BlogCard = React.memo(({ blog }) => {
             {blog.categories.slice(0, 2).map((category, index) => (
               <span
                 key={index}
-                className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold rounded-md sm:rounded-lg"
+                className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white text-gray-700 text-xs font-semibold rounded-md sm:rounded-lg border border-gray-200"
               >
                 {getCategoryName(category)}
               </span>
@@ -428,7 +468,7 @@ const BlogCard = React.memo(({ blog }) => {
         {/* Meta Info */}
         <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
           <div className="flex items-center gap-2 sm:gap-4">
-            <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { 
+            <span>{new Date(blog.datePublished || blog.createdAt).toLocaleDateString('en-US', { 
               month: 'short', 
               day: 'numeric' 
             })}</span>
@@ -455,7 +495,7 @@ const BlogCard = React.memo(({ blog }) => {
               alt="Best Buyers View"
               width={32}
               height={32}
-              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-contain border-2 border-white shadow-sm"
+              className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-contain border-2 border-white"
             />
             <div>
               <p className="text-xs sm:text-sm font-semibold text-gray-900">
@@ -486,7 +526,7 @@ BlogCard.displayName = 'BlogCard';
 // Skeleton Loading
 function BlogPageSkeleton() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/10">
+    <div className="min-h-screen bg-white">
       {/* Content Skeleton */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -510,7 +550,7 @@ function BlogPageSkeleton() {
 // Empty State
 function EmptyState() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/10 flex items-center justify-center px-4 sm:px-6">
+    <div className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6">
       <div className="text-center max-w-md mx-auto">
         <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
           <svg className="w-8 h-8 sm:w-12 sm:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
