@@ -10,6 +10,7 @@ export default function BlogPage({ initialBlogs = [] }) {
   const [blogs, setBlogs] = useState(initialBlogs);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showAll, setShowAll] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -132,54 +133,55 @@ export default function BlogPage({ initialBlogs = [] }) {
     <>
     <div className=" bg-white text-gray-900">
       {/* Hero Section with Image */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden backdrop-blur-2xl">
+      <section className="relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/BlogImg/e-book.jpg')] bg-cover bg-center "></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
-        </div>
-
-        {/* Geometric Overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-blue-500/30 rotate-45"></div>
-          <div className="absolute bottom-40 left-32 w-40 h-40 border border-orange-500/20 rotate-12"></div>
-          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-blue-600/10 -rotate-12"></div>
+          <div className="absolute inset-0 bg-[url('/assets/BlogImg/e-book.jpg')] bg-cover bg-center blur-sm scale-110"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent"></div>
         </div>
 
         {/* Hero Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 md:mb-8 border border-white/20 text-xs sm:text-sm">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">Since 2015 • Redefining Technology</span>
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full mb-6 sm:mb-8 border border-white/30 text-xs sm:text-sm shadow-lg">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-medium">Insights & Articles</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-none">
-              <span className="text-white">Innovating</span>
-              <div className="relative inline-block ml-2 sm:ml-4">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">
-                  Your Future
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+              <span className="text-white">Our</span>
+              <div className="relative inline-block ml-2 sm:ml-3">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  Blog
                 </span>
-                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
               </div>
             </h1>
             
-            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
-              Transforming ideas into reality with cutting-edge technology solutions. 
-              We empower businesses to thrive in the digital era through innovation and expertise.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-8 sm:mb-10 max-w-2xl leading-relaxed font-light">
+              Explore expert insights, tutorials, and the latest trends in technology, web development, eCommerce, and digital solutions.
             </p>
             
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-          <button className="btn-3d flex items-center justify-center gap-2 group w-full sm:w-auto">
-            <span className="text-sm sm:text-base">Contact With Us</span>
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-                        <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
-                            <span className="text-sm sm:text-base">Watch Our Success Story</span>
-                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-white/80 text-sm sm:text-base">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>{blogs.length}+ Articles</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+                <span>{categories.length - 1}+ Categories</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Updated Weekly</span>
+              </div>
             </div>
           </div>
         </div>
@@ -231,11 +233,35 @@ export default function BlogPage({ initialBlogs = [] }) {
 
             {/* Blog Grid */}
             {regularBlogs.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-                {regularBlogs.map((blog) => (
-                  <BlogCard key={blog._id} blog={blog} />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8">
+                  {(showAll ? regularBlogs : regularBlogs.slice(0, 4)).map((blog) => (
+                    <BlogCard key={blog._id} blog={blog} />
+                  ))}
+                </div>
+                
+                {/* See More / Show Less Button */}
+                {regularBlogs.length > 4 && (
+                  <div className="flex justify-center mb-12 sm:mb-16">
+                    <button
+                      onClick={() => setShowAll(!showAll)}
+                      className="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      <span className="text-base sm:text-lg">
+                        {showAll ? 'Show Less' : `See More Articles (${regularBlogs.length - 4} more)`}
+                      </span>
+                      <svg 
+                        className={`w-5 h-5 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-12 sm:py-16 bg-white rounded-2xl border border-gray-200">
                 <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">

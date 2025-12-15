@@ -2,17 +2,17 @@
     "blogs": [
         {
             "_id": "1",
-            "slug": "affiliate-marketing-beginners-guide-2024",
-            "title": "Affiliate Marketing for Beginners: Complete Guide to Earn $5,000/Month in 2024",
+            "slug": "affiliate-marketing-beginners-guide",
+            "title": "Affiliate Marketing for Beginners: Complete Guide to Earn $5,000/Month",
             "excerpt": "Learn how to start affiliate marketing from scratch with our step-by-step guide. We reveal proven strategies to earn consistent income through product recommendations.",
-            "description": "Comprehensive guide to starting affiliate marketing in 2024, covering niche selection, platform setup, content creation, and traffic generation strategies.",
+            "description": "Comprehensive guide to starting affiliate marketing, covering niche selection, platform setup, content creation, and traffic generation strategies.",
             "content": [
                 {
                     "type": "heading",
                     "data": {
                         "text": [
                             {
-                                "value": "Why Affiliate Marketing Works in 2024"
+                                "value": "Why Affiliate Marketing Works"
                             }
                         ]
                     }
@@ -78,10 +78,10 @@
         },
         {
             "_id": "2",
-            "slug": "ecommerce-seo-strategies-2024",
+            "slug": "ecommerce-seo-strategies",
             "title": "E-commerce SEO: 7 Proven Strategies to Double Your Store Traffic in 90 Days",
             "excerpt": "Discover advanced SEO techniques specifically designed for e-commerce websites. We tested these strategies across multiple stores with 150%+ traffic increase.",
-            "description": "Advanced e-commerce SEO strategies for 2024 including product page optimization, technical SEO fixes, and content marketing for online stores.",
+            "description": "Advanced e-commerce SEO strategies including product page optimization, technical SEO fixes, and content marketing for online stores.",
             "content": [
                 {
                     "type": "heading",
@@ -165,8 +165,8 @@
         },
         {
             "_id": "4",
-            "slug": "health-affiliate-programs-2024",
-            "title": "Top Health & Wellness Affiliate Programs: Earn Up to 50% Commission in 2024",
+            "slug": "health-affiliate-programs",
+            "title": "Top Health & Wellness Affiliate Programs: Earn Up to 50% Commission",
             "excerpt": "Health and wellness is a booming $4.5 trillion industry. We review the highest-paying affiliate programs in supplements, fitness, and mental health niches.",
             "description": "Comprehensive review of best health and wellness affiliate programs with commission rates, cookie durations, and promotion strategies.",
             "content": [],
@@ -198,10 +198,10 @@
         },
         {
             "_id": "5",
-            "slug": "shopify-vs-woocommerce-2024-comparison",
-            "title": "Shopify vs WooCommerce 2024: Which Platform is Better for Your Online Store?",
+            "slug": "shopify-vs-woocommerce-comparison",
+            "title": "Shopify vs WooCommerce: Which Platform is Better for Your Online Store?",
             "excerpt": "Detailed comparison of Shopify and WooCommerce based on pricing, features, scalability, and SEO capabilities. We tested both platforms for 6 months.",
-            "description": "Comprehensive comparison of Shopify and WooCommerce for e-commerce businesses in 2024, including pricing analysis and feature breakdown.",
+            "description": "Comprehensive comparison of Shopify and WooCommerce for e-commerce businesses, including pricing analysis and feature breakdown.",
             "content": [],
             "featuredImage": {
                 "url": "/assets/BlogImg/14.avif",
@@ -264,10 +264,10 @@
         },
         {
             "_id": "7",
-            "slug": "content-marketing-strategy-2024",
+            "slug": "content-marketing-strategy",
             "title": "Content Marketing That Converts: How to Create SEO-Optimized Content That Ranks and Sells",
             "excerpt": "Discover our framework for creating content that not only ranks on Google but also converts readers into customers and affiliate sales.",
-            "description": "Advanced content marketing strategies for 2024 including SEO optimization, content distribution, and conversion rate optimization techniques.",
+            "description": "Advanced content marketing strategies including SEO optimization, content distribution, and conversion rate optimization techniques.",
             "content": [],
             "featuredImage": {
                 "url": "/assets/BlogImg/9.avif",
