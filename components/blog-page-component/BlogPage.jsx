@@ -376,15 +376,15 @@ function FeaturedSection({ blog }) {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0">
             <div className="flex items-center gap-2 sm:gap-3">
               <Image 
-                src="/logoWIthBG.png"
-                alt="Best Buyers View"
+                src="/A2ITLogo.png"
+                alt="A2IT Ltd"
                 width={24}
                 height={24}
                 className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full object-contain border-2 border-white"
               />
               <div>
                 <p className="text-xs sm:text-sm font-semibold text-gray-900">
-                  Best Buyers View
+                  A2IT Ltd
                 </p>
                 <p className="text-xs text-gray-500">Expert Review Team</p>
               </div>
@@ -416,9 +416,10 @@ const BlogCard = React.memo(({ blog }) => {
   const readingTime = Math.ceil((blog.content?.length || 0) / 5);
 
   return (
-    <div className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 hover:border-blue-300">
-      {/* Image */}
-      <div className="relative h-40 sm:h-48 overflow-hidden">
+    <Link href={`/blog/${blog.slug}`} prefetch={true} className="block h-full">
+      <div className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 hover:border-blue-300 h-full flex flex-col">
+        {/* Image */}
+        <div className="relative h-40 sm:h-48 overflow-hidden flex-shrink-0">
         {blog.featuredImage?.url ? (
           <Image
             src={blog.featuredImage.url}
@@ -464,7 +465,7 @@ const BlogCard = React.memo(({ blog }) => {
         )}
       </div>
 
-      <div className="p-4 sm:p-6">
+      <div className="p-4 sm:p-6 flex-1 flex flex-col">
         {/* Meta Info */}
         <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
           <div className="flex items-center gap-2 sm:gap-4">
@@ -483,41 +484,38 @@ const BlogCard = React.memo(({ blog }) => {
         </h3>
 
         {/* Excerpt */}
-        <p className="text-gray-600 leading-relaxed line-clamp-2 sm:line-clamp-3 mb-3 sm:mb-4 text-sm sm:text-base">
+        <p className="text-gray-600 leading-relaxed line-clamp-2 sm:line-clamp-3 mb-3 sm:mb-4 text-sm sm:text-base flex-1">
           {blog.excerpt || blog.description}
         </p>
 
         {/* Author & CTA */}
-        <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100 mt-auto">
           <div className="flex items-center gap-2 sm:gap-3">
             <Image 
-              src="/logoWIthBG.png"
-              alt="Best Buyers View"
+              src="/A2ITLogo.png"
+              alt="A2IT Ltd"
               width={32}
               height={32}
               className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-contain border-2 border-white"
             />
             <div>
               <p className="text-xs sm:text-sm font-semibold text-gray-900">
-                Best Buyers View
+                A2IT Ltd
               </p>
               <p className="text-xs text-gray-500">Review Team</p>
             </div>
           </div>
 
-          <Link
-            href={`/blog/${blog.slug}`}
-            prefetch={true}
-            className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 flex items-center gap-1 group/link text-xs sm:text-sm"
-          >
+          <span className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors duration-300 flex items-center gap-1 text-xs sm:text-sm">
             Read More
-            <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
+          </span>
         </div>
       </div>
     </div>
+    </Link>
   );
 });
 

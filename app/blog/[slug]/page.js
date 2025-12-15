@@ -1,17 +1,13 @@
 import BlogDetails from '@/components/blog-page-component/BlogDetails';
+import fs from 'fs';
+import path from 'path';
 
 // Fetch blog data from public folder
 async function getBlogData() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/blog-data.json`, {
-      cache: 'no-store'
-    });
-    
-    if (!res.ok) {
-      throw new Error('Failed to fetch blog data');
-    }
-    
-    const data = await res.json();
+    const filePath = path.join(process.cwd(), 'public', 'blog-data.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
     return data.blogs || data;
   } catch (error) {
     console.error('Error fetching blog data:', error);

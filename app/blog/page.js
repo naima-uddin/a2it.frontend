@@ -44,10 +44,27 @@ export const metadata = {
   },
 };
 
-export default function Page() {
+// Fetch blog data on server side
+async function getBlogData() {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const filePath = path.join(process.cwd(), 'public', 'blog-data.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const data = JSON.parse(fileContents);
+    return data.blogs || data;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return [];
+  }
+}
+
+export default async function Page() {
+  const blogs = await getBlogData();
+  
   return (
     <>
-      <BlogPage />
+      <BlogPage initialBlogs={blogs} />
 
       {/* 🔹 Schema Markup for Blog */}
       <script

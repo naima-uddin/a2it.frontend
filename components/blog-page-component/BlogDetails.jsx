@@ -376,15 +376,15 @@ export default function BlogDetails({ slug, initialBlog = null }) {
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full border-1 border-white/30 overflow-hidden shadow-lg">
                       <Image 
-                        src="/fullLogo.jpg"
-                        alt="Best Buyers View"
+                        src="/A2ITLogo.png"
+                        alt="A2IT Ltd"
                         width={56}
-                        height={100}
+                        height={56}
                         className="w-full h-full object-contain"
                       />
                     </div>
                     <div>
-                      <p className="font-semibold text-white/95 text-lg">Best Buyers View</p>
+                      <p className="font-semibold text-white/95 text-lg">A2IT Ltd</p>
                       <p className="text-white/70 flex items-center gap-3 text-sm">
                         <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { 
                           year: 'numeric', 
@@ -499,23 +499,23 @@ export default function BlogDetails({ slug, initialBlog = null }) {
               <div className="mt-16 pt-12 border-t border-gray-200">
                 <div className="flex flex-col md:flex-row items-start gap-6 bg-gray-50 rounded-2xl p-8">
                   <Image 
-                    src="/fullLogo.jpg"
-                    alt="Best Buyers View"
+                    src="/A2ITLogo.png"
+                    alt="A2IT Ltd"
                     width={80}
                     height={80}
                     className="w-20 h-20 rounded-2xl object-contain border-4 border-white shadow-lg flex-shrink-0"
                   />
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-gray-900 mb-2">
-                      Best Buyers View Team
+                      A2IT Ltd Team
                     </h4>
                     <p className="text-gray-600 leading-relaxed mb-4">
-                      Our team of expert reviewers tests and analyzes products to bring you unbiased, comprehensive reviews and buying guides.
+                      Our team of expert developers and consultants brings you insights on web development, mobile apps, eCommerce, and IT solutions.
                     </p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>Senior Product Reviewer</span>
+                      <span>IT Solutions Expert</span>
                       <span>•</span>
-                      <span>5+ years experience</span>
+                      <span>Professional Team</span>
                     </div>
                   </div>
                 </div>
