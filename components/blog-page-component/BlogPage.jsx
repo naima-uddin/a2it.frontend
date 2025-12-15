@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect, useMemo, useTransition } from "react";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import { useRouter, useSearchParams } from "next/navigation";
+import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function BlogPage({ initialBlogs = [] }) {
   const [blogs, setBlogs] = useState(initialBlogs);
@@ -128,27 +129,72 @@ export default function BlogPage({ initialBlogs = [] }) {
   }
 
   return (
+    <>
+    <div className=" bg-white text-gray-900">
+      {/* Hero Section with Image */}
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden backdrop-blur-2xl">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/assets/BlogImg/e-book.jpg')] bg-cover bg-center "></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
+        </div>
+
+        {/* Geometric Overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-blue-500/30 rotate-45"></div>
+          <div className="absolute bottom-40 left-32 w-40 h-40 border border-orange-500/20 rotate-12"></div>
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-blue-600/10 -rotate-12"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 md:mb-8 border border-white/20 text-xs sm:text-sm">
+              <Sparkles className="w-4 h-4" />
+              <span className="text-sm font-medium">Since 2015 • Redefining Technology</span>
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-none">
+              <span className="text-white">Innovating</span>
+              <div className="relative inline-block ml-2 sm:ml-4">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">
+                  Your Future
+                </span>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
+              </div>
+            </h1>
+            
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
+              Transforming ideas into reality with cutting-edge technology solutions. 
+              We empower businesses to thrive in the digital era through innovation and expertise.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          <button className="btn-3d flex items-center justify-center gap-2 group w-full sm:w-auto">
+            <span className="text-sm sm:text-base">Contact With Us</span>
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+                        <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
+                            <span className="text-sm sm:text-base">Watch Our Success Story</span>
+                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                        </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="text-white text-sm font-medium mb-2">Scroll to explore</div>
+          <div className="w-px h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
+        </div>
+      </section>
     <div className="min-h-screen bg-white">
       {/* Category Filter */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs />
-          
-          {/* Search Bar */}
-          <div className="mb-4">
-            <div className="relative max-w-md mx-auto">
-              <input
-                type="text"
-                placeholder="Search reviews..."
-                value={searchTerm}
-                onChange={handleSearch}
-                className="w-full px-4 py-3 pl-12 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-              />
-              <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
+
 
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.slice(0, 8).map((category) => (
@@ -231,6 +277,8 @@ export default function BlogPage({ initialBlogs = [] }) {
         </div>
       </div>
     </div>
+    </div>
+    </>
   );
 }
 
