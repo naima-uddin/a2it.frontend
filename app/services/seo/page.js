@@ -1,4 +1,4 @@
-import SEOSRMPPC from "@/components/ServicePage/SEO-SEM-PPC/SEO_";
+import SEOSRMPPC from "@/components/ServicePage/SEO-SEM-PPC/SEOSRMPPC";
 import React from "react";
 
 // 🔹 SEO metadata for Digital Marketing Services

@@ -1,4 +1,4 @@
-import ServiceHosting from "@/components/ServicePage/ServiceHosting";
+import ServiceHosting from "@/components/ServicePage/ServerHosting/ServiceHosting";
 import React from "react";
 
 // 🔹 SEO metadata for Web Hosting Services
