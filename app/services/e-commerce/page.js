@@ -1,4 +1,4 @@
-import EcommerceDevelopment from "@/components/ServicePage/E-commerce/EcommerceDevelopment";
+import EcommercePage from "@/components/ServicePage/E-commerce/EcommercePage";
 import React from "react";
 
 // 🔹 SEO metadata for E-commerce Development Services
@@ -45,7 +45,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <EcommerceDevelopment />
+      <EcommercePage />
 
       {/* 🔹 Schema Markup for E-commerce Development Services */}
       <script
