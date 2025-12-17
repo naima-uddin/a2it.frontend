@@ -14,7 +14,11 @@ import {
   FiCode,
   FiX,
   FiChevronDown,
-  FiCloudRain,
+  FiCloud,
+  FiCheck,
+  FiArrowRight,
+  FiMenu,
+  FiXCircle,
 } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,244 +26,306 @@ import Image from "next/image";
 const ServiceHosting = () => {
   const [activeCategory, setActiveCategory] = useState("web-hosting");
   const [expandedInfo, setExpandedInfo] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const categoryData = {
     "web-hosting": {
       title: "Web Hosting",
       icon: <FiGlobe className="text-2xl" />,
-      color: "from-[#00f0ff] to-[#0066ff]",
-      content: `A2IT Web Hosting Services: Reliable, Secure, and Scalable Solutions for Your Online Presence
-      
-      In the digital age, establishing a robust online presence is paramount for businesses and individuals alike. Central to this presence is reliable web hosting. At A2IT, we offer a comprehensive suite of web hosting services tailored to meet the diverse needs of our clients.`,
+      color: "bg-blue-500",
+      gradient: "from-blue-500 to-blue-600",
+      features: ["99.9% Uptime", "Free SSL", "24/7 Support", "Unlimited Bandwidth"],
+      content: `A2IT Web Hosting Services: Reliable, Secure, and Scalable Solutions for Your Online Presence. Perfect for small to medium businesses.`,
+      price: "$9.99/mo"
     },
     "cloud-hosting": {
       title: "Cloud Hosting",
-      icon: <FiCloudRain className="text-2xl" />,
-      color: "from-[#0066ff] to-[#00a0ff]",
-      content: `A2IT Cloud Hosting Services: Empowering Your Digital Transformation
-      
-      In today's fast-paced digital landscape, businesses require robust, scalable, and secure hosting solutions to support their online operations. A2IT's Cloud Hosting Services offer a cutting-edge infrastructure designed to meet the diverse needs of modern enterprises.`,
+      icon: <FiCloud className="text-2xl" />,
+      color: "bg-blue-600",
+      gradient: "from-blue-600 to-blue-700",
+      features: ["Auto Scaling", "Load Balancing", "Global CDN", "Real-time Monitoring"],
+      content: `A2IT Cloud Hosting Services: Empowering Your Digital Transformation with scalable infrastructure.`,
+      price: "$29.99/mo"
     },
     "dedicated-servers": {
       title: "Dedicated Servers",
       icon: <FiServer className="text-2xl" />,
-      color: "from-[#ff00cc] to-[#ff0066]",
-      content: `A2IT Dedicated Server Hosting: Unmatched Performance and Control for Your Business
-      
-      In the ever-evolving digital landscape, businesses require robust and reliable hosting solutions to ensure their online presence remains uninterrupted. A2IT's Dedicated Server Hosting offers a premium service designed to meet the needs of enterprises seeking unparalleled performance, security, and control.`,
+      color: "bg-blue-700",
+      gradient: "from-blue-700 to-blue-800",
+      features: ["Full Root Access", "Dedicated Resources", "Enterprise Hardware", "Custom Config"],
+      content: `A2IT Dedicated Server Hosting: Unmatched Performance and Control for Your Business.`,
+      price: "$199/mo"
     },
     "vps-hosting": {
       title: "VPS Hosting",
       icon: <FiCpu className="text-2xl" />,
-      color: "from-[#00ff99] to-[#00ccff]",
-      content: `A2IT VPS Hosting: Empowering Your Business with Scalable and Secure Solutions
-      
-      In the ever-evolving digital landscape, businesses require robust and reliable hosting solutions to ensure seamless online operations. A2IT's Virtual Private Server (VPS) hosting services offer a perfect blend of performance, flexibility, and security, catering to businesses of all sizes.`,
+      color: "bg-blue-600",
+      gradient: "from-blue-600 to-blue-700",
+      features: ["SSD Storage", "Custom OS", "Scalable RAM", "Isolated Environment"],
+      content: `A2IT VPS Hosting: Empowering Your Business with Scalable and Secure Solutions.`,
+      price: "$49.99/mo"
     },
     "managed-hosting": {
       title: "Managed Hosting",
       icon: <FiShield className="text-2xl" />,
-      color: "from-[#ff9900] to-[#ff6600]",
-      content: `A2IT Managed Hosting Servers: Comprehensive Solutions for Modern Businesses
-      
-      In today's digital-first world, businesses require robust, secure, and efficient hosting solutions to ensure seamless online operations. A2IT's Managed Hosting Servers offer a comprehensive suite of services designed to meet the diverse needs of modern enterprises.`,
+      color: "bg-blue-500",
+      gradient: "from-blue-500 to-blue-600",
+      features: ["Auto Backups", "Security Updates", "Performance Tuning", "Expert Support"],
+      content: `A2IT Managed Hosting Servers: Comprehensive Solutions for Modern Businesses.`,
+      price: "$79.99/mo"
     },
     "domain-management": {
-      title: "Domain Management",
+      title: "Domain & SSL",
       icon: <FiGlobe className="text-2xl" />,
-      color: "from-[#cc00ff] to-[#6600ff]",
-      content: `A2IT Domain Management Servers: Streamlining Your Online Presence
-      
-      In the digital age, your domain name is more than just an address—it's the cornerstone of your online identity. Efficient domain management ensures that your website remains accessible, secure, and aligned with your business objectives.`,
+      color: "bg-blue-600",
+      gradient: "from-blue-600 to-blue-700",
+      features: ["Domain Registration", "SSL Certificates", "DNS Management", "WHOIS Protection"],
+      content: `A2IT Domain Management: Streamlining Your Online Presence with complete domain solutions.`,
+      price: "$14.99/yr"
     },
   };
 
-  // Predefined positions for the dots to avoid hydration mismatch
-  const dotPositions = [
-    { left: "10%", top: "20%" },
-    { left: "25%", top: "60%" },
-    { left: "40%", top: "30%" },
-    { left: "55%", top: "80%" },
-    { left: "70%", top: "40%" },
-    { left: "85%", top: "70%" },
-    { left: "15%", top: "50%" },
-    { left: "30%", top: "10%" },
-    { left: "45%", top: "90%" },
-    { left: "60%", top: "25%" },
-    { left: "75%", top: "65%" },
-    { left: "90%", top: "35%" },
-    { left: "20%", top: "75%" },
-    { left: "35%", top: "45%" },
-    { left: "50%", top: "15%" },
+  const stats = [
+    { value: "99.9%", label: "Uptime SLA" },
+    { value: "24/7", label: "Support" },
+    { value: "50+", label: "Data Centers" },
+    { value: "10M+", label: "Websites Hosted" },
+  ];
+
+  const features = [
+    {
+      icon: <FiZap className="text-2xl" />,
+      title: "Lightning Fast",
+      description: "NVMe SSD storage and optimized servers for maximum speed"
+    },
+    {
+      icon: <FiShield className="text-2xl" />,
+      title: "Secure by Design",
+      description: "Enterprise-grade security with DDoS protection"
+    },
+    {
+      icon: <FiBarChart2 className="text-2xl" />,
+      title: "Scalable",
+      description: "Easily upgrade resources as your business grows"
+    },
+    {
+      icon: <FiDownload className="text-2xl" />,
+      title: "Easy Migration",
+      description: "Free website migration with zero downtime"
+    }
   ];
 
   return (
-    <div className="bg-[#0a0a12] text-[#e0e0ff] overflow-hidden">
+    <div className="min-h-screen bg-white text-gray-900">
+
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src="/assets/amazon/1.avif"
-            alt="Server background"
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12] via-transparent to-[#0a0a12]"></div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-32">
-          <div className="flex justify-center space-x-4">
-            {[...Array(12)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{ opacity: [0.2, 1, 0.2] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                  repeatType: "reverse",
-                }}
-                className="w-2 h-2 rounded-full bg-[#00f0ff]"
-              />
-            ))}
-          </div>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white"></div>
+        
+        {/* Abstract Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+          <div className="absolute top-60 -left-40 w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-30"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-block px-4 py-2 bg-[#00f0ff] text-[#0a0a12] font-medium mb-6 rounded-full">
-              ENTERPRISE HOSTING
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#0066ff]">
-                High-Performance
-              </span>{" "}
-              Hosting Solutions
-            </h1>
-            <p className="text-xl text-[#b0b0ff] max-w-2xl mb-12">
-              Enterprise-grade server infrastructure with 99.99% uptime, global
-              CDN, and military-grade security.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="relative overflow-hidden group bg-gradient-to-r from-[#00f0ff] to-[#0066ff] text-white font-semibold py-4 px-8 rounded-lg hover:shadow-[0_0_30px_-10px_rgba(0,240,255,0.5)] transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Get Custom Quote
-                </span>
-              </Link>
-              <Link
-                href="/portfolio"
-                className="border-2 border-[#00f0ff] text-[#00f0ff] hover:bg-[#00f0ff]/10 font-semibold py-4 px-8 rounded-lg transition-colors duration-300"
-              >
-                View More
-              </Link>
-            </div>
-          </motion.div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 pt-20 pb-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                <FiZap className="mr-2" />
+                Enterprise-Grade Hosting
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Premium{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                  Hosting Solutions
+                </span>{" "}
+                for Your Business
+              </h1>
+              
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+                Scalable, secure, and high-performance hosting infrastructure with 24/7 expert support and 99.9% uptime guarantee.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <Link
+                  href="/get-started"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-4 px-8 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  Start Free Trial
+                  <FiArrowRight className="ml-2" />
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 font-semibold py-4 px-8 rounded-lg hover:bg-blue-50 transition-all duration-300"
+                >
+                  View Pricing
+                </Link>
+              </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:block relative"
-          >
-            <div className="relative bg-[#12121a] p-6 rounded-xl border border-[#00f0ff]/30">
-              <div className="server-rack">
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="server-unit flex items-center px-4 py-3 border-b border-[#00f0ff]/10"
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="text-center"
                   >
-                    <div className="w-3 h-3 rounded-full bg-[#00f0ff] mr-3"></div>
-                    <div className="flex-1">
-                      <div className="h-2 bg-[#00f0ff]/30 rounded-full overflow-hidden">
+                    <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+                <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-800">
+                  <h3 className="text-xl font-bold text-white">Server Dashboard</h3>
+                  <p className="text-blue-100 text-sm">Real-time monitoring</p>
+                </div>
+                
+                <div className="p-6 space-y-4">
+                  {["CPU Usage", "Memory", "Storage", "Network"].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-600">{item}</span>
+                        <span className="font-semibold text-gray-900">{["65%", "42%", "78%", "1.2Gbps"][index]}</span>
+                      </div>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
-                          animate={{ width: `${30 + i * 10}%` }}
-                          transition={{ duration: 1, delay: i * 0.2 }}
-                          className="h-full bg-[#00f0ff] rounded-full"
+                          animate={{ width: ["65%", "42%", "78%", "85%"] }}
+                          transition={{ duration: 1, delay: index * 0.1 }}
+                          className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
                         />
                       </div>
                     </div>
-                    <div className="text-xs text-[#00f0ff] ml-3">
-                      Node-{i + 1}
-                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-3 border-t border-gray-100">
+                  <div className="p-4 text-center border-r border-gray-100">
+                    <FiCpu className="text-blue-600 text-xl mx-auto mb-2" />
+                    <div className="text-sm font-semibold">64 Cores</div>
                   </div>
-                ))}
-              </div>
-              <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-                <div className="p-3 bg-[#0066ff]/10 rounded-lg border border-[#0066ff]/20">
-                  <FiDownload className="text-[#00f0ff] text-xl mx-auto mb-1" />
-                  <div className="text-sm">10Gbps</div>
-                </div>
-                <div className="p-3 bg-[#00f0ff]/10 rounded-lg border border-[#00f0ff]/20">
-                  <FiCpu className="text-[#00f0ff] text-xl mx-auto mb-1" />
-                  <div className="text-sm">64 Cores</div>
-                </div>
-                <div className="p-3 bg-[#0066ff]/10 rounded-lg border border-[#0066ff]/20">
-                  <FiDatabase className="text-[#00f0ff] text-xl mx-auto mb-1" />
-                  <div className="text-sm">NVMe SSD</div>
+                  <div className="p-4 text-center border-r border-gray-100">
+                    <FiDatabase className="text-blue-600 text-xl mx-auto mb-2" />
+                    <div className="text-sm font-semibold">NVMe SSD</div>
+                  </div>
+                  <div className="p-4 text-center">
+                    <FiDownload className="text-blue-600 text-xl mx-auto mb-2" />
+                    <div className="text-sm font-semibold">10 Gbps</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Category Selection */}
-      <section className="py-16 px-6 sm:px-12 bg-[#12121a]">
-        <div className="max-w-7xl mx-auto">
+      {/* Features Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
-              OUR SOLUTIONS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
-              <span className="text-[#0066ff]">Comprehensive</span> Hosting
-              Services
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Why Choose{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                A2IT Hosting
+              </span>
             </h2>
-            <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Enterprise-grade features for businesses of all sizes
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+              >
+                <div className="w-14 h-14 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                Hosting Solutions
+              </span>
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Choose the perfect hosting solution for your needs
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {/* Category Selection */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {Object.entries(categoryData).map(([key, category]) => (
               <motion.button
                 key={key}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setActiveCategory(key)}
-                className={`p-4 rounded-lg flex flex-col items-center justify-center transition-all duration-300 ${
+                className={`p-4 rounded-xl flex flex-col items-center justify-center transition-all duration-300 ${
                   activeCategory === key
-                    ? `bg-gradient-to-r ${category.color} text-white`
-                    : "bg-[#0e0e15] text-[#b0b0ff] hover:bg-[#1a1a2a]"
+                    ? `bg-gradient-to-r ${category.gradient} text-white shadow-lg`
+                    : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
                 }`}
               >
                 <div className="mb-2">{category.icon}</div>
                 <span className="text-sm font-medium">{category.title}</span>
+                <div className={`text-xs mt-2 px-2 py-1 rounded-full ${
+                  activeCategory === key ? "bg-white/20" : "bg-gray-100"
+                }`}>
+                  {category.price}
+                </div>
               </motion.button>
             ))}
           </div>
 
-          {/* Category Content Display */}
+          {/* Service Details */}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={activeCategory}
@@ -267,20 +333,23 @@ const ServiceHosting = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-[#0e0e15] rounded-xl overflow-hidden border border-[#00f0ff]/20"
+              className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200"
             >
-              <div
-                className={`h-2 bg-gradient-to-r ${categoryData[activeCategory].color}`}
-              ></div>
+              <div className={`h-2 bg-gradient-to-r ${categoryData[activeCategory].gradient}`}></div>
               <div className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold flex items-center gap-3">
-                    {categoryData[activeCategory].icon}
-                    {categoryData[activeCategory].title}
-                  </h3>
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
+                  <div className="flex items-center mb-4 lg:mb-0">
+                    <div className={`w-16 h-16 ${categoryData[activeCategory].color} rounded-xl flex items-center justify-center text-white mr-4`}>
+                      {categoryData[activeCategory].icon}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900">{categoryData[activeCategory].title}</h3>
+                      <div className="text-blue-600 font-bold text-xl mt-1">{categoryData[activeCategory].price}</div>
+                    </div>
+                  </div>
                   <button
                     onClick={() => setExpandedInfo(!expandedInfo)}
-                    className="flex items-center gap-2 text-[#00f0ff] hover:text-[#00a0ff] transition-colors"
+                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
                   >
                     {expandedInfo ? (
                       <>
@@ -296,192 +365,85 @@ const ServiceHosting = () => {
                   </button>
                 </div>
 
-                <AnimatePresence initial={false}>
-                  {expandedInfo && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="prose prose-invert max-w-none text-[#b0b0ff]">
-                        <p className="whitespace-pre-line">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-4">Key Features</h4>
+                    <ul className="space-y-3">
+                      {categoryData[activeCategory].features.map((feature, index) => (
+                        <li key={index} className="flex items-center">
+                          <FiCheck className="text-green-500 mr-3 flex-shrink-0" />
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <AnimatePresence initial={false}>
+                    {expandedInfo && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <h4 className="font-bold text-gray-900 mb-4">Description</h4>
+                        <p className="text-gray-600 leading-relaxed">
                           {categoryData[activeCategory].content}
                         </p>
-                      </div>
-                      <div className="mt-6">
-                        <Link
-                          href="/contact"
-                          className="inline-flex items-center bg-gradient-to-r from-[#00f0ff] to-[#0066ff] text-white font-semibold py-2 px-6 rounded-lg hover:shadow-[0_0_20px_-5px_rgba(0,240,255,0.5)] transition-all duration-300"
-                        >
-                          Get Started with {categoryData[activeCategory].title}
-                        </Link>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                        <div className="mt-6">
+                          <Link
+                            href="/contact"
+                            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-3 px-8 rounded-lg hover:shadow-xl transition-all duration-300"
+                          >
+                            Get Started with {categoryData[activeCategory].title}
+                            <FiArrowRight className="ml-2" />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </section>
 
-      {/* Hosting Types – Tech Spec Cards */}
-      <section className="py-20 px-6 sm:px-12 bg-[#0a0a12]">
-        <div className="max-w-7xl mx-auto">
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
-              TECHNICAL SPECIFICATIONS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
-              <span className="text-[#0066ff]">Scalable</span> Hosting
-              Infrastructure
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              Ready to Launch Your Project?
             </h2>
-            <p className="text-[#b0b0ff] max-w-2xl mx-auto">
-              Enterprise-grade solutions for every workload
+            <p className="text-blue-100 text-xl mb-8 max-w-2xl mx-auto">
+              Join thousands of satisfied customers who trust A2IT with their hosting needs.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                type: "Cloud Hosting",
-                icon: <FiGlobe className="text-4xl" />,
-                specs: [
-                  { name: "CPU Cores", value: "4-64", icon: <FiCpu /> },
-                  { name: "RAM", value: "8-256GB", icon: <FiZap /> },
-                  { name: "Storage", value: "100GB-4TB", icon: <FiDatabase /> },
-                  { name: "Bandwidth", value: "Unmetered", icon: <FiUpload /> },
-                ],
-                color: "from-[#00f0ff] to-[#0066ff]",
-              },
-              {
-                type: "Dedicated Servers",
-                icon: <FiServer className="text-4xl" />,
-                specs: [
-                  { name: "Processors", value: "Dual Xeon", icon: <FiCpu /> },
-                  { name: "RAM", value: "32-512GB", icon: <FiZap /> },
-                  { name: "Storage", value: "RAID NVMe", icon: <FiDatabase /> },
-                  { name: "Uplink", value: "10-100Gbps", icon: <FiUpload /> },
-                ],
-                color: "from-[#0066ff] to-[#00f0ff]",
-              },
-              {
-                type: "Edge Computing",
-                icon: <FiCode className="text-4xl" />,
-                specs: [
-                  { name: "Locations", value: "50+", icon: <FiGlobe /> },
-                  { name: "Latency", value: "<10ms", icon: <FiZap /> },
-                  { name: "Cache", value: "1TB+", icon: <FiDatabase /> },
-                  { name: "Tiering", value: "Smart", icon: <FiBarChart2 /> },
-                ],
-                color: "from-[#00f0ff] to-[#0066ff]",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#0e0e15] rounded-xl overflow-hidden border border-[#00f0ff]/10 hover:border-[#0066ff]/50 transition-all duration-300"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/get-started"
+                className="inline-flex items-center justify-center bg-white text-blue-600 font-semibold py-4 px-8 rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
-                <div className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#0066ff]/10 to-[#00f0ff]/10 rounded-lg flex items-center justify-center text-[#00f0ff] mb-6 border border-[#00f0ff]/20">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-6">{service.type}</h3>
-                  <ul className="space-y-4">
-                    {service.specs.map((spec, i) => (
-                      <li key={i} className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 bg-[#0066ff]/10 rounded-full flex items-center justify-center text-[#00f0ff] mr-3">
-                            {spec.icon}
-                          </div>
-                          <span className="text-[#b0b0ff]">{spec.name}</span>
-                        </div>
-                        <span className="font-mono font-bold">
-                          {spec.value}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-10 px-6 sm:px-12 bg-[#0a0a12] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          {dotPositions.map((position, i) => (
-            <motion.div
-              key={i}
-              animate={{ opacity: [0.1, 0.5, 0.1] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.2,
-                repeatType: "reverse",
-              }}
-              className="absolute w-1 h-1 rounded-full bg-[#00f0ff]"
-              style={{
-                left: position.left,
-                top: position.top,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl font-bold mb-6"
-          >
-            Ready for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#0066ff]">
-              Enterprise-Grade
-            </span>{" "}
-            Hosting?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-[#b0b0ff] mb-8 max-w-2xl mx-auto"
-          >
-            Let's build the perfect infrastructure for your mission-critical
-            applications.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link
-              href="/contact"
-              className="inline-flex items-center bg-gradient-to-r from-[#00f0ff] to-[#0066ff] text-white font-semibold py-4 px-12 rounded-lg hover:shadow-[0_0_30px_-10px_rgba(0,240,255,0.5)] transition-all duration-300 transform hover:scale-105"
-            >
-              Deploy Your Servers
-            </Link>
+                Start Free 14-Day Trial
+                <FiArrowRight className="ml-2" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center border-2 border-white text-white font-semibold py-4 px-8 rounded-lg hover:bg-white/10 transition-all duration-300"
+              >
+                Schedule a Demo
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 };

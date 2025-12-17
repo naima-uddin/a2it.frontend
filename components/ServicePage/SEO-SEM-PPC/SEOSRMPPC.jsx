@@ -21,11 +21,16 @@ import {
   FiPlayCircle,
   FiImage,
   FiVideo,
-  FiShare2
+  FiShare2,
+  FiPercent,
+  FiArrowRight,
+  FiCheck
 } from "react-icons/fi";
 
 const SEOSRMPPC = () => {
   const [hoveredService, setHoveredService] = useState(null);
+  const [activeStep, setActiveStep] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // Animation variants
   const fadeInUp = { 
@@ -111,10 +116,10 @@ const SEOSRMPPC = () => {
     <div className="min-h-screen bg-white text-gray-800">
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/amazon/amazon.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/assets/SEO/banner.png')] bg-cover bg-center"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
         </div>
@@ -128,115 +133,144 @@ const SEOSRMPPC = () => {
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6">
-                <FiPercent className="mr-2" />
-                AMAZON SERVICES SPECIALIST
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-                Maximize Your{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500">
-                  Amazon Potential
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium mb-6 rounded-full text-sm shadow-lg"
+              >
+                <FiTarget className="mr-2" />
+                DIGITAL MARKETING EXCELLENCE
+              </motion.div>
+              
+              <h1 className="text-3xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-tight text-white">
+                Dominate Search{" "}
+                <span className="relative">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300">
+                    Rankings & Ads
+                  </span>
+                  <motion.div
+                    animate={{ width: ["0%", "100%", "0%"] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="absolute bottom-2 left-0 h-1 bg-gradient-to-r from-yellow-400 to-pink-400"
+                  />
                 </span>
               </h1>
-              <p className="text-lg text-blue-100 mb-8">
-                Comprehensive Amazon solutions including FBA, Vendor Central, affiliate programs, 
-                and marketing services to scale your e-commerce business.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="text-lg sm:text-xl text-gray-100 max-w-2xl mb-8 leading-relaxed"
+              >
+                Strategic SEO, SEM, and PPC campaigns that drive qualified traffic, boost conversions, and maximize your ROI.
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="flex flex-col sm:flex-row flex-wrap gap-4"
+              >
                 <Link
                   href="/contact"
-                  className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-300 transition-all duration-300 text-sm sm:text-base"
                 >
-                  Get Started
-                  <FiArrowRight />
+                  <span className="relative z-10 flex items-center">
+                    Get Started
+                    <FiArrowRight className="ml-2" />
+                  </span>
+                  <motion.div
+                    initial={{ x: "-100%", y: "100%" }}
+                    whileHover={{ x: "100%", y: "-100%" }}
+                    transition={{ duration: 0.6 }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                  />
                 </Link>
-                <button
-                  onClick={() => handleScroll(pricingRef, "pricing")}
-                  className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors duration-200"
+                
+                <Link
+                  href="#services"
+                  className="group inline-flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
                 >
-                  View Pricing
-                </button>
+                  <span className="group-hover:scale-110 transition-transform duration-300">
+                    View Services
+                  </span>
+                </Link>
+              </motion.div>
+              
+              {/* Stats */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mt-12 grid grid-cols-3 gap-4 sm:gap-6"
+              >
+                {[
+                  { value: "300%", label: "Avg ROI Increase", color: "text-yellow-300" },
+                  { value: "4.8⭐", label: "Client Rating", color: "text-orange-300" },
+                  { value: "24/7", label: "Support", color: "text-green-300" },
+                ].map((stat, index) => (
+                  <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20">
+                    <div className={`text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-gray-200">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Process Steps */}
+            <motion.div
+              initial={{ opacity: 0, x: 40, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative hidden lg:block"
+            >
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-8 border-white">
+                <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">Our Process</h3>
+                  <p className="text-blue-100 text-sm">Strategic approach to digital success</p>
+                </div>
+                
+                <div className="p-6 space-y-4">
+                  {["Setup & Strategy", "Implementation", "Optimization"].map((step, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveStep(index)}
+                      className={`w-full text-left p-4 rounded-lg transition-all ${
+                        activeStep === index
+                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105"
+                          : "bg-gray-50 border border-gray-200 text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 rounded-full border-2 border-current flex items-center justify-center mr-3 font-bold">
+                          {index + 1}
+                        </div>
+                        <span className="font-semibold">{step}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             </motion.div>
-      {/* Affiliate Marketing Section */}
-      <section ref={affiliateRef} className="py-4 bg-white rounded-sm shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 items-center">
-            <div className="lg:w-1/3">
-              <h3 className="text-2xl font-bold mb-4">Our Process</h3>
-              <div className="space-y-4">
-                {["Setup & Strategy", "Implementation", "Optimization"].map((step, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setActiveStep(index);
-                      setIsPlaying(false);
-                    }}
-                    className={`w-full text-left p-2 rounded-lg transition-all ${
-                      activeStep === index
-                        ? "bg-blue-600 text-white"
-                        : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <div className="w-6 h-6 rounded-full border-2 border-current flex items-center justify-center mr-3">
-                        {index + 1}
-                      </div>
-                      <span className="font-medium">{step}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="lg:w-2/3">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl shadow-sm border border-blue-100"
-                >
-                  <h4 className="text-xl font-bold mb-3">
-                    {["Account Setup & Strategy", "Content & Link Implementation", "Performance Optimization"][activeStep]}
-                  </h4>
-                  <p className="text-gray-600 mb-4">
-                    {[
-                      "We create your Amazon Associates account, develop a monetization strategy, and identify profitable product niches.",
-                      "Our team integrates affiliate links strategically into your content with proper tracking and optimization.",
-                      "We monitor performance, A/B test placements, and maximize your commission earnings through data-driven decisions."
-                    ][activeStep]}
-                  </p>
-                  <ul className="space-y-2">
-                    {[
-                      ["Account creation", "Niche research", "Strategy planning"],
-                      ["Link integration", "Content optimization", "Tracking setup"],
-                      ["Performance analysis", "A/B testing", "Revenue growth"]
-                    ][activeStep].map((item, i) => (
-                      <li key={i} className="flex items-center">
-                        <FiCheck className="text-green-500 mr-2" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </AnimatePresence>
-            </div>
           </div>
         </div>
-      </section>
-          </div>
+        
+        {/* Scroll Indicator */}
+        <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="text-white text-sm font-medium mb-2">Scroll to explore</div>
+          <div className="w-px h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
         </div>
       </section>
 
       {/* Services Navigation */}
-      <section className="py-10 px-6 sm:px-12 bg-[#12121a]">
+      <section id="services" className="py-20 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -245,49 +279,48 @@ const SEOSRMPPC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm">
               OUR EXPERTISE
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6 text-gray-900">
               Platform-Specific{" "}
-              <span className="text-[#0066ff]">Strategies</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Strategies</span>
             </h2>
-            <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We tailor content and campaigns for each social network's unique
               audience
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 platform: "Instagram",
-                icon: <FiInstagram className="text-4xl" />,
+                icon: <FiInstagram className="text-3xl sm:text-4xl" />,
                 image: "/assets/SEO/insta.jpeg",
                 stats: "1.2M+ Followers Grown",
-                color: "text-[#00f0ff]",
+                color: "from-pink-500 to-purple-600",
               },
               {
                 platform: "Facebook",
-                icon: <FiFacebook className="text-4xl" />,
-                image:
-                  "/assets/SEO/fb.avif",
+                icon: <FiFacebook className="text-3xl sm:text-4xl" />,
+                image: "/assets/SEO/fb.avif",
                 stats: "3.5M+ Monthly Reach",
-                color: "text-[#00f0ff]",
+                color: "from-blue-600 to-blue-800",
               },
               {
                 platform: "YouTube",
-                icon: <FiYoutube className="text-4xl" />,
+                icon: <FiYoutube className="text-3xl sm:text-4xl" />,
                 image: "/assets/SEO/youtube.jpeg",
                 stats: "500K+ Subscribers",
-                color: "text-[#00f0ff]",
+                color: "from-red-600 to-red-700",
               },
               {
                 platform: "LinkedIn",
-                icon: <FiLinkedin className="text-4xl" />,
+                icon: <FiLinkedin className="text-3xl sm:text-4xl" />,
                 image: "/assets/SEO/lindln.jpeg",
                 stats: "200% Engagement Boost",
-                color: "text-[#00f0ff]",
+                color: "from-blue-700 to-blue-900",
               },
             ].map((item, index) => (
               <motion.div
@@ -296,38 +329,39 @@ const SEOSRMPPC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#0e0e15] rounded-xl overflow-hidden border border-[#00f0ff]/10 hover:border-[#0066ff]/50 transition-all duration-300"
+                className="bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 group"
               >
-                <div className="h-48 relative">
+                <div className="h-48 sm:h-56 relative overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.platform}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                    <div className="w-16 h-16 bg-[#0066ff]/10 rounded-full flex items-center justify-center text-[#00f0ff]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-4">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
                       {item.icon}
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-xl font-bold text-white">
+                    <div className="flex-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
                         {item.platform}
                       </h3>
-                      <p className="text-[#b0b0ff] text-sm">{item.stats}</p>
+                      <p className="text-gray-200 text-xs sm:text-sm">{item.stats}</p>
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <ul className="space-y-2 text-[#b0b0ff]">
+                <div className="p-4 sm:p-6">
+                  <ul className="space-y-2 sm:space-y-3">
                     {[
                       "Content Strategy",
                       "Paid Campaigns",
                       "Community Growth",
                       "Analytics Reporting",
                     ].map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-2 h-2 rounded-full bg-[#00f0ff] mt-2 mr-3"></div>
-                        <span>{feature}</span>
+                      <li key={i} className="flex items-start text-sm sm:text-base">
+                        <FiCheckCircle className="text-green-500 mt-0.5 mr-2 sm:mr-3 flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -339,7 +373,7 @@ const SEOSRMPPC = () => {
       </section>
 
             {/* Transforming Social Presence */}
-      <section className="py-24 bg-gradient-to-br from-gray-900 to-black text-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -347,13 +381,13 @@ const SEOSRMPPC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-5 py-2 bg-gradient-to-r from-cyan-500 to-blue-400 text-gray-900 font-semibold rounded-full mb-4">
+            <span className="inline-block px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full mb-4">
               PROVEN RESULTS
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Transforming <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">Social Presence</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Transforming <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Social Presence</span>
             </h2>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
               Real metrics from our client campaigns showcase the impact of strategic social media management.
             </p>
           </motion.div>
@@ -387,28 +421,28 @@ const SEOSRMPPC = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl border border-gray-700"
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white">
                     {item.icon}
                   </div>
-                  <span className="text-2xl font-bold text-cyan-400">{item.arrow}</span>
+                  <span className="text-2xl font-bold text-blue-600">{item.arrow}</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-8">{item.metric}</h3>
+                <h3 className="text-2xl font-bold mb-8 text-gray-900">{item.metric}</h3>
                 <div className="flex justify-between items-center">
                   <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">Before</div>
-                    <div className="text-3xl font-bold text-gray-300">{item.before}</div>
+                    <div className="text-sm text-gray-600 mb-2">Before</div>
+                    <div className="text-3xl font-bold text-gray-700">{item.before}</div>
                   </div>
                   <div className="mx-4">
-                    <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </div>
                   <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">After</div>
-                    <div className="text-3xl font-bold text-cyan-300">{item.after}</div>
+                    <div className="text-sm text-gray-600 mb-2">After</div>
+                    <div className="text-3xl font-bold text-blue-600">{item.after}</div>
                   </div>
                 </div>
               </motion.div>
