@@ -488,6 +488,189 @@ const EcommerceServicePage = () => {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-6 shadow-lg">
+              <FiTag className="text-2xl text-white" />
+            </div>
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+              TRANSPARENT PRICING
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Choose Your{" "}
+              <span className="relative">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
+                  Perfect Plan
+                </span>
+                <motion.div
+                  animate={{ width: ["0%", "100%", "0%"] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-cyan-400"
+                />
+              </span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Flexible pricing plans to help you succeed on eBay.
+            </p>
+          </motion.div>
+
+          {/* Pricing Slider */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <div className="flex justify-end items-center gap-4 mb-8">
+              <motion.button
+                whileHover={{ scale: 1.1, x: -5 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={prevSlide}
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+              >
+                <FiArrowLeft className="text-xl" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.1, x: 5 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={nextSlide}
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+              >
+                <FiArrowRight className="text-xl" />
+              </motion.button>
+            </div>
+
+            {/* Pricing Cards */}
+            <div className="overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  className={`grid gap-6 sm:gap-8 ${
+                    windowWidth < 640 
+                      ? 'grid-cols-1' 
+                      : windowWidth < 1024 
+                      ? 'grid-cols-2' 
+                      : 'grid-cols-3'
+                  }`}
+                >
+                  {groupedPackages[currentSlide]?.map((pkg, index) => (
+                    <motion.div
+                      key={pkg.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      onMouseEnter={() => setHoveredCard(pkg.id)}
+                      onMouseLeave={() => setHoveredCard(null)}
+                      className={`relative rounded-3xl overflow-hidden transition-all duration-500 flex flex-col h-full ${getCardBackground(pkg)} border-2 ${
+                        hoveredCard === pkg.id 
+                          ? 'border-blue-400 shadow-2xl scale-[1.02]' 
+                          : 'border-gray-100 shadow-xl hover:shadow-2xl'
+                      }`}
+                    >
+                      {pkg.name === "Plus" && (
+                        <div className="absolute top-6 -right-10 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-white px-10 py-1 rotate-45 shadow-lg z-10">
+                          <span className="text-xs sm:text-sm font-bold">MOST POPULAR</span>
+                        </div>
+                      )}
+                      
+                      {pkg.name === "Special" && (
+                        <div className="absolute top-6 -right-10 bg-gradient-to-r from-gray-700 to-gray-900 text-white px-10 py-1 rotate-45 shadow-lg z-10">
+                          <span className="text-xs sm:text-sm font-bold">BEST VALUE</span>
+                        </div>
+                      )}
+                      
+                      <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                        <div className="text-center mb-6 sm:mb-8">
+                          <div className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl mb-4 ${
+                            hoveredCard === pkg.id 
+                              ? `bg-gradient-to-r ${getPackageColor(pkg, true)}` 
+                              : `bg-gradient-to-r ${getPackageColor(pkg)}`
+                          }`}>
+                            <div className={pkg.name === "Special" ? "text-white" : ""}>
+                              {getIconForPackage(pkg.name)}
+                            </div>
+                          </div>
+                          <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.name}</h3>
+                          <div className="text-3xl sm:text-4xl font-bold mb-2">
+                            <span className={pkg.name === "Special" ? "text-gray-900" : "text-blue-900"}>{pkg.price}</span>
+                            <span className="text-gray-500 text-base sm:text-lg">/one-time</span>
+                          </div>
+                          <div className="text-sm sm:text-base text-gray-600">Perfect for {pkg.name === "Special" ? "startups" : pkg.name === "Diamond" ? "enterprises" : "growing businesses"}</div>
+                        </div>
+
+                        <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
+                          {pkg.features.map((feature, idx) => (
+                            <motion.li
+                              key={idx}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.1 * idx }}
+                              className="flex items-start"
+                            >
+                              <div className={`mt-1 mr-3 flex-shrink-0 ${
+                                pkg.name === "Special" ? "text-gray-700" : "text-blue-500"
+                              }`}>
+                                <FiCheckCircle className="text-base sm:text-lg" />
+                              </div>
+                              <span className="text-sm sm:text-base text-gray-700">{feature}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+
+                        <Link href="/contact" className="mt-auto">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 ${
+                            pkg.name === "Special"
+                              ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:shadow-xl hover:from-gray-900 hover:to-black"
+                              : hoveredCard === pkg.id
+                              ? `text-white bg-gradient-to-r ${getPackageColor(pkg, true)} shadow-lg`
+                              : "bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-xl"
+                          }`}
+                        >
+                          Get {pkg.name} Plan
+                        </motion.button>
+                        </Link>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Slide Indicators */}
+            <div className="flex justify-center items-center mt-8">
+              <div className="flex space-x-3">
+                {groupedPackages.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => goToSlide(index)}
+                    className={`h-3 rounded-full transition-all duration-300 ${
+                      currentSlide === index 
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 w-10' 
+                        : 'bg-gray-300 hover:bg-gray-400 w-3'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-32 px-6 sm:px-12 relative overflow-hidden">
         {/* Background Elements */}
