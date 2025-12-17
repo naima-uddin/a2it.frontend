@@ -325,8 +325,6 @@ export default function BlogDetails({ slug, initialBlog = null }) {
         )}
 
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <Breadcrumbs />
-
           {/* Back Button */}
           <div className="mb-12">
             <Link
@@ -386,12 +384,7 @@ export default function BlogDetails({ slug, initialBlog = null }) {
                     <div>
                       <p className="font-semibold text-white/95 text-lg">A2IT Ltd</p>
                       <p className="text-white/70 flex items-center gap-3 text-sm">
-                        <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
-                        })}</span>
-                        <span>•</span>
+
                         <span>{readingTime} min read</span>
                       </p>
                     </div>

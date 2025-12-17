@@ -934,27 +934,6 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-6 sm:py-8 border-t border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
-            <div className="text-xs sm:text-sm text-gray-500">
-              © {new Date().getFullYear()} Digital Portfolio. All rights reserved.
-            </div>
-            <div className="flex items-center gap-4 sm:gap-6">
-              {['Twitter', 'LinkedIn', 'Dribbble', 'GitHub'].map((platform) => (
-                <a
-                  key={platform}
-                  href="#"
-                  className="text-xs sm:text-sm text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  {platform}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
 
       {/* Project Modal */}
       {selectedProject && (

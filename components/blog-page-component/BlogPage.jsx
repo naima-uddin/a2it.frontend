@@ -192,6 +192,23 @@ export default function BlogPage({ initialBlogs = [] }) {
           <div className="w-px h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
         </div>
       </section>
+
+
+            {/* Hero Section */}
+      <section className="pt-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl text-center mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-1 leading-tight text-center">
+              <span className="text-blue-600">
+                Blog Showcase
+              </span>
+            </h1>
+            <p className="text-sm sm:text-sm text-gray-600 mb-8 sm:mb-12 max-w-5xl leading-relaxed text-center mx-auto">
+              Dive into our extensive collection of articles, reviews, and insights on the latest in technology, web development, eCommerce, and digital solutions. Stay informed and inspired with expert content tailored for developers, entrepreneurs, and tech enthusiasts alike.
+            </p>
+          </div>
+        </div>
+      </section>
     <div className="min-h-screen bg-white">
       {/* Category Filter */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-200">
