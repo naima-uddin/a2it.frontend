@@ -58,7 +58,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 3,
+        "id": 2,
         "title": "BestBuyersView – Discover, Compare & Pick the Best Products",
         "category": ["UI/UX Design", "Web Development", "Affiliate Platform", "E-commerce"],
         "type": "portfolio",
@@ -72,7 +72,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "title": "FinNess Trading Platform",
         "category": ["Web Development", "Affiliate Platform", "WordPress"],
         "type": "portfolio",
@@ -86,7 +86,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 5,
+        "id": 4,
         "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
         "category": ["E-commerce", "WordPress"],
         "type": "portfolio",
@@ -100,7 +100,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 10,
+        "id": 5,
         "title": "Commercial Tyre LLC – Bulk Tyre Sales & Management System",
         "category": ["Web Development", "Affiliate Platform", "E-commerce"],
         "type": "portfolio",
@@ -114,7 +114,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 11,
+        "id": 6,
         "title": "BestGearBuy – Affiliate Product Discovery Platform",
         "category": ["Affiliate Platform", "Web Development", "E-commerce"],
         "type": "portfolio",
@@ -128,7 +128,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 13,
+        "id": 7,
         "title": "Gym Equipment Tracker",
         "category": ["Mobile Development", "Web Development", "WordPress"],
         "type": "portfolio",
@@ -142,7 +142,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 15,
+        "id": 8,
         "title": "SwiftShip Tracking",
         "category": ["Mobile Development", "Web Development", "Logistics"],
         "type": "portfolio",
@@ -156,13 +156,13 @@ const portfolioData = {
         ]
       },
       {
-        "id": 16,
+        "id": 9,
         "title": "Jute Boutique",
         "category": ["WordPress", "E-commerce"],
         "type": "portfolio",
         "status": "live",
         "description": "A sustainable fashion e-commerce brand design system focused on jute-based products.",
-        "technologies": ["Figma", "Canva", "Adobe Creative Suite"],
+        "technologies": ["Figma", "WordPress", "Canva", "Adobe Creative Suite"],
         "image": "/assets/Portfolio/jute-1.avif",
         "performance": [
           { "label": "Brand Recognition", "value": "3X" },
@@ -170,7 +170,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 18,
+        "id": 10,
         "title": "Best E-bike Store",
         "category": ["E-commerce", "Affiliate Platform", "Web Development"],
         "type": "portfolio",
@@ -184,7 +184,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 20,
+        "id": 11,
         "title": "Asian Import Export Co.",
         "category": ["E-commerce Platform", "Web Development", "Affiliate Platform"],
         "type": "portfolio",
@@ -198,7 +198,7 @@ const portfolioData = {
         ]
       },
       {
-        "id": 21,
+        "id": 12,
         "title": "KitchenPro Supply",
         "category": ["WordPress"],
         "type": "portfolio",
@@ -315,17 +315,8 @@ const EcommercePage = () => {
   const ecommercePackages = pricingData.services.find(s => s.category === "E-Commerce")?.packages || [];
   const allProjects = portfolioData.portfolio.portfolioProjects;
   
-  // Filter e-commerce projects
-  const ecommerceProjects = allProjects.filter(project => {
-    const categories = Array.isArray(project.category) ? project.category : [project.category];
-    return categories.some(cat => 
-      cat.toLowerCase().includes('e-commerce') || 
-      cat.toLowerCase().includes('ecommerce') ||
-      cat.toLowerCase().includes('shopify') ||
-      cat.toLowerCase().includes('woocommerce') ||
-      cat.toLowerCase().includes('magento')
-    );
-  });
+  // Show all projects from portfolioProjects
+  const ecommerceProjects = allProjects;
   
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
@@ -1038,7 +1029,9 @@ const EcommercePage = () => {
                               ? `bg-gradient-to-r ${getPackageColor(pkg, true)}` 
                               : `bg-gradient-to-r ${getPackageColor(pkg)}`
                           }`}>
-                            {getIconForPackage(pkg.name)}
+                            <div className={pkg.name === "Starter" ? "text-white" : ""}>
+                              {getIconForPackage(pkg.name)}
+                            </div>
                           </div>
                           <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.name}</h3>
                           <div className="text-3xl sm:text-4xl font-bold mb-2">
