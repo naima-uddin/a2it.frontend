@@ -1,4 +1,4 @@
-import ServiceERP from "@/components/ServicePage/erp/ServiceERP";
+import ServiceERP from "@/components/ServicePage/ServiceERP";
 import React from "react";
 
 // 🔹 SEO metadata for ERP Services

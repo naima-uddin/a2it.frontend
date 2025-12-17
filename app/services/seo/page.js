@@ -1,4 +1,4 @@
-import DigitalMarketingServices from "@/components/ServicePage/SEO-SEM-PPC/DigitalMarketingServices";
+import SEOSRMPPC from "@/components/ServicePage/SEO-SEM-PPC/SEO_";
 import React from "react";
 
 // 🔹 SEO metadata for Digital Marketing Services
@@ -46,7 +46,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <DigitalMarketingServices />
+      <SEOSRMPPC />
 
       {/* 🔹 Schema Markup for Digital Marketing Services */}
       <script
