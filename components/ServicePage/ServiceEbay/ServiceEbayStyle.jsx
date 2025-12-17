@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiArrowRight,
   FiCheck,
@@ -12,11 +12,93 @@ import {
   FiTrendingUp,
   FiGlobe,
   FiStar,
-  FiChevronRight
+  FiChevronRight,
+  FiArrowLeft,
+  FiPackage,
+  FiTool,
+  FiTag,
+  FiCheckCircle,
 } from "react-icons/fi";
 import Link from "next/link";
 
 const EcommerceServicePage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const [pricingPackages, setPricingPackages] = useState([]);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    fetch('/pricing-data.json')
+      .then(res => res.json())
+      .then(data => {
+        const ebayService = data.services.find(s => s.category === 'E-bay Services');
+        if (ebayService) {
+          setPricingPackages(ebayService.packages);
+        }
+      })
+      .catch(err => console.error('Error loading pricing data:', err));
+  }, []);
+
+  // Group packages based on screen size
+  const getPackagesPerSlide = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 1024) return 2;
+    return 3;
+  };
+
+  const packagesPerSlide = getPackagesPerSlide();
+  const groupedPackages = [];
+  for (let i = 0; i < pricingPackages.length; i += packagesPerSlide) {
+    groupedPackages.push(pricingPackages.slice(i, i + packagesPerSlide));
+  }
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % groupedPackages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + groupedPackages.length) % groupedPackages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const getIconForPackage = (name) => {
+    switch (name) {
+      case "Special":
+        return <FiPackage className="text-xl sm:text-2xl" />;
+      case "Plus":
+        return <FiStar className="text-xl sm:text-2xl text-white" />;
+      case "Gold":
+        return <FiTool className="text-xl sm:text-2xl text-blue-600" />;
+      default:
+        return <FiShoppingBag className="text-xl sm:text-2xl text-blue-600" />;
+    }
+  };
+
+  const getPackageColor = (pkg, isHovered = false) => {
+    if (pkg.name === "Special") {
+      return isHovered ? "from-gray-700 to-gray-900" : "from-gray-600 to-gray-800";
+    }
+    return isHovered ? "from-blue-700 to-cyan-700" : "from-blue-600 to-cyan-600";
+  };
+
+  const getCardBackground = (pkg) => {
+    if (pkg.name === "Special") {
+      return "bg-gradient-to-br from-gray-50 to-gray-100";
+    }
+    if (pkg.name === "Plus") {
+      return "bg-gradient-to-br from-blue-50 to-cyan-50";
+    }
+    return "bg-white";
+  };
   return (
     <div className="bg-white text-gray-800 overflow-hidden relative">
       {/* Background Pattern */}
