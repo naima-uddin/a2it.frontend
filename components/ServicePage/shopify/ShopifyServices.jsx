@@ -31,12 +31,16 @@ import {
   FiGrid,
   FiFilter,
   FiStar,
-  FiTruck as FiShipping,
-  FiRefreshCw,
   FiShoppingCart as FiCart,
   FiHexagon,
   FiHeadphones,
+  FiDollarSign,
   FiArrowRight as FiArrowRightIcon,
+  FiChevronRight,
+  FiPlay,
+  FiClock,
+  FiUsers as FiUsersIcon,
+  FiBarChart,
 } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
@@ -181,48 +185,6 @@ const portfolioData = {
           { "label": "International Customer Growth", "value": "120%" },
           { "label": "Conversion Rate Increase", "value": "30%" }
         ]
-      },
-      {
-        "id": 10,
-        "title": "Commercial Tyre LLC – Bulk Tyre Sales & Management System",
-        "category": ["Web Development", "Affiliate Platform", "E-commerce"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
-        "technologies": ["Inventory Management System", "Order Processing", "Payment Gateway Integration", "Logistics Management", "Customer Relationship Management"],
-        "image": "/assets/Portfolio/c-tire.png",
-        "performance": [
-          { "label": "Organic Traffic", "value": "2X" },
-          { "label": "Return on Ad Spend", "value": "5X" }
-        ]
-      },
-      {
-        "id": 18,
-        "title": "Best E-bike Store",
-        "category": ["E-commerce", "Affiliate Platform", "Web Development"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
-        "technologies": ["WooCommerce", "React", "WordPress", "Stripe"],
-        "image": "/assets/Portfolio/bestbikereview-2.png",
-        "performance": [
-          { "label": "Monthly Sales", "value": "$150K+" },
-          { "label": "Conversion Rate", "value": "3.8%" }
-        ]
-      },
-      {
-        "id": 21,
-        "title": "KitchenPro Supply",
-        "category": ["WordPress"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
-        "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
-        "image": "/assets/Portfolio/kitchenpro-supply.png",
-        "performance": [
-          { "label": "Order Processing Speed", "value": "50% faster" },
-          { "label": "Inventory Accuracy", "value": "99.8%" }
-        ]
       }
     ]
   }
@@ -243,16 +205,16 @@ const ShopifyServices = () => {
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [currentProduct, setCurrentProduct] = useState(0);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const [activeTab, setActiveTab] = useState("design");
   
-  // Shopify services cards (from your first component)
+  // Shopify services cards
   const shopifyServices = [
     {
       title: "Store Development",
       description: "Custom, high-converting Shopify stores built for your business",
       icon: <FiShoppingCart className="text-3xl" />,
-      color: "from-[#7E6BF0] to-[#5A45EF]",
+      color: "from-blue-500 to-indigo-600",
       features: [
         "Custom theme development",
         "Mobile-optimized design",
@@ -264,7 +226,7 @@ const ShopifyServices = () => {
       title: "Platform Migration",
       description: "Seamless transition from other platforms to Shopify",
       icon: <FiServer className="text-3xl" />,
-      color: "from-[#00D2AA] to-[#00B393]",
+      color: "from-emerald-500 to-teal-600",
       features: [
         "Data migration",
         "SEO preservation",
@@ -276,7 +238,7 @@ const ShopifyServices = () => {
       title: "App Development",
       description: "Custom apps to extend your store's functionality",
       icon: <FiCpu className="text-3xl" />,
-      color: "from-[#4C8BF5] to-[#3B78E7]",
+      color: "from-violet-500 to-purple-600",
       features: [
         "Custom app development",
         "Private app creation",
@@ -288,7 +250,7 @@ const ShopifyServices = () => {
       title: "Marketing & SEO",
       description: "Drive traffic and increase conversions",
       icon: <FiTrendingUp className="text-3xl" />,
-      color: "from-[#FF6B8B] to-[#F45A78]",
+      color: "from-rose-500 to-pink-600",
       features: [
         "SEO optimization",
         "Conversion rate optimization",
@@ -300,7 +262,7 @@ const ShopifyServices = () => {
       title: "Maintenance & Support",
       description: "Ongoing care for your Shopify store",
       icon: <FiHeadphones className="text-3xl" />,
-      color: "from-[#A56EF0] to-[#8D54E8]",
+      color: "from-amber-500 to-orange-600",
       features: [
         "Regular updates",
         "Security monitoring",
@@ -308,58 +270,6 @@ const ShopifyServices = () => {
         "Backup solutions"
       ]
     }
-  ];
-
-  const successStories = [
-    {
-      title: "Fashion Retailer Transformation",
-      metrics: "68% faster load times, 42% increase in mobile conversions",
-      result: "$1.2M increased annual revenue",
-      image: "/assets/BlogImg/1.avif"
-    },
-    {
-      title: "Health Supplement Store",
-      metrics: "83% subscription retention, 57% more repeat customers",
-      result: "3.2x ROI within first year",
-      image: "/assets/BlogImg/1.avif"
-    },
-    {
-      title: "Home Decor Brand",
-      metrics: "2.5x traffic growth, 40% higher conversion rate",
-      result: "$850K in first 6 months",
-      image: "/assets/BlogImg/1.avif"
-    }
-  ];
-
-  // Sample products for store preview
-  const products = [
-    { 
-      id: 1, 
-      name: "KitchenPro Supply",  
-      category: "E-commerce", 
-      rating: 4.9,
-      description: "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
-      "image": "/assets/Portfolio/kitchenpro-supply.png",
-      badge: "live"
-    },
-    { 
-      id: 2, 
-      name: "JuteCraftify", 
-      category: "E-commerce", 
-      rating: 4.8,
-      description: "Sustainable jute e-commerce platform with international shipping.",
-      image: "/assets/Portfolio/jutecraftify-1.png",
-      badge: "Live"
-    },
-    { 
-      id: 3, 
-      name: "BestBuyersView", 
-      category: "Affiliate Platform", 
-      rating: 4.9,
-      description: "Affiliate product review and comparison platform.",
-      image: "/assets/Portfolio/bestbuyersview-1.png",
-      badge: "Affiliate Platform"
-    },
   ];
 
   // Responsive slides per view
@@ -400,14 +310,6 @@ const ShopifyServices = () => {
   for (let i = 0; i < shopifyProjects.length; i += projectsPerView) {
     groupedProjects.push(shopifyProjects.slice(i, i + projectsPerView));
   }
-
-  // Auto rotate products
-  useEffect(() => {
-    const productInterval = setInterval(() => {
-      setCurrentProduct((prev) => (prev + 1) % products.length);
-    }, 4000);
-    return () => clearInterval(productInterval);
-  }, [products.length]);
   
   // Reset slides when grouping changes
   useEffect(() => {
@@ -468,71 +370,71 @@ const ShopifyServices = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white via-gray-50 to-white text-gray-800 overflow-hidden">
-      {/* **Hero Section** */}
+    <div className="bg-white text-gray-800 overflow-hidden">
+      {/* **Hero Section - Completely Redesigned** */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/assets/eCommerce/banner.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/assets/shopify/shopify.png')] bg-cover bg-center bg-no-repeat"></div>
+          {/* Dark overlay for better text contrast */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
+          {/* Light gradient from bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent"></div>
+        </div>
+
+        {/* Geometric Overlay */}
+        <div className="absolute inset-0 hidden lg:block opacity-20">
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-yellow-400 rotate-45 animate-pulse"></div>
+          <div className="absolute bottom-40 left-32 w-40 h-40 border border-blue-400 rotate-12"></div>
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-indigo-400 -rotate-12"></div>
         </div>
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white font-medium mb-6 rounded-full text-sm shadow-lg"
-              >
-                <FiHexagon className="mr-2" />
-                SHOPIFY EXPERTS
-              </motion.div>
+
               
-              <h1 className="text-3xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-tight text-white">
-                Elevate Your{" "}
-                <span className="relative">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]">
-                    Shopify Experience
-                  </span>
-                  <motion.div
-                    animate={{ width: ["0%", "100%", "0%"] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute bottom-2 left-0 h-1 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]"
-                  />
-                </span>{" "}
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-100 to-indigo-200">
+                  Transform Your
+                </span>
+                <br />
+                <span className="text-white">
+                  Shopify Vision
+                </span>
               </h1>
               
+              {/* Subheading */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-lg sm:text-xl text-gray-100 max-w-2xl mb-8 leading-relaxed"
+                className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed"
               >
-                Professional Shopify development with proven results. From concept to launch, we build stores that convert visitors into customers.
+                We craft high-converting Shopify stores that deliver exceptional user experiences and drive sustainable growth for your business.
               </motion.p>
               
+              {/* CTA Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-col sm:flex-row flex-wrap gap-4"
+                className="flex flex-col sm:flex-row flex-wrap gap-4 mb-12"
               >
                 <Link
                   href="/contact"
-                  className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-2xl hover:shadow-[#7E6BF0]/50 transition-all duration-300 text-sm sm:text-base"
+                  className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-xl hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
                 >
-                  <span className="relative z-10 flex items-center">
-                    <FiShoppingCart className="mr-2" />
-                    Start Your Store
+                  <span className="relative z-10 flex items-center gap-2">
+                    Start Your Project
+                    <FiChevronRight className="transition-transform group-hover:translate-x-1" />
                   </span>
                   <motion.div
                     initial={{ x: "-100%", y: "100%" }}
@@ -544,10 +446,11 @@ const ShopifyServices = () => {
                 
                 <Link
                   href="#portfolio"
-                  className="group inline-flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
+                  className="group inline-flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold py-3 px-8 rounded-xl transition-all duration-300"
                 >
-                  <span className="group-hover:scale-110 transition-transform duration-300">
-                    View Our Work
+                  <span className="flex items-center gap-2">
+                    <FiPlay className="text-sm" />
+                    View Demo
                   </span>
                 </Link>
               </motion.div>
@@ -557,120 +460,155 @@ const ShopifyServices = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="mt-12 grid grid-cols-3 gap-4 sm:gap-6"
+                className="grid grid-cols-3 gap-4"
               >
                 {[
-                  { value: "50K+", label: "Monthly Sales", color: "text-yellow-300" },
-                  { value: "4.8⭐", label: "Avg. Rating", color: "text-orange-300" },
-                  { value: "99.9%", label: "Uptime", color: "text-green-300" },
+                  { value: "150+", label: "Stores Built", icon: <FiShoppingBag />, color: "text-blue-300" },
+                  { value: "98%", label: "Client Satisfaction", icon: <FiStar />, color: "text-amber-300" },
+                  { value: "24/7", label: "Support", icon: <FiHeadphones />, color: "text-emerald-300" },
                 ].map((stat, index) => (
-                  <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/20">
-                    <div className={`text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-gray-200">{stat.label}</div>
+                  <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                    <div className={`text-xl sm:text-2xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>
             </motion.div>
 
-            {/* Store Preview */}
+            {/* Right Side - Interactive Dashboard */}
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.9 }}
+              initial={{ opacity: 0, x: 40, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative hidden lg:block"
+              className="relative"
             >
-              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-8 border-white">
-                <div className="bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] p-4">
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/20">
+                {/* Dashboard Header */}
+                <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-white text-sm font-medium ml-2">Shopify Store Demo</span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <FiShoppingCart className="text-white text-lg" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-gray-900">Shopify Dashboard</h3>
+                        <p className="text-sm text-gray-600">Real-time Analytics</p>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-4">
-                      <FiShoppingCart className="text-white/80 text-lg" />
-                      <FiUser className="text-white/80 text-lg" />
-                      <FiSearch className="text-white/80 text-lg" />
+                    <div className="flex gap-2">
+                      {["design", "analytics", "sales"].map((tab) => (
+                        <button
+                          key={tab}
+                          onClick={() => setActiveTab(tab)}
+                          className={`px-3 py-1 text-sm rounded-lg transition-all ${activeTab === tab ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100'}`}
+                        >
+                          {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
                 
+                {/* Dashboard Content */}
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-bold text-gray-800">Featured Projects</h3>
-                    <div className="flex space-x-2">
-                      {products.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentProduct(idx)}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            currentProduct === idx ? 'bg-[#7E6BF0] w-6' : 'bg-gray-300'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  
                   <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentProduct}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.4 }}
-                      className="group bg-white rounded-2xl border-2 border-gray-200 overflow-hidden hover:border-[#7E6BF0] hover:shadow-2xl transition-all duration-300"
-                    >
-                      <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                        <Image
-                          src={products[currentProduct].image}
-                          alt={products[currentProduct].name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                          unoptimized
-                          sizes="(max-width: 768px) 100vw, 400px"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                        
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                          {products[currentProduct].badge}
+                    {activeTab === "design" && (
+                      <motion.div
+                        key="design"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="space-y-6"
+                      >
+                        {/* Stats Row */}
+                        <div className="grid grid-cols-3 gap-4">
+                          {[
+                            { label: "Conversion", value: "+42%", color: "text-emerald-600" },
+                            { label: "Traffic", value: "+68%", color: "text-blue-600" },
+                            { label: "Revenue", value: "+89%", color: "text-purple-600" },
+                          ].map((stat, idx) => (
+                            <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                              <div className="text-sm text-gray-600">{stat.label}</div>
+                              <div className={`text-lg font-bold ${stat.color}`}>{stat.value}</div>
+                            </div>
+                          ))}
                         </div>
                         
-                        <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg">
-                          <span className="text-2xl font-bold bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] bg-clip-text text-transparent">
-                            Shopify
-                          </span>
+                        {/* Progress Bars */}
+                        <div className="space-y-4">
+                          {[
+                            { label: "Mobile Optimization", value: 95, color: "bg-blue-500" },
+                            { label: "Page Speed", value: 92, color: "bg-emerald-500" },
+                            { label: "SEO Score", value: 88, color: "bg-purple-500" },
+                          ].map((item, idx) => (
+                            <div key={idx}>
+                              <div className="flex justify-between text-sm mb-1">
+                                <span className="text-gray-700">{item.label}</span>
+                                <span className="font-medium">{item.value}%</span>
+                              </div>
+                              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${item.value}%` }}
+                                  transition={{ duration: 1, delay: idx * 0.2 }}
+                                  className={`h-full ${item.color} rounded-full`}
+                                />
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      </div>
-                      
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="inline-flex items-center px-3 py-1 bg-[#7E6BF0]/10 text-[#7E6BF0] text-xs font-semibold rounded-full">
-                            {products[currentProduct].category}
-                          </span>
-                          <div className="flex items-center space-x-1">
-                            <FiStar className="text-amber-500 text-sm fill-current" />
-                            <span className="text-sm font-bold text-gray-900">{products[currentProduct].rating}</span>
+                      </motion.div>
+                    )}
+                    
+                    {activeTab === "analytics" && (
+                      <motion.div
+                        key="analytics"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="space-y-6"
+                      >
+                        <div className="h-48 flex items-end gap-1">
+                          {[30, 45, 60, 75, 65, 80, 90, 75, 85, 70, 65, 95].map((height, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${height}%` }}
+                              transition={{ duration: 1, delay: i * 0.1 }}
+                              className="flex-1 bg-gradient-to-t from-blue-500 to-indigo-400 rounded-t"
+                            />
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                    
+                    {activeTab === "sales" && (
+                      <motion.div
+                        key="sales"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="space-y-6"
+                      >
+                        <div className="text-center py-8">
+                          <div className="text-4xl font-bold text-gray-900 mb-2">$25,480</div>
+                          <div className="text-sm text-gray-600">Monthly Revenue</div>
+                          <div className="inline-flex items-center gap-1 mt-2 px-3 py-1 bg-emerald-50 text-emerald-700 text-sm rounded-full">
+                            <FiTrendingUp className="text-xs" />
+                            +24.5% from last month
                           </div>
                         </div>
-                        
-                        <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#7E6BF0] transition-colors">
-                          {products[currentProduct].name}
-                        </h4>
-                        
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {products[currentProduct].description}
-                        </p>
-                      </div>
-                    </motion.div>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </div>
               </div>
               
+              {/* Floating Elements */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] rounded-2xl flex items-center justify-center text-white shadow-xl"
+                className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl"
               >
                 <FiTag className="text-xl" />
               </motion.div>
@@ -678,11 +616,19 @@ const ShopifyServices = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-[#00D2AA] to-[#00B393] rounded-full flex items-center justify-center text-white shadow-xl"
+                className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full flex items-center justify-center text-white shadow-xl"
               >
                 <FiCheckCircle className="text-lg" />
               </motion.div>
             </motion.div>
+          </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="flex flex-col items-center">
+            <span className="text-sm text-white mb-2">Scroll to explore</span>
+            <div className="w-px h-8 bg-gradient-to-b from-white to-transparent"></div>
           </div>
         </div>
       </section>
@@ -749,7 +695,7 @@ const ShopifyServices = () => {
       </section>
 
       {/* **Shopify Projects Section** */}
-      <section id="portfolio" className="py-10 px-6 sm:px-12 bg-white">
+      <section id="portfolio" className="py-20 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -758,22 +704,22 @@ const ShopifyServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiGrid className="text-2xl text-white" />
             </div>
-            <span className="text-[#7E6BF0] font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               OUR SHOPIFY PORTFOLIO
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Successful{" "}
               <span className="relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                   Shopify Projects
                 </span>
                 <motion.div
                   animate={{ width: ["0%", "100%", "0%"] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-400"
                 />
               </span>
             </h2>
@@ -789,7 +735,7 @@ const ShopifyServices = () => {
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={prevProjectSlide}
-                className="p-4 rounded-full bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] hover:from-[#6A5BD0] hover:to-[#4A3BCF] shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
               >
                 <FiArrowLeft className="text-xl" />
               </motion.button>
@@ -798,7 +744,7 @@ const ShopifyServices = () => {
                 whileHover={{ scale: 1.1, x: 5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={nextProjectSlide}
-                className="p-4 rounded-full bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] hover:from-[#6A5BD0] hover:to-[#4A3BCF] shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
               >
                 <FiArrowRight className="text-xl" />
               </motion.button>
@@ -830,7 +776,7 @@ const ShopifyServices = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#7E6BF0] transition-all duration-300 hover:shadow-xl flex flex-col h-full"
+                    className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
                   >
                     <div className="relative h-56 overflow-hidden flex-shrink-0">
                       <Image
@@ -843,7 +789,7 @@ const ShopifyServices = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                       
                       <div className="absolute top-4 left-4 z-20">
-                        <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white text-xs rounded-full">
+                        <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
                           <FiCheckCircle className="mr-1 text-xs" />
                           {project.status}
                         </span>
@@ -859,7 +805,7 @@ const ShopifyServices = () => {
                     </div>
                     
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#7E6BF0] transition-colors line-clamp-2 min-h-[3.5rem]">
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 min-h-[3.5rem]">
                         {project.title.split("–")[0].trim()}
                       </h3>
                       
@@ -869,7 +815,7 @@ const ShopifyServices = () => {
                       
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.technologies.slice(0, 3).map((tech, idx) => (
-                          <span key={idx} className="px-2 py-1 bg-[#7E6BF0]/10 text-[#7E6BF0] text-xs rounded">
+                          <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
                             {tech}
                           </span>
                         ))}
@@ -882,15 +828,15 @@ const ShopifyServices = () => {
                       
                       <div className="grid grid-cols-2 gap-3 mt-auto">
                         {project.performance.slice(0, 2).map((stat, idx) => (
-                          <div key={idx} className="text-center p-3 bg-gradient-to-br from-[#7E6BF0]/10 to-[#5A45EF]/10 rounded-lg border border-[#7E6BF0]/20">
-                            <div className="text-base font-bold text-[#7E6BF0] truncate">{stat.value}</div>
+                          <div key={idx} className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+                            <div className="text-base font-bold text-blue-700 truncate">{stat.value}</div>
                             <div className="text-xs text-gray-600 truncate mt-1">{stat.label}</div>
                           </div>
                         ))}
                       </div>
                     </div>
                     
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#7E6BF0]/5 to-[#5A45EF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -909,7 +855,7 @@ const ShopifyServices = () => {
                     onClick={() => goToProjectSlide(index)}
                     className={`h-3 rounded-full transition-all duration-300 ${
                       currentProjectSlide === index 
-                        ? 'bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] w-10' 
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-10' 
                         : 'bg-gray-300 hover:bg-gray-400 w-3'
                     }`}
                   />
@@ -927,7 +873,7 @@ const ShopifyServices = () => {
           >
             <Link
               href="/portfolio"
-              className="inline-flex items-center border-2 border-[#7E6BF0] text-[#7E6BF0] hover:bg-[#7E6BF0]/10 font-semibold py-3 px-8 rounded-xl transition-all duration-300 group"
+              className="inline-flex items-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 group"
             >
               <span className="mr-2">View All Projects</span>
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -946,37 +892,38 @@ const ShopifyServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
-            <span className="text-[#7E6BF0] font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Choose Your{" "}
               <span className="relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]">
-                  Shopify Plan
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Perfect Plan
                 </span>
                 <motion.div
                   animate={{ width: ["0%", "100%", "0%"] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]"
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-400"
                 />
               </span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Scale your Shopify store with our flexible pricing. Start small, grow big.
+              Scale your business with our flexible pricing. Start small, grow big.
             </p>
           </motion.div>
 
           <div className="relative">
+            {/* Navigation Arrows - Top */}
             <div className="flex justify-end items-center gap-4 mb-8">
               <motion.button
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={prevSlide}
-                className="p-4 rounded-full bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] hover:from-[#6A5BD0] hover:to-[#4A3BCF] shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
               >
                 <FiArrowLeft className="text-xl" />
               </motion.button>
@@ -985,12 +932,13 @@ const ShopifyServices = () => {
                 whileHover={{ scale: 1.1, x: 5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={nextSlide}
-                className="p-4 rounded-full bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] hover:from-[#6A5BD0] hover:to-[#4A3BCF] shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
               >
                 <FiArrowRight className="text-xl" />
               </motion.button>
             </div>
 
+            {/* Pricing Cards */}
             <div className="overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -1017,41 +965,46 @@ const ShopifyServices = () => {
                       onMouseLeave={() => setHoveredCard(null)}
                       className={`relative rounded-3xl overflow-hidden transition-all duration-500 flex flex-col h-full ${getCardBackground(pkg)} border-2 ${
                         hoveredCard === pkg.id 
-                          ? 'border-[#7E6BF0] shadow-2xl scale-[1.02]' 
+                          ? 'border-blue-400 shadow-2xl scale-[1.02]' 
                           : 'border-gray-100 shadow-xl hover:shadow-2xl'
                       }`}
                     >
+                      {/* Ribbon for Professional Plan */}
                       {pkg.name === "Gold" && (
-                        <div className="absolute top-6 -right-10 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-white px-10 py-1 rotate-45 shadow-lg z-10">
+                        <div className="absolute top-6 -right-10 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-white px-10 py-1 rotate-45 shadow-lg z-10">
                           <span className="text-xs sm:text-sm font-bold">MOST POPULAR</span>
                         </div>
                       )}
                       
+                      {/* Unique styling for Starter */}
                       {pkg.name === "Special" && (
                         <div className="absolute top-6 -right-10 bg-gradient-to-r from-gray-700 to-gray-900 text-white px-10 py-1 rotate-45 shadow-lg z-10">
                           <span className="text-xs sm:text-sm font-bold">BEST VALUE</span>
                         </div>
                       )}
                       
+                      {/* Card Content */}
                       <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                        {/* Header */}
                         <div className="text-center mb-6 sm:mb-8">
                           <div className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl mb-4 ${
                             hoveredCard === pkg.id 
                               ? `bg-gradient-to-r ${getPackageColor(pkg, true)}` 
                               : `bg-gradient-to-r ${getPackageColor(pkg)}`
                           }`}>
-                            <div className={pkg.name === "Special" ? "text-white" : "text-white"}>
+                            <div className={pkg.name === "Special" ? "text-white" : ""}>
                               {getIconForPackage(pkg.name)}
                             </div>
                           </div>
                           <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.name}</h3>
                           <div className="text-3xl sm:text-4xl font-bold mb-2">
-                            <span className={pkg.name === "Special" ? "text-gray-900" : "text-[#7E6BF0]"}>{pkg.price}</span>
+                            <span className={pkg.name === "Special" ? "text-gray-900" : "text-blue-900"}>{pkg.price}</span>
                             <span className="text-gray-500 text-base sm:text-lg">/one-time</span>
                           </div>
                           <div className="text-sm sm:text-base text-gray-600">Perfect for {pkg.name === "Special" ? "startups" : pkg.name === "Diamond" ? "enterprises" : "growing businesses"}</div>
                         </div>
 
+                        {/* Features */}
                         <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
                           {pkg.features.map((feature, idx) => (
                             <motion.li
@@ -1062,7 +1015,7 @@ const ShopifyServices = () => {
                               className="flex items-start"
                             >
                               <div className={`mt-1 mr-3 flex-shrink-0 ${
-                                pkg.name === "Special" ? "text-gray-700" : "text-[#7E6BF0]"
+                                pkg.name === "Special" ? "text-gray-700" : "text-blue-500"
                               }`}>
                                 <FiCheckCircle className="text-base sm:text-lg" />
                               </div>
@@ -1071,6 +1024,7 @@ const ShopifyServices = () => {
                           ))}
                         </ul>
 
+                        {/* CTA Button */}
                         <Link href="/contact" className="mt-auto">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
@@ -1080,7 +1034,7 @@ const ShopifyServices = () => {
                               ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:shadow-xl hover:from-gray-900 hover:to-black"
                               : hoveredCard === pkg.id
                               ? `text-white bg-gradient-to-r ${getPackageColor(pkg, true)} shadow-lg`
-                              : "bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white hover:shadow-xl"
+                              : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-xl"
                           }`}
                         >
                           Get {pkg.name} Plan
@@ -1093,6 +1047,7 @@ const ShopifyServices = () => {
               </AnimatePresence>
             </div>
 
+            {/* Slide Indicators - Below Cards */}
             <div className="flex justify-center items-center mt-8">
               <div className="flex space-x-3">
                 {groupedPackages.map((_, index) => (
@@ -1103,101 +1058,17 @@ const ShopifyServices = () => {
                     onClick={() => goToSlide(index)}
                     className={`h-3 rounded-full transition-all duration-300 ${
                       currentSlide === index 
-                        ? 'bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] w-10' 
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-10' 
                         : 'bg-gray-300 hover:bg-gray-400 w-3'
                     }`}
                   />
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
-
-      {/* **Process Section** */}
-      <section className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50 relative">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="text-[#00D2AA] font-semibold tracking-widest text-sm uppercase">
-              Our Process
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
-              How We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2AA] to-[#00B393]">Build Success</span>
-            </h2>
-          </motion.div>
-
-          <div className="relative">
-            <div className="absolute left-7 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#7E6BF0] via-[#00D2AA] to-[#4C8BF5] opacity-30"></div>
-            
-            {[
-              {
-                step: "Discovery",
-                description: "We dive deep into your business goals, target audience, and requirements to create a tailored strategy.",
-                icon: <FiTarget className="text-xl" />
-              },
-              {
-                step: "Design",
-                description: "Our designers create a stunning, user-friendly interface that reflects your brand and converts visitors.",
-                icon: <FiLayers className="text-xl" />
-              },
-              {
-                step: "Development",
-                description: "We build your store with clean code, optimized performance, and seamless functionality.",
-                icon: <FiCpu className="text-xl" />
-              },
-              {
-                step: "Testing",
-                description: "Rigorous testing ensures your store works perfectly across all devices and browsers.",
-                icon: <FiCheckCircle className="text-xl" />
-              },
-              {
-                step: "Launch",
-                description: "We handle the entire launch process and ensure a smooth transition to your new store.",
-                icon: <FiTrendingUp className="text-xl" />
-              },
-              {
-                step: "Support",
-                description: "Ongoing maintenance and support to keep your store running at peak performance.",
-                icon: <FiHeadphones className="text-xl" />
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-start mb-12 last:mb-0"
-              >
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#7E6BF0] to-[#5A45EF] flex items-center justify-center text-white font-bold text-lg mr-6">
-                    {index + 1}
-                  </div>
-                  {index < 5 && (
-                    <div className="absolute left-7 top-14 w-0.5 h-12 bg-gradient-to-b from-[#7E6BF0] to-[#00D2AA] opacity-50"></div>
-                  )}
-                </div>
-                <div className="flex-1 pt-2">
-                  <div className="flex items-center mb-2">
-                    <div className="w-8 h-8 bg-[#7E6BF0] bg-opacity-10 rounded-full flex items-center justify-center text-[#7E6BF0] mr-3">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900">{item.step}</h3>
-                  </div>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       {/* **FAQ Section** */}
       <section className="py-20 px-6 sm:px-12 bg-white">
@@ -1209,15 +1080,15 @@ const ShopifyServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiBox className="text-2xl text-white" />
             </div>
-            <span className="text-[#7E6BF0] font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               QUESTIONS & ANSWERS
             </span>
             <h2 className="text-4xl font-bold mb-6">
               Frequently Asked{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 Questions
               </span>
             </h2>
@@ -1233,7 +1104,7 @@ const ShopifyServices = () => {
                 answer: "Typical timeline: Special (2-3 weeks), Plus (3-4 weeks), Gold (4-6 weeks), Platinum (6-8 weeks), The Boss (8-10 weeks), Diamond (10-12 weeks). Timeline depends on features, integrations, and customizations required."
               },
               {
-                question: "Do you provide ongoing Shopify maintenance and support?",
+                question: "Do you provide ongoing maintenance and support?",
                 answer: "Yes, all plans include dedicated support. We offer 24/7 monitoring, regular updates, security patches, and performance optimization. Extended support contracts available for enterprise clients."
               },
               {
@@ -1241,15 +1112,15 @@ const ShopifyServices = () => {
                 answer: "Absolutely! We provide free migration services for all data (products, customers, orders). Our team ensures zero downtime and complete data integrity throughout the migration process."
               },
               {
-                question: "What payment gateways do you support on Shopify?",
-                answer: "We integrate with 50+ payment gateways including Shopify Payments, Stripe, PayPal, Square, Razorpay, and local payment methods. Enterprise plans include custom gateway integrations."
+                question: "What payment gateways do you support?",
+                answer: "We integrate with 50+ payment gateways including Stripe, PayPal, Square, Razorpay, and local payment methods. Enterprise plans include custom gateway integrations, white-label solutions, and multi-currency support."
               },
               {
                 question: "Is SEO included in your Shopify packages?",
-                answer: "Yes, all packages include basic SEO optimization. Gold and higher packages include advanced SEO, schema markup, performance optimization, and ongoing SEO strategy implementation."
+                answer: "Yes, all packages include basic SEO optimization. Professional and higher packages include advanced SEO, schema markup, performance optimization, and ongoing SEO strategy implementation."
               },
               {
-                question: "Can I upgrade my Shopify plan later?",
+                question: "Can I upgrade my plan later?",
                 answer: "Yes, you can upgrade anytime. We offer seamless migration between plans with prorated billing. Downgrades are available at the end of your billing cycle."
               }
             ].map((faq, index) => (
@@ -1261,7 +1132,7 @@ const ShopifyServices = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`rounded-2xl border-2 overflow-hidden transition-all duration-300 ${
                   activeAccordion === index 
-                    ? 'border-[#7E6BF0] shadow-lg' 
+                    ? 'border-blue-400 shadow-lg' 
                     : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
@@ -1272,8 +1143,8 @@ const ShopifyServices = () => {
                   <div className="flex items-center flex-1 pr-4">
                     <div className={`w-8 h-8 rounded-lg mr-3 sm:mr-4 flex items-center justify-center flex-shrink-0 ${
                       activeAccordion === index
-                        ? 'bg-gradient-to-r from-[#7E6BF0] to-[#5A45EF] text-white'
-                        : 'bg-[#7E6BF0]/10 text-[#7E6BF0]'
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white'
+                        : 'bg-blue-100 text-blue-600'
                     }`}>
                       {index + 1}
                     </div>
@@ -1313,7 +1184,7 @@ const ShopifyServices = () => {
 
       {/* **Final CTA** */}
       <section className="py-20 px-6 sm:px-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#7E6BF0] via-[#5A45EF] to-[#4A3BCF]">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         </div>
@@ -1349,7 +1220,7 @@ const ShopifyServices = () => {
           >
             <Link
               href="/contact"
-              className="group relative overflow-hidden inline-flex items-center bg-white text-[#7E6BF0] hover:text-[#5A45EF] font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto justify-center"
+              className="group relative overflow-hidden inline-flex items-center bg-white text-blue-600 hover:text-blue-700 font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl w-full sm:w-auto justify-center"
             >
               <span className="relative z-10 flex items-center">
                 <FiShoppingCart className="mr-2 group-hover:rotate-12 transition-transform" />
@@ -1359,7 +1230,7 @@ const ShopifyServices = () => {
                 initial={{ x: "-100%", y: "100%" }}
                 whileHover={{ x: "100%", y: "-100%" }}
                 transition={{ duration: 0.6 }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-[#7E6BF0]/10 to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50 to-transparent"
               />
             </Link>
             
@@ -1399,24 +1270,5 @@ const ShopifyServices = () => {
     </div>
   );
 };
-
-// Helper components
-const FiUser = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-  </svg>
-);
-
-const FiSearch = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-  </svg>
-);
-
-const FiDollarSign = ({ className }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-  </svg>
-);
 
 export default ShopifyServices;
