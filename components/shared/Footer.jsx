@@ -7,14 +7,14 @@ const Footer = () => {
   const [showAllServices, setShowAllServices] = useState(false);
   
   const services = [
-    "Design & Development",
-    "E-Commerce",
-    "Amazon",
-    "Shopify",
-    "ERP System Development",
-    "SEO / SEM / PPC",
-    "Server and Hosting Services",
-    "E-bay"
+    { name: "Design & Development", url: "/services/design-development" },
+    { name: "E-Commerce", url: "/services/e-commerce" },
+    { name: "Amazon", url: "/services/amazon" },
+    { name: "Shopify", url: "/services/shopify" },
+    { name: "ERP System Development", url: "/services/erp" },
+    { name: "SEO / SEM / PPC", url: "/services/seo" },
+    { name: "Server and Hosting Services", url: "/services/server-hosting" },
+    { name: "E-bay", url: "/services/e-bay" }
   ];
 
   const displayedServices = showAllServices ? services : services.slice(0, 4);
@@ -61,13 +61,26 @@ const Footer = () => {
             <div className="flex-1 space-y-4">
               <h3 className="text-lg font-bold text-gray-900">Quick Links</h3>
               <ul className="space-y-2">
-                {['Home', 'About Us', 'Services', 'Contact', 'Get Quote'].map((link, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                    Get Quote
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -76,12 +89,12 @@ const Footer = () => {
               <h3 className="text-lg font-bold text-gray-900">Our Services</h3>
               <div className="space-y-2">
                 {displayedServices.map((service, index) => (
-                  <div key={index} className="flex items-start">
+                  <a key={index} href={service.url} className="flex items-start hover:text-blue-600 transition-colors duration-300">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 mr-2 flex-shrink-0"></div>
                     <span className="text-gray-600 text-sm">
-                      {service}
+                      {service.name}
                     </span>
-                  </div>
+                  </a>
                 ))}
                 
                 {services.length > 4 && (
@@ -180,7 +193,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
                   <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -188,23 +201,16 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
                   <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                   About Us
                 </a>
               </li>
+              
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
-                  <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
                   <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -212,7 +218,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
+                <a href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium flex items-center group">
                   <svg className="w-4 h-4 mr-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -232,12 +238,12 @@ const Footer = () => {
             </h3>
             <div className="grid grid-cols-1 gap-3">
               {displayedServices.map((service, index) => (
-                <div key={index} className="flex items-start group">
+                <a key={index} href={service.url} className="flex items-start group">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
                   <span className="text-gray-600 font-medium group-hover:text-blue-600 transition-colors duration-300">
-                    {service}
+                    {service.name}
                   </span>
-                </div>
+                </a>
               ))}
               
               {services.length > 4 && (

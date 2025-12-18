@@ -482,7 +482,7 @@ export default function PricingPage() {
                     </div>
                     <div>
                       <div className="text-xs text-gray-400">Call</div>
-                      <div className="text-sm font-medium text-white">+1 (321) 800-2759</div>
+                      <div className="text-sm font-medium text-white">+1 (808) 301-5039</div>
                     </div>
                   </div>
                 </div>
@@ -498,7 +498,7 @@ export default function PricingPage() {
                     </div>
                     <div>
                       <div className="text-xs text-gray-400">Email</div>
-                      <div className="text-sm font-medium text-white truncate max-w-[120px] md:max-w-[140px]">info@a2itltd.com</div>
+                      <div className="text-sm font-medium text-white truncate max-w-[120px] md:max-w-[140px]">info@a2itllc.com</div>
                     </div>
                   </div>
                 </div>

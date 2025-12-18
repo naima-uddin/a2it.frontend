@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiCode,
@@ -33,10 +33,14 @@ import {
   FiLayout,
   FiPenTool,
   FiSmartphone as FiMobile,
+  FiCpu as FiWeb,
+  FiGlobe as FiWordpress,
+  FiBarChart2,
   FiTag,
 } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+import CountUp from "react-countup";
 
 const DesignDevelopmentPage = () => {
   // State for portfolio data
@@ -53,6 +57,10 @@ const DesignDevelopmentPage = () => {
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const [statsVisible, setStatsVisible] = useState(false);
+  
+  // Stats ref for intersection observer
+  const statsRef = useRef(null);
   
   // Fetch portfolio data
   useEffect(() => {
@@ -64,8 +72,7 @@ const DesignDevelopmentPage = () => {
         setPortfolioData(data);
       } catch (error) {
         console.error('Error fetching portfolio data:', error);
-        // Fallback to empty data
-        setPortfolioData({ portfolio: { portfolioProjects: [] } });
+        setPortfolioData({ portfolio: { portfolioProjects: [], featuredProjects: [], affiliateProjects: [] } });
       } finally {
         setLoading(false);
       }
@@ -84,7 +91,6 @@ const DesignDevelopmentPage = () => {
         setPricingData(data);
       } catch (error) {
         console.error('Error fetching pricing data:', error);
-        // Fallback to empty data
         setPricingData({ services: [] });
       } finally {
         setLoadingPricing(false);
@@ -102,6 +108,28 @@ const DesignDevelopmentPage = () => {
     
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Stats intersection observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+    
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
   }, []);
   
   // Get slides per view based on window width
@@ -122,9 +150,36 @@ const DesignDevelopmentPage = () => {
     groupedPackages.push(designDevelopmentPackages.slice(i, i + slidesPerView));
   }
   
-  // Categorize portfolio projects
+  // Get all projects from portfolio data (combine all sections)
+  const getAllProjects = () => {
+    if (!portfolioData?.portfolio) return [];
+    
+    const { portfolioProjects = [], featuredProjects = [], affiliateProjects = [] } = portfolioData.portfolio;
+    
+    // Combine all projects with unique IDs
+    const allProjects = [
+      ...portfolioProjects,
+      ...featuredProjects,
+      ...affiliateProjects
+    ];
+    
+    // Remove duplicates by ID
+    const uniqueProjects = [];
+    const seenIds = new Set();
+    
+    allProjects.forEach(project => {
+      if (project.id && !seenIds.has(project.id)) {
+        seenIds.add(project.id);
+        uniqueProjects.push(project);
+      }
+    });
+    
+    return uniqueProjects;
+  };
+  
+  // Categorize all projects
   const categorizeProjects = (projects) => {
-    if (!projects) return { web: [], mobile: [], wordpress: [] };
+    if (!projects || projects.length === 0) return { web: [], mobile: [], wordpress: [] };
     
     const categories = {
       web: [],
@@ -134,22 +189,32 @@ const DesignDevelopmentPage = () => {
     
     projects.forEach(project => {
       const categoriesArray = Array.isArray(project.category) ? project.category : [project.category];
-      const techArray = Array.isArray(project.technologies) ? project.technologies : [project.technologies];
+      const techArray = Array.isArray(project.technologies) ? project.technologies : [project.technologies || ''];
+      
+      // Convert to lowercase for matching
+      const categoriesLower = categoriesArray.map(cat => cat.toLowerCase());
+      const techLower = techArray.map(tech => tech.toLowerCase());
       
       // Check for WordPress projects
-      const hasWordPress = categoriesArray.some(cat => 
-        cat.toLowerCase().includes('wordpress')
-      ) || techArray.some(tech => 
-        tech.toLowerCase().includes('wordpress') || 
-        tech.toLowerCase().includes('woocommerce')
+      const hasWordPress = categoriesLower.some(cat => 
+        cat.includes('wordpress')
+      ) || techLower.some(tech => 
+        tech.includes('wordpress') || 
+        tech.includes('woocommerce') ||
+        tech.includes('elementor') ||
+        tech.includes('c-panel')
       );
       
       // Check for Mobile projects
-      const hasMobile = categoriesArray.some(cat => 
-        cat.toLowerCase().includes('mobile')
-      ) || techArray.some(tech => 
-        tech.toLowerCase().includes('react native') ||
-        tech.toLowerCase().includes('mobile')
+      const hasMobile = categoriesLower.some(cat => 
+        cat.includes('mobile') ||
+        cat.includes('app')
+      ) || techLower.some(tech => 
+        tech.includes('react native') ||
+        tech.includes('mobile') ||
+        tech.includes('expo') ||
+        tech.includes('firebase') ||
+        tech.includes('push notification')
       );
       
       if (hasWordPress) {
@@ -157,6 +222,7 @@ const DesignDevelopmentPage = () => {
       } else if (hasMobile) {
         categories.mobile.push(project);
       } else {
+        // Default to web if neither WordPress nor Mobile
         categories.web.push(project);
       }
     });
@@ -164,34 +230,34 @@ const DesignDevelopmentPage = () => {
     return categories;
   };
   
-  const allProjects = portfolioData?.portfolio?.portfolioProjects || [];
+  const allProjects = getAllProjects();
   const categorizedProjects = categorizeProjects(allProjects);
   
-  // Get current projects based on active tab
+  // Get current projects based on active tab (show 5 static + slider for rest)
   const getCurrentProjects = () => {
-    switch(activeTab) {
-      case 'web': return categorizedProjects.web;
-      case 'mobile': return categorizedProjects.mobile;
-      case 'wordpress': return categorizedProjects.wordpress;
-      default: return categorizedProjects.web;
-    }
+    const projects = categorizedProjects[activeTab] || [];
+    return {
+      staticProjects: projects.slice(0, 5), // First 5 projects
+      sliderProjects: projects.slice(5) // Rest for slider
+    };
   };
   
-  const currentProjects = getCurrentProjects();
+  const { staticProjects, sliderProjects } = getCurrentProjects();
   
-  // Group projects for slider
+  // Group slider projects for carousel
   const groupProjectsForSlider = (projects) => {
-    const projectsPerView = windowWidth < 640 ? 1 : windowWidth < 1024 ? 2 : 3;
+    const projectsPerView = windowWidth < 640 ? 1 : windowWidth < 768 ? 2 : 3;
     const groups = [];
     for (let i = 0; i < projects.length; i += projectsPerView) {
       groups.push(projects.slice(i, i + projectsPerView));
     }
-    return groups;
+    return groups.length > 0 ? groups : [[]];
   };
   
-  const groupedCurrentProjects = groupProjectsForSlider(currentProjects);
+  const groupedSliderProjects = groupProjectsForSlider(sliderProjects);
+  const [currentSliderSlide, setCurrentSliderSlide] = useState(0);
   
-  // Slide navigation functions
+  // Slider navigation functions
   const nextSlide = () => {
     if (groupedPackages.length === 0) return;
     setCurrentSlide((prev) => (prev + 1) % groupedPackages.length);
@@ -204,6 +270,20 @@ const DesignDevelopmentPage = () => {
   
   const goToSlide = (index) => {
     setCurrentSlide(index);
+  };
+  
+  const nextProjectSlide = () => {
+    if (groupedSliderProjects.length === 0) return;
+    setCurrentSliderSlide((prev) => (prev + 1) % groupedSliderProjects.length);
+  };
+  
+  const prevProjectSlide = () => {
+    if (groupedSliderProjects.length === 0) return;
+    setCurrentSliderSlide((prev) => (prev - 1 + groupedSliderProjects.length) % groupedSliderProjects.length);
+  };
+  
+  const goToProjectSlide = (index) => {
+    setCurrentSliderSlide(index);
   };
   
   const toggleAccordion = (index) => {
@@ -239,9 +319,38 @@ const DesignDevelopmentPage = () => {
   
   // Tab data
   const tabs = [
-    { id: 'web', label: 'Web Development', icon: <FiCode />, count: categorizedProjects.web.length },
-    { id: 'mobile', label: 'Mobile Apps', icon: <FiMobile />, count: categorizedProjects.mobile.length },
-    { id: 'wordpress', label: 'WordPress', icon: <FiLayout />, count: categorizedProjects.wordpress.length }
+    { id: 'web', label: 'Web Development', icon: <FiWeb />, color: 'from-blue-500 to-indigo-600' },
+    { id: 'mobile', label: 'Mobile Apps', icon: <FiMobile />, color: 'from-green-500 to-emerald-600' },
+    { id: 'wordpress', label: 'WordPress', icon: <FiWordpress />, color: 'from-blue-400 to-cyan-600' }
+  ];
+  
+  // Stats data
+  const stats = [
+    { 
+      id: 1, 
+      value: allProjects.length, 
+      label: 'Projects Completed', 
+      icon: <FiCheckCircle />,
+      duration: 2.5,
+      suffix: '+'
+    },
+    { 
+      id: 2, 
+      value: 4.9, 
+      label: 'Client Rating', 
+      icon: <FiStar />,
+      duration: 2,
+      decimals: 1,
+      suffix: '★'
+    },
+    { 
+      id: 3, 
+      value: 99, 
+      label: 'Client Satisfaction', 
+      icon: <FiTrendingUp />,
+      duration: 2,
+      suffix: '%'
+    },
   ];
   
   // Loading state
@@ -258,18 +367,49 @@ const DesignDevelopmentPage = () => {
   
   return (
     <div className="bg-gradient-to-b from-white via-gray-50 to-white text-gray-800 overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
-        {/* Background */}
+      {/* Hero Section with Enhanced Banner */}
+      <section className="relative min-h-[80vh] py-12 sm:py-16 md:py-24 flex items-center justify-center overflow-hidden">
+        {/* Modern Gradient Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"></div>
-          <div className="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-purple-500/10"></div>
+          <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white to-transparent opacity-30"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white to-transparent opacity-30"></div>
+          
+          {/* Animated gradient orbs */}
+          <motion.div 
+            animate={{ 
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, -80, 0],
+              y: [0, -40, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 25, 
+              repeat: Infinity,
+              ease: "linear",
+              delay: 0.5
+            }}
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+          />
         </div>
         
-        {/* Floating elements */}
-        <div className="absolute inset-0 hidden lg:block">
-          <div className="absolute top-20 left-20 w-64 h-64 border-2 border-blue-400/20 rotate-45 animate-pulse"></div>
-          <div className="absolute bottom-40 right-32 w-40 h-40 border border-purple-400/20 rotate-12"></div>
+        {/* Floating design elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-3 h-3 bg-indigo-500 rounded-full animate-pulse delay-700"></div>
+          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-300"></div>
         </div>
         
         {/* Hero Content */}
@@ -284,25 +424,18 @@ const DesignDevelopmentPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium mb-6 rounded-full text-sm shadow-lg"
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-medium mb-6 rounded-full text-sm shadow-lg shadow-blue-500/30 backdrop-blur-sm"
               >
-                <FiZap className="mr-2" />
+                <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
                 PREMIUM DESIGN & DEVELOPMENT
               </motion.div>
               
-              <h1 className="text-3xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-tight text-gray-900">
-                Transform Your{" "}
-                <span className="relative">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                    Digital Vision
-                  </span>
-                  <motion.div
-                    animate={{ width: ["0%", "100%", "0%"] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute bottom-2 left-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
-                  />
-                </span>{" "}
-                Into Reality
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  Digital Excellence
+                </span>
+                <br />
+                <span className="text-gray-900">Crafted with Precision</span>
               </h1>
               
               <motion.p
@@ -311,7 +444,7 @@ const DesignDevelopmentPage = () => {
                 transition={{ delay: 0.4 }}
                 className="text-lg sm:text-xl text-gray-600 max-w-2xl mb-8 leading-relaxed"
               >
-                Professional web development, mobile apps, and WordPress solutions crafted to perfection. From concept to launch, we build digital experiences that drive results.
+                Transform your vision into powerful digital experiences. We deliver cutting-edge web solutions, mobile applications, and WordPress platforms that drive business growth.
               </motion.p>
               
               <motion.div
@@ -322,10 +455,10 @@ const DesignDevelopmentPage = () => {
               >
                 <Link
                   href="/contact"
-                  className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-2xl hover:shadow-blue-300 transition-all duration-300 text-sm sm:text-base"
+                  className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 text-sm sm:text-base"
                 >
                   <span className="relative z-10 flex items-center">
-                    <FiCode className="mr-2" />
+                    <FiCode className="mr-2 group-hover:rotate-12 transition-transform" />
                     Start Your Project
                   </span>
                   <motion.div
@@ -338,98 +471,110 @@ const DesignDevelopmentPage = () => {
                 
                 <Link
                   href="#portfolio"
-                  className="group inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base"
+                  className="group inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
                 >
-                  <span className="group-hover:scale-110 transition-transform duration-300">
-                    View Our Portfolio
+                  <span className="group-hover:scale-105 transition-transform duration-300">
+                    Explore Our Work
                   </span>
                 </Link>
               </motion.div>
-              
-              {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="mt-12 grid grid-cols-3 gap-4 sm:gap-6"
-              >
-                {[
-                  { value: "200+", label: "Projects", color: "text-blue-600" },
-                  { value: "4.9⭐", label: "Avg. Rating", color: "text-indigo-600" },
-                  { value: "99%", label: "Satisfaction", color: "text-purple-600" },
-                ].map((stat, index) => (
-                  <div key={index} className="text-center bg-white backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-gray-200 shadow-sm">
-                    <div className={`text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
-                  </div>
-                ))}
-              </motion.div>
             </motion.div>
             
-            {/* Services Preview */}
+            {/* Services Preview Cards */}
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.9 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative hidden lg:block"
+              className="relative"
             >
-              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-8 border-white">
-                <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-white text-sm font-medium ml-2">Design & Development Services</span>
-                  </div>
-                </div>
+              <div className="grid grid-cols-2 gap-4">
+                {tabs.map((tab, index) => (
+                  <motion.div
+                    key={tab.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    whileHover={{ y: -10 }}
+                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
+                      activeTab === tab.id
+                        ? `bg-gradient-to-br ${tab.color} shadow-2xl`
+                        : 'bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-blue-300'
+                    }`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                      activeTab === tab.id
+                        ? 'bg-white/20'
+                        : `bg-gradient-to-br ${tab.color}`
+                    }`}>
+                      <div className={activeTab === tab.id ? 'text-white' : 'text-white'}>
+                        {tab.icon}
+                      </div>
+                    </div>
+                    <h3 className={`text-lg font-bold mb-2 ${
+                      activeTab === tab.id ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {tab.label}
+                    </h3>
+                    <p className={`text-sm ${
+                      activeTab === tab.id ? 'text-white/90' : 'text-gray-600'
+                    }`}>
+                      {tab.id === 'web' && 'Custom websites & web applications'}
+                      {tab.id === 'mobile' && 'iOS & Android mobile applications'}
+                      {tab.id === 'wordpress' && 'WordPress websites & e-commerce'}
+                    </p>
+                  </motion.div>
+                ))}
                 
-                <div className="p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    {tabs.map((tab) => (
-                      <motion.div
-                        key={tab.id}
-                        whileHover={{ scale: 1.05 }}
-                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
-                          activeTab === tab.id 
-                            ? 'border-blue-500 bg-blue-50' 
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                        onClick={() => setActiveTab(tab.id)}
-                      >
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${
-                          activeTab === tab.id 
-                            ? 'bg-blue-500 text-white' 
-                            : 'bg-gray-100 text-gray-600'
-                        }`}>
-                          {tab.icon}
+                {/* Stats Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl col-span-2"
+                  ref={statsRef}
+                >
+                  <h3 className="text-lg font-bold text-white mb-4">Our Impact</h3>
+                  <div className="grid grid-cols-3 gap-4">
+                    {stats.map((stat) => (
+                      <div key={stat.id} className="text-center">
+                        <div className="flex items-center justify-center w-8 h-8 mx-auto mb-2">
+                          <div className="text-blue-400">
+                            {stat.icon}
+                          </div>
                         </div>
-                        <div className="text-sm font-semibold text-gray-900">{tab.label}</div>
-                        <div className="text-xs text-gray-500 mt-1">{tab.count} projects</div>
-                      </motion.div>
+                        <div className="text-2xl font-bold text-white mb-1">
+                          {statsVisible ? (
+                            <CountUp
+                              start={0}
+                              end={stat.value}
+                              duration={stat.duration}
+                              decimals={stat.decimals || 0}
+                              suffix={stat.suffix || ''}
+                            />
+                          ) : (
+                            '0' + (stat.suffix || '')
+                          )}
+                        </div>
+                        <div className="text-xs text-gray-400">{stat.label}</div>
+                      </div>
                     ))}
                   </div>
-                  
-                  {/* Service Description */}
-                  <div className="mt-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
-                    <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white mr-3">
-                        {tabs.find(t => t.id === activeTab)?.icon}
-                      </div>
-                      <h4 className="text-lg font-bold text-gray-900">
-                        {tabs.find(t => t.id === activeTab)?.label}
-                      </h4>
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      {activeTab === 'web' && 'Custom web applications and websites built with modern technologies.'}
-                      {activeTab === 'mobile' && 'Native and cross-platform mobile applications for iOS and Android.'}
-                      {activeTab === 'wordpress' && 'WordPress websites and e-commerce solutions with custom themes and plugins.'}
-                    </p>
-                  </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="text-gray-600 text-sm font-medium mb-2">Scroll to explore</div>
+          <div className="w-px h-16 bg-gradient-to-b from-blue-500/50 to-transparent mx-auto"></div>
+        </motion.div>
       </section>
       
       {/* Portfolio Section */}
@@ -442,11 +587,11 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiGrid className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
-              OUR PORTFOLIO
+              OUR WORK
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Featured{" "}
@@ -462,116 +607,251 @@ const DesignDevelopmentPage = () => {
               </span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Browse through our successful design and development projects
+              Explore our successful projects across different categories
             </p>
           </motion.div>
           
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`flex items-center px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg'
+                    ? `bg-gradient-to-r ${tab.color} text-white shadow-lg`
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 {tab.icon}
                 <span className="ml-2">{tab.label}</span>
-                <span className={`ml-2 px-2 py-1 text-xs rounded-full ${
-                  activeTab === tab.id ? 'bg-white/20' : 'bg-gray-200'
-                }`}>
-                  {tab.count}
-                </span>
               </motion.button>
             ))}
           </div>
           
-          {/* Projects Grid */}
-          {currentProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {currentProjects.slice(0, 6).map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
-                >
-                  {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden flex-shrink-0">
-                    {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" ? (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        unoptimized
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                        <div className="text-4xl">
-                          {activeTab === 'web' && <FiCode />}
-                          {activeTab === 'mobile' && <FiMobile />}
-                          {activeTab === 'wordpress' && <FiLayout />}
+          {/* Static Projects Grid (First 5 Projects) */}
+          {staticProjects.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+                {staticProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id || index}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
+                  >
+                    {/* Project Image */}
+                    <div className="relative h-40 overflow-hidden flex-shrink-0">
+                      {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title || 'Project Image'}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          unoptimized
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                          <div className={`text-4xl ${
+                            activeTab === 'web' ? 'text-blue-600' :
+                            activeTab === 'mobile' ? 'text-green-600' :
+                            'text-blue-400'
+                          }`}>
+                            {tabs.find(t => t.id === activeTab)?.icon}
+                          </div>
                         </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                      
+                      {/* Status Badge */}
+                      <div className="absolute top-3 left-3 z-20">
+                        <span className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
+                          {project.status || 'Live'}
+                        </span>
                       </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                    
-                    {/* Status Badge */}
-                    <div className="absolute top-4 left-4 z-20">
-                      <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
-                        <FiCheckCircle className="mr-1 text-xs" />
-                        {project.status || 'Live'}
-                      </span>
                     </div>
-                  </div>
-                  
-                  {/* Project Content */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
-                      {project.title}
-                    </h3>
                     
-                    <p className="text-gray-600 text-sm mb-4 mt-2 line-clamp-2">
-                      {project.description}
-                    </p>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {Array.isArray(project.technologies) && project.technologies.slice(0, 3).map((tech, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
-                          {tech}
-                        </span>
-                      ))}
-                      {Array.isArray(project.technologies) && project.technologies.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                          +{project.technologies.length - 3}
-                        </span>
+                    {/* Project Content */}
+                    <div className="p-4 flex flex-col flex-grow">
+                      <h3 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
+                        {project.title || 'Project Title'}
+                      </h3>
+                      
+                      <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
+                        {project.description || 'Project description not available'}
+                      </p>
+                      
+                      {/* Technologies */}
+                      {project.technologies && Array.isArray(project.technologies) && project.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies.slice(0, 2).map((tech, idx) => (
+                            <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+                              {tech}
+                            </span>
+                          ))}
+                          {project.technologies.length > 2 && (
+                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                              +{project.technologies.length - 2}
+                            </span>
+                          )}
+                        </div>
                       )}
                     </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Slider for Additional Projects (if any) */}
+              {sliderProjects.length > 0 && (
+                <div className="mt-16">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-2xl font-bold text-gray-900">More {tabs.find(t => t.id === activeTab)?.label} Projects</h3>
                     
-                    {/* Performance Stats */}
-                    {project.performance && project.performance.length > 0 && (
-                      <div className="grid grid-cols-2 gap-3 mt-auto">
-                        {project.performance.slice(0, 2).map((stat, idx) => (
-                          <div key={idx} className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
-                            <div className="text-base font-bold text-blue-700 truncate">{stat.value}</div>
-                            <div className="text-xs text-gray-600 truncate mt-1">{stat.label}</div>
-                          </div>
-                        ))}
+                    {groupedSliderProjects.length > 1 && (
+                      <div className="flex items-center gap-3">
+                        <motion.button
+                          whileHover={{ scale: 1.1, x: -5 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={prevProjectSlide}
+                          className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                        >
+                          <FiArrowLeft className="text-lg" />
+                        </motion.button>
+                        
+                        <motion.button
+                          whileHover={{ scale: 1.1, x: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={nextProjectSlide}
+                          className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                        >
+                          <FiArrowRight className="text-lg" />
+                        </motion.button>
                       </div>
                     )}
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                  
+                  {/* Slider Projects */}
+                  <div className="overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentSliderSlide}
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                      >
+                        {groupedSliderProjects[currentSliderSlide]?.map((project, index) => (
+                          <motion.div
+                            key={project.id || index}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
+                          >
+                            {/* Project Image */}
+                            <div className="relative h-48 overflow-hidden flex-shrink-0">
+                              {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
+                                <Image
+                                  src={project.image}
+                                  alt={project.title || 'Project Image'}
+                                  fill
+                                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                  unoptimized
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              ) : (
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                                  <div className={`text-5xl ${
+                                    activeTab === 'web' ? 'text-blue-600' :
+                                    activeTab === 'mobile' ? 'text-green-600' :
+                                    'text-blue-400'
+                                  }`}>
+                                    {tabs.find(t => t.id === activeTab)?.icon}
+                                  </div>
+                                </div>
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                              
+                              {/* Status Badge */}
+                              <div className="absolute top-3 left-3 z-20">
+                                <span className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
+                                  {project.status || 'Live'}
+                                </span>
+                              </div>
+                            </div>
+                            
+                            {/* Project Content */}
+                            <div className="p-5 flex flex-col flex-grow">
+                              <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-3">
+                                {project.title || 'Project Title'}
+                              </h3>
+                              
+                              <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+                                {project.description || 'Project description not available'}
+                              </p>
+                              
+                              {/* Technologies */}
+                              {project.technologies && Array.isArray(project.technologies) && project.technologies.length > 0 && (
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                  {project.technologies.slice(0, 3).map((tech, idx) => (
+                                    <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+                                      {tech}
+                                    </span>
+                                  ))}
+                                  {project.technologies.length > 3 && (
+                                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                                      +{project.technologies.length - 3}
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                              
+                              {/* Performance Stats (if available) */}
+                              {project.performance && project.performance.length > 0 && (
+                                <div className="grid grid-cols-2 gap-3 mt-auto">
+                                  {project.performance.slice(0, 2).map((stat, idx) => (
+                                    <div key={idx} className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+                                      <div className="text-base font-bold text-blue-700 truncate">{stat.value}</div>
+                                      <div className="text-xs text-gray-600 truncate mt-1">{stat.label}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                  
+                  {/* Slider Indicators */}
+                  {groupedSliderProjects.length > 1 && (
+                    <div className="flex justify-center items-center mt-8">
+                      <div className="flex space-x-3">
+                        {groupedSliderProjects.map((_, index) => (
+                          <motion.button
+                            key={index}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => goToProjectSlide(index)}
+                            className={`h-2 rounded-full transition-all duration-300 ${
+                              currentSliderSlide === index 
+                                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-8' 
+                                : 'bg-gray-300 hover:bg-gray-400 w-2'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-12">
               <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center mb-6">
@@ -579,28 +859,9 @@ const DesignDevelopmentPage = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">No Projects Found</h3>
               <p className="text-gray-600 max-w-md mx-auto">
-                We're currently updating our {tabs.find(t => t.id === activeTab)?.label.toLowerCase()} portfolio. Check back soon!
+                We're currently updating our portfolio. Check back soon!
               </p>
             </div>
-          )}
-          
-          {/* View All Button */}
-          {currentProjects.length > 6 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="text-center mt-12"
-            >
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 group"
-              >
-                <span className="mr-2">View All {tabs.find(t => t.id === activeTab)?.label} Projects</span>
-                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
           )}
         </div>
       </section>
@@ -615,11 +876,11 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
-              TRANSPARENT PRICING
+              PRICING PLANS
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Design & Development{" "}
@@ -648,7 +909,7 @@ const DesignDevelopmentPage = () => {
                     whileHover={{ scale: 1.1, x: -5 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={prevSlide}
-                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
                   >
                     <FiArrowLeft className="text-xl" />
                   </motion.button>
@@ -657,7 +918,7 @@ const DesignDevelopmentPage = () => {
                     whileHover={{ scale: 1.1, x: 5 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={nextSlide}
-                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
                   >
                     <FiArrowRight className="text-xl" />
                   </motion.button>
@@ -695,10 +956,10 @@ const DesignDevelopmentPage = () => {
                             : 'border-gray-100 shadow-xl hover:shadow-2xl'
                         }`}
                       >
-                        {/* Ribbon for Popular Plan */}
+                        {/* Ribbon for Gold Plan */}
                         {pkg.name === "Gold" && (
-                          <div className="absolute top-6 -right-10 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-white px-10 py-1 rotate-45 shadow-lg z-10">
-                            <span className="text-xs sm:text-sm font-bold">MOST POPULAR</span>
+                          <div className="absolute top-6 -right-12 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-white px-12 py-1.5 rotate-45 shadow-lg z-10">
+                            <span className="text-xs font-bold tracking-wide">POPULAR</span>
                           </div>
                         )}
                         
@@ -711,22 +972,16 @@ const DesignDevelopmentPage = () => {
                                 ? `bg-gradient-to-r ${getPackageColor(pkg, true)}` 
                                 : `bg-gradient-to-r ${getPackageColor(pkg)}`
                             }`}>
-                              <div className={pkg.name === "Special" ? "text-white" : "text-white"}>
+                              <div className="text-white">
                                 {getIconForPackage(pkg.name)}
                               </div>
                             </div>
                             <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.name}</h3>
                             <div className="text-3xl sm:text-4xl font-bold mb-2">
-                              <span className={pkg.name === "Special" ? "text-gray-900" : "text-blue-900"}>{pkg.price}</span>
+                              <span className={pkg.name === "Special" ? "text-gray-900" : "text-blue-900"}>
+                                {pkg.price}
+                              </span>
                               <span className="text-gray-500 text-base sm:text-lg">/one-time</span>
-                            </div>
-                            <div className="text-sm sm:text-base text-gray-600">
-                              {pkg.name === "Special" && "Perfect for startups & small businesses"}
-                              {pkg.name === "Plus" && "Great for growing businesses"}
-                              {pkg.name === "Gold" && "Ideal for established companies"}
-                              {pkg.name === "Platinum" && "For scaling enterprises"}
-                              {pkg.name === "The Boss" && "Premium solutions"}
-                              {pkg.name === "Diamond" && "Enterprise-grade solutions"}
                             </div>
                           </div>
                           
@@ -760,7 +1015,7 @@ const DesignDevelopmentPage = () => {
                                   ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:shadow-xl hover:from-gray-900 hover:to-black"
                                   : hoveredCard === pkg.id
                                   ? `text-white bg-gradient-to-r ${getPackageColor(pkg, true)} shadow-lg`
-                                  : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-xl"
+                                  : "bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:shadow-xl"
                               }`}
                             >
                               Get {pkg.name} Package
@@ -783,10 +1038,10 @@ const DesignDevelopmentPage = () => {
                         whileHover={{ scale: 1.2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => goToSlide(index)}
-                        className={`h-3 rounded-full transition-all duration-300 ${
+                        className={`h-2 rounded-full transition-all duration-300 ${
                           currentSlide === index 
-                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-10' 
-                            : 'bg-gray-300 hover:bg-gray-400 w-3'
+                            ? 'bg-gradient-to-r from-blue-600 to-indigo-700 w-8' 
+                            : 'bg-gray-300 hover:bg-gray-400 w-2'
                         }`}
                       />
                     ))}
@@ -803,7 +1058,7 @@ const DesignDevelopmentPage = () => {
               <p className="text-gray-600 max-w-md mx-auto">
                 We're currently updating our pricing packages. Please contact us for a custom quote.
               </p>
-              <Link href="/contact" className="inline-flex items-center mt-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transition-all duration-300">
+              <Link href="/contact" className="inline-flex items-center mt-6 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transition-all duration-300">
                 <FiCode className="mr-2" />
                 Contact for Custom Quote
               </Link>
@@ -822,7 +1077,7 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiBox className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -885,7 +1140,7 @@ const DesignDevelopmentPage = () => {
                   <div className="flex items-center flex-1 pr-4">
                     <div className={`w-8 h-8 rounded-lg mr-3 sm:mr-4 flex items-center justify-center flex-shrink-0 ${
                       activeAccordion === index
-                        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white'
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white'
                         : 'bg-blue-100 text-blue-600'
                     }`}>
                       {index + 1}
@@ -926,9 +1181,35 @@ const DesignDevelopmentPage = () => {
       
       {/* Final CTA */}
       <section className="py-20 px-6 sm:px-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
+          {/* Animated gradient background */}
+          <motion.div 
+            animate={{ 
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              scale: [1, 1.3, 1]
+            }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, -80, 0],
+              y: [0, -40, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ 
+              duration: 25, 
+              repeat: Infinity,
+              ease: "linear",
+              delay: 0.5
+            }}
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
+          />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
