@@ -140,35 +140,42 @@ const HomePageContactUs = () => {
               </h2>
               
               <div className="space-y-6">
-                {/* Address */}
+                {/* Bangladesh Address */}
                 <div className="group transform transition-all duration-300 hover:translate-x-1">
                   <div className="flex items-start">
                     <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-lg mr-4">
                       <FiMapPin className="text-white" size={20} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white mb-2">Our Address</h3>
+                      <h3 className="font-bold text-lg text-white mb-2">Bangladesh Office</h3>
                       <p className="text-gray-200 text-base leading-relaxed">
                         Plot No 470, Road No 06 (Old 29),<br />
                         DOHS Mirpur, Dhaka Division,<br />
                         Bangladesh
                       </p>
+                      <p className="text-gray-900 text-xl font-bold mt-2">+880 1846-937397</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Phone */}
+                {/* USA Address */}
                 <div className="group transform transition-all duration-300 hover:translate-x-1">
                   <div className="flex items-start">
                     <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-lg mr-4">
-                      <FiPhone className="text-white" size={20} />
+                      <FiMapPin className="text-white" size={20} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white mb-2">Phone Number</h3>
-                      <p className="text-gray-900 text-xl font-bold">+880 1846-937397</p>
+                      <h3 className="font-bold text-lg text-white mb-2">USA Office</h3>
+                      <p className="text-gray-200 text-base leading-relaxed">
+                        16192 Coastal Highway,<br />
+                        Lewes, DE 19958
+                      </p>
+                      <p className="text-gray-900 text-xl font-bold mt-2">+1 (808) 301-5039</p>
                     </div>
                   </div>
                 </div>
+
+
 
                 {/* Email */}
                 <div className="group transform transition-all duration-300 hover:translate-x-1">

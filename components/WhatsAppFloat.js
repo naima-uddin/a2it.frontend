@@ -3,10 +3,10 @@
 export default function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/8801848937387"
+      href="https://wa.me/+18083015039"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 z-50 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110"
+      className="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-blue-600 text-white rounded-full p-3 shadow-lg transition-all hover:scale-110"
       aria-label="Contact us on WhatsApp"
     >
       <svg 

@@ -22,9 +22,9 @@ const ClientSideMap = dynamic(() => import("./ClientSideMap"), {
   ),
 });
 
-const officePosition = [23.836236, 90.358672];
+const officePosition = [38.7742, -75.1398];
 const officeAddress =
-  "Plot No 470, Road No 06 (Old 29), DOHS Mirpur, Dhaka Division, Bangladesh";
+  "16192 Coastal Highway, Lewes, DE 19958";
 
 const ContactUs = () => {
   const [position, setPosition] = useState(officePosition);
@@ -51,7 +51,7 @@ const ContactUs = () => {
       const res = await fetch("https://a2-it-website-backend.vercel.app/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, to: "service@a2itllc.com" }),
       });
 
       const data = await res.json();
@@ -252,31 +252,38 @@ const ContactUs = () => {
             <h2 className="text-2xl font-bold mb-8 text-gray-900">Contact Information</h2>
 
             <div className="space-y-8">
-              {/* Address */}
+              {/* Bangladesh Address */}
               <div className="space-y-3">
                 <div className="flex items-start">
                   <FiMapPin className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Our Address</h3>
+                    <h3 className="font-bold text-lg text-gray-800">Bangladesh Office</h3>
                     <p className="text-gray-600 leading-relaxed mt-1">
                       Plot No 470, Road No 06 (Old 29),<br />
                       DOHS Mirpur, Dhaka Division,<br />
                       Bangladesh
                     </p>
+                    <p className="text-gray-800 text-lg font-medium mt-2">+880 1846-937397</p>
                   </div>
                 </div>
               </div>
 
-              {/* Phone */}
+              {/* USA Address */}
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <FiPhone className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <FiMapPin className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
                   <div>
-                    <h3 className="font-bold text-lg text-gray-800">Phone Number</h3>
-                    <p className="text-gray-800 text-lg font-medium mt-1">+880 1846-937397</p>
+                    <h3 className="font-bold text-lg text-gray-800">USA Office</h3>
+                    <p className="text-gray-600 leading-relaxed mt-1">
+                      16192 Coastal Highway,<br />
+                      Lewes, DE 19958
+                    </p>
+                    <p className="text-gray-800 text-lg font-medium mt-2">+1 (808) 301-5039</p>
                   </div>
                 </div>
               </div>
+
+
 
               {/* Email */}
               <div className="space-y-3">
@@ -284,7 +291,7 @@ const ContactUs = () => {
                   <FiMail className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
                   <div>
                     <h3 className="font-bold text-lg text-gray-800">Email Address</h3>
-                    <p className="text-gray-800 text-lg font-medium mt-1">info@a2itltd.com</p>
+                    <p className="text-gray-800 text-lg font-medium mt-1">info@a2itllc.com</p>
                   </div>
                 </div>
               </div>

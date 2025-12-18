@@ -683,7 +683,7 @@ const ShopifyServices = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="mt-6 text-sm font-medium flex items-center group text-[#7E6BF0]">
+                  <button className="mt-6 text-sm font-medium flex items-center group text-white">
                     <span>Learn more</span>
                     <FiArrowRightIcon className="ml-2 transition-transform group-hover:translate-x-1" />
                   </button>

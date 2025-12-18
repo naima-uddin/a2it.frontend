@@ -230,8 +230,17 @@ const PrivacyPolicy = () => {
                 <div className="inline-flex p-3 bg-purple-100 rounded-full mb-3">
                   <FaMapMarkerAlt className="text-xl text-purple-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
+                <h3 className="font-semibold text-gray-900 mb-1">Bangladesh Office</h3>
                 <p className="text-sm text-gray-700">Plot No 470, Road No 06, DOHS Mirpur, Dhaka</p>
+                <p className="text-sm text-gray-700 mt-1">+880 1846-937397</p>
+              </div>
+              <div className="text-center p-5 bg-white rounded-xl shadow-sm">
+                <div className="inline-flex p-3 bg-purple-100 rounded-full mb-3">
+                  <FaMapMarkerAlt className="text-xl text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-1">USA Office</h3>
+                <p className="text-sm text-gray-700">16192 Coastal Highway, Lewes, DE 19958</p>
+                <p className="text-sm text-gray-700 mt-1">+1 (808) 301-5039</p>
               </div>
               <div className="text-center p-5 bg-white rounded-xl shadow-sm">
                 <div className="inline-flex p-3 bg-cyan-100 rounded-full mb-3">

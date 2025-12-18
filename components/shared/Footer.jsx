@@ -49,7 +49,7 @@ const Footer = () => {
                 
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">Email Support</p>
-                  <p className="text-blue-600 font-bold text-sm">info@a2itltd.com</p>
+                  <p className="text-blue-600 font-bold text-sm">info@a2itllc.com</p>
                 </div>
               </div>
             </div>
@@ -151,8 +151,8 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Call Toll Free</p>
-                  <p className="text-blue-600 font-bold">+1 (321) 800-2759</p>
+                  <p className="font-semibold text-gray-900">Call Now </p>
+                  <p className="text-blue-600 font-bold">+1 (808) 301-5039</p>
                 </div>
               </div>
               
@@ -164,7 +164,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Email Support</p>
-                  <p className="text-blue-600 font-bold">info@a2itltd.com</p>
+                  <p className="text-blue-600 font-bold">info@a2itllc.com</p>
                 </div>
               </div>
             </div>
