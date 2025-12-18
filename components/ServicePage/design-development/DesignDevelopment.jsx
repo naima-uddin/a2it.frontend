@@ -36,6 +36,8 @@ import {
   FiCpu as FiWeb,
   FiGlobe as FiWordpress,
   FiBarChart2,
+  FiClock,
+  FiBriefcase,
   FiTag,
 } from "react-icons/fi";
 import Link from "next/link";
@@ -54,10 +56,12 @@ const DesignDevelopmentPage = () => {
   // UI States
   const [activeTab, setActiveTab] = useState("web");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [currentBannerCard, setCurrentBannerCard] = useState(0);
   
   // Stats ref for intersection observer
   const statsRef = useRef(null);
@@ -100,6 +104,14 @@ const DesignDevelopmentPage = () => {
     fetchPricingData();
   }, []);
   
+  // Banner card rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBannerCard((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+  
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
@@ -139,7 +151,15 @@ const DesignDevelopmentPage = () => {
     return 3;
   };
   
+  const getProjectsPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 768) return 2;
+    if (windowWidth < 1024) return 3;
+    return 4;
+  };
+  
   const slidesPerView = getSlidesPerView();
+  const projectsPerView = getProjectsPerView();
   
   // Extract design & development packages from pricing data
   const designDevelopmentPackages = pricingData?.services?.find(s => s.category === "Design & Development")?.packages || [];
@@ -233,20 +253,15 @@ const DesignDevelopmentPage = () => {
   const allProjects = getAllProjects();
   const categorizedProjects = categorizeProjects(allProjects);
   
-  // Get current projects based on active tab (show 5 static + slider for rest)
+  // Get current projects based on active tab
   const getCurrentProjects = () => {
-    const projects = categorizedProjects[activeTab] || [];
-    return {
-      staticProjects: projects.slice(0, 5), // First 5 projects
-      sliderProjects: projects.slice(5) // Rest for slider
-    };
+    return categorizedProjects[activeTab] || [];
   };
   
-  const { staticProjects, sliderProjects } = getCurrentProjects();
+  const currentProjects = getCurrentProjects();
   
-  // Group slider projects for carousel
+  // Group projects for carousel (ALL projects in slider)
   const groupProjectsForSlider = (projects) => {
-    const projectsPerView = windowWidth < 640 ? 1 : windowWidth < 768 ? 2 : 3;
     const groups = [];
     for (let i = 0; i < projects.length; i += projectsPerView) {
       groups.push(projects.slice(i, i + projectsPerView));
@@ -254,8 +269,12 @@ const DesignDevelopmentPage = () => {
     return groups.length > 0 ? groups : [[]];
   };
   
-  const groupedSliderProjects = groupProjectsForSlider(sliderProjects);
-  const [currentSliderSlide, setCurrentSliderSlide] = useState(0);
+  const groupedProjects = groupProjectsForSlider(currentProjects);
+  
+  // Reset slides when window resizes
+  useEffect(() => {
+    setCurrentProjectSlide(0);
+  }, [projectsPerView]);
   
   // Slider navigation functions
   const nextSlide = () => {
@@ -273,17 +292,17 @@ const DesignDevelopmentPage = () => {
   };
   
   const nextProjectSlide = () => {
-    if (groupedSliderProjects.length === 0) return;
-    setCurrentSliderSlide((prev) => (prev + 1) % groupedSliderProjects.length);
+    if (groupedProjects.length === 0) return;
+    setCurrentProjectSlide((prev) => (prev + 1) % groupedProjects.length);
   };
   
   const prevProjectSlide = () => {
-    if (groupedSliderProjects.length === 0) return;
-    setCurrentSliderSlide((prev) => (prev - 1 + groupedSliderProjects.length) % groupedSliderProjects.length);
+    if (groupedProjects.length === 0) return;
+    setCurrentProjectSlide((prev) => (prev - 1 + groupedProjects.length) % groupedProjects.length);
   };
   
   const goToProjectSlide = (index) => {
-    setCurrentSliderSlide(index);
+    setCurrentProjectSlide(index);
   };
   
   const toggleAccordion = (index) => {
@@ -324,33 +343,86 @@ const DesignDevelopmentPage = () => {
     { id: 'wordpress', label: 'WordPress', icon: <FiWordpress />, color: 'from-blue-400 to-cyan-600' }
   ];
   
+  // Banner cards for swapping
+  const bannerCards = [
+    { 
+      id: 1, 
+      title: "Custom Web Solutions", 
+      description: "Tailored web applications built with modern technologies",
+      icon: <FiWeb className="text-4xl" />,
+      color: "from-blue-500 to-indigo-600"
+    },
+    { 
+      id: 2, 
+      title: "Mobile App Development", 
+      description: "Native and cross-platform mobile applications",
+      icon: <FiMobile className="text-4xl" />,
+      color: "from-green-500 to-emerald-600"
+    },
+    { 
+      id: 3, 
+      title: "WordPress Excellence", 
+      description: "Custom WordPress themes and e-commerce solutions",
+      icon: <FiWordpress className="text-4xl" />,
+      color: "from-blue-400 to-cyan-600"
+    },
+    { 
+      id: 4, 
+      title: "UI/UX Design", 
+      description: "User-centered design for exceptional experiences",
+      icon: <FiPenTool className="text-4xl" />,
+      color: "from-purple-500 to-pink-600"
+    }
+  ];
+  
   // Stats data
   const stats = [
     { 
       id: 1, 
-      value: allProjects.length, 
-      label: 'Projects Completed', 
-      icon: <FiCheckCircle />,
+      value: 5, 
+      label: 'Years', 
+      sublabel: 'Of combined experience in software development',
+      icon: <FiClock />,
       duration: 2.5,
       suffix: '+'
     },
     { 
       id: 2, 
+      value: 100, 
+      label: 'Clients', 
+      sublabel: 'Worldwide satisfied clients',
+      icon: <FiUsers />,
+      duration: 2.5,
+      suffix: '+'
+    },
+    { 
+      id: 3, 
+      value: 200, 
+      label: 'Projects', 
+      sublabel: 'Successfully delivered products',
+      icon: <FiBriefcase />,
+      duration: 3,
+      suffix: '+'
+    },
+    { 
+      id: 4, 
       value: 4.9, 
-      label: 'Client Rating', 
+      label: 'Rating', 
+      sublabel: 'Average client satisfaction',
       icon: <FiStar />,
       duration: 2,
       decimals: 1,
       suffix: '★'
     },
     { 
-      id: 3, 
-      value: 99, 
-      label: 'Client Satisfaction', 
-      icon: <FiTrendingUp />,
-      duration: 2,
+      id: 5, 
+      value: 100, 
+      label: 'Success', 
+      sublabel: 'Project delivery rate',
+      icon: <FiCheckCircle />,
+      duration: 2.5,
       suffix: '%'
-    },
+    }
   ];
   
   // Loading state
@@ -367,49 +439,20 @@ const DesignDevelopmentPage = () => {
   
   return (
     <div className="bg-gradient-to-b from-white via-gray-50 to-white text-gray-800 overflow-hidden">
-      {/* Hero Section with Enhanced Banner */}
-      <section className="relative min-h-[80vh] py-12 sm:py-16 md:py-24 flex items-center justify-center overflow-hidden">
-        {/* Modern Gradient Background */}
+      {/* Hero Section with Swapping Cards Banner */}
+      <section  className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-purple-500/10"></div>
-          <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white to-transparent opacity-30"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white to-transparent opacity-30"></div>
-          
-          {/* Animated gradient orbs */}
-          <motion.div 
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"
-          />
-          <motion.div 
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, -40, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ 
-              duration: 25, 
-              repeat: Infinity,
-              ease: "linear",
-              delay: 0.5
-            }}
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-          />
+          <div className="absolute inset-0 bg-[url('/assets/serviceImg/ContactUs.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
         </div>
-        
-        {/* Floating design elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-3 h-3 bg-indigo-500 rounded-full animate-pulse delay-700"></div>
-          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-300"></div>
+
+        {/* Geometric Overlay */}
+        <div className="absolute inset-0 hidden lg:block">
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-yellow-400/30 rotate-45 animate-pulse"></div>
+          <div className="absolute bottom-40 left-32 w-40 h-40 border border-orange-400/20 rotate-12"></div>
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-pink-400/10 -rotate-12"></div>
         </div>
         
         {/* Hero Content */}
@@ -431,20 +474,20 @@ const DesignDevelopmentPage = () => {
               </motion.div>
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Digital Excellence
+                <span className="bg-gradient-to-r from-blue-900 via-indigo-600 to-purple-900 bg-clip-text text-transparent">
+                  Transform Your Vision
                 </span>
                 <br />
-                <span className="text-gray-900">Crafted with Precision</span>
+                <span className="text-gray-900">Into Digital Reality</span>
               </h1>
               
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-lg sm:text-xl text-gray-600 max-w-2xl mb-8 leading-relaxed"
+                className="text-lg sm:text-xl text-white max-w-2xl mb-8 leading-relaxed"
               >
-                Transform your vision into powerful digital experiences. We deliver cutting-edge web solutions, mobile applications, and WordPress platforms that drive business growth.
+                Professional web development, mobile apps, and WordPress solutions crafted to perfection. From concept to launch, we build digital experiences that drive results.
               </motion.p>
               
               <motion.div
@@ -471,7 +514,7 @@ const DesignDevelopmentPage = () => {
                 
                 <Link
                   href="#portfolio"
-                  className="group inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
+                  className="group inline-flex items-center justify-center border-2 border-blue-600 text-black hover:bg-blue-50 font-semibold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
                 >
                   <span className="group-hover:scale-105 transition-transform duration-300">
                     Explore Our Work
@@ -480,7 +523,7 @@ const DesignDevelopmentPage = () => {
               </motion.div>
             </motion.div>
             
-            {/* Services Preview Cards */}
+            {/* Swapping Banner Cards (Like About Page) */}
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.9 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -488,96 +531,184 @@ const DesignDevelopmentPage = () => {
               className="relative"
             >
               <div className="grid grid-cols-2 gap-4">
-                {tabs.map((tab, index) => (
+                {/* Top Left Card */}
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={tab.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ y: -10 }}
-                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? `bg-gradient-to-br ${tab.color} shadow-2xl`
-                        : 'bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-blue-300'
-                    }`}
-                    onClick={() => setActiveTab(tab.id)}
+                    key={bannerCards[0].id + currentBannerCard}
+                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    transition={{ duration: 0.5 }}
+                    className={`p-6 rounded-2xl bg-gradient-to-br ${bannerCards[(currentBannerCard) % 4].color} shadow-2xl`}
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                      activeTab === tab.id
-                        ? 'bg-white/20'
-                        : `bg-gradient-to-br ${tab.color}`
-                    }`}>
-                      <div className={activeTab === tab.id ? 'text-white' : 'text-white'}>
-                        {tab.icon}
-                      </div>
+                    <div className="text-white mb-4">
+                      {bannerCards[(currentBannerCard) % 4].icon}
                     </div>
-                    <h3 className={`text-lg font-bold mb-2 ${
-                      activeTab === tab.id ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {tab.label}
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {bannerCards[(currentBannerCard) % 4].title}
                     </h3>
-                    <p className={`text-sm ${
-                      activeTab === tab.id ? 'text-white/90' : 'text-gray-600'
-                    }`}>
-                      {tab.id === 'web' && 'Custom websites & web applications'}
-                      {tab.id === 'mobile' && 'iOS & Android mobile applications'}
-                      {tab.id === 'wordpress' && 'WordPress websites & e-commerce'}
+                    <p className="text-white/90 text-sm">
+                      {bannerCards[(currentBannerCard) % 4].description}
                     </p>
                   </motion.div>
-                ))}
+                </AnimatePresence>
                 
-                {/* Stats Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                  className="p-6 bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl col-span-2"
-                  ref={statsRef}
-                >
-                  <h3 className="text-lg font-bold text-white mb-4">Our Impact</h3>
-                  <div className="grid grid-cols-3 gap-4">
-                    {stats.map((stat) => (
-                      <div key={stat.id} className="text-center">
-                        <div className="flex items-center justify-center w-8 h-8 mx-auto mb-2">
-                          <div className="text-blue-400">
-                            {stat.icon}
-                          </div>
-                        </div>
-                        <div className="text-2xl font-bold text-white mb-1">
-                          {statsVisible ? (
-                            <CountUp
-                              start={0}
-                              end={stat.value}
-                              duration={stat.duration}
-                              decimals={stat.decimals || 0}
-                              suffix={stat.suffix || ''}
-                            />
-                          ) : (
-                            '0' + (stat.suffix || '')
-                          )}
-                        </div>
-                        <div className="text-xs text-gray-400">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
+                {/* Top Right Card */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={bannerCards[1].id + currentBannerCard + 1}
+                    initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className={`p-6 rounded-2xl bg-gradient-to-br ${bannerCards[(currentBannerCard + 1) % 4].color} shadow-2xl`}
+                  >
+                    <div className="text-white mb-4">
+                      {bannerCards[(currentBannerCard + 1) % 4].icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {bannerCards[(currentBannerCard + 1) % 4].title}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      {bannerCards[(currentBannerCard + 1) % 4].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Bottom Left Card */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={bannerCards[2].id + currentBannerCard + 2}
+                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className={`p-6 rounded-2xl bg-gradient-to-br ${bannerCards[(currentBannerCard + 2) % 4].color} shadow-2xl`}
+                  >
+                    <div className="text-white mb-4">
+                      {bannerCards[(currentBannerCard + 2) % 4].icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {bannerCards[(currentBannerCard + 2) % 4].title}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      {bannerCards[(currentBannerCard + 2) % 4].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Bottom Right Card */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={bannerCards[3].id + currentBannerCard + 3}
+                    initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className={`p-6 rounded-2xl bg-gradient-to-br ${bannerCards[(currentBannerCard + 3) % 4].color} shadow-2xl`}
+                  >
+                    <div className="text-white mb-4">
+                      {bannerCards[(currentBannerCard + 3) % 4].icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {bannerCards[(currentBannerCard + 3) % 4].title}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      {bannerCards[(currentBannerCard + 3) % 4].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Banner Card Indicators */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {[0, 1, 2, 3].map((index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentBannerCard(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentBannerCard % 4 === index ? 'bg-blue-600 w-6' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
             </motion.div>
           </div>
         </div>
-        
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="text-gray-600 text-sm font-medium mb-2">Scroll to explore</div>
-          <div className="w-px h-16 bg-gradient-to-b from-blue-500/50 to-transparent mx-auto"></div>
-        </motion.div>
       </section>
       
-      {/* Portfolio Section */}
+      {/* Stats Section */}
+      <section className="py-16 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto" ref={statsRef}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+              <FiTrendingUp className="text-2xl text-white" />
+            </div>
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+              OUR IMPACT
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              By The{" "}
+              <span className="relative">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                  Numbers
+                </span>
+                <motion.div
+                  animate={{ width: ["0%", "100%", "0%"] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-400"
+                />
+              </span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Years of excellence reflected in our achievements
+            </p>
+          </motion.div>
+          
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: stat.id * 0.1 }}
+                className="bg-white rounded-2xl p-6 text-center border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl mb-4">
+                  <div className="text-white text-xl">
+                    {stat.icon}
+                  </div>
+                </div>
+                <div className="text-3xl sm:text-4xl font-bold text-blue-700 mb-2">
+                  {statsVisible ? (
+                    <CountUp
+                      start={0}
+                      end={stat.value}
+                      duration={stat.duration}
+                      decimals={stat.decimals || 0}
+                      suffix={stat.suffix || ''}
+                    />
+                  ) : (
+                    '0' + (stat.suffix || '')
+                  )}
+                </div>
+                <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
+                <div className="text-sm text-gray-600">{stat.sublabel}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Portfolio Section with Slider */}
       <section id="portfolio" className="py-20 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -591,7 +722,7 @@ const DesignDevelopmentPage = () => {
               <FiGrid className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
-              OUR WORK
+              OUR PORTFOLIO
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Featured{" "}
@@ -607,7 +738,7 @@ const DesignDevelopmentPage = () => {
               </span>
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Explore our successful projects across different categories
+              Browse through our successful design and development projects
             </p>
           </motion.div>
           
@@ -618,7 +749,10 @@ const DesignDevelopmentPage = () => {
                 key={tab.id}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  setCurrentProjectSlide(0);
+                }}
                 className={`flex items-center px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 ${
                   activeTab === tab.id
                     ? `bg-gradient-to-r ${tab.color} text-white shadow-lg`
@@ -631,226 +765,183 @@ const DesignDevelopmentPage = () => {
             ))}
           </div>
           
-          {/* Static Projects Grid (First 5 Projects) */}
-          {staticProjects.length > 0 ? (
+          {/* Projects Slider (Like E-commerce Page) */}
+          {currentProjects.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
-                {staticProjects.map((project, index) => (
-                  <motion.div
-                    key={project.id || index}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
+              {/* Slider Navigation - Arrows at Top */}
+              {groupedProjects.length > 1 && (
+                <div className="flex justify-end items-center gap-4 mb-8">
+                  <motion.button
+                    whileHover={{ scale: 1.1, x: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={prevProjectSlide}
+                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
                   >
-                    {/* Project Image */}
-                    <div className="relative h-40 overflow-hidden flex-shrink-0">
-                      {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
-                        <Image
-                          src={project.image}
-                          alt={project.title || 'Project Image'}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          unoptimized
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                          <div className={`text-4xl ${
-                            activeTab === 'web' ? 'text-blue-600' :
-                            activeTab === 'mobile' ? 'text-green-600' :
-                            'text-blue-400'
-                          }`}>
-                            {tabs.find(t => t.id === activeTab)?.icon}
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                      
-                      {/* Status Badge */}
-                      <div className="absolute top-3 left-3 z-20">
-                        <span className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
-                          {project.status || 'Live'}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    {/* Project Content */}
-                    <div className="p-4 flex flex-col flex-grow">
-                      <h3 className="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
-                        {project.title || 'Project Title'}
-                      </h3>
-                      
-                      <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
-                        {project.description || 'Project description not available'}
-                      </p>
-                      
-                      {/* Technologies */}
-                      {project.technologies && Array.isArray(project.technologies) && project.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.technologies.slice(0, 2).map((tech, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
-                              {tech}
-                            </span>
-                          ))}
-                          {project.technologies.length > 2 && (
-                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                              +{project.technologies.length - 2}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              {/* Slider for Additional Projects (if any) */}
-              {sliderProjects.length > 0 && (
-                <div className="mt-16">
-                  <div className="flex items-center justify-between mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900">More {tabs.find(t => t.id === activeTab)?.label} Projects</h3>
-                    
-                    {groupedSliderProjects.length > 1 && (
-                      <div className="flex items-center gap-3">
-                        <motion.button
-                          whileHover={{ scale: 1.1, x: -5 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={prevProjectSlide}
-                          className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
-                        >
-                          <FiArrowLeft className="text-lg" />
-                        </motion.button>
-                        
-                        <motion.button
-                          whileHover={{ scale: 1.1, x: 5 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={nextProjectSlide}
-                          className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
-                        >
-                          <FiArrowRight className="text-lg" />
-                        </motion.button>
-                      </div>
-                    )}
-                  </div>
+                    <FiArrowLeft className="text-xl" />
+                  </motion.button>
                   
-                  {/* Slider Projects */}
-                  <div className="overflow-hidden">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentSliderSlide}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.5 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                      >
-                        {groupedSliderProjects[currentSliderSlide]?.map((project, index) => (
-                          <motion.div
-                            key={project.id || index}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
-                          >
-                            {/* Project Image */}
-                            <div className="relative h-48 overflow-hidden flex-shrink-0">
-                              {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
-                                <Image
-                                  src={project.image}
-                                  alt={project.title || 'Project Image'}
-                                  fill
-                                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                  unoptimized
-                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                              ) : (
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                                  <div className={`text-5xl ${
-                                    activeTab === 'web' ? 'text-blue-600' :
-                                    activeTab === 'mobile' ? 'text-green-600' :
-                                    'text-blue-400'
-                                  }`}>
-                                    {tabs.find(t => t.id === activeTab)?.icon}
-                                  </div>
-                                </div>
-                              )}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                              
-                              {/* Status Badge */}
-                              <div className="absolute top-3 left-3 z-20">
-                                <span className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs rounded-full">
-                                  {project.status || 'Live'}
-                                </span>
-                              </div>
-                            </div>
-                            
-                            {/* Project Content */}
-                            <div className="p-5 flex flex-col flex-grow">
-                              <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-3">
-                                {project.title || 'Project Title'}
-                              </h3>
-                              
-                              <p className="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
-                                {project.description || 'Project description not available'}
-                              </p>
-                              
-                              {/* Technologies */}
-                              {project.technologies && Array.isArray(project.technologies) && project.technologies.length > 0 && (
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                  {project.technologies.slice(0, 3).map((tech, idx) => (
-                                    <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
-                                      {tech}
-                                    </span>
-                                  ))}
-                                  {project.technologies.length > 3 && (
-                                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                                      +{project.technologies.length - 3}
-                                    </span>
-                                  )}
-                                </div>
-                              )}
-                              
-                              {/* Performance Stats (if available) */}
-                              {project.performance && project.performance.length > 0 && (
-                                <div className="grid grid-cols-2 gap-3 mt-auto">
-                                  {project.performance.slice(0, 2).map((stat, idx) => (
-                                    <div key={idx} className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
-                                      <div className="text-base font-bold text-blue-700 truncate">{stat.value}</div>
-                                      <div className="text-xs text-gray-600 truncate mt-1">{stat.label}</div>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                  
-                  {/* Slider Indicators */}
-                  {groupedSliderProjects.length > 1 && (
-                    <div className="flex justify-center items-center mt-8">
-                      <div className="flex space-x-3">
-                        {groupedSliderProjects.map((_, index) => (
-                          <motion.button
-                            key={index}
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => goToProjectSlide(index)}
-                            className={`h-2 rounded-full transition-all duration-300 ${
-                              currentSliderSlide === index 
-                                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-8' 
-                                : 'bg-gray-300 hover:bg-gray-400 w-2'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <motion.button
+                    whileHover={{ scale: 1.1, x: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={nextProjectSlide}
+                    className="p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                  >
+                    <FiArrowRight className="text-xl" />
+                  </motion.button>
                 </div>
               )}
+              
+              {/* Projects Grid Slider */}
+              <div className="overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentProjectSlide}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.5 }}
+                    className={`grid gap-6 sm:gap-8 ${
+                      windowWidth < 640 
+                        ? 'grid-cols-1' 
+                        : windowWidth < 768 
+                        ? 'grid-cols-2' 
+                        : windowWidth < 1024 
+                        ? 'grid-cols-3' 
+                        : 'grid-cols-4'
+                    }`}
+                  >
+                    {groupedProjects[currentProjectSlide]?.map((project, index) => (
+                      <motion.div
+                        key={project.id || index}
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
+                      >
+                        {/* Project Image */}
+                        <div className="relative h-48 overflow-hidden flex-shrink-0">
+                          {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
+                            <Image
+                              src={project.image}
+                              alt={project.title || 'Project Image'}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                              unoptimized
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                            />
+                          ) : (
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
+                              <div className={`text-4xl ${
+                                activeTab === 'web' ? 'text-blue-600' :
+                                activeTab === 'mobile' ? 'text-green-600' :
+                                'text-blue-400'
+                              }`}>
+                                {tabs.find(t => t.id === activeTab)?.icon}
+                              </div>
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                          
+                          {/* Status Badge */}
+                          <div className="absolute top-3 left-3 z-20">
+                            <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-xs rounded-full">
+                              <FiCheckCircle className="mr-1 text-xs" />
+                              {project.status || 'Live'}
+                            </span>
+                          </div>
+                          
+                          {/* Category Badges */}
+                          <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
+                            {Array.isArray(project.category) && project.category.slice(0, 2).map((cat, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs rounded">
+                                {cat}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        {/* Project Content */}
+                        <div className="p-5 flex flex-col flex-grow">
+                          <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {project.title || 'Project Title'}
+                          </h3>
+                          
+                          <p className="text-sm text-gray-600 mb-4 mt-2 line-clamp-2">
+                            {project.description || 'Project description not available'}
+                          </p>
+                          
+                          {/* Technologies */}
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {Array.isArray(project.technologies) && project.technologies.slice(0, 3).map((tech, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+                                {tech}
+                              </span>
+                            ))}
+                            {Array.isArray(project.technologies) && project.technologies.length > 3 && (
+                              <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                                +{project.technologies.length - 3}
+                              </span>
+                            )}
+                          </div>
+                          
+                          {/* Performance Stats */}
+                          {project.performance && project.performance.length > 0 && (
+                            <div className="grid grid-cols-2 gap-3 mt-auto">
+                              {project.performance.slice(0, 2).map((stat, idx) => (
+                                <div key={idx} className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+                                  <div className="text-base font-bold text-blue-700 truncate">{stat.value}</div>
+                                  <div className="text-xs text-gray-600 truncate mt-1">{stat.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Hover Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Slide Indicators - Below Cards */}
+              {groupedProjects.length > 1 && (
+                <div className="flex justify-center items-center mt-8">
+                  <div className="flex space-x-3">
+                    {groupedProjects.map((_, index) => (
+                      <motion.button
+                        key={index}
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => goToProjectSlide(index)}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          currentProjectSlide === index 
+                            ? 'bg-gradient-to-r from-blue-600 to-indigo-700 w-8' 
+                            : 'bg-gray-300 hover:bg-gray-400 w-2'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {/* View All Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="text-center mt-12"
+              >
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 group"
+                >
+                  <span className="mr-2">View All {tabs.find(t => t.id === activeTab)?.label} Projects</span>
+                  <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </>
           ) : (
             <div className="text-center py-12">
@@ -859,7 +950,7 @@ const DesignDevelopmentPage = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">No Projects Found</h3>
               <p className="text-gray-600 max-w-md mx-auto">
-                We're currently updating our portfolio. Check back soon!
+                We're currently updating our {tabs.find(t => t.id === activeTab)?.label.toLowerCase()} portfolio. Check back soon!
               </p>
             </div>
           )}
@@ -880,7 +971,7 @@ const DesignDevelopmentPage = () => {
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
-              PRICING PLANS
+              TRANSPARENT PRICING
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Design & Development{" "}
@@ -1182,34 +1273,8 @@ const DesignDevelopmentPage = () => {
       {/* Final CTA */}
       <section className="py-20 px-6 sm:px-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
-          {/* Animated gradient background */}
-          <motion.div 
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              scale: [1, 1.3, 1]
-            }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl"
-          />
-          <motion.div 
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, -40, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              duration: 25, 
-              repeat: Infinity,
-              ease: "linear",
-              delay: 0.5
-            }}
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
-          />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">

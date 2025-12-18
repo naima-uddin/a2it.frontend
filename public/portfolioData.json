@@ -670,11 +670,10 @@
                 "status": "live",
                 "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
                 "technologies": [
-                    "Inventory Management System",
-                    "Order Processing",
-                    "Payment Gateway Integration",
-                    "Logistics Management",
-                    "Customer Relationship Management"
+                    "React.js",
+                    "Next.js",
+                    "Node.js",
+                    "Express.js"
                 ],
                 "image": "/assets/Portfolio/c-tire.png",
                 "performance": [
