@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiArrowRight,
   FiCheck,
@@ -11,10 +11,63 @@ import {
   FiUsers,
   FiSmartphone,
   FiPieChart,
+  FiArrowLeft,
+  FiCode,
 } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 
-const ServiceUIUX = () => {
+const ServiceUIUX = ({ projects = [] }) => {
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  // Responsive projects per view
+  const getProjectsPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 768) return 2;
+    if (windowWidth < 1024) return 3;
+    return 4;
+  };
+
+  const projectsPerView = getProjectsPerView();
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  // Group projects into slides
+  const groupedProjects = [];
+  for (let i = 0; i < projects.length; i += projectsPerView) {
+    const slideProjects = projects.slice(i, i + projectsPerView);
+    if (slideProjects.length > 0) {
+      groupedProjects.push(slideProjects);
+    }
+  }
+
+  // Reset slides when grouping changes
+  useEffect(() => {
+    setCurrentProjectSlide(0);
+  }, [projectsPerView]);
+
+  const nextProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev + 1) % groupedProjects.length);
+  };
+
+  const prevProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev - 1 + groupedProjects.length) % groupedProjects.length);
+  };
+
+  const goToProjectSlide = (index) => {
+    setCurrentProjectSlide(index);
+  };
   return (
     <div className="bg-[#0a0a12] text-[#e0e0ff] overflow-hidden">
       {/* Hero Section */}
@@ -51,7 +104,7 @@ const ServiceUIUX = () => {
         </div>
       </section>
 
-      {/* Design Showcase Section */}
+      {/* WordPress / Design Showcase Section */}
       <section className="py-10 px-6 sm:px-12 bg-[#12121a]">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -62,92 +115,132 @@ const ServiceUIUX = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="text-[#ff00cc]">Our</span> Design Projects
+              <span className="text-[#ff00cc]">Our</span> WordPress Projects
             </h2>
             <p className="text-[#b0b0ff] max-w-2xl mx-auto">
-              Explore our portfolio of successful UI/UX design implementations
+              Successful WordPress and design projects we've built for businesses
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                id: 1,
-                image: "/assets/design_development/e-bike.png",
-                title: "Best Electric Bike",
-                category: "Shopify",
-              },
-              {
-                id: 2,
-                image: "/assets/design_development/trademil.png",
-                title: "Best Home Gym Equipment",
-                category: "E-commerce",
-              },
-              {
-                id: 3,
-                image: "/assets/eCommerce/travelBookingShopify.avif",
-                title: "Health Dashboard",
-                category: "Healthcare UI",
-              },
-              {
-                id: 4,
-                image: "/assets/design_development/c-tire.png",
-                title: "Commercial Tyre",
-                category: "Responsive Platform",
-              },
-              {
-                id: 5,
-                image:
-                  "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=800&q=80",
-                title: "Food Delivery App",
-                category: "Mobile Design",
-              },
-              {
-                id: 6,
-                image: "/assets/design_development/trading.png",
-                title: "Cargo Logistics Group Inc",
-                category: "Tracking",
-              },
-            ].map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5 }}
-                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-[#ff00cc]/20"
+          {/* Projects Slider Navigation */}
+          {groupedProjects.length > 1 && (
+            <div className="flex justify-end items-center gap-4 mb-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={prevProjectSlide}
+                className="p-3 rounded-full bg-[#ff00cc] hover:bg-[#cc0099] text-white shadow-lg transition-all"
               >
-                {/* Project Thumbnail */}
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={`Screenshot of ${project.title}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
+                <FiArrowLeft />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={nextProjectSlide}
+                className="p-3 rounded-full bg-[#ff00cc] hover:bg-[#cc0099] text-white shadow-lg transition-all"
+              >
+                <FiArrowRight />
+              </motion.button>
+            </div>
+          )}
+
+          {/* Projects Grid */}
+          {groupedProjects.length > 0 ? (
+            <div className="overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentProjectSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  className={`grid gap-6 ${
+                    windowWidth < 640 ? 'grid-cols-1' :
+                    windowWidth < 768 ? 'grid-cols-2' :
+                    windowWidth < 1024 ? 'grid-cols-3' : 'grid-cols-4'
+                  }`}
+                >
+                  {groupedProjects[currentProjectSlide]?.map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-[#0a0a12] rounded-xl overflow-hidden border border-[#ff00cc]/20 hover:shadow-lg hover:shadow-[#ff00cc]/10 transition-all flex flex-col h-full group"
+                    >
+                      <div className="h-48 bg-[#12121a] relative overflow-hidden">
+                        {project.images && project.images[0] ? (
+                          <Image
+                            src={project.images[0]}
+                            alt={project.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[#ff00cc]">
+                            <FiCode size={48} />
+                          </div>
+                        )}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-green-500 text-white text-xs rounded-full font-bold">
+                            {project.status || 'Live'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-[#e0e0ff]">
+                          {project.title.split("–")[0].trim()}
+                        </h3>
+                        <p className="text-[#b0b0ff] text-sm mb-4 line-clamp-2 flex-grow">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies?.slice(0, 3).map((tech, idx) => (
+                            <span key={idx} className="px-2 py-1 bg-[#ff00cc]/10 text-[#ff00cc] text-xs rounded">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        {project.performance && (
+                          <div className="grid grid-cols-2 gap-2 mt-auto">
+                            {project.performance.slice(0, 2).map((stat, idx) => (
+                              <div key={idx} className="text-center p-2 bg-[#12121a] rounded border border-[#ff00cc]/10">
+                                <div className="font-bold text-[#ff00cc]">{stat.value}</div>
+                                <div className="text-xs text-[#b0b0ff]">{stat.label}</div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-[#b0b0ff]">No WordPress projects available at the moment.</p>
+            </div>
+          )}
+
+          {/* Slide Indicators */}
+          {groupedProjects.length > 1 && (
+            <div className="flex justify-center mt-8">
+              <div className="flex space-x-2">
+                {groupedProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToProjectSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      currentProjectSlide === index
+                        ? "bg-[#ff00cc] w-8"
+                        : "bg-[#ff00cc]/30 hover:bg-[#ff00cc]/50"
+                    }`}
                   />
-                </div>
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-[#ff00cc] text-white rounded-full">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-[#e0e0ff]">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* View Project Link (invisible overlay) */}
-                <Link
-                  href={`/portfolio/${project.id}`}
-                  className="absolute inset-0 z-10"
-                  aria-label={`View ${project.title} project details`}
-                />
-              </motion.div>
-            ))}
-          </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="text-center mt-16">
             <Link

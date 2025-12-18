@@ -1,11 +1,17 @@
 "use client";
+<<<<<<< Updated upstream
 import React, { useState, useRef, useEffect } from "react";
+=======
+
+import React, { useState, useEffect } from "react";
+>>>>>>> Stashed changes
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiArrowRight,
   FiCheck,
   FiCode,
   FiSmartphone,
+<<<<<<< Updated upstream
   FiLayout,
   FiPenTool,
   FiEye,
@@ -30,8 +36,109 @@ import {
   FiAward,
   FiPlay,
   FiX,
+=======
+  FiShoppingCart,
+  FiArrowLeft, 
+>>>>>>> Stashed changes
 } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
+
+const ServiceWebDev = ({ projects = [], packages = [] }) => {
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  // Responsive projects per view
+  const getProjectsPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 768) return 2;
+    if (windowWidth < 1024) return 3;
+    return 4;
+  };
+
+  // Responsive packages per view
+  const getSlidesPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 1024) return 2;
+    return 3;
+  };
+
+  const projectsPerView = getProjectsPerView();
+  const slidesPerView = getSlidesPerView();
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  // Group projects into slides
+  const groupedProjects = [];
+  for (let i = 0; i < projects.length; i += projectsPerView) {
+    const slideProjects = projects.slice(i, i + projectsPerView);
+    if (slideProjects.length > 0) {
+      groupedProjects.push(slideProjects);
+    }
+  }
+
+  // Group packages into slides
+  const groupedPackages = [];
+  for (let i = 0; i < packages.length; i += slidesPerView) {
+    groupedPackages.push(packages.slice(i, i + slidesPerView));
+  }
+
+  // Reset slides when grouping changes
+  useEffect(() => {
+    setCurrentProjectSlide(0);
+    setCurrentSlide(0);
+  }, [projectsPerView, slidesPerView]);
+
+  const nextProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev + 1) % groupedProjects.length);
+  };
+
+  const prevProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev - 1 + groupedProjects.length) % groupedProjects.length);
+  };
+
+  const goToProjectSlide = (index) => {
+    setCurrentProjectSlide(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % groupedPackages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + groupedPackages.length) % groupedPackages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const getPackageColor = (pkg, isHover = false) => {
+    if (pkg.name === "Special" || pkg.color === "black") {
+      return isHover 
+        ? "bg-gray-900 border-gray-800" 
+        : "bg-black border-gray-800";
+    }
+    if (pkg.name === "Gold" || pkg.color === "blue") {
+      return isHover 
+        ? "bg-blue-700 border-blue-600" 
+        : "bg-blue-600 border-blue-500";
+    }
+    return isHover 
+      ? "bg-blue-700 border-blue-600" 
+      : "bg-blue-600 border-blue-500";
+  };
 
 // Import your data
 import pricingData from "./pricing-data.json";
@@ -46,6 +153,7 @@ const DesignDevelopment = () => {
     typeof window !== "undefined" ? window.innerWidth : 1024
   );
 
+<<<<<<< Updated upstream
   const webRef = useRef(null);
   const mobileRef = useRef(null);
   const uiuxRef = useRef(null);
@@ -522,6 +630,267 @@ const DesignDevelopment = () => {
                         <FiCheckCircle className="text-lg" />
                       </div>
                       <span className="text-sm text-gray-700">{feature}</span>
+=======
+      {/* Project Showcase Section */}
+      <section className="py-20 px-6 sm:px-12 bg-[#12121a]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              <span className="text-[#00f0ff]">Our</span> Web Projects
+            </h2>
+            <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+              Successful web development projects we've built for businesses
+            </p>
+          </motion.div>
+
+          {/* Projects Slider Navigation */}
+          {groupedProjects.length > 1 && (
+            <div className="flex justify-end items-center gap-4 mb-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={prevProjectSlide}
+                className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+              >
+                <FiArrowLeft />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={nextProjectSlide}
+                className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+              >
+                <FiArrowRight />
+              </motion.button>
+            </div>
+          )}
+
+          {/* Projects Grid */}
+          {groupedProjects.length > 0 ? (
+            <div className="overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentProjectSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  className={`grid gap-6 ${
+                    windowWidth < 640 ? 'grid-cols-1' :
+                    windowWidth < 768 ? 'grid-cols-2' :
+                    windowWidth < 1024 ? 'grid-cols-3' : 'grid-cols-4'
+                  }`}
+                >
+                  {groupedProjects[currentProjectSlide]?.map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-[#0a0a12] rounded-xl overflow-hidden border border-[#00f0ff]/20 hover:shadow-lg hover:shadow-[#00f0ff]/10 transition-all flex flex-col h-full group"
+                    >
+                      <div className="h-48 bg-[#12121a] relative overflow-hidden">
+                        {project.images && project.images[0] ? (
+                          <Image
+                            src={project.images[0]}
+                            alt={project.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[#00f0ff]">
+                            <FiCode size={48} />
+                          </div>
+                        )}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-green-500 text-white text-xs rounded-full font-bold">
+                            {project.status || 'Live'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-[#e0e0ff]">
+                          {project.title.split("–")[0].trim()}
+                        </h3>
+                        <p className="text-[#b0b0ff] text-sm mb-4 line-clamp-2 flex-grow">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies?.slice(0, 3).map((tech, idx) => (
+                            <span key={idx} className="px-2 py-1 bg-[#00f0ff]/10 text-[#00f0ff] text-xs rounded">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        {project.performance && (
+                          <div className="grid grid-cols-2 gap-2 mt-auto">
+                            {project.performance.slice(0, 2).map((stat, idx) => (
+                              <div key={idx} className="text-center p-2 bg-[#12121a] rounded border border-[#00f0ff]/10">
+                                <div className="font-bold text-[#00f0ff]">{stat.value}</div>
+                                <div className="text-xs text-[#b0b0ff]">{stat.label}</div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-[#b0b0ff]">No projects available at the moment.</p>
+            </div>
+          )}
+
+          {/* Slide Indicators */}
+          {groupedProjects.length > 1 && (
+            <div className="flex justify-center mt-8">
+              <div className="flex space-x-2">
+                {groupedProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToProjectSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      currentProjectSlide === index
+                        ? "bg-[#00f0ff] w-8"
+                        : "bg-[#00f0ff]/30 hover:bg-[#00f0ff]/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="text-center mt-16">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center border-2 border-[#00f0ff] text-[#00f0ff] hover:bg-[#00f0ff] hover:text-[#0a0a12] font-semibold py-3 px-8 rounded-full transition-colors duration-300 group"
+            >
+              View All Projects
+              <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-6 px-6 sm:px-12">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
+              OUR SERVICES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-6">
+              Comprehensive Web Solutions
+            </h2>
+            <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+              End-to-end services tailored to your business objectives
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <FiMonitor className="text-3xl text-[#00f0ff]" />,
+                title: "Custom Web Design",
+                description:
+                  "Bespoke designs that reflect your brand identity and engage your audience",
+                features: [
+                  "UI/UX Design",
+                  "Wireframing",
+                  "Prototyping",
+                  "Brand Integration",
+                ],
+              },
+              {
+                icon: <FiCode className="text-3xl text-[#00f0ff]" />,
+                title: "Web Development",
+                description:
+                  "High-performance websites built with modern technologies",
+                features: [
+                  "React/Next.js",
+                  "Node.js",
+                  "Headless CMS",
+                  "API Integration",
+                ],
+              },
+              {
+                icon: <FiSmartphone className="text-3xl text-[#00f0ff]" />,
+                title: "Mobile Optimization",
+                description:
+                  "Flawless experiences across all devices and screen sizes",
+                features: [
+                  "Responsive Design",
+                  "PWA",
+                  "Touch Optimization",
+                  "Performance Tuning",
+                ],
+              },
+              {
+                icon: <FiShoppingCart className="text-3xl text-[#00f0ff]" />,
+                title: "E-Commerce Solutions",
+                description:
+                  "High-converting online stores with seamless checkout",
+                features: [
+                  "Shopify",
+                  "WooCommerce",
+                  "Payment Gateways",
+                  "Inventory Management",
+                ],
+              },
+              {
+                icon: <FiLayers className="text-3xl text-[#00f0ff]" />,
+                title: "CMS Development",
+                description:
+                  "Easy-to-manage websites with powerful content systems",
+                features: ["WordPress", "Strapi", "Custom CMS", "User Roles"],
+              },
+              {
+                icon: <FiCheck className="text-3xl text-[#00f0ff]" />,
+                title: "Website Maintenance",
+                description:
+                  "Ongoing support to keep your site secure and updated",
+                features: [
+                  "Security Updates",
+                  "Performance Optimization",
+                  "Content Updates",
+                  "Backups",
+                ],
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-[#12121a] p-8 rounded-xl border border-[#00f0ff]/20 hover:border-[#00f0ff] transition-all duration-300 group"
+              >
+                <div className="w-16 h-16 bg-[#0a0a12] rounded-lg flex items-center justify-center mb-6">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-[#b0b0ff] mb-5">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <FiCheck className="text-[#00f0ff] mt-1 mr-2 flex-shrink-0" />
+                      <span>{feature}</span>
+>>>>>>> Stashed changes
                     </li>
                   ))}
                 </ul>
@@ -1028,14 +1397,158 @@ const DesignDevelopment = () => {
           </div>
         </section>
 
+<<<<<<< Updated upstream
         {/* Featured Projects Section */}
         <section className="py-16 px-6 sm:px-12 bg-white">
+=======
+      {/* Pricing Section */}
+      {packages.length > 0 && (
+        <section className="py-20 px-6 sm:px-12 bg-[#0a0a12]">
+>>>>>>> Stashed changes
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+<<<<<<< Updated upstream
               className="text-center mb-12"
+=======
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
+                PRICING PLANS
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
+                Choose Your Perfect Package
+              </h2>
+              <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+                Flexible pricing options to match your business needs and budget
+              </p>
+            </motion.div>
+
+            {/* Pricing Slider Navigation */}
+            {groupedPackages.length > 1 && (
+              <div className="flex justify-end items-center gap-4 mb-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={prevSlide}
+                  className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+                >
+                  <FiArrowLeft />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={nextSlide}
+                  className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+                >
+                  <FiArrowRight />
+                </motion.button>
+              </div>
+            )}
+
+            {/* Pricing Cards Grid */}
+            <div className="overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  className={`grid gap-6 ${
+                    windowWidth < 640 ? 'grid-cols-1' :
+                    windowWidth < 1024 ? 'grid-cols-2' : 'grid-cols-3'
+                  }`}
+                >
+                  {groupedPackages[currentSlide]?.map((pkg, index) => (
+                    <motion.div
+                      key={pkg.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`${getPackageColor(pkg)} rounded-2xl p-8 text-white border-2 hover:scale-105 transition-all duration-300 shadow-xl`}
+                    >
+                      <div className="mb-6">
+                        <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+                        <div className="text-4xl font-bold">{pkg.price}</div>
+                      </div>
+                      <ul className="space-y-3 mb-8">
+                        {pkg.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <FiCheck className="mt-1 mr-3 flex-shrink-0 text-white" />
+                            <span className="text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href="/contact"
+                        className="block w-full text-center bg-white text-gray-900 py-3 px-6 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                      >
+                        Get Started
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Slide Indicators */}
+            {groupedPackages.length > 1 && (
+              <div className="flex justify-center mt-8">
+                <div className="flex space-x-2">
+                  {groupedPackages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        currentSlide === index
+                          ? "bg-[#00f0ff] w-8"
+                          : "bg-[#00f0ff]/30 hover:bg-[#00f0ff]/50"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Final CTA */}
+      <section className="py-10 px-6 sm:px-12 bg-gradient-to-br from-[#0a0a12] via-[#12121a] to-[#0a0a12]">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl font-bold mb-6"
+          >
+            Ready to <span className="text-[#00f0ff]">Transform</span> Your
+            Digital Presence?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-[#b0b0ff] mb-8 max-w-2xl mx-auto"
+          >
+            Let's discuss how we can create a website that drives real business
+            results.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-gradient-to-r from-[#00f0ff] to-[#0066ff] text-[#0a0a12] font-semibold py-5 px-12 rounded-full shadow-xl hover:shadow-[0_5px_30px_rgba(0,240,255,0.4)] transition-all duration-300 transform hover:scale-105"
+>>>>>>> Stashed changes
             >
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                 <span className="text-blue-600">Featured</span> Projects
@@ -1164,5 +1677,10 @@ const DesignDevelopment = () => {
     </div>
   );
 };
+<<<<<<< Updated upstream
 
 export default DesignDevelopment;
+=======
+}
+export default ServiceWebDev;
+>>>>>>> Stashed changes
