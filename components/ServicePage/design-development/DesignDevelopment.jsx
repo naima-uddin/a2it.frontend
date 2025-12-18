@@ -48,187 +48,7 @@ const FiWordpress = FiGlobe;
 
 // Static data extracted from the JSON
 const webDevelopmentProjects = [
-  {
-    "id": 1,
-    "title": "BestBikeReview – Affiliate Bike Review Platform",
-    "category": "Web Development",
-    "type": "featured",
-    "status": "live",
-    "client": "Best Bike Review",
-    "year": "2024",
-    "duration": "3 months",
-    "teamSize": "3 members",
-    "description": "Affiliate-based bicycle review and buying guide platform focused on helping users choose the best bikes and accessories.",
-    "detailedDescription": "Built a high-performance affiliate website dedicated to bicycle reviews, comparisons, and buying guides. The platform emphasizes SEO-driven content, fast page loads, structured product data, and conversion-focused layouts to maximize affiliate revenue.",
-    "technologies": [
-      "Next.js",
-      "React",
-      "Node.js",
-      "Express.js",
-      "emailjs",
-      "MongoDB",
-      "Tailwind CSS",
-      "Schema Markup",
-      "REST API",
-      "Vercel"
-    ],
-    "images": [
-      "/assets/Portfolio/bestbikereview-1.png",
-      "/assets/Portfolio/bestbikereview-2.png",
-      "/assets/Portfolio/bestbikereview-3.png"
-    ],
-    "features": [
-      "In-depth bike reviews",
-      "Product comparison tables",
-      "SEO-optimized buying guides",
-      "Category-based navigation",
-      "Affiliate link management",
-      "Schema-rich snippets",
-      "Mobile-first responsive design",
-      "Fast-loading pages",
-      "Internal linking structure"
-    ],
-    "performance": [
-      {
-        "label": "Page Speed Score",
-        "value": "90+",
-        "icon": "⚡"
-      },
-      {
-        "label": "Organic Traffic Growth",
-        "value": "2.5×",
-        "icon": "📈"
-      },
-      {
-        "label": "Affiliate Click Rate",
-        "value": "High",
-        "icon": "🛒"
-      },
-      {
-        "label": "Mobile Optimization",
-        "value": "100%",
-        "icon": "📱"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "BestGearBuy – Affiliate Product Discovery Platform",
-    "category": "Web Development",
-    "type": "featured",
-    "status": "live",
-    "client": "Best Gear Buy",
-    "year": "2024",
-    "duration": "3 months",
-    "teamSize": "3 members",
-    "description": "Affiliate-driven product discovery and buying guide platform focused on electronics, tools, and everyday gear.",
-    "detailedDescription": "Developed a performance-focused affiliate website that curates top-rated gear through detailed reviews, comparison tables, and SEO-optimized buying guides. The platform is designed to scale content efficiently while maximizing affiliate conversions.",
-    "technologies": [
-      "Next.js",
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Tailwind CSS",
-      "Schema Markup",
-      "REST API",
-      "Vercel"
-    ],
-    "images": [
-      "/assets/Portfolio/best-gear-buy-1.png",
-      "/assets/Portfolio/best-gear-buy-2.png",
-      "/assets/Portfolio/best-gear-buy-3.png"
-    ],
-    "features": [
-      "Product comparison tables",
-      "Affiliate link optimization",
-      "SEO-focused category pages",
-      "Buying guides & reviews",
-      "Fast-loading pages",
-      "Mobile-first responsive design",
-      "Schema-rich snippets",
-      "Internal linking strategy",
-      "Scalable content architecture"
-    ],
-    "performance": [
-      {
-        "label": "Page Speed Score",
-        "value": "90+",
-        "icon": "⚡"
-      },
-      {
-        "label": "Organic Traffic Growth",
-        "value": "3×",
-        "icon": "📈"
-      },
-      {
-        "label": "Affiliate Click Rate",
-        "value": "High",
-        "icon": "🛒"
-      },
-      {
-        "label": "Content Scalability",
-        "value": "Unlimited",
-        "icon": "📚"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Affiliate Performance & Content Analytics Dashboard",
-    "category": "Web Development",
-    "type": "featured",
-    "status": "live",
-    "client": "Digital Media Network",
-    "year": "2024",
-    "duration": "4 months",
-    "teamSize": "5 members",
-    "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
-    "detailedDescription": "Designed and developed a custom analytics dashboard to monitor affiliate clicks, conversions, traffic sources, and content performance across multiple niche review platforms. The system provides real-time insights, trend analysis, and exportable reports to support data-driven decision-making.",
-    "technologies": [
-      "Next.js",
-      "React",
-      "Chart.js",
-      "Node.js",
-      "PostgreSQL",
-      "REST API",
-      "Redis",
-      "Docker"
-    ],
-    "images": [
-      "/assets/Portfolio/affiliate-analytics-1.png",
-      "/assets/Portfolio/affiliate-analytics-2.png",
-      "/assets/Portfolio/affiliate-analytics-3.png"
-    ],
-    "features": [
-      "Real-time traffic monitoring",
-      "Affiliate click & conversion tracking",
-      "Content performance analytics",
-      "Custom date-based reports",
-      "Multi-site data aggregation",
-      "Role-based access control",
-      "CSV & PDF export",
-      "Performance alerts"
-    ],
-    "performance": [
-      {
-        "label": "Reporting Speed Improvement",
-        "value": "70%"
-      },
-      {
-        "label": "Data Accuracy",
-        "value": "99.9%"
-      },
-      {
-        "label": "Active User Adoption",
-        "value": "90%"
-      },
-      {
-        "label": "Decision-Making Efficiency",
-        "value": "60% faster"
-      }
-    ]
-  },
-  {
+    {
     "id": 18,
     "title": "BestBuyersView – Affiliate Product Review Platform",
     "category": "Web Development",
@@ -303,10 +123,528 @@ const webDevelopmentProjects = [
       "position": "Founder",
       "company": "Best Buyers View"
     }
-  }
+  },
+              {
+                "id": 14,
+                "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
+                "category": "Affiliate Platform",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Best Buyers View Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "An affiliate-driven kitchen appliance and equipment review platform helping users choose the best tools for home and professional kitchens.",
+                "detailedDescription": "Kitchen Pro Supply is a niche affiliate platform focused on kitchen appliances, cookware, and professional-grade equipment. The platform provides in-depth reviews, side-by-side comparisons, and buying guides designed to help home cooks and professionals make confident purchasing decisions while driving high-quality affiliate conversions.",
+                "businessChallenge": "Shoppers face difficulty selecting reliable kitchen equipment due to inconsistent reviews, unclear specifications, and overwhelming product choices.",
+                "solution": "Developed a structured affiliate platform featuring expert reviews, comparison tables, performance-based rankings, and schema-optimized content aligned with kitchen-specific buyer intent.",
+                "results": "Increased organic visibility across kitchen and appliance keywords, improved affiliate click-through rates, and created a scalable foundation for expanding into additional kitchen product categories.",
+                "technologies": [
+                    "Next.js",
+                    "React.js",
+                    "Node.js",
+                    "Express.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "REST API",
+                    "MVC Architecture",
+                    "SEO Optimization",
+                    "Schema Markup"
+                ],
+                "images": [
+                    "/assets/Portfolio/kitchenpro-supply.png",
+                    "/assets/Portfolio/kitchen-pro-supply-2.png"
+                ],
+                "features": [
+                    "Kitchen appliance reviews",
+                    "Cookware and equipment comparisons",
+                    "SEO-optimized buying guides",
+                    "Affiliate link management",
+                    "Category-based navigation",
+                    "Mobile-first responsive design",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Internal linking automation"
+                ],
+                "performance": [
+                    {
+                        "label": "Organic Traffic Growth",
+                        "value": "2.6×",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Mobile Optimization",
+                        "value": "100%",
+                        "icon": "📱"
+                    }
+                ],
+                "testimonial": {
+                    "text": "Kitchen Pro Supply makes it easy to compare appliances and choose reliable kitchen tools with confidence.",
+                    "author": "Project Manager",
+                    "position": "Content Lead",
+                    "company": "Best Buyers View"
+                }
+            },
+
+  {
+                "id": 19,
+                "title": "BestProductBuy – Affiliate Product Comparison Platform",
+                "category": "Affiliate E-commerce",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Best Product Buy",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
+                "detailedDescription": "Designed and developed an SEO-driven affiliate platform that aggregates top-rated products across multiple categories. The system focuses on fast performance, structured content, comparison tables, and conversion-optimized layouts to maximize affiliate revenue.",
+                "businessChallenge": "Competing in a saturated affiliate market while maintaining strong SEO rankings, fast page speed, and high user trust.",
+                "solution": "Implemented a lightweight, performance-first architecture with schema markup, optimized internal linking, and category-based content organization tailored for search intent.",
+                "results": "Achieved significant organic traffic growth, improved affiliate click-through rates, and established a scalable content framework for rapid category expansion.",
+                "technologies": [
+                    "Next.js",
+                    "React",
+                    "Node.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "Schema Markup",
+                    "REST API",
+                    "Vercel"
+                ],
+                "images": [
+                    "/assets/Portfolio/bestproductbuy-1.png",
+                    "/assets/Portfolio/bestproductbuy-2.png"
+                ],
+                "features": [
+                    "Product comparison tables",
+                    "Affiliate link management",
+                    "SEO-optimized category pages",
+                    "Buying guides and reviews",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Mobile-first design",
+                    "Internal linking automation",
+                    "Scalable content system"
+                ],
+                "performance": [
+                    {
+                        "label": "Organic Traffic Growth",
+                        "value": "3×",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Content Expansion",
+                        "value": "Unlimited",
+                        "icon": "📚"
+                    }
+                ],
+                "testimonial": {
+                    "text": "BestProductBuy now delivers a fast, trustworthy experience that helps users confidently choose the right products while driving consistent affiliate revenue.",
+                    "author": "Project Owner",
+                    "position": "Founder",
+                    "company": "Best Product Buy"
+                }
+  },
+  {
+    "id": 2,
+    "title": "BestGearBuy – Affiliate Product Discovery Platform",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Best Gear Buy",
+    "year": "2024",
+    "duration": "3 months",
+    "teamSize": "3 members",
+    "description": "Affiliate-driven product discovery and buying guide platform focused on electronics, tools, and everyday gear.",
+    "detailedDescription": "Developed a performance-focused affiliate website that curates top-rated gear through detailed reviews, comparison tables, and SEO-optimized buying guides. The platform is designed to scale content efficiently while maximizing affiliate conversions.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Schema Markup",
+      "REST API",
+      "Vercel"
+    ],
+    "images": [
+      "/assets/Portfolio/best-gear-buy-1.png",
+      "/assets/Portfolio/best-gear-buy-2.png",
+      "/assets/Portfolio/best-gear-buy-3.png"
+    ],
+    "features": [
+      "Product comparison tables",
+      "Affiliate link optimization",
+      "SEO-focused category pages",
+      "Buying guides & reviews",
+      "Fast-loading pages",
+      "Mobile-first responsive design",
+      "Schema-rich snippets",
+      "Internal linking strategy",
+      "Scalable content architecture"
+    ],
+    "performance": [
+      {
+        "label": "Page Speed Score",
+        "value": "90+",
+        "icon": "⚡"
+      },
+      {
+        "label": "Organic Traffic Growth",
+        "value": "3×",
+        "icon": "📈"
+      },
+      {
+        "label": "Affiliate Click Rate",
+        "value": "High",
+        "icon": "🛒"
+      },
+      {
+        "label": "Content Scalability",
+        "value": "Unlimited",
+        "icon": "📚"
+      }
+    ]
+  },
+    {
+    "id": 1,
+    "title": "BestBikeReview – Affiliate Bike Review Platform",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Best Bike Review",
+    "year": "2024",
+    "duration": "3 months",
+    "teamSize": "3 members",
+    "description": "Affiliate-based bicycle review and buying guide platform focused on helping users choose the best bikes and accessories.",
+    "detailedDescription": "Built a high-performance affiliate website dedicated to bicycle reviews, comparisons, and buying guides. The platform emphasizes SEO-driven content, fast page loads, structured product data, and conversion-focused layouts to maximize affiliate revenue.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "emailjs",
+      "MongoDB",
+      "Tailwind CSS",
+      "Schema Markup",
+      "REST API",
+      "Vercel"
+    ],
+    "images": [
+      "/assets/Portfolio/bestbikereview-1.png",
+      "/assets/Portfolio/bestbikereview-2.png",
+      "/assets/Portfolio/bestbikereview-3.png"
+    ],
+    "features": [
+      "In-depth bike reviews",
+      "Product comparison tables",
+      "SEO-optimized buying guides",
+      "Category-based navigation",
+      "Affiliate link management",
+      "Schema-rich snippets",
+      "Mobile-first responsive design",
+      "Fast-loading pages",
+      "Internal linking structure"
+    ],
+    "performance": [
+      {
+        "label": "Page Speed Score",
+        "value": "90+",
+        "icon": "⚡"
+      },
+      {
+        "label": "Organic Traffic Growth",
+        "value": "2.5×",
+        "icon": "📈"
+      },
+      {
+        "label": "Affiliate Click Rate",
+        "value": "High",
+        "icon": "🛒"
+      },
+      {
+        "label": "Mobile Optimization",
+        "value": "100%",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Affiliate Performance & Content Analytics Dashboard",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Digital Media Network",
+    "year": "2024",
+    "duration": "4 months",
+    "teamSize": "5 members",
+    "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
+    "detailedDescription": "Designed and developed a custom analytics dashboard to monitor affiliate clicks, conversions, traffic sources, and content performance across multiple niche review platforms. The system provides real-time insights, trend analysis, and exportable reports to support data-driven decision-making.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Chart.js",
+      "Node.js",
+      "PostgreSQL",
+      "REST API",
+      "Redis",
+      "Docker"
+    ],
+    "images": [
+      "/assets/Portfolio/affiliate-analytics-1.png",
+      "/assets/Portfolio/affiliate-analytics-2.png",
+      "/assets/Portfolio/affiliate-analytics-3.png"
+    ],
+    "features": [
+      "Real-time traffic monitoring",
+      "Affiliate click & conversion tracking",
+      "Content performance analytics",
+      "Custom date-based reports",
+      "Multi-site data aggregation",
+      "Role-based access control",
+      "CSV & PDF export",
+      "Performance alerts"
+    ],
+    "performance": [
+      {
+        "label": "Reporting Speed Improvement",
+        "value": "70%"
+      },
+      {
+        "label": "Data Accuracy",
+        "value": "99.9%"
+      },
+      {
+        "label": "Active User Adoption",
+        "value": "90%"
+      },
+      {
+        "label": "Decision-Making Efficiency",
+        "value": "60% faster"
+      }
+    ]
+  },
+              {
+                "id": 4,
+                "title": "FinNess Trading Platform",
+                "category": [
+                    "Web Development",
+                    "Affiliate Platform",
+                    "WordPress"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A real-time trading platform for stocks and cryptocurrencies with live data feeds, interactive charts, and portfolio management tools.",
+                "technologies": [
+                    "React.js",
+                    "WebSocket",
+                    "Chart.js",
+                    "Node.js",
+                    "PostgreSQL"
+                ],
+                "image": "/assets/Portfolio/feature2.jpeg",
+                "performance": [
+                    {
+                        "label": "Daily Trading Volume",
+                        "value": "$100M+"
+                    },
+                    {
+                        "label": "Data Latency",
+                        "value": "100ms"
+                    }
+                ]
+            },
+                        {
+                "id": 18,
+                "title": "Best E-bike Store",
+                "category": [
+                    "E-commerce",
+                    "Affiliate Platform",
+                    "Web Development"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
+                "technologies": [
+                    "WooCommerce",
+                    "React",
+                    "WordPress",
+                    "Stripe"
+                ],
+                "image": "/assets/Portfolio/bestbikereview-2.png",
+                "performance": [
+                    {
+                        "label": "Monthly Sales",
+                        "value": "$150K+"
+                    },
+                    {
+                        "label": "Conversion Rate",
+                        "value": "3.8%"
+                    }
+                ]
+            },
+                        {
+                "id": 20,
+                "title": "Asian Import Export Co.",
+                "category": [
+                    "E-commerce Platform",
+                    "Web Development",
+                    "Affiliate Platform"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "An import-export e-commerce platform connecting Asian manufacturers with global buyers.",
+                "technologies": [
+                    "React.js",
+                    "Python/Django",
+                    "PostgreSQL",
+                    "Docker",
+                    "AWS"
+                ],
+                "image": "/assets/Portfolio/import-export-3.png",
+                "performance": [
+                    {
+                        "label": "Order Processing Speed",
+                        "value": "50% faster"
+                    },
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%"
+                    }
+                ]
+            },
+                        {
+                "id": 10,
+                "title": "Commercial Tyre LLC – Bulk Tyre Sales & Management System",
+                "category": [
+                    "Web Development",
+                    "Affiliate Platform",
+                    "E-commerce"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
+                "technologies": [
+                    "React.js",
+                    "Next.js",
+                    "Node.js",
+                    "Express.js"
+                ],
+                "image": "/assets/Portfolio/c-tire.png",
+                "performance": [
+                    {
+                        "label": "Organic Traffic",
+                        "value": "2X"
+                    },
+                    {
+                        "label": "Return on Ad Spend",
+                        "value": "5X"
+                    }
+                ]
+            },
+
 ];
 
 const wordpressProjects = [
+    {
+    "id": 12,
+    "title": "KitchenPro Supply",
+    "category": ["WordPress"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
+    "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
+    "image": "/assets/Portfolio/kitchenpro-supply.png",
+    "performance": [
+      { "label": "Order Processing Speed", "value": "50% faster" },
+      { "label": "Inventory Accuracy", "value": "99.8%" }
+    ]
+  },
+              {
+                "id": 19,
+                "title": "BestProductBuy – Affiliate Product Comparison Platform",
+                "category": "Affiliate E-commerce",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Best Product Buy",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
+                "technologies": [
+                    "Next.js",
+                    "React",
+                    "Node.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "Schema Markup",
+                    "REST API",
+                    "Vercel"
+                ],
+                "images": [
+                    "/assets/Portfolio/bestproductbuy-2.png"
+                ],
+                "features": [
+                    "Product comparison tables",
+                    "Affiliate link management",
+                    "SEO-optimized category pages",
+                    "Buying guides and reviews",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Mobile-first design",
+                    "Internal linking automation",
+                    "Scalable content system"
+                ],
+                "performance": [
+                    {
+                        "label": "Organic Traffic Growth",
+                        "value": "3×",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Content Expansion",
+                        "value": "Unlimited",
+                        "icon": "📚"
+                    }
+                ],
+                "testimonial": {
+                    "text": "BestProductBuy now delivers a fast, trustworthy experience that helps users confidently choose the right products while driving consistent affiliate revenue.",
+                    "author": "Project Owner",
+                    "position": "Founder",
+                    "company": "Best Product Buy"
+                }
+            },
   {
     "id": 1,
     "title": "Cargo Logistics Company – Corporate Website & Services Platform",
@@ -352,17 +690,84 @@ const wordpressProjects = [
   {
     "id": 9,
     "title": "Jute Boutique",
-    "category": ["WordPress", "E-commerce"],
+    "category": ["WordPress", "E-commerce", "Web Development"],
     "type": "portfolio",
     "status": "live",
     "description": "A sustainable fashion e-commerce brand design system focused on jute-based products.",
     "technologies": ["Figma", "WordPress", "Canva", "Adobe Creative Suite"],
-    "image": "/assets/Portfolio/jute-1.avif",
+    "image": "/assets/Portfolio/jutecraftify-1.png",
     "performance": [
       { "label": "Brand Recognition", "value": "3X" },
       { "label": "Sales Increase", "value": "80%" }
     ]
   },
+              {
+                "id": 13,
+                "title": "Best Fitness Shop – Fitness Gear & Equipment Review Platform",
+                "category": "Affiliate Platform",
+                "type": "affiliate",
+                "status": "live",
+                "client": "Best Buyers View Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "4 members",
+                "description": "An affiliate-driven fitness product review platform helping users choose the best gym equipment, accessories, and workout gear.",
+                "technologies": [
+                    "Next.js",
+                    "React.js",
+                    "Node.js",
+                    "Express.js",
+                    "MongoDB",
+                    "Tailwind CSS",
+                    "REST API",
+                    "MVC Architecture",
+                    "SEO Optimization",
+                    "Schema Markup"
+                ],
+                "images": [
+                    "/assets/Portfolio/best-fitness-shop-1.png",
+                    "/assets/Portfolio/best-fitness-shop-2.png"
+                ],
+                "features": [
+                    "Fitness product reviews",
+                    "Comparison tables",
+                    "SEO-optimized buying guides",
+                    "Affiliate link management",
+                    "Category-based navigation",
+                    "Mobile-first responsive design",
+                    "Schema-rich snippets",
+                    "Fast-loading pages",
+                    "Internal linking automation"
+                ],
+                "performance": [
+                    {
+                        "label": "Organic Traffic Growth",
+                        "value": "2.8×",
+                        "icon": "📈"
+                    },
+                    {
+                        "label": "Affiliate Click-Through Rate",
+                        "value": "High",
+                        "icon": "🛒"
+                    },
+                    {
+                        "label": "Page Speed Score",
+                        "value": "90+",
+                        "icon": "⚡"
+                    },
+                    {
+                        "label": "Mobile Optimization",
+                        "value": "100%",
+                        "icon": "📱"
+                    }
+                ],
+                "testimonial": {
+                    "text": "Best Fitness Shop delivers clear comparisons and trustworthy recommendations that help fitness enthusiasts choose the right equipment with confidence.",
+                    "author": "Project Manager",
+                    "position": "Content Lead",
+                    "company": "Best Buyers View"
+                }
+            },
   {
     "id": 10,
     "title": "Best E-bike Store",
@@ -377,20 +782,36 @@ const wordpressProjects = [
       { "label": "Conversion Rate", "value": "3.8%" }
     ]
   },
-  {
-    "id": 12,
-    "title": "KitchenPro Supply",
-    "category": ["WordPress"],
-    "type": "portfolio",
-    "status": "live",
-    "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
-    "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
-    "image": "/assets/Portfolio/kitchenpro-supply.png",
-    "performance": [
-      { "label": "Order Processing Speed", "value": "50% faster" },
-      { "label": "Inventory Accuracy", "value": "99.8%" }
-    ]
-  }
+
+              {
+                "id": 19,
+                "title": "Gym Equipment Store",
+                "category": [
+                    "E-commerce",
+                    "Web Development"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "An online store for gym equipment and fitness accessories with inventory management.",
+                "technologies": [
+                    "Magento",
+                    "React",
+                    "Node.js",
+                    "MySQL"
+                ],
+                "image": "/assets/Portfolio/feature2.jpeg",
+                "performance": [
+                    {
+                        "label": "Inventory Turnover",
+                        "value": "4.2X"
+                    },
+                    {
+                        "label": "Customer Retention",
+                        "value": "75%"
+                    }
+                ]
+            },
+                      
 ];
 
 const mobileProjects = [
