@@ -4,6 +4,9 @@ import React, { useState, useRef, useEffect } from "react";
 =======
 
 import React, { useState, useEffect } from "react";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -11,6 +14,7 @@ import {
   FiCheck,
   FiCode,
   FiSmartphone,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   FiLayout,
   FiPenTool,
@@ -43,6 +47,109 @@ import {
 } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+=======
+  FiShoppingCart,
+  FiArrowLeft, 
+} from "react-icons/fi";
+import Link from "next/link";
+import Image from "next/image";
+
+const ServiceWebDev = ({ projects = [], packages = [] }) => {
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  // Responsive projects per view
+  const getProjectsPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 768) return 2;
+    if (windowWidth < 1024) return 3;
+    return 4;
+  };
+
+  // Responsive packages per view
+  const getSlidesPerView = () => {
+    if (windowWidth < 640) return 1;
+    if (windowWidth < 1024) return 2;
+    return 3;
+  };
+
+  const projectsPerView = getProjectsPerView();
+  const slidesPerView = getSlidesPerView();
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  // Group projects into slides
+  const groupedProjects = [];
+  for (let i = 0; i < projects.length; i += projectsPerView) {
+    const slideProjects = projects.slice(i, i + projectsPerView);
+    if (slideProjects.length > 0) {
+      groupedProjects.push(slideProjects);
+    }
+  }
+
+  // Group packages into slides
+  const groupedPackages = [];
+  for (let i = 0; i < packages.length; i += slidesPerView) {
+    groupedPackages.push(packages.slice(i, i + slidesPerView));
+  }
+
+  // Reset slides when grouping changes
+  useEffect(() => {
+    setCurrentProjectSlide(0);
+    setCurrentSlide(0);
+  }, [projectsPerView, slidesPerView]);
+
+  const nextProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev + 1) % groupedProjects.length);
+  };
+
+  const prevProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev - 1 + groupedProjects.length) % groupedProjects.length);
+  };
+
+  const goToProjectSlide = (index) => {
+    setCurrentProjectSlide(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % groupedPackages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + groupedPackages.length) % groupedPackages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const getPackageColor = (pkg, isHover = false) => {
+    if (pkg.name === "Special" || pkg.color === "black") {
+      return isHover 
+        ? "bg-gray-900 border-gray-800" 
+        : "bg-black border-gray-800";
+    }
+    if (pkg.name === "Gold" || pkg.color === "blue") {
+      return isHover 
+        ? "bg-blue-700 border-blue-600" 
+        : "bg-blue-600 border-blue-500";
+    }
+    return isHover 
+      ? "bg-blue-700 border-blue-600" 
+      : "bg-blue-600 border-blue-500";
+  };
+>>>>>>> Stashed changes
 
 const ServiceWebDev = ({ projects = [], packages = [] }) => {
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
@@ -1516,6 +1623,117 @@ const DesignDevelopment = () => {
         </section>
       )}
 
+      {/* Pricing Section */}
+      {packages.length > 0 && (
+        <section className="py-20 px-6 sm:px-12 bg-[#0a0a12]">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <span className="text-[#00f0ff] font-semibold tracking-widest text-sm">
+                PRICING PLANS
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-6">
+                Choose Your Perfect Package
+              </h2>
+              <p className="text-[#b0b0ff] max-w-2xl mx-auto">
+                Flexible pricing options to match your business needs and budget
+              </p>
+            </motion.div>
+
+            {/* Pricing Slider Navigation */}
+            {groupedPackages.length > 1 && (
+              <div className="flex justify-end items-center gap-4 mb-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={prevSlide}
+                  className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+                >
+                  <FiArrowLeft />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={nextSlide}
+                  className="p-3 rounded-full bg-[#00f0ff] hover:bg-[#00d4e6] text-[#0a0a12] shadow-lg transition-all"
+                >
+                  <FiArrowRight />
+                </motion.button>
+              </div>
+            )}
+
+            {/* Pricing Cards Grid */}
+            <div className="overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  className={`grid gap-6 ${
+                    windowWidth < 640 ? 'grid-cols-1' :
+                    windowWidth < 1024 ? 'grid-cols-2' : 'grid-cols-3'
+                  }`}
+                >
+                  {groupedPackages[currentSlide]?.map((pkg, index) => (
+                    <motion.div
+                      key={pkg.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`${getPackageColor(pkg)} rounded-2xl p-8 text-white border-2 hover:scale-105 transition-all duration-300 shadow-xl`}
+                    >
+                      <div className="mb-6">
+                        <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+                        <div className="text-4xl font-bold">{pkg.price}</div>
+                      </div>
+                      <ul className="space-y-3 mb-8">
+                        {pkg.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <FiCheck className="mt-1 mr-3 flex-shrink-0 text-white" />
+                            <span className="text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href="/contact"
+                        className="block w-full text-center bg-white text-gray-900 py-3 px-6 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                      >
+                        Get Started
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Slide Indicators */}
+            {groupedPackages.length > 1 && (
+              <div className="flex justify-center mt-8">
+                <div className="flex space-x-2">
+                  {groupedPackages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        currentSlide === index
+                          ? "bg-[#00f0ff] w-8"
+                          : "bg-[#00f0ff]/30 hover:bg-[#00f0ff]/50"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Final CTA */}
       <section className="py-10 px-6 sm:px-12 bg-gradient-to-br from-[#0a0a12] via-[#12121a] to-[#0a0a12]">
         <div className="max-w-4xl mx-auto text-center">
@@ -1678,9 +1896,12 @@ const DesignDevelopment = () => {
   );
 };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 export default DesignDevelopment;
 =======
+=======
+>>>>>>> Stashed changes
 }
 export default ServiceWebDev;
 >>>>>>> Stashed changes

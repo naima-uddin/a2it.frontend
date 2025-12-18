@@ -41,6 +41,9 @@ import ServiceMobileApp from "./ServiceMobileApp";
 import ServiceUIUX from "./ServiceUIUX";
 import portfolioDataJson from "@/public/portfolioData.json";
 import pricingDataJson from "@/public/pricing-data.json";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 const DesignDevelopment = () => {
@@ -64,6 +67,42 @@ const DesignDevelopment = () => {
   const [featuredPage, setFeaturedPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 =======
+  // Get all projects from imported JSON
+  const allPortfolioProjects = portfolioDataJson.portfolio.portfolioProjects || [];
+  const allAffiliateProjects = portfolioDataJson.portfolio.affiliateProjects || [];
+  const allFeaturedProjects = portfolioDataJson.portfolio.featuredProjects || [];
+  
+  // Combine all projects
+  const allProjects = [...allPortfolioProjects, ...allAffiliateProjects, ...allFeaturedProjects];
+  
+  // Filter projects for Web Development
+  const webProjects = allProjects.filter(project => {
+    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
+    return typeof category === 'string' && (
+      category.toLowerCase().includes('web development') || 
+      category.toLowerCase().includes('affiliate') ||
+      category.toLowerCase().includes('e-commerce')
+    );
+  });
+
+  // For now, use web projects for mobile as well (as user requested)
+  const mobileProjects = webProjects;
+  
+  // WordPress projects - filter any WordPress specific or use web projects
+  const wordpressProjects = allProjects.filter(project => {
+    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
+    const tech = project.technologies?.join(' ').toLowerCase() || '';
+    return (typeof category === 'string' && category.toLowerCase().includes('wordpress')) ||
+           tech.includes('wordpress');
+  });
+
+  // If no WordPress projects, use web projects
+  const finalWordPressProjects = wordpressProjects.length > 0 ? wordpressProjects : webProjects;
+
+  // Get Design & Development packages from pricing data
+  const designPackages = pricingDataJson.services
+    .find(s => s.category === "Design & Development")?.packages || [];
+
   // Get all projects from imported JSON
   const allPortfolioProjects = portfolioDataJson.portfolio.portfolioProjects || [];
   const allAffiliateProjects = portfolioDataJson.portfolio.affiliateProjects || [];
@@ -1656,6 +1695,9 @@ const DesignDevelopment = () => {
 
         <section ref={uiuxRef} className="scroll-mt-20">
           <ServiceUIUX projects={finalWordPressProjects} />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         </section>
       </main>
