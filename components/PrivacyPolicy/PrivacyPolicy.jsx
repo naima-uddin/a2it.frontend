@@ -212,14 +212,14 @@ const PrivacyPolicy = () => {
                   <FaEnvelope className="text-xl text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                <a href="mailto:info@a2it.com" className="text-blue-600 hover:underline">info@a2it.com</a>
+                <a href="mailto:info@a2itllc.com" className="text-blue-600 hover:underline">info@a2itllc.com</a>
               </div>
               <div className="text-center p-5 bg-white rounded-xl shadow-sm">
                 <div className="inline-flex p-3 bg-green-100 rounded-full mb-3">
                   <FaPhone className="text-xl text-green-600" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                <a href="tel:+8801846937397" className="text-green-600 hover:underline">+880 1846-937397</a>
+                <a href="tel:+8801846937397" className="text-green-600 hover:underline">+1 (808) 301-5039</a>
               </div>
               <div className="text-center p-5 bg-white rounded-xl shadow-sm">
                 <div className="inline-flex p-3 bg-purple-100 rounded-full mb-3">
@@ -227,7 +227,7 @@ const PrivacyPolicy = () => {
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-1">Bangladesh Office</h3>
                 <p className="text-sm text-gray-700">Plot No 470, Road No 06, DOHS Mirpur, Dhaka</p>
-                <p className="text-sm text-gray-700 mt-1">+880 1846-937397</p>
+                <p className="text-sm text-gray-700 mt-1">+1 (808) 301-5039</p>
               </div>
               <div className="text-center p-5 bg-white rounded-xl shadow-sm">
                 <div className="inline-flex p-3 bg-purple-100 rounded-full mb-3">
