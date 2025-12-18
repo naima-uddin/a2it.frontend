@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "framer-motion": "^12.23.25",
-    "gsap": "^3.14.2",
     "leaflet": "^1.9.4",
     "leaflet-geosearch": "^4.2.2",
     "lucide-react": "^0.544.0",
@@ -20,9 +19,7 @@
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
-    "react-leaflet": "^5.0.0",
-    "react-slick": "^0.31.0",
-    "slick-carousel": "^1.8.1"
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
