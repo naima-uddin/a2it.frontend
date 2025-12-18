@@ -32,9 +32,6 @@ import {
   FiEye,
   FiLayout,
   FiPenTool,
-  FiSmartphone as FiMobile,
-  FiCpu as FiWeb,
-  FiGlobe as FiWordpress,
   FiBarChart2,
   FiClock,
   FiBriefcase,
@@ -44,15 +41,536 @@ import Link from "next/link";
 import Image from "next/image";
 import CountUp from "react-countup";
 
+// Create separate icons for tab categories
+const FiWeb = FiCpu;
+const FiMobile = FiSmartphone;
+const FiWordpress = FiGlobe;
+
+// Static data extracted from the JSON
+const webDevelopmentProjects = [
+  {
+    "id": 1,
+    "title": "BestBikeReview – Affiliate Bike Review Platform",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Best Bike Review",
+    "year": "2024",
+    "duration": "3 months",
+    "teamSize": "3 members",
+    "description": "Affiliate-based bicycle review and buying guide platform focused on helping users choose the best bikes and accessories.",
+    "detailedDescription": "Built a high-performance affiliate website dedicated to bicycle reviews, comparisons, and buying guides. The platform emphasizes SEO-driven content, fast page loads, structured product data, and conversion-focused layouts to maximize affiliate revenue.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "emailjs",
+      "MongoDB",
+      "Tailwind CSS",
+      "Schema Markup",
+      "REST API",
+      "Vercel"
+    ],
+    "images": [
+      "/assets/Portfolio/bestbikereview-1.png",
+      "/assets/Portfolio/bestbikereview-2.png",
+      "/assets/Portfolio/bestbikereview-3.png"
+    ],
+    "features": [
+      "In-depth bike reviews",
+      "Product comparison tables",
+      "SEO-optimized buying guides",
+      "Category-based navigation",
+      "Affiliate link management",
+      "Schema-rich snippets",
+      "Mobile-first responsive design",
+      "Fast-loading pages",
+      "Internal linking structure"
+    ],
+    "performance": [
+      {
+        "label": "Page Speed Score",
+        "value": "90+",
+        "icon": "⚡"
+      },
+      {
+        "label": "Organic Traffic Growth",
+        "value": "2.5×",
+        "icon": "📈"
+      },
+      {
+        "label": "Affiliate Click Rate",
+        "value": "High",
+        "icon": "🛒"
+      },
+      {
+        "label": "Mobile Optimization",
+        "value": "100%",
+        "icon": "📱"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "BestGearBuy – Affiliate Product Discovery Platform",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Best Gear Buy",
+    "year": "2024",
+    "duration": "3 months",
+    "teamSize": "3 members",
+    "description": "Affiliate-driven product discovery and buying guide platform focused on electronics, tools, and everyday gear.",
+    "detailedDescription": "Developed a performance-focused affiliate website that curates top-rated gear through detailed reviews, comparison tables, and SEO-optimized buying guides. The platform is designed to scale content efficiently while maximizing affiliate conversions.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Schema Markup",
+      "REST API",
+      "Vercel"
+    ],
+    "images": [
+      "/assets/Portfolio/best-gear-buy-1.png",
+      "/assets/Portfolio/best-gear-buy-2.png",
+      "/assets/Portfolio/best-gear-buy-3.png"
+    ],
+    "features": [
+      "Product comparison tables",
+      "Affiliate link optimization",
+      "SEO-focused category pages",
+      "Buying guides & reviews",
+      "Fast-loading pages",
+      "Mobile-first responsive design",
+      "Schema-rich snippets",
+      "Internal linking strategy",
+      "Scalable content architecture"
+    ],
+    "performance": [
+      {
+        "label": "Page Speed Score",
+        "value": "90+",
+        "icon": "⚡"
+      },
+      {
+        "label": "Organic Traffic Growth",
+        "value": "3×",
+        "icon": "📈"
+      },
+      {
+        "label": "Affiliate Click Rate",
+        "value": "High",
+        "icon": "🛒"
+      },
+      {
+        "label": "Content Scalability",
+        "value": "Unlimited",
+        "icon": "📚"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Affiliate Performance & Content Analytics Dashboard",
+    "category": "Web Development",
+    "type": "featured",
+    "status": "live",
+    "client": "Digital Media Network",
+    "year": "2024",
+    "duration": "4 months",
+    "teamSize": "5 members",
+    "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
+    "detailedDescription": "Designed and developed a custom analytics dashboard to monitor affiliate clicks, conversions, traffic sources, and content performance across multiple niche review platforms. The system provides real-time insights, trend analysis, and exportable reports to support data-driven decision-making.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Chart.js",
+      "Node.js",
+      "PostgreSQL",
+      "REST API",
+      "Redis",
+      "Docker"
+    ],
+    "images": [
+      "/assets/Portfolio/affiliate-analytics-1.png",
+      "/assets/Portfolio/affiliate-analytics-2.png",
+      "/assets/Portfolio/affiliate-analytics-3.png"
+    ],
+    "features": [
+      "Real-time traffic monitoring",
+      "Affiliate click & conversion tracking",
+      "Content performance analytics",
+      "Custom date-based reports",
+      "Multi-site data aggregation",
+      "Role-based access control",
+      "CSV & PDF export",
+      "Performance alerts"
+    ],
+    "performance": [
+      {
+        "label": "Reporting Speed Improvement",
+        "value": "70%"
+      },
+      {
+        "label": "Data Accuracy",
+        "value": "99.9%"
+      },
+      {
+        "label": "Active User Adoption",
+        "value": "90%"
+      },
+      {
+        "label": "Decision-Making Efficiency",
+        "value": "60% faster"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "BestBuyersView – Affiliate Product Review Platform",
+    "category": "Web Development",
+    "type": "affiliate",
+    "status": "live",
+    "client": "Best Buyers View",
+    "year": "2025",
+    "duration": "3 months",
+    "teamSize": "10 members",
+    "description": "Affiliate-based product review and comparison platform helping users discover the best products with trusted insights.",
+    "detailedDescription": "Developed a fast, SEO-optimized affiliate website focused on in-depth product reviews, comparisons, and buying guides. The platform is designed to convert organic traffic into affiliate revenue through structured content, smart internal linking, and performance-focused architecture.",
+    "businessChallenge": "Standing out in a highly competitive affiliate market while maintaining fast load times, SEO strength, and high conversion rates.",
+    "solution": "Built a lightweight, scalable platform using modern web technologies, implemented advanced on-page SEO, structured data, category-based navigation, and optimized affiliate linking strategies.",
+    "results": "Achieved strong organic traffic growth, improved page speed scores above 90, increased affiliate click-through rate, and established a scalable content system for future expansion.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JavaScript",
+      "VPS Hosting",
+      "Hostinger",
+      "Tailwind CSS",
+      "REST API",
+      "MVC Architecture",
+      "SEO Optimization",
+      "Schema Markup"
+    ],
+    "images": [
+      "/assets/Portfolio/bestbuyersview-1.png",
+      "/assets/Portfolio/bestbuyersview-2.png",
+      "/assets/Portfolio/bestbuyersview-3.png",
+      "/assets/Portfolio/bestbuyersview-4.png"
+    ],
+    "features": [
+      "Affiliate product reviews",
+      "Product comparison tables",
+      "SEO-optimized blog system",
+      "Category & subcategory structure",
+      "Schema-rich snippets",
+      "Fast-loading pages",
+      "Mobile-first design",
+      "Internal linking automation",
+      "User-friendly navigation"
+    ],
+    "performance": [
+      {
+        "label": "Page Speed Score",
+        "value": "90+",
+        "icon": "⚡"
+      },
+      {
+        "label": "Organic Traffic Growth",
+        "value": "3×",
+        "icon": "📈"
+      },
+      {
+        "label": "Affiliate CTR",
+        "value": "High",
+        "icon": "🛒"
+      },
+      {
+        "label": "Mobile Optimization",
+        "value": "100%",
+        "icon": "📱"
+      }
+    ],
+    "testimonial": {
+      "text": "BestBuyersView now delivers fast performance, strong SEO results, and a clean user experience that helps users make confident buying decisions.",
+      "author": "Project Owner",
+      "position": "Founder",
+      "company": "Best Buyers View"
+    }
+  }
+];
+
+const wordpressProjects = [
+  {
+    "id": 1,
+    "title": "Cargo Logistics Company – Corporate Website & Services Platform",
+    "category": ["WordPress", "Web Development", "Logistics"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A professional corporate website designed to present logistics services, cargo solutions, and global freight capabilities for international clients.",
+    "technologies": ["WordPress", "C-panel Hosting", "SEO Optimization"],
+    "image": "/assets/Portfolio/cargo-logistics-1.png",
+    "performance": [
+      { "label": "Page Speed Score", "value": "90+" },
+      { "label": "Mobile Responsiveness", "value": "100%" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
+    "category": ["E-commerce", "WordPress"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
+    "technologies": ["WordPress", "WooCommerce", "SEO Optimization"],
+    "image": "/assets/Portfolio/jute-1.avif",
+    "performance": [
+      { "label": "International Customer Growth", "value": "120%" },
+      { "label": "Conversion Rate Increase", "value": "30%" }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Gym Equipment Tracker",
+    "category": ["Mobile Development", "Web Development", "WordPress"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A mobile app for gym equipment tracking, maintenance schedules, and fitness tips.",
+    "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
+    "image": "/assets/Portfolio/best-fitness-shop-2.png",
+    "performance": [
+      { "label": "Equipment Uptime", "value": "99%" },
+      { "label": "Maintenance Alerts", "value": "100%" }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Jute Boutique",
+    "category": ["WordPress", "E-commerce"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A sustainable fashion e-commerce brand design system focused on jute-based products.",
+    "technologies": ["Figma", "WordPress", "Canva", "Adobe Creative Suite"],
+    "image": "/assets/Portfolio/jute-1.avif",
+    "performance": [
+      { "label": "Brand Recognition", "value": "3X" },
+      { "label": "Sales Increase", "value": "80%" }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Best E-bike Store",
+    "category": ["E-commerce", "Affiliate Platform", "Web Development"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
+    "technologies": ["WooCommerce", "React", "WordPress", "Stripe"],
+    "image": "/assets/Portfolio/bestbikereview-1.png",
+    "performance": [
+      { "label": "Monthly Sales", "value": "$150K+" },
+      { "label": "Conversion Rate", "value": "3.8%" }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "KitchenPro Supply",
+    "category": ["WordPress"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
+    "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
+    "image": "/assets/Portfolio/kitchenpro-supply.png",
+    "performance": [
+      { "label": "Order Processing Speed", "value": "50% faster" },
+      { "label": "Inventory Accuracy", "value": "99.8%" }
+    ]
+  }
+];
+
+const mobileProjects = [
+  {
+    "id": 6,
+    "title": "BestGearBuy – Affiliate Product Discovery Platform",
+    "category": ["Affiliate Platform", "Web Development", "E-commerce"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "An affiliate platform dedicated to electric bike reviews, comparisons, and buying guides.",
+    "technologies": ["React Native", "Firebase", "Google Maps API", "Redux"],
+    "image": "/assets/Portfolio/best-gear-buy-1.png",
+    "performance": [
+      { "label": "Active Users", "value": "10K+" },
+      { "label": "Battery Accuracy", "value": "98%" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "SwiftShip Tracking",
+    "category": ["Mobile Development", "Web Development", "Logistics"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A mobile app for real-time shipment tracking, notifications, and delivery management.",
+    "technologies": ["React Native", "Firebase", "Google Maps API", "Push Notifications"],
+    "image": "/assets/Portfolio/swiftship.png",
+    "performance": [
+      { "label": "Delivery Accuracy", "value": "99.5%" },
+      { "label": "Customer Satisfaction", "value": "4.7/5" }
+    ]
+  }
+];
+
+// Static pricing data (you can update this as needed)
+const pricingData = {
+  "services": [
+    {
+      "id": 1,
+      "category": "Design & Development",
+      "packages": [
+        {
+          "id": "special",
+          "name": "Special",
+          "price": "$499",
+          "color": "black",
+          "features": [
+            "Basic Website (Up to 5 pages)",
+            "Responsive Design",
+            "Contact Form",
+            "Basic SEO",
+            "1 Month Support",
+            "Hosting Setup"
+          ]
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "price": "$899",
+          "color": "blue",
+          "features": [
+            "Everything in Special",
+            "Up to 10 pages",
+            "Custom Design",
+            "CMS Integration",
+            "Advanced SEO",
+            "3 Months Support"
+          ]
+        },
+        {
+          "id": "gold",
+          "name": "Gold",
+          "price": "$1,499",
+          "color": "blue",
+          "features": [
+            "Everything in Plus",
+            "E-commerce Functionality",
+            "Payment Gateway",
+            "User Authentication",
+            "Performance Optimization",
+            "6 Months Support"
+          ]
+        },
+        {
+          "id": "platinum",
+          "name": "Platinum",
+          "price": "$2,499",
+          "color": "blue",
+          "features": [
+            "Everything in Gold",
+            "Custom Web Application",
+            "Database Design",
+            "API Integration",
+            "Advanced Analytics",
+            "1 Year Support"
+          ]
+        },
+        {
+          "id": "boss",
+          "name": "The Boss",
+          "price": "$3,999",
+          "color": "blue",
+          "features": [
+            "Everything in Platinum",
+            "Enterprise Solution",
+            "Scalable Architecture",
+            "Custom Modules",
+            "Dedicated Support",
+            "Priority Maintenance"
+          ]
+        },
+        {
+          "id": "diamond",
+          "name": "Diamond",
+          "price": "$5,999",
+          "color": "blue",
+          "features": [
+            "Everything in The Boss",
+            "Complete Custom Solution",
+            "Multiple Integrations",
+            "AI/ML Features",
+            "24/7 Support",
+            "White Label"
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// Static stats data
+const statsData = [
+  { 
+    id: 1, 
+    value: 5, 
+    label: 'Years', 
+    sublabel: 'Of combined experience in software development',
+    icon: <FiClock />,
+    duration: 2.5,
+    suffix: '+'
+  },
+  { 
+    id: 2, 
+    value: 100, 
+    label: 'Clients', 
+    sublabel: 'Worldwide satisfied clients',
+    icon: <FiUsers />,
+    duration: 2.5,
+    suffix: '+'
+  },
+  { 
+    id: 3, 
+    value: 200, 
+    label: 'Projects', 
+    sublabel: 'Successfully delivered products',
+    icon: <FiBriefcase />,
+    duration: 3,
+    suffix: '+'
+  },
+  { 
+    id: 4, 
+    value: 4.9, 
+    label: 'Rating', 
+    sublabel: 'Average client satisfaction',
+    icon: <FiStar />,
+    duration: 2,
+    decimals: 1,
+    suffix: '★'
+  },
+  { 
+    id: 5, 
+    value: 100, 
+    label: 'Success', 
+    sublabel: 'Project delivery rate',
+    icon: <FiCheckCircle />,
+    duration: 2.5,
+    suffix: '%'
+  }
+];
+
 const DesignDevelopmentPage = () => {
-  // State for portfolio data
-  const [portfolioData, setPortfolioData] = useState(null);
-  // State for pricing data
-  const [pricingData, setPricingData] = useState(null);
-  // Loading states
-  const [loading, setLoading] = useState(true);
-  const [loadingPricing, setLoadingPricing] = useState(true);
-  
   // UI States
   const [activeTab, setActiveTab] = useState("web");
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -63,54 +581,20 @@ const DesignDevelopmentPage = () => {
   const [statsVisible, setStatsVisible] = useState(false);
   const [currentBannerCard, setCurrentBannerCard] = useState(0);
   
-  // Stats ref for intersection observer
-  const statsRef = useRef(null);
+  // Extract design & development packages from pricing data
+  const designDevelopmentPackages = pricingData.services.find(s => s.category === "Design & Development")?.packages || [];
   
-  // Fetch portfolio data
-  useEffect(() => {
-    const fetchPortfolioData = async () => {
-      try {
-        const response = await fetch('/portfolioData.json');
-        if (!response.ok) throw new Error('Failed to fetch portfolio data');
-        const data = await response.json();
-        setPortfolioData(data);
-      } catch (error) {
-        console.error('Error fetching portfolio data:', error);
-        setPortfolioData({ portfolio: { portfolioProjects: [], featuredProjects: [], affiliateProjects: [] } });
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchPortfolioData();
-  }, []);
+  // Get current projects based on active tab
+  const getCurrentProjects = () => {
+    switch(activeTab) {
+      case "web": return webDevelopmentProjects;
+      case "mobile": return mobileProjects;
+      case "wordpress": return wordpressProjects;
+      default: return [];
+    }
+  };
   
-  // Fetch pricing data
-  useEffect(() => {
-    const fetchPricingData = async () => {
-      try {
-        const response = await fetch('/pricing-data.json');
-        if (!response.ok) throw new Error('Failed to fetch pricing data');
-        const data = await response.json();
-        setPricingData(data);
-      } catch (error) {
-        console.error('Error fetching pricing data:', error);
-        setPricingData({ services: [] });
-      } finally {
-        setLoadingPricing(false);
-      }
-    };
-    
-    fetchPricingData();
-  }, []);
-  
-  // Banner card rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBannerCard((prev) => (prev + 1) % 4);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const currentProjects = getCurrentProjects();
   
   // Handle window resize
   useEffect(() => {
@@ -122,26 +606,22 @@ const DesignDevelopmentPage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // Stats intersection observer
+  // Banner card rotation
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStatsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const interval = setInterval(() => {
+      setCurrentBannerCard((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  // Stats intersection observer - SIMPLIFIED FIX
+  useEffect(() => {
+    // Set stats visible after component mounts
+    const timer = setTimeout(() => {
+      setStatsVisible(true);
+    }, 500);
     
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-    
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
+    return () => clearTimeout(timer);
   }, []);
   
   // Get slides per view based on window width
@@ -161,106 +641,13 @@ const DesignDevelopmentPage = () => {
   const slidesPerView = getSlidesPerView();
   const projectsPerView = getProjectsPerView();
   
-  // Extract design & development packages from pricing data
-  const designDevelopmentPackages = pricingData?.services?.find(s => s.category === "Design & Development")?.packages || [];
-  
   // Group packages into slides
   const groupedPackages = [];
   for (let i = 0; i < designDevelopmentPackages.length; i += slidesPerView) {
     groupedPackages.push(designDevelopmentPackages.slice(i, i + slidesPerView));
   }
   
-  // Get all projects from portfolio data (combine all sections)
-  const getAllProjects = () => {
-    if (!portfolioData?.portfolio) return [];
-    
-    const { portfolioProjects = [], featuredProjects = [], affiliateProjects = [] } = portfolioData.portfolio;
-    
-    // Combine all projects with unique IDs
-    const allProjects = [
-      ...portfolioProjects,
-      ...featuredProjects,
-      ...affiliateProjects
-    ];
-    
-    // Remove duplicates by ID
-    const uniqueProjects = [];
-    const seenIds = new Set();
-    
-    allProjects.forEach(project => {
-      if (project.id && !seenIds.has(project.id)) {
-        seenIds.add(project.id);
-        uniqueProjects.push(project);
-      }
-    });
-    
-    return uniqueProjects;
-  };
-  
-  // Categorize all projects
-  const categorizeProjects = (projects) => {
-    if (!projects || projects.length === 0) return { web: [], mobile: [], wordpress: [] };
-    
-    const categories = {
-      web: [],
-      mobile: [],
-      wordpress: []
-    };
-    
-    projects.forEach(project => {
-      const categoriesArray = Array.isArray(project.category) ? project.category : [project.category];
-      const techArray = Array.isArray(project.technologies) ? project.technologies : [project.technologies || ''];
-      
-      // Convert to lowercase for matching
-      const categoriesLower = categoriesArray.map(cat => cat.toLowerCase());
-      const techLower = techArray.map(tech => tech.toLowerCase());
-      
-      // Check for WordPress projects
-      const hasWordPress = categoriesLower.some(cat => 
-        cat.includes('wordpress')
-      ) || techLower.some(tech => 
-        tech.includes('wordpress') || 
-        tech.includes('woocommerce') ||
-        tech.includes('elementor') ||
-        tech.includes('c-panel')
-      );
-      
-      // Check for Mobile projects
-      const hasMobile = categoriesLower.some(cat => 
-        cat.includes('mobile') ||
-        cat.includes('app')
-      ) || techLower.some(tech => 
-        tech.includes('react native') ||
-        tech.includes('mobile') ||
-        tech.includes('expo') ||
-        tech.includes('firebase') ||
-        tech.includes('push notification')
-      );
-      
-      if (hasWordPress) {
-        categories.wordpress.push(project);
-      } else if (hasMobile) {
-        categories.mobile.push(project);
-      } else {
-        // Default to web if neither WordPress nor Mobile
-        categories.web.push(project);
-      }
-    });
-    
-    return categories;
-  };
-  
-  const allProjects = getAllProjects();
-  const categorizedProjects = categorizeProjects(allProjects);
-  
-  // Get current projects based on active tab
-  const getCurrentProjects = () => {
-    return categorizedProjects[activeTab] || [];
-  };
-  
-  const currentProjects = getCurrentProjects();
-  
-  // Group projects for carousel (ALL projects in slider)
+  // Group projects into slides
   const groupProjectsForSlider = (projects) => {
     const groups = [];
     for (let i = 0; i < projects.length; i += projectsPerView) {
@@ -374,68 +761,6 @@ const DesignDevelopmentPage = () => {
       color: "from-purple-500 to-pink-600"
     }
   ];
-  
-  // Stats data
-  const stats = [
-    { 
-      id: 1, 
-      value: 5, 
-      label: 'Years', 
-      sublabel: 'Of combined experience in software development',
-      icon: <FiClock />,
-      duration: 2.5,
-      suffix: '+'
-    },
-    { 
-      id: 2, 
-      value: 100, 
-      label: 'Clients', 
-      sublabel: 'Worldwide satisfied clients',
-      icon: <FiUsers />,
-      duration: 2.5,
-      suffix: '+'
-    },
-    { 
-      id: 3, 
-      value: 200, 
-      label: 'Projects', 
-      sublabel: 'Successfully delivered products',
-      icon: <FiBriefcase />,
-      duration: 3,
-      suffix: '+'
-    },
-    { 
-      id: 4, 
-      value: 4.9, 
-      label: 'Rating', 
-      sublabel: 'Average client satisfaction',
-      icon: <FiStar />,
-      duration: 2,
-      decimals: 1,
-      suffix: '★'
-    },
-    { 
-      id: 5, 
-      value: 100, 
-      label: 'Success', 
-      sublabel: 'Project delivery rate',
-      icon: <FiCheckCircle />,
-      duration: 2.5,
-      suffix: '%'
-    }
-  ];
-  
-  // Loading state
-  if (loading || loadingPricing) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-gray-50 to-white">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Design & Development Services...</p>
-        </div>
-      </div>
-    );
-  }
   
   return (
     <div className="bg-gradient-to-b from-white via-gray-50 to-white text-gray-800 overflow-hidden">
@@ -637,9 +962,9 @@ const DesignDevelopmentPage = () => {
         </div>
       </section>
       
-      {/* Stats Section */}
+      {/* Stats Section - FIXED */}
       <section className="py-16 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto" ref={statsRef}>
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -647,7 +972,7 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiTrendingUp className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -671,9 +996,9 @@ const DesignDevelopmentPage = () => {
             </p>
           </motion.div>
           
-          {/* Stats Grid */}
+          {/* Stats Grid - USING STATIC DATA */}
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-            {stats.map((stat) => (
+            {statsData.map((stat) => (
               <motion.div
                 key={stat.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -688,17 +1013,14 @@ const DesignDevelopmentPage = () => {
                   </div>
                 </div>
                 <div className="text-3xl sm:text-4xl font-bold text-blue-700 mb-2">
-                  {statsVisible ? (
-                    <CountUp
-                      start={0}
-                      end={stat.value}
-                      duration={stat.duration}
-                      decimals={stat.decimals || 0}
-                      suffix={stat.suffix || ''}
-                    />
-                  ) : (
-                    '0' + (stat.suffix || '')
-                  )}
+                  {/* Always show the countup animation when component is visible */}
+                  <CountUp
+                    start={0}
+                    end={stat.value}
+                    duration={stat.duration}
+                    decimals={stat.decimals || 0}
+                    suffix={stat.suffix || ''}
+                  />
                 </div>
                 <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
                 <div className="text-sm text-gray-600">{stat.sublabel}</div>
@@ -718,7 +1040,7 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiGrid className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -820,9 +1142,9 @@ const DesignDevelopmentPage = () => {
                       >
                         {/* Project Image */}
                         <div className="relative h-48 overflow-hidden flex-shrink-0">
-                          {project.image && project.image !== "/assets/Portfolio/feature2.jpeg" && !project.image.includes('feature') ? (
+                          {project.image || (project.images && project.images[0]) ? (
                             <Image
-                              src={project.image}
+                              src={project.image || project.images[0]}
                               alt={project.title || 'Project Image'}
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -852,7 +1174,7 @@ const DesignDevelopmentPage = () => {
                           
                           {/* Category Badges */}
                           <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
-                            {Array.isArray(project.category) && project.category.slice(0, 2).map((cat, idx) => (
+                            {(Array.isArray(project.category) ? project.category : [project.category]).slice(0, 2).map((cat, idx) => (
                               <span key={idx} className="px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-800 text-xs rounded">
                                 {cat}
                               </span>
@@ -872,7 +1194,7 @@ const DesignDevelopmentPage = () => {
                           
                           {/* Technologies */}
                           <div className="flex flex-wrap gap-2 mb-4">
-                            {Array.isArray(project.technologies) && project.technologies.slice(0, 3).map((tech, idx) => (
+                            {(Array.isArray(project.technologies) ? project.technologies : [project.technologies]).slice(0, 3).map((tech, idx) => (
                               <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
                                 {tech}
                               </span>
@@ -967,7 +1289,7 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -1168,7 +1490,7 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiBox className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
