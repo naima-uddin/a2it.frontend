@@ -375,14 +375,14 @@ export default function BlogDetails({ slug, initialBlog = null }) {
                     <div className="w-14 h-14 rounded-full border-1 border-white/30 overflow-hidden shadow-lg">
                       <Image 
                         src="/A2ITLogo.png"
-                        alt="A2IT Ltd"
+                        alt="A2ITMonday - Thursday"
                         width={56}
                         height={56}
                         className="w-full h-full object-contain"
                       />
                     </div>
                     <div>
-                      <p className="font-semibold text-white/95 text-lg">A2IT Ltd</p>
+                      <p className="font-semibold text-white/95 text-lg">A2IT LLC</p>
                       <p className="text-white/70 flex items-center gap-3 text-sm">
 
                         <span>{readingTime} min read</span>
@@ -493,14 +493,14 @@ export default function BlogDetails({ slug, initialBlog = null }) {
                 <div className="flex flex-col md:flex-row items-start gap-6 bg-gray-50 rounded-2xl p-8">
                   <Image 
                     src="/A2ITLogo.png"
-                    alt="A2IT Ltd"
+                    alt="A2IT LLC"
                     width={80}
                     height={80}
                     className="w-20 h-20 rounded-2xl object-contain border-4 border-white shadow-lg flex-shrink-0"
                   />
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-gray-900 mb-2">
-                      A2IT Ltd Team
+                      A2IT LLC Team
                     </h4>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       Our team of expert developers and consultants brings you insights on web development, mobile apps, eCommerce, and IT solutions.

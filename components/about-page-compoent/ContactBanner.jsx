@@ -40,7 +40,7 @@ const ContactBanner = () => {
                   <FiMail className="text-[#00f0ff] mt-1" />
                   <div>
                     <h4 className="font-medium">Email Us</h4>
-                    <p className="text-[#b0b0ff]">info@a2itltd.com</p>
+                    <p className="text-[#b0b0ff]">info@a2itLLC.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -48,6 +48,16 @@ const ContactBanner = () => {
                   <div>
                     <h4 className="font-medium">Call Us</h4>
                     <p className="text-[#b0b0ff]">+880 1846-937397</p>
+                  </div>
+                </div>
+                                <div className="flex items-start gap-4">
+                  <FiMapPin className="text-[#00f0ff] mt-1" />
+                  <div>
+                    <h4 className="font-medium">USA Office</h4>
+                    <p className="text-[#b0b0ff]">
+                      16192 Coastal Highway, Lewes, DE 19958
+                    </p>
+                    <p className="text-[#b0b0ff] mt-1">+1 (808) 301-5039</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -61,16 +71,7 @@ const ContactBanner = () => {
                     <p className="text-[#b0b0ff] mt-1">+880 1846-937397</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <FiMapPin className="text-[#00f0ff] mt-1" />
-                  <div>
-                    <h4 className="font-medium">USA Office</h4>
-                    <p className="text-[#b0b0ff]">
-                      16192 Coastal Highway, Lewes, DE 19958
-                    </p>
-                    <p className="text-[#b0b0ff] mt-1">+1 (808) 301-5039</p>
-                  </div>
-                </div>
+
               </div>
             </div>
             <div className="bg-[#0a0a12] rounded-xl p-8 border border-[#00f0ff]/20">

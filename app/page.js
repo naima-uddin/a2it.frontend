@@ -6,11 +6,11 @@ import PricingPage from "@/components/home-page-components/PricingCard";
 
 // 🔹 SEO metadata for Home Page
 export const metadata = {
-  title: "A2IT Ltd | IT Services, Web & eCommerce & Digital Solutions",
+  title: "IT Services, Web & eCommerce & Digital Solutions",
   description:
-    "A2IT Ltd provides professional IT services including web development, mobile apps, UI/UX design, eCommerce solutions, Shopify, Amazon & eBay services, SEO, and digital marketing.",
+    "A2IT LLC provides professional IT services including web development, mobile apps, UI/UX design, eCommerce solutions, Shopify, Amazon & eBay services, SEO, and digital marketing.",
   keywords: [
-    "A2IT Ltd",
+    "A2IT LLC",
     "IT Services",
     "Web Development",
     "Mobile App Development",
@@ -25,29 +25,29 @@ export const metadata = {
     "Hosting",
   ],
   alternates: {
-    canonical: "https://a2itltd.com",
+    canonical: "https://a2itllc.com",
   },
   openGraph: {
-    title: "A2IT Ltd | IT Services, Web Development, eCommerce & Digital Solutions",
+    title: "A2IT LLC | IT Services, Web Development, eCommerce & Digital Solutions",
     description:
-      "Discover A2IT Ltd’s expertise in IT services, web & mobile development, eCommerce, digital marketing, and marketplace solutions including Shopify, Amazon, and eBay.",
+      "Discover A2IT LLC’s expertise in IT services, web & mobile development, eCommerce, digital marketing, and marketplace solutions including Shopify, Amazon, and eBay.",
     url: "/A2ITLogo.png",
-    siteName: "A2IT Ltd",
+    siteName: "A2IT LLC",
     images: [
       {
         url: "/A2ITLogo.png", // 👉 add Home OG image in /public
         width: 1200,
         height: 630,
-        alt: "A2IT Ltd - IT Services and Digital Solutions",
+        alt: "A2IT LLC - IT Services and Digital Solutions",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "A2IT Ltd | IT Services, Web Development, eCommerce & Digital Solutions",
+    title: "A2IT LLC | IT Services, Web Development, eCommerce & Digital Solutions",
     description:
-      "A2IT Ltd offers professional IT services including web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, eBay, SEO, and digital marketing.",
+      "A2IT LLC offers professional IT services including web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, eBay, SEO, and digital marketing.",
     images: ["/A2ITLogo.png"],
   },
 };
@@ -72,22 +72,22 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "A2IT Ltd",
-            url: "https://a2itltd.com",
-            logo: "https://a2itltd.com/A2ITLogo.png",
+            name: "A2IT LLC",
+            url: "https://a2itllc.com",
+            logo: "https://a2itllc.com/A2ITLogo.png",
             sameAs: [
-              "https://www.facebook.com/yourcompany", // add your social profiles
+              "https://www.facebook.com/yourcompany",
               "https://www.linkedin.com/company/yourcompany",
               "https://twitter.com/yourcompany",
             ],
             description:
-              "A2IT Ltd provides IT services including web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, eBay, SEO, and digital marketing solutions worldwide.",
+              "A2IT LLC provides IT services including web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, eBay, SEO, and digital marketing solutions worldwide.",
             contactPoint: [
               {
                 "@type": "ContactPoint",
                 contactType: "customer support",
-                telephone: "+880XXXXXXXXXX", // replace with your number
-                email: "info@a2itltd.com", // replace with your email
+                telephone: "+8801846937397",
+                email: "info@a2itllc.com",
                 areaServed: "Worldwide",
               },
             ],

@@ -14,13 +14,13 @@ export const metadata = {
     "UI UX Design",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/design-development",
+    canonical: "https://a2itllc.com/services/design-development",
   },
   openGraph: {
     title: "Design & Development Services | A2IT",
     description:
       "Expert web and app design, eCommerce solutions, and UI/UX services to create engaging digital products.",
-    url: "https://a2itltd.com/services/design-development",
+    url: "https://a2itllc.com/services/design-development",
     siteName: "A2IT",
     images: [
       {
@@ -57,8 +57,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

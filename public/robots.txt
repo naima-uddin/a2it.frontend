@@ -1,4 +1,26 @@
+# robots.txt for A2IT LLC
+# Allow all search engines to crawl the site
+
 User-agent: *
 Allow: /
 
-Sitemap: https://a2itltd.com/sitemap.xml
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all CSS, JS, and image files
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.avif
+
+# Crawl-delay (optional, adjust if needed)
+# Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://a2itllc.com/sitemap.xml

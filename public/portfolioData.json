@@ -508,7 +508,7 @@
             },
             {
                 "id": 2,
-                "title": "A2IT Ltd – Corporate Website & Services Platform showcase",
+                "title": "A2IT LLC – Corporate Website & Services Platform showcase",
                 "category": [
                     "Web Development"
                 ],
@@ -526,7 +526,7 @@
                     "C-panel Hosting",
                     "SEO Optimization"
                 ],
-                "image": "/assets/Portfolio/a2itltd-1.png",
+                "image": "/assets/Portfolio/a2itLLC-1.png",
                 "performance": [
                     {
                         "label": "Page Speed Score",

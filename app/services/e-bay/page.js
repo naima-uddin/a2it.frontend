@@ -14,13 +14,13 @@ export const metadata = {
     "eBay Product Listing Optimization",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/ebay",
+    canonical: "https://a2itllc.com/services/ebay",
   },
   openGraph: {
     title: "eBay Services | A2IT",
     description:
       "Professional eBay services including store design, SEO, marketing, and account management to help your business grow.",
-    url: "https://a2itltd.com/services/ebay",
+    url: "https://a2itllc.com/services/ebay",
     siteName: "A2IT",
     images: [
       {
@@ -57,8 +57,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

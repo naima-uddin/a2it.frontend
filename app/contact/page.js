@@ -3,12 +3,12 @@ import React from "react";
 
 export const metadata = {
 
-  metadataBase: new URL('https://a2itltd.com'),
-  title: "Contact Us | A2IT Ltd | Get in Touch",
+  metadataBase: new URL('https://a2itllc.com'),
+  title: "Contact Us | Get in Touch",
   description:
-    "Get in touch with A2IT Ltd for inquiries about IT services, web development, eCommerce solutions, digital marketing, and more.",
+    "Get in touch with A2IT LLC for inquiries about IT services, web development, eCommerce solutions, digital marketing, and more.",
   keywords: [
-    "Contact A2IT Ltd",
+    "Contact A2IT LLC",
     "IT Services Inquiry",
     "Web Development Contact",
     "eCommerce Consultation",
@@ -17,29 +17,29 @@ export const metadata = {
     "Amazon Services Inquiry",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/contact",
+    canonical: "https://a2itllc.com/contact",
   },
   openGraph: {
-    title: "Contact Us | A2IT Ltd | Get in Touch",
+    title: "Contact Us | Get in Touch",
     description:
-      "Reach out to A2IT Ltd for any queries regarding web development, mobile apps, eCommerce, Shopify, Amazon, or digital marketing services.",
-    url: "https://a2itltd.com/contact",
-    siteName: "A2IT Ltd",
+      "Reach out to A2IT LLC for any queries regarding web development, mobile apps, eCommerce, Shopify, Amazon, or digital marketing services.",
+    url: "https://a2itllc.com/contact",
+    siteName: "A2IT LLC",
     images: [
       {
-        url: "/og-contact.jpg", // Place this in /public
+        url: "/og-contact.jpg",
         width: 1200,
         height: 630,
-        alt: "Contact A2IT Ltd",
+        alt: "Contact A2IT LLC",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | A2IT Ltd | Get in Touch",
+    title: "Contact Us | Get in Touch",
     description:
-      "Contact A2IT Ltd for inquiries about IT services, web development, eCommerce, Shopify, Amazon, and digital marketing solutions.",
+      "Contact A2IT LLC for inquiries about IT services, web development, eCommerce, Shopify, Amazon, and digital marketing solutions.",
     images: ["/og-contact.jpg"],
   },
 };
@@ -57,21 +57,21 @@ export default function Page() {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             name: "Contact Us",
-            url: "https://a2itltd.com/contact",
+            url: "https://a2itllc.com/contact",
             description:
-              "Get in touch with A2IT Ltd for inquiries about IT services, web development, eCommerce solutions, digital marketing, and more.",
+              "Get in touch with A2IT LLC for inquiries about IT services, web development, eCommerce solutions, digital marketing, and more.",
             publisher: {
               "@type": "Organization",
-              name: "A2IT Ltd",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              name: "A2IT LLC",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             contactOption: [
               {
                 "@type": "ContactPoint",
                 contactType: "customer support",
                 telephone: "+880XXXXXXXXXX",
-                email: "info@a2itltd.com",
+                email: "info@a2itllc.com",
                 areaServed: "Worldwide",
               },
             ],

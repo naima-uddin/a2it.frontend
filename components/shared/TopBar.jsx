@@ -20,13 +20,13 @@ const TopBar = () => {
         </div>
         <div className="flex items-center space-x-1">
           <FaEnvelope className="text-[#0066ff]" />
-          <span>info@a2itltd.com</span>
+          <span>info@a2itLLC.com</span>
         </div>
       </div>
 
       <div className="flex space-x-2">
         <a
-          href="https://www.facebook.com/A2ITLtd"
+          href="https://www.facebook.com/A2ITLLC"
           className="bg-[#12121a] hover:bg-[#0066ff] p-2 rounded text-[#00f0ff] border border-[#0066ff]/50 hover:border-[#00f0ff] transition-colors duration-300"
         >
           <FaFacebookF />

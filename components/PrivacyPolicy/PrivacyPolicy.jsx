@@ -22,12 +22,7 @@ const PrivacyPolicy = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Privacy Policy
           </h1>
-          <div className="inline-flex items-center justify-center gap-2 px-6 py-2 bg-blue-50 rounded-full border border-blue-100">
-            <span className="text-sm font-medium text-blue-600">Last updated:</span>
-            <span className="text-sm text-gray-600">
-              {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </span>
-          </div>
+          
         </div>
 
         {/* Introduction */}
@@ -40,7 +35,7 @@ const PrivacyPolicy = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment to Your Privacy</h2>
               <div className="space-y-4 text-gray-700">
                 <p className="leading-relaxed">
-                  At <span className="font-semibold text-blue-600">A2It Ltd</span>, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
+                  At <span className="font-semibold text-blue-600">A2IT LLC</span>, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
                 </p>
                 <p className="leading-relaxed">
                   By accessing or using our website, you acknowledge that you have read, understood, and agree to be bound by the terms of this Privacy Policy. If you do not agree with our policies and practices, please do not use our website.

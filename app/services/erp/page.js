@@ -16,13 +16,13 @@ export const metadata = {
     "CRM Integration",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/erp",
+    canonical: "https://a2itllc.com/services/erp",
   },
   openGraph: {
     title: "ERP Services | A2IT",
     description:
       "Streamline your business with A2IT’s ERP services including custom ERP solutions, cloud ERP, and system integrations.",
-    url: "https://a2itltd.com/services/erp",
+    url: "https://a2itllc.com/services/erp",
     siteName: "A2IT",
     images: [
       {
@@ -59,8 +59,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

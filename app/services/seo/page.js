@@ -16,13 +16,13 @@ export const metadata = {
     "Online Marketing Agency",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/digital-marketing",
+    canonical: "https://a2itllc.com/services/digital-marketing",
   },
   openGraph: {
     title: "Digital Marketing Services | SEO, SEM & PPC | A2IT",
     description:
       "Grow your business with A2IT’s digital marketing solutions. We specialize in SEO, SEM, and PPC campaigns to increase traffic, leads, and sales.",
-    url: "https://a2itltd.com/services/digital-marketing",
+    url: "https://a2itllc.com/services/digital-marketing",
     siteName: "A2IT",
     images: [
       {
@@ -59,8 +59,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

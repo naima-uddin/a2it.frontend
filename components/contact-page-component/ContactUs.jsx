@@ -252,6 +252,20 @@ const ContactUs = () => {
             <h2 className="text-2xl font-bold mb-8 text-gray-900">Contact Information</h2>
 
             <div className="space-y-8">
+              {/* USA Address */}
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <FiMapPin className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-800">USA Office</h3>
+                    <p className="text-gray-600 leading-relaxed mt-1">
+                      16192 Coastal Highway,<br />
+                      Lewes, DE 19958
+                    </p>
+                    <p className="text-gray-800 text-lg font-medium mt-2">+1 (808) 301-5039</p>
+                  </div>
+                </div>
+              </div>
               {/* Bangladesh Address */}
               <div className="space-y-3">
                 <div className="flex items-start">
@@ -268,20 +282,6 @@ const ContactUs = () => {
                 </div>
               </div>
 
-              {/* USA Address */}
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <FiMapPin className="text-gray-700 mt-1 mr-3 flex-shrink-0" size={20} />
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-800">USA Office</h3>
-                    <p className="text-gray-600 leading-relaxed mt-1">
-                      16192 Coastal Highway,<br />
-                      Lewes, DE 19958
-                    </p>
-                    <p className="text-gray-800 text-lg font-medium mt-2">+1 (808) 301-5039</p>
-                  </div>
-                </div>
-              </div>
 
 
 
@@ -303,7 +303,7 @@ const ContactUs = () => {
                   <div>
                     <h3 className="font-bold text-lg text-gray-800">Working Hours</h3>
                     <p className="text-gray-600 mt-1">
-                      Saturday - Friday: 10AM - 7PM
+                      Monday - Thursday 10AM - 7PM
                     </p>
                   </div>
                 </div>

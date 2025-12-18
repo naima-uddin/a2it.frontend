@@ -14,13 +14,13 @@ export const metadata = {
     "Amazon Affiliate Program",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/amazon",
+    canonical: "https://a2itllc.com/services/amazon",
   },
   openGraph: {
     title: "Amazon Services | A2IT",
     description:
       "Comprehensive Amazon services: Marketing, Vendor Central, DSP, FBA, and Affiliate Programs.",
-    url: "https://a2itltd.com/services/amazon",
+    url: "https://a2itllc.com/services/amazon",
     siteName: "A2IT",
     images: [
       {
@@ -57,8 +57,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

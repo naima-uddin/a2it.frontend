@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "IT Services | A2IT Ltd",
+  title: "IT Services",
   description:
-    "Explore A2IT Ltd’s full range of IT services including Web Development, Mobile App Development, UI/UX Design, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
+    "Explore A2IT LLC's full range of IT services including Web Development, Mobile App Development, UI/UX Design, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
   keywords: [
     "IT Services",
     "Web Development",
@@ -18,29 +18,29 @@ export const metadata = {
     "E-commerce Solutions",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services",
+    canonical: "https://a2itllc.com/services",
   },
   openGraph: {
-    title: "IT Services | A2IT Ltd",
+    title: "IT Services",
     description:
-      "Discover A2IT Ltd’s complete suite of IT services including web & mobile development, SEO, digital marketing, hosting, Shopify, and ERP solutions.",
-    url: "https://a2itltd.com/services",
-    siteName: "A2IT Ltd",
+      "Discover A2IT LLC's complete suite of IT services including web & mobile development, SEO, digital marketing, hosting, Shopify, and ERP solutions.",
+    url: "https://a2itllc.com/services",
+    siteName: "A2IT LLC",
     images: [
       {
-        url: "/og-itservices.jpg", // 👉 add main services OG image in /public
+        url: "/og-itservices.jpg",
         width: 1200,
         height: 630,
-        alt: "IT Services by A2IT Ltd",
+        alt: "IT Services by A2IT LLC",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT Services | A2IT Ltd",
+    title: "IT Services",
     description:
-      "Explore A2IT Ltd’s full range of IT services including Web Development, Mobile App Development, UI/UX, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
+      "Explore A2IT LLC's full range of IT services including Web Development, Mobile App Development, UI/UX, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
     images: ["/og-itservices.jpg"],
   },
 };
@@ -61,16 +61,16 @@ export default function ServicesPage() {
             serviceType: "IT Services",
             provider: {
               "@type": "Organization",
-              name: "A2IT Ltd",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              name: "A2IT LLC",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",
               name: "Worldwide",
             },
             description:
-              "A2IT Ltd provides a full range of IT services including Web Development, Mobile Apps, UI/UX, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
+              "A2IT LLC provides a full range of IT services including Web Development, Mobile Apps, UI/UX, SEO, Paid Media, Amazon Marketing, ERP Solutions, Hosting, Shopify, and more.",
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "IT Services",

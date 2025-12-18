@@ -3,9 +3,9 @@ import React from "react";
 
 // 🔹 SEO metadata for Portfolio
 export const metadata = {
-  title: "Portfolio | A2IT Ltd | Our Projects in Web, eCommerce & Marketplaces",
+  title: "Portfolio | Our Projects in Web, eCommerce & Marketplaces",
   description:
-    "Explore A2IT Ltd’s portfolio showcasing web development, mobile apps, UI/UX, eCommerce stores, Amazon, Shopify, and eBay projects. See our innovative IT solutions in action.",
+    "Explore A2IT LLC’s portfolio showcasing web development, mobile apps, UI/UX, eCommerce stores, Amazon, Shopify, and eBay projects. See our innovative IT solutions in action.",
   keywords: [
     "A2IT Portfolio",
     "Web Development Projects",
@@ -19,29 +19,29 @@ export const metadata = {
     "IT Solutions Portfolio",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/portfolio",
+    canonical: "https://a2itllc.com/portfolio",
   },
   openGraph: {
-    title: "Portfolio | A2IT Ltd | Web, eCommerce & Marketplace Projects",
+    title: "Portfolio | Web, eCommerce & Marketplace Projects",
     description:
-      "Discover A2IT Ltd’s portfolio of web, mobile, UI/UX, eCommerce, Shopify, Amazon, and eBay projects delivered with excellence.",
-    url: "https://a2itltd.com/portfolio",
-    siteName: "A2IT Ltd",
+      "Discover A2IT LLC’s portfolio of web, mobile, UI/UX, eCommerce, Shopify, Amazon, and eBay projects delivered with excellence.",
+    url: "https://a2itllc.com/portfolio",
+    siteName: "A2IT LLC",
     images: [
       {
         url: "/og-portfolio.jpg", // 👉 add portfolio OG image in /public
         width: 1200,
         height: 630,
-        alt: "Portfolio of A2IT Ltd",
+        alt: "Portfolio of A2IT LLC",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | A2IT Ltd | Web, eCommerce & Marketplace Projects",
+    title: "Portfolio | Web, eCommerce & Marketplace Projects",
     description:
-      "Explore A2IT Ltd’s portfolio showcasing web, mobile, UI/UX, eCommerce, Shopify, Amazon, and eBay projects.",
+      "Explore A2IT LLC’s portfolio showcasing web, mobile, UI/UX, eCommerce, Shopify, Amazon, and eBay projects.",
     images: ["/og-portfolio.jpg"],
   },
 };
@@ -61,13 +61,13 @@ export default function Page() {
             name: "Portfolio",
             author: {
               "@type": "Organization",
-              name: "A2IT Ltd",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              name: "A2IT LLC",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             description:
-              "A2IT Ltd’s portfolio showcasing projects in web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, and eBay.",
-            url: "https://a2itltd.com/portfolio",
+              "A2IT LLC’s portfolio showcasing projects in web development, mobile apps, UI/UX, eCommerce, Shopify, Amazon, and eBay.",
+            url: "https://a2itllc.com/portfolio",
             about: [
               { "@type": "Thing", name: "Web Development" },
               { "@type": "Thing", name: "Mobile App Development" },

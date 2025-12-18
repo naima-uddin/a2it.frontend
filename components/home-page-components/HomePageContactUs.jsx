@@ -140,6 +140,22 @@ const HomePageContactUs = () => {
               </h2>
               
               <div className="space-y-6">
+                                {/* USA Address */}
+                <div className="group transform transition-all duration-300 hover:translate-x-1">
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-lg mr-4">
+                      <FiMapPin className="text-white" size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg text-white mb-2">USA Office</h3>
+                      <p className="text-gray-200 text-base leading-relaxed">
+                        16192 Coastal Highway,<br />
+                        Lewes, DE 19958
+                      </p>
+                      <p className="text-gray-900 text-xl font-bold mt-2">+1 (808) 301-5039</p>
+                    </div>
+                  </div>
+                </div>
                 {/* Bangladesh Address */}
                 <div className="group transform transition-all duration-300 hover:translate-x-1">
                   <div className="flex items-start">
@@ -158,22 +174,7 @@ const HomePageContactUs = () => {
                   </div>
                 </div>
 
-                {/* USA Address */}
-                <div className="group transform transition-all duration-300 hover:translate-x-1">
-                  <div className="flex items-start">
-                    <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3 rounded-lg mr-4">
-                      <FiMapPin className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-white mb-2">USA Office</h3>
-                      <p className="text-gray-200 text-base leading-relaxed">
-                        16192 Coastal Highway,<br />
-                        Lewes, DE 19958
-                      </p>
-                      <p className="text-gray-900 text-xl font-bold mt-2">+1 (808) 301-5039</p>
-                    </div>
-                  </div>
-                </div>
+
 
 
 
@@ -185,7 +186,7 @@ const HomePageContactUs = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Email Address</h3>
-                      <p className="text-gray-900 text-xl font-bold">info@a2itltd.com</p>
+                      <p className="text-gray-900 text-xl font-bold">info@a2itLLC.com</p>
                     </div>
                   </div>
                 </div>
@@ -199,7 +200,7 @@ const HomePageContactUs = () => {
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Working Hours</h3>
                       <p className="text-gray-200 text-base">
-                        Saturday - Friday: <span className="text-gray-900 font-semibold">10AM - 7PM</span>
+                        Monday - Thursday <span className="text-gray-900 font-semibold">10AM - 7PM</span>
                       </p>
                     </div>
                   </div>

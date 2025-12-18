@@ -36,24 +36,11 @@ const TermsOfService = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
                 Terms of Service
               </h1>
-              <div className="flex items-center justify-center gap-3 text-sm">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
-                  Effective Date
-                </span>
-                <span className="text-gray-600">
-                  {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </span>
-              </div>
+              
             </div>
           </div>
           
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-full border border-blue-100 shadow-sm mb-6">
-              <p className="text-gray-700 font-medium">
-                Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </p>
-            </div>
-          </div>
+          
         </div>
 
         {/* Introduction Banner */}
@@ -62,7 +49,7 @@ const TermsOfService = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex-1">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                  Welcome to A2It Ltd
+                  Welcome to A2IT LLC
                 </h2>
                 <p className="text-blue-100 text-lg leading-relaxed">
                   By accessing our website and using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.
@@ -119,7 +106,7 @@ const TermsOfService = () => {
                 </div>
               </div>
               <div className="space-y-4 text-gray-700">
-                <p>All content on this website is the property of A2It Ltd or its content suppliers and is protected by international copyright laws.</p>
+                <p>All content on this website is the property of A2IT LLC or its content suppliers and is protected by international copyright laws.</p>
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <div className="text-center p-3 bg-purple-50 rounded-lg">
                     <span className="text-sm font-medium text-purple-700">📄 Copyright</span>
@@ -253,7 +240,7 @@ const TermsOfService = () => {
                 </div>
               </div>
               <div className="space-y-4 text-gray-700">
-                <p>A2It Ltd shall not be liable for any indirect, incidental, special, consequential or punitive damages.</p>
+                <p>A2IT LLC shall not be liable for any indirect, incidental, special, consequential or punitive damages.</p>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="text-center p-3 bg-cyan-50 rounded-lg">
                     <span className="text-xs font-medium text-cyan-700">No liability for:</span>

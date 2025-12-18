@@ -16,13 +16,13 @@ export const metadata = {
     "Custom Mobile Applications",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/mobile-app",
+    canonical: "https://a2itllc.com/services/mobile-app",
   },
   openGraph: {
     title: "Mobile App Development Services | A2IT",
     description:
       "Custom iOS & Android app development with seamless UI/UX, cross-platform solutions, and ongoing app maintenance by A2IT.",
-    url: "https://a2itltd.com/services/mobile-app",
+    url: "https://a2itllc.com/services/mobile-app",
     siteName: "A2IT",
     images: [
       {
@@ -59,8 +59,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

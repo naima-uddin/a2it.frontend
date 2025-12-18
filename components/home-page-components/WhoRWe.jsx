@@ -438,7 +438,7 @@ const WhoRWe = () => {
               transition={{ delay: 0.4 }}
             >
               {[
-                { icon: FaFacebookF, href: "https://www.facebook.com/A2ITLtd", color: "blue" },
+                { icon: FaFacebookF, href: "https://www.facebook.com/A2ITLLC", color: "blue" },
                 { icon: FaInstagram, href: "#", color: "pink" },
                 { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/a2itlimited/", color: "blue" }
               ].map((social, index) => (

@@ -16,13 +16,13 @@ export const metadata = {
     "Managed Hosting Solutions",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/hosting",
+    canonical: "https://a2itllc.com/services/hosting",
   },
   openGraph: {
     title: "Web Hosting Services | Secure & Scalable Hosting | A2IT",
     description:
       "Reliable and scalable hosting services from A2IT. Get cloud, VPS, and dedicated hosting with top-notch security and 24/7 support.",
-    url: "https://a2itltd.com/services/hosting",
+    url: "https://a2itllc.com/services/hosting",
     siteName: "A2IT",
     images: [
       {
@@ -59,8 +59,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

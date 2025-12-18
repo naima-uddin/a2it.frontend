@@ -15,13 +15,13 @@ export const metadata = {
     "Custom E-commerce Solutions",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/ecommerce",
+    canonical: "https://a2itllc.com/services/ecommerce",
   },
   openGraph: {
     title: "E-commerce Development Services | A2IT",
     description:
       "Professional e-commerce development including Shopify, WooCommerce, Magento, and custom solutions for businesses worldwide.",
-    url: "https://a2itltd.com/services/ecommerce",
+    url: "https://a2itllc.com/services/ecommerce",
     siteName: "A2IT",
     images: [
       {
@@ -58,8 +58,8 @@ export default function Page() {
             provider: {
               "@type": "Organization",
               name: "A2IT",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",

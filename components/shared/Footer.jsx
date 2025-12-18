@@ -36,7 +36,7 @@ const Footer = () => {
             {/* Logo Section - Left side */}
             <div className="flex-1">
               <Logo />
-              <p className="mt-2 text-blue-600 font-bold text-lg">A2IT LTD</p>
+              <p className="mt-2 text-blue-600 font-bold text-lg">A2IT LLC</p>
             </div>
             
             {/* Contact Info Section - Right side */}
@@ -151,7 +151,7 @@ const Footer = () => {
             <div>
               <Logo/>
               <p className="mt-1 text-blue-600 font-bold text-lg">
-                A2IT LTD 
+                A2IT LLC 
               </p>
             </div>
             
@@ -302,7 +302,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-gray-600">
             <p className="font-medium">
-              © {currentYear} A2IT LTD. All rights reserved.
+              © {currentYear} A2IT LLC. All rights reserved.
             </p>
           </div>
 

@@ -468,14 +468,14 @@ function FeaturedSection({ blog }) {
             <div className="flex items-center gap-2 sm:gap-3">
               <Image 
                 src="/A2ITLogo.png"
-                alt="A2IT Ltd"
+                alt="A2IT LLC"
                 width={24}
                 height={24}
                 className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 rounded-full object-contain border-2 border-white"
               />
               <div>
                 <p className="text-xs sm:text-sm font-semibold text-gray-900">
-                  A2IT Ltd
+                  A2IT LLC
                 </p>
                 <p className="text-xs text-gray-500">Expert Review Team</p>
               </div>
@@ -584,14 +584,14 @@ const BlogCard = React.memo(({ blog }) => {
           <div className="flex items-center gap-2 sm:gap-3">
             <Image 
               src="/A2ITLogo.png"
-              alt="A2IT Ltd"
+              alt="A2IT LLC"
               width={32}
               height={32}
               className="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-contain border-2 border-white"
             />
             <div>
               <p className="text-xs sm:text-sm font-semibold text-gray-900">
-                A2IT Ltd
+                A2IT LLC
               </p>
               <p className="text-xs text-gray-500">Review Team</p>
             </div>

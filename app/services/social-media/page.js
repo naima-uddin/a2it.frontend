@@ -3,9 +3,9 @@ import React from "react";
 
 // 🔹 SEO metadata for Social Media Services
 export const metadata = {
-  title: "Social Media Marketing Services | Grow Your Brand | A2IT Ltd",
+  title: "Social Media Marketing Services | Grow Your Brand",
   description:
-    "A2IT Ltd provides professional social media marketing services to grow your brand, increase engagement, and drive conversions across all major platforms.",
+    "A2IT LLC provides professional social media marketing services to grow your brand, increase engagement, and drive conversions across all major platforms.",
   keywords: [
     "Social Media Marketing",
     "SMM Services",
@@ -17,29 +17,29 @@ export const metadata = {
     "Brand Growth Online",
   ],
   alternates: {
-    canonical: "https://a2itltd.com/services/social-media",
+    canonical: "https://a2itllc.com/services/social-media",
   },
   openGraph: {
-    title: "Social Media Marketing Services | Grow Your Brand | A2IT Ltd",
+    title: "Social Media Marketing Services | Grow Your Brand",
     description:
-      "Professional social media marketing services from A2IT Ltd. Boost your brand presence, engagement, and sales on Facebook, Instagram, LinkedIn, and Twitter.",
-    url: "https://a2itltd.com/services/social-media",
-    siteName: "A2IT Ltd",
+      "Professional social media marketing services from A2IT LLC. Boost your brand presence, engagement, and sales on Facebook, Instagram, LinkedIn, and Twitter.",
+    url: "https://a2itllc.com/services/social-media",
+    siteName: "A2IT LLC",
     images: [
       {
-        url: "/og-socialmedia.jpg", // 👉 add social media OG image in /public
+        url: "/og-socialmedia.jpg",
         width: 1200,
         height: 630,
-        alt: "Social Media Marketing Services by A2IT Ltd",
+        alt: "Social Media Marketing Services by A2IT LLC",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Social Media Marketing Services | Grow Your Brand | A2IT Ltd",
+    title: "Social Media Marketing Services | Grow Your Brand",
     description:
-      "A2IT Ltd offers expert social media marketing services to increase brand awareness, engagement, and conversions across all platforms.",
+      "A2IT LLC offers expert social media marketing services to increase brand awareness, engagement, and conversions across all platforms.",
     images: ["/og-socialmedia.jpg"],
   },
 };
@@ -59,16 +59,16 @@ export default function Page() {
             serviceType: "Social Media Marketing",
             provider: {
               "@type": "Organization",
-              name: "A2IT Ltd",
-              url: "https://a2itltd.com",
-              logo: "https://a2itltd.com/logo.png",
+              name: "A2IT LLC",
+              url: "https://a2itllc.com",
+              logo: "https://a2itllc.com/logo.png",
             },
             areaServed: {
               "@type": "Country",
               name: "Worldwide",
             },
             description:
-              "A2IT Ltd provides professional social media marketing services including campaign strategy, content creation, and platform management to grow your online brand presence.",
+              "A2IT LLC provides professional social media marketing services including campaign strategy, content creation, and platform management to grow your online brand presence.",
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "Social Media Marketing Services",
