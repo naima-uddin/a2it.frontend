@@ -1,5 +1,4 @@
 "use client";
-<<<<<<< Updated upstream
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -34,17 +33,6 @@ import {
   FiUser,
 } from "react-icons/fi";
 import Link from "next/link";
-=======
-import React, { useRef, useState, useEffect } from "react";
-import ServiceWebDev from "./ServiceWebDev";
-import ServiceMobileApp from "./ServiceMobileApp";
-import ServiceUIUX from "./ServiceUIUX";
-import portfolioDataJson from "@/public/portfolioData.json";
-import pricingDataJson from "@/public/pricing-data.json";
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 const DesignDevelopment = () => {
   const [activeIndustry, setActiveIndustry] = useState(0);
@@ -58,7 +46,6 @@ const DesignDevelopment = () => {
     error: null,
   });
 
-<<<<<<< Updated upstream
   // Slider states
   const [webPage, setWebPage] = useState(0);
   const [mobilePage, setMobilePage] = useState(0);
@@ -66,95 +53,6 @@ const DesignDevelopment = () => {
   const [pricingPage, setPricingPage] = useState(0);
   const [featuredPage, setFeaturedPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-=======
-  // Get all projects from imported JSON
-  const allPortfolioProjects = portfolioDataJson.portfolio.portfolioProjects || [];
-  const allAffiliateProjects = portfolioDataJson.portfolio.affiliateProjects || [];
-  const allFeaturedProjects = portfolioDataJson.portfolio.featuredProjects || [];
-  
-  // Combine all projects
-  const allProjects = [...allPortfolioProjects, ...allAffiliateProjects, ...allFeaturedProjects];
-  
-  // Filter projects for Web Development
-  const webProjects = allProjects.filter(project => {
-    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
-    return typeof category === 'string' && (
-      category.toLowerCase().includes('web development') || 
-      category.toLowerCase().includes('affiliate') ||
-      category.toLowerCase().includes('e-commerce')
-    );
-  });
-
-  // For now, use web projects for mobile as well (as user requested)
-  const mobileProjects = webProjects;
-  
-  // WordPress projects - filter any WordPress specific or use web projects
-  const wordpressProjects = allProjects.filter(project => {
-    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
-    const tech = project.technologies?.join(' ').toLowerCase() || '';
-    return (typeof category === 'string' && category.toLowerCase().includes('wordpress')) ||
-           tech.includes('wordpress');
-  });
-
-  // If no WordPress projects, use web projects
-  const finalWordPressProjects = wordpressProjects.length > 0 ? wordpressProjects : webProjects;
-
-  // Get Design & Development packages from pricing data
-  const designPackages = pricingDataJson.services
-    .find(s => s.category === "Design & Development")?.packages || [];
-
-  // Get all projects from imported JSON
-  const allPortfolioProjects = portfolioDataJson.portfolio.portfolioProjects || [];
-  const allAffiliateProjects = portfolioDataJson.portfolio.affiliateProjects || [];
-  const allFeaturedProjects = portfolioDataJson.portfolio.featuredProjects || [];
-  
-  // Combine all projects
-  const allProjects = [...allPortfolioProjects, ...allAffiliateProjects, ...allFeaturedProjects];
-  
-  // Filter projects for Web Development
-  const webProjects = allProjects.filter(project => {
-    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
-    return typeof category === 'string' && (
-      category.toLowerCase().includes('web development') || 
-      category.toLowerCase().includes('affiliate') ||
-      category.toLowerCase().includes('e-commerce')
-    );
-  });
-
-  // For now, use web projects for mobile as well (as user requested)
-  const mobileProjects = webProjects;
-  
-  // WordPress projects - filter any WordPress specific or use web projects
-  const wordpressProjects = allProjects.filter(project => {
-    const category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
-    const tech = project.technologies?.join(' ').toLowerCase() || '';
-    return (typeof category === 'string' && category.toLowerCase().includes('wordpress')) ||
-           tech.includes('wordpress');
-  });
-
-  // If no WordPress projects, use web projects
-  const finalWordPressProjects = wordpressProjects.length > 0 ? wordpressProjects : webProjects;
-
-  // Get Design & Development packages from pricing data
-  const designPackages = pricingDataJson.services
-    .find(s => s.category === "Design & Development")?.packages || [];
-
-  const getNavbarHeight = () => 80;
-
-  const handleScroll = (ref, section) => {
-    if (ref.current) {
-      const navbarHeight = getNavbarHeight();
-      const elementPosition = ref.current.offsetTop - navbarHeight;
-
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
-      });
-
-      setActiveSection(section);
-    }
-  };
->>>>>>> Stashed changes
 
   // Check for mobile viewport
   useEffect(() => {
@@ -1089,7 +987,6 @@ const DesignDevelopment = () => {
         </div>
       )}
 
-<<<<<<< Updated upstream
       {/* Main Content */}
       <main>
         {/* Hero Banner - Amazon Style */}
@@ -1682,23 +1579,6 @@ const DesignDevelopment = () => {
               </p>
             </motion.div>
           </div>
-=======
-      {/* Main content - stays full width */}
-      <main className=" space-y-20 w-full">
-        <section ref={webRef} className="scroll-mt-20">
-          <ServiceWebDev projects={webProjects} packages={designPackages} />
-        </section>
-
-        <section ref={mobileRef} className="scroll-mt-20">
-          <ServiceMobileApp projects={mobileProjects} />
-        </section>
-
-        <section ref={uiuxRef} className="scroll-mt-20">
-          <ServiceUIUX projects={finalWordPressProjects} />
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </section>
       </main>
     </div>
