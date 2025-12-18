@@ -285,65 +285,45 @@ const About = () => {
           padding: 18px 45px;
           font-size: 18px;
           font-weight: 700;
-          color: #FFFFFF;
-          background: blue;
-          border: 1px solid blue;
+          color: white;
+          background: linear-gradient(145deg, #66B2FF, #000099);
+          border: none;
           cursor: pointer;
           position: relative;
-          overflow: hidden;
-          transition: all 0.4s ease;
+          transition: all 0.3s ease;
+          transform-style: preserve-3d;
           min-width: 220px;
           text-align: center;
-          letter-spacing: 1px;
+          letter-spacing: 0.5px;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
         .btn-neon:hover {
-          color: #000;
-          background: linear-gradient(45deg, #00ffcc, #00ccff, #ff00cc, #ffcc00);
-          background-size: 400% 400%;
-          animation: neonGradient 2s ease infinite;
+          transform: translateY(-4px) rotateX(10deg);
           box-shadow: 
-            0 0 20px rgba(0, 255, 204, 0.5),
-            0 0 40px rgba(0, 204, 255, 0.3),
-            inset 0 0 20px rgba(255, 255, 255, 0.2);
-          border-color: transparent;
-          transform: translateY(-4px);
+            0 15px 30px rgba(102, 126, 234, 0.4),
+            inset 0 -3px 0 rgba(0,0,0,0.2);
+          background: linear-gradient(145deg, #764ba2, #667eea);
         }
         
         .btn-neon:active {
           transform: translateY(-2px);
           box-shadow: 
-            0 0 10px rgba(0, 255, 204, 0.3),
-            0 0 20px rgba(0, 204, 255, 0.2);
+            0 8px 20px rgba(245, 87, 108, 0.3),
+            inset 0 -2px 0 rgba(0,0,0,0.2);
         }
         
-        @keyframes neonGradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        
-        /* Glow effect on hover */
-        .btn-neon::after {
+        /* Top edge effect */
+        .btn-neon::before {
           content: '';
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-          transform: translateX(-100%);
-          transition: transform 0.6s ease;
-        }
-        
-        .btn-neon:hover::after {
-          transform: translateX(100%);
+          top: 3px;
+          left: 3px;
+          right: 3px;
+          height: 30%;
+          background: linear-gradient(rgba(255,255,255,0.3), transparent);
+          border-radius: 10px 10px 0 0;
+          opacity: 0.6;
         }
         
         /* Responsive */
