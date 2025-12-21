@@ -48,7 +48,7 @@ const ContactUs = () => {
     const payload = { name, email, message, phone: formData.phone };
 
     try {
-      const res = await fetch("https://a2-it-website-backend.vercel.app/api/send-email", {
+      const res = await fetch("https://a2-it-backend.vercel.app/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...payload, to: "service@a2itllc.com" }),
