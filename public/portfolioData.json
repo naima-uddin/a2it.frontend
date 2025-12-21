@@ -93,14 +93,12 @@
                 "solution": "Implemented a lightweight, performance-first architecture with schema markup, optimized internal linking, and category-based content organization tailored for search intent.",
                 "results": "Achieved significant organic traffic growth, improved affiliate click-through rates, and established a scalable content framework for rapid category expansion.",
                 "technologies": [
-                    "Next.js",
-                    "React",
-                    "Node.js",
-                    "MongoDB",
-                    "Tailwind CSS",
-                    "Schema Markup",
-                    "REST API",
-                    "Vercel"
+                    "Html5",
+                    "CSS3",
+                    "WooCommerce",
+                    "WordPress",
+                    "JavaScript",
+                    "XML"
                 ],
                 "images": [
                     "/assets/Portfolio/bestproductbuy-1.png",
@@ -166,15 +164,12 @@
                 "solution": "Developed a structured affiliate platform featuring expert reviews, comparison tables, performance-based rankings, and schema-optimized content aligned with kitchen-specific buyer intent.",
                 "results": "Increased organic visibility across kitchen and appliance keywords, improved affiliate click-through rates, and created a scalable foundation for expanding into additional kitchen product categories.",
                 "technologies": [
-                    "Next.js",
-                    "React.js",
-                    "Node.js",
-                    "Express.js",
-                    "MongoDB",
-                    "Tailwind CSS",
-                    "REST API",
-                    "MVC Architecture",
-                    "SEO Optimization",
+                    "Html5",
+                    "CSS3",
+                    "WooCommerce",
+                    "WordPress",
+                    "JavaScript",
+                    "XML",
                     "Schema Markup"
                 ],
                 "images": [
@@ -628,6 +623,36 @@
                 ]
             },
             {
+                "id": 3,
+                "title": "FitLife Tracker",
+                "category": [
+                    "Mobile App",
+                    "Health",
+                    "Fitness"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A comprehensive fitness application with workout plans, nutrition tracking, and health monitoring features.",
+                "technologies": [
+                    "React Native",
+                    "HealthKit API",
+                    "Firebase",
+                    "Chart Libraries",
+                    "GPS Tracking"
+                ],
+                "image": "/assets/Portfolio/fitlife-tracker.jpeg",
+                "performance": [
+                    {
+                        "label": "Active Users",
+                        "value": "75K+"
+                    },
+                    {
+                        "label": "User Retention",
+                        "value": "92%"
+                    }
+                ]
+            },
+            {
                 "id": 2,
                 "title": "A2IT LLC – Corporate Website & Services Platform showcase",
                 "category": [
@@ -891,6 +916,36 @@
                 ]
             },
             {
+                "id": 4,
+                "title": "QuickShare Mobility",
+                "category": [
+                    "Mobile App",
+                    "Transportation",
+                    "Car Sharing"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A car sharing platform for booking, unlocking, and managing shared vehicles through a mobile application.",
+                "technologies": [
+                    "React Native",
+                    "Google Maps API",
+                    "Bluetooth API",
+                    "Firebase",
+                    "Payment Gateway"
+                ],
+                "image": "/assets/Portfolio/quickshare-mobility.jpeg",
+                "performance": [
+                    {
+                        "label": "Monthly Rides",
+                        "value": "15K+"
+                    },
+                    {
+                        "label": "Booking Accuracy",
+                        "value": "99.7%"
+                    }
+                ]
+            },
+            {
                 "id": 15,
                 "title": "SwiftShip Tracking",
                 "category": [
@@ -1058,36 +1113,6 @@
                     {
                         "label": "Inventory Accuracy",
                         "value": "99.8%"
-                    }
-                ]
-            },
-            {
-                "id": 6,
-                "title": "Digital Marketing Platform",
-                "category": [
-                    "Digital Marketing",
-                    "Affiliate Platform",
-                    "WordPress"
-                ],
-                "type": "portfolio",
-                "status": "live",
-                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
-                "technologies": [
-                    "Google Ads API",
-                    "Meta Ads API",
-                    "SEMRush",
-                    "Ahrefs",
-                    "Python"
-                ],
-                "image": "/assets/Portfolio/marketing-1.avif",
-                "performance": [
-                    {
-                        "label": "Organic Traffic",
-                        "value": "2X"
-                    },
-                    {
-                        "label": "Return on Ad Spend",
-                        "value": "5X"
                     }
                 ]
             }

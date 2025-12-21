@@ -366,15 +366,15 @@ const Portfolio = () => {
       </section>
 
       {/* Affiliate & Partnership Projects */}
-      <section className="py-12 sm:py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-4 bg-gradient-to-b from-white to-blue-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <div className="text-center mb-2 ">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 text-white rounded-full text-xs sm:text-sm font-medium mb-2 sm:mb-3 -mt-6">
               <FiTarget className="w-3 h-3 sm:w-4 sm:h-4" />
               Partnership Projects
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Affiliate & Collaboration Works</h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto mb-6">
               Special projects developed in partnership with industry leaders
             </p>
           </div>

@@ -186,7 +186,7 @@ const HomePageContactUs = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-white mb-2">Email Address</h3>
-                      <p className="text-gray-900 text-xl font-bold">info@a2itLLC.com</p>
+                      <p className="text-gray-900 text-xl font-bold">info@a2itllc.com</p>
                     </div>
                   </div>
                 </div>

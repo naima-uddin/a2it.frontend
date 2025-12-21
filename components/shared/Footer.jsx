@@ -302,7 +302,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-gray-600">
             <p className="font-medium">
-              © {currentYear} A2IT LLC. All rights reserved.
+              © 2026 A2IT LLC. All rights reserved.
             </p>
           </div>
 

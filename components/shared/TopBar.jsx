@@ -20,7 +20,7 @@ const TopBar = () => {
         </div>
         <div className="flex items-center space-x-1">
           <FaEnvelope className="text-[#0066ff]" />
-          <span>info@a2itLLC.com</span>
+          <span>info@a2itllc.com</span>
         </div>
       </div>
 

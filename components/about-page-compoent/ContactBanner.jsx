@@ -40,7 +40,7 @@ const ContactBanner = () => {
                   <FiMail className="text-[#00f0ff] mt-1" />
                   <div>
                     <h4 className="font-medium">Email Us</h4>
-                    <p className="text-[#b0b0ff]">info@a2itLLC.com</p>
+                    <p className="text-[#b0b0ff]">info@a2itllc.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
