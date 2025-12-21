@@ -36,6 +36,7 @@ import {
   FiClock,
   FiBriefcase,
   FiTag,
+  FiUser,
 } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
@@ -48,7 +49,7 @@ const FiWordpress = FiGlobe;
 
 // Static data extracted from the JSON
 const webDevelopmentProjects = [
-    {
+  {
     "id": 18,
     "title": "BestBuyersView – Affiliate Product Review Platform",
     "category": "Web Development",
@@ -124,7 +125,7 @@ const webDevelopmentProjects = [
       "company": "Best Buyers View"
     }
   },
-              {
+  {
                 "id": 14,
                 "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
                 "category": "Affiliate Platform",
@@ -194,8 +195,7 @@ const webDevelopmentProjects = [
                     "position": "Content Lead",
                     "company": "Best Buyers View"
                 }
-            },
-
+  },
   {
                 "id": 19,
                 "title": "BestProductBuy – Affiliate Product Comparison Platform",
@@ -326,7 +326,7 @@ const webDevelopmentProjects = [
       }
     ]
   },
-    {
+  {
     "id": 1,
     "title": "BestBikeReview – Affiliate Bike Review Platform",
     "category": "Web Development",
@@ -445,7 +445,36 @@ const webDevelopmentProjects = [
       }
     ]
   },
-              {
+  {
+                "id": 20,
+                "title": "Gadget Zone – Tech Product Review Platform",
+                "category": [
+                    "E-commerce Platform",
+                    "Web Development",
+                    "Affiliate Platform"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A tech product review platform providing in-depth analysis and affiliate links for the latest gadgets.",
+                "technologies": [
+                    "Next.js",
+                    "EmailJS",
+                    "React.js",
+                    "AWS"
+                ],
+                "image": "/assets/Portfolio/gadgetZone.png",
+                "performance": [
+                    {
+                        "label": "Order Processing Speed",
+                        "value": "50% faster"
+                    },
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%"
+                    }
+                ]
+   },
+  {
                 "id": 4,
                 "title": "FinNess Trading Platform",
                 "category": [
@@ -474,8 +503,8 @@ const webDevelopmentProjects = [
                         "value": "100ms"
                     }
                 ]
-            },
-                        {
+  },
+  {
                 "id": 18,
                 "title": "Best E-bike Store",
                 "category": [
@@ -503,8 +532,8 @@ const webDevelopmentProjects = [
                         "value": "3.8%"
                     }
                 ]
-            },
-                        {
+  },
+  {
                 "id": 20,
                 "title": "Asian Import Export Co.",
                 "category": [
@@ -533,8 +562,8 @@ const webDevelopmentProjects = [
                         "value": "99.8%"
                     }
                 ]
-            },
-                        {
+  },
+  {
                 "id": 10,
                 "title": "Commercial Tyre LLC – Bulk Tyre Sales & Management System",
                 "category": [
@@ -562,12 +591,8 @@ const webDevelopmentProjects = [
                         "value": "5X"
                     }
                 ]
-            },
-
-];
-
-const wordpressProjects = [
-    {
+  },
+  {
     "id": 12,
     "title": "KitchenPro Supply",
     "category": ["WordPress"],
@@ -581,7 +606,7 @@ const wordpressProjects = [
       { "label": "Inventory Accuracy", "value": "99.8%" }
     ]
   },
-              {
+  {
                 "id": 19,
                 "title": "BestProductBuy – Affiliate Product Comparison Platform",
                 "category": "Affiliate E-commerce",
@@ -644,7 +669,7 @@ const wordpressProjects = [
                     "position": "Founder",
                     "company": "Best Product Buy"
                 }
-            },
+  },
   {
     "id": 1,
     "title": "Cargo Logistics Company – Corporate Website & Services Platform",
@@ -701,7 +726,7 @@ const wordpressProjects = [
       { "label": "Sales Increase", "value": "80%" }
     ]
   },
-              {
+  {
                 "id": 13,
                 "title": "Best Fitness Shop – Fitness Gear & Equipment Review Platform",
                 "category": "Affiliate Platform",
@@ -767,7 +792,7 @@ const wordpressProjects = [
                     "position": "Content Lead",
                     "company": "Best Buyers View"
                 }
-            },
+  },
   {
     "id": 10,
     "title": "Best E-bike Store",
@@ -782,8 +807,7 @@ const wordpressProjects = [
       { "label": "Conversion Rate", "value": "3.8%" }
     ]
   },
-
-              {
+  {
                 "id": 19,
                 "title": "Gym Equipment Store",
                 "category": [
@@ -810,8 +834,7 @@ const wordpressProjects = [
                         "value": "75%"
                     }
                 ]
-            },
-                      
+  },
 ];
 
 const mobileProjects = [
@@ -845,6 +868,211 @@ const mobileProjects = [
   }
 ];
 
+const uiUxProjects = [  
+  {
+    "id": 2,
+    "title": "Jute Boutique – Brand & Interface Design",
+    "category": ["UI/UX Design", "Branding"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "Comprehensive brand identity and user interface design for a sustainable fashion e-commerce platform focused on jute products.",
+    "technologies": ["Figma", "Canva", "Adobe Creative Suite", "Photoshop", "Illustrator"],
+    "image": "/assets/Portfolio/jutecraftify-1.png",
+    "performance": [
+      { "label": "Brand Recognition", "value": "3X increase" },
+      { "label": "Customer Satisfaction", "value": "4.8/5" },
+      { "label": "Design Consistency", "value": "100%" },
+      { "label": "Sales Growth", "value": "80%" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Gadget Zone – Product Review Platform Design",
+    "category": ["UI/UX Design", "Web Design"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "Modern and intuitive design system for a tech product review platform with focus on readability and user engagement.",
+    "technologies": ["Figma", "Adobe XD", "Principle", "Zeplin", "Miro"],
+    "image": "/assets/Portfolio/gadgetZone.png",
+    "performance": [
+      { "label": "User Engagement Time", "value": "5.2 min" },
+      { "label": "Bounce Rate Reduction", "value": "40%" },
+      { "label": "Mobile Responsiveness", "value": "100%" },
+      { "label": "Accessibility Score", "value": "95%" }
+    ]
+  },
+              {
+                "id": 3,
+                "title": "Best Baby Gears",
+                "category": "Web Development",
+                "type": "featured",
+                "status": "live",
+                "client": "Digital Media Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "5 members",
+                "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
+                "detailedDescription": "Designed and developed a custom analytics dashboard to monitor affiliate clicks, conversions, traffic sources, and content performance across multiple niche review platforms. The system provides real-time insights, trend analysis, and exportable reports to support data-driven decision-making.",
+                "technologies": [
+                    "Next.js",
+                    "React",
+                    "Chart.js",
+                    "Node.js",
+                    "PostgreSQL",
+                    "REST API",
+                    "Redis",
+                    "Docker"
+                ],
+                "image": "/assets/Portfolio/affiliate-analytics-1.png",
+                "features": [
+                    "Real-time traffic monitoring",
+                    "Affiliate click & conversion tracking",
+                    "Content performance analytics",
+                    "Custom date-based reports",
+                    "Multi-site data aggregation",
+                    "Role-based access control",
+                    "CSV & PDF export",
+                    "Performance alerts"
+                ],
+                "performance": [
+                    {
+                        "label": "Reporting Speed Improvement",
+                        "value": "70%"
+                    },
+                    {
+                        "label": "Data Accuracy",
+                        "value": "99.9%"
+                    },
+                    {
+                        "label": "Active User Adoption",
+                        "value": "90%"
+                    },
+                    {
+                        "label": "Decision-Making Efficiency",
+                        "value": "60% faster"
+                    }
+                ]
+            },
+                        {
+                "id": 21,
+                "title": "KitchenPro Supply",
+                "category": [
+                    "WordPress"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
+                "technologies": [
+                    "WordPress",
+                    "WooCommerce",
+                    "PHP",
+                    "MySQL",
+                    "Elementor"
+                ],
+                "image": "/assets/Portfolio/kitchenpro-supply.png",
+                "performance": [
+                    {
+                        "label": "Order Processing Speed",
+                        "value": "50% faster"
+                    },
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%"
+                    }
+                ]
+            },
+  {
+    "id": 4,
+    "title": "BestBuyersView – Affiliate Platform Design",
+    "category": ["UI/UX Design", "Affiliate Marketing"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "Clean and conversion-focused design for an affiliate product review platform emphasizing trust and user experience.",
+    "technologies": ["Figma", "Adobe XD", "Sketch", "Framer", "Protopie"],
+    "image": "/assets/Portfolio/bestbuyersview-1.png",
+    "performance": [
+      { "label": "Click-Through Rate", "value": "35% increase" },
+      { "label": "User Task Completion", "value": "92%" },
+      { "label": "Design System Components", "value": "150+" },
+      { "label": "Page Speed Score", "value": "95/100" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "SwiftShip – Logistics App UI Design",
+    "category": ["UI/UX Design", "Mobile Design"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "Intuitive mobile app design for real-time shipment tracking with focus on clarity and real-time updates.",
+    "technologies": ["Figma", "Sketch", "Principle", "Adobe XD", "Lottie"],
+    "image": "/assets/Portfolio/swiftship.png",
+    "performance": [
+      { "label": "User Satisfaction", "value": "4.7/5" },
+      { "label": "Task Success Rate", "value": "96%" },
+      { "label": "App Store Rating", "value": "4.8★" },
+      { "label": "Design Iterations", "value": "12 rounds" }
+    ]
+  },
+              {
+                "id": 10,
+                "title": "Commercial Tyre LLC – Bulk Tyre Sales & Management System",
+                "category": [
+                    "Web Development",
+                    "Affiliate Platform",
+                    "E-commerce"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
+                "technologies": [
+                    "React.js",
+                    "Next.js",
+                    "Node.js",
+                    "Express.js"
+                ],
+                "image": "/assets/Portfolio/c-tire.png",
+                "performance": [
+                    {
+                        "label": "Organic Traffic",
+                        "value": "2X"
+                    },
+                    {
+                        "label": "Return on Ad Spend",
+                        "value": "5X"
+                    }
+                ]
+            },
+              {
+                "id": 20,
+                "title": "Asian Import Export Co.",
+                "category": [
+                    "E-commerce Platform",
+                    "Web Development",
+                    "Affiliate Platform"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "An import-export e-commerce platform connecting Asian manufacturers with global buyers.",
+                "technologies": [
+                    "React.js",
+                    "Python/Django",
+                    "PostgreSQL",
+                    "Docker",
+                    "AWS"
+                ],
+                "image": "/assets/Portfolio/import-export-3.png",
+                "performance": [
+                    {
+                        "label": "Order Processing Speed",
+                        "value": "50% faster"
+                    },
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%"
+                    }
+                ]
+            },
+];
 // Static pricing data (you can update this as needed)
 const pricingData = {
   "services": [
@@ -1010,7 +1238,7 @@ const DesignDevelopmentPage = () => {
     switch(activeTab) {
       case "web": return webDevelopmentProjects;
       case "mobile": return mobileProjects;
-      case "wordpress": return wordpressProjects;
+      case "uiux": return uiUxProjects;
       default: return [];
     }
   };
@@ -1148,7 +1376,7 @@ const DesignDevelopmentPage = () => {
   const tabs = [
     { id: 'web', label: 'Web Development', icon: <FiWeb />, color: 'from-blue-500 to-indigo-600' },
     { id: 'mobile', label: 'Mobile Apps', icon: <FiMobile />, color: 'from-green-500 to-emerald-600' },
-    { id: 'wordpress', label: 'WordPress', icon: <FiWordpress />, color: 'from-blue-400 to-cyan-600' }
+    { id: 'uiux', label: 'UI/UX Design', icon: <FiUser  />, color: 'from-blue-400 to-cyan-600' }
   ];
   
   // Banner cards for swapping
