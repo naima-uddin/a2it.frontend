@@ -176,7 +176,7 @@ const ContactUs = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+880 1846-XXXXXX"
+                    placeholder="+1 (555) xxx-xxxx"
                     className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all placeholder-gray-500"
                   />
                 </div>

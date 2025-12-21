@@ -240,15 +240,19 @@ const Pricing = () => {
             </p>
             
             <div className="flex flex-wrap gap-4">
+              <Link href="/contact" >
                       <button className="btn-3d flex items-center gap-2 group">
                         Contact With Us
                         <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </button>
-            
+              </Link>
+
+              <Link href="/portfolio" >
                                     <button className="btn-neon flex items-center gap-2 group">
                                         Watch Our Success Story
                                       <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                     </button>
+              </Link>
                         </div>
           </div>
         </div>
@@ -744,12 +748,7 @@ const Pricing = () => {
                   Chat with Support
                 </button>
               </Link>
-              <button className="inline-flex items-center px-6 py-3 border-2 border-gray-300 text-gray-900 font-semibold rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 hover:shadow-md">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-                Watch Demo Video
-              </button>
+              
             </div>
           </div>
         </div>

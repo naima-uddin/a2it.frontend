@@ -21,6 +21,7 @@ import ContactUs from "../contact-page-component/ContactUs";
 import ContactBanner from './ContactBanner';
 import HomePageContactUs from "../home-page-components/HomePageContactUs";
 import WhoRWe from "../home-page-components/WhoRWe";
+import Link from "next/link";
 
 const About = () => {
 
@@ -99,10 +100,12 @@ const About = () => {
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
 
+<Link href="/portfolio">
                         <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
                             <span className="text-sm sm:text-base">Watch Our Success Story</span>
                           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
+                      </Link>
             </div>
           </div>
         </div>

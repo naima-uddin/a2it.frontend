@@ -267,7 +267,7 @@ const HomePageContactUs = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+880 1846-XXXXXX"
+                  placeholder="+1 808-XXXXXX"
                   className="w-full px-4 py-3 bg-white border border-gray-300 text-gray-800 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all duration-300 placeholder-gray-400"
                 />
               </div>

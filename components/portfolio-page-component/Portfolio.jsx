@@ -6,6 +6,7 @@ import ProjectModal from "./ProjectModal";
 import FeaturedSlider from "./FeaturedSlider";
 import { ChevronRight, Sparkles } from "lucide-react";
 import StatsSection from "./StatsSection";
+import Link from "next/link";
 
 const Portfolio = () => { 
   const [portfolioData, setPortfolioData] = useState(null);
@@ -923,12 +924,12 @@ const Portfolio = () => {
               Let's collaborate to bring your vision to life with our expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Link href="/contact">
               <button className="px-6 py-2.5 sm:px-8 sm:py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors text-sm sm:text-base">
                 Start a Project
               </button>
-              <button className="px-6 py-2.5 sm:px-8 sm:py-3 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors text-sm sm:text-base">
-                Schedule a Call
-              </button>
+              </Link>
+              
             </div>
           </div>
         </div>

@@ -77,7 +77,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/pricing" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  <a href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-sm">
                     Get Quote
                   </a>
                 </li>
