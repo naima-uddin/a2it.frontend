@@ -416,7 +416,7 @@
             },
             {
                 "id": 3,
-                "title": "Affiliate Performance & Content Analytics Dashboard",
+                "title": "Best Baby Gears",
                 "category": "Web Development",
                 "type": "featured",
                 "status": "live",
@@ -473,6 +473,92 @@
         ],
         "portfolioProjects": [
             {
+                "id": 21,
+                "title": "KitchenPro Supply",
+                "category": [
+                    "WordPress"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
+                "technologies": [
+                    "WordPress",
+                    "WooCommerce",
+                    "PHP",
+                    "MySQL",
+                    "Elementor"
+                ],
+                "image": "/assets/Portfolio/kitchenpro-supply.png",
+                "performance": [
+                    {
+                        "label": "Order Processing Speed",
+                        "value": "50% faster"
+                    },
+                    {
+                        "label": "Inventory Accuracy",
+                        "value": "99.8%"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": "BestBuyersView – Discover, Compare &amp; Pick the Best Products",
+                "category": [
+                    "UI/UX Design",
+                    "Web Development",
+                    "Affiliate Platform",
+                    "E-commerce"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A scalable UI/UX design system created to support a high-performance affiliate review and content-driven platform.",
+                "technologies": [
+                    "Figma",
+                    "React",
+                    "Tailwind CSS",
+                    "Design Tokens",
+                    "Component-Based Architecture"
+                ],
+                "image": "/assets/Portfolio/bestbuyersview-3.png",
+                "performance": [
+                    {
+                        "label": "Development Speed Increase",
+                        "value": "60%"
+                    },
+                    {
+                        "label": "Reusable UI Components",
+                        "value": "80+"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "title": "BestProductBuy – Affiliate Product Comparison Platform",
+                "category": [
+                    "E-commerce",
+                    "Affiliate Platform",
+                    "WordPress"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A real-time trading platform for stocks and cryptocurrencies with live data feeds, interactive charts, and portfolio management tools.",
+                "technologies": [
+                    "WordPress",
+                    "WooCommerce"
+                ],
+                "image": "/assets/Portfolio/bestproductbuy-1.png",
+                "performance": [
+                    {
+                        "label": "Daily Trading Volume",
+                        "value": "$100M+"
+                    },
+                    {
+                        "label": "Data Latency",
+                        "value": "100ms"
+                    }
+                ]
+            },
+            {
                 "id": 1,
                 "title": "Cargo Logistics Company – Corporate Website & Services Platform",
                 "category": [
@@ -526,7 +612,7 @@
                     "C-panel Hosting",
                     "SEO Optimization"
                 ],
-                "image": "/assets/Portfolio/a2itLLC-1.png",
+                "image": "/assets/Portfolio/a2itltd-1.png",
                 "performance": [
                     {
                         "label": "Page Speed Score",
@@ -535,67 +621,6 @@
                     {
                         "label": "Mobile Responsiveness",
                         "value": "100%"
-                    }
-                ]
-            },
-            {
-                "id": 3,
-                "title": "BestBuyersView – Discover, Compare &amp; Pick the Best Products",
-                "category": [
-                    "UI/UX Design",
-                    "Web Development",
-                    "Affiliate Platform",
-                    "E-commerce"
-                ],
-                "type": "portfolio",
-                "status": "live",
-                "description": "A scalable UI/UX design system created to support a high-performance affiliate review and content-driven platform.",
-                "technologies": [
-                    "Figma",
-                    "React",
-                    "Tailwind CSS",
-                    "Design Tokens",
-                    "Component-Based Architecture"
-                ],
-                "image": "/assets/Portfolio/bestbuyersview-3.png",
-                "performance": [
-                    {
-                        "label": "Development Speed Increase",
-                        "value": "60%"
-                    },
-                    {
-                        "label": "Reusable UI Components",
-                        "value": "80+"
-                    }
-                ]
-            },
-            {
-                "id": 4,
-                "title": "FinNess Trading Platform",
-                "category": [
-                    "Web Development",
-                    "Affiliate Platform",
-                    "WordPress"
-                ],
-                "type": "portfolio",
-                "status": "live",
-                "description": "A real-time trading platform for stocks and cryptocurrencies with live data feeds, interactive charts, and portfolio management tools.",
-                "technologies": [
-                    "React.js",
-                    "WebSocket",
-                    "Chart.js",
-                    "Node.js",
-                    "PostgreSQL"
-                ],
-                "image": "/assets/Portfolio/feature2.jpeg",
-                "performance": [
-                    {
-                        "label": "Daily Trading Volume",
-                        "value": "$100M+"
-                    },
-                    {
-                        "label": "Data Latency",
-                        "value": "100ms"
                     }
                 ]
             },
@@ -630,31 +655,57 @@
             },
             {
                 "id": 6,
-                "title": "Digital Marketing Platform",
+                "title": "Best Baby Gears",
                 "category": [
-                    "Digital Marketing",
-                    "Affiliate Platform",
-                    "WordPress"
+                    "Web Development",
+                    "E-commerce Platform",
+                    "Affiliate Platform"
                 ],
-                "type": "portfolio",
+                "type": "featured",
                 "status": "live",
-                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
+                "client": "Digital Media Network",
+                "year": "2024",
+                "duration": "4 months",
+                "teamSize": "5 members",
+                "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
+                "detailedDescription": "Designed and developed a custom analytics dashboard to monitor affiliate clicks, conversions, traffic sources, and content performance across multiple niche review platforms. The system provides real-time insights, trend analysis, and exportable reports to support data-driven decision-making.",
                 "technologies": [
-                    "Google Ads API",
-                    "Meta Ads API",
-                    "SEMRush",
-                    "Ahrefs",
-                    "Python"
+                    "Next.js",
+                    "React",
+                    "Chart.js",
+                    "Node.js",
+                    "PostgreSQL",
+                    "REST API",
+                    "Redis",
+                    "Docker"
                 ],
-                "image": "/assets/Portfolio/marketing-1.avif",
+                "image": "/assets/Portfolio/affiliate-analytics-2.png",
+                "features": [
+                    "Real-time traffic monitoring",
+                    "Affiliate click & conversion tracking",
+                    "Content performance analytics",
+                    "Custom date-based reports",
+                    "Multi-site data aggregation",
+                    "Role-based access control",
+                    "CSV & PDF export",
+                    "Performance alerts"
+                ],
                 "performance": [
                     {
-                        "label": "Organic Traffic",
-                        "value": "2X"
+                        "label": "Reporting Speed Improvement",
+                        "value": "70%"
                     },
                     {
-                        "label": "Return on Ad Spend",
-                        "value": "5X"
+                        "label": "Data Accuracy",
+                        "value": "99.9%"
+                    },
+                    {
+                        "label": "Active User Adoption",
+                        "value": "90%"
+                    },
+                    {
+                        "label": "Decision-Making Efficiency",
+                        "value": "60% faster"
                     }
                 ]
             },
@@ -919,22 +970,23 @@
                 ]
             },
             {
-                "id": 21,
-                "title": "KitchenPro Supply",
+                "id": 20,
+                "title": "Gadget Zone – Tech Product Review Platform",
                 "category": [
-                    "WordPress"
+                    "E-commerce Platform",
+                    "Web Development",
+                    "Affiliate Platform"
                 ],
                 "type": "portfolio",
                 "status": "live",
-                "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
+                "description": "A tech product review platform providing in-depth analysis and affiliate links for the latest gadgets.",
                 "technologies": [
-                    "WordPress",
-                    "WooCommerce",
-                    "PHP",
-                    "MySQL",
-                    "Elementor"
+                    "Next.js",
+                    "EmailJS",
+                    "React.js",
+                    "AWS"
                 ],
-                "image": "/assets/Portfolio/kitchenpro-supply.png",
+                "image": "/assets/Portfolio/gadgetZone.png",
                 "performance": [
                     {
                         "label": "Order Processing Speed",
@@ -943,6 +995,36 @@
                     {
                         "label": "Inventory Accuracy",
                         "value": "99.8%"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "title": "Digital Marketing Platform",
+                "category": [
+                    "Digital Marketing",
+                    "Affiliate Platform",
+                    "WordPress"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "Data-driven digital marketing services to boost traffic, conversions, and brand awareness.",
+                "technologies": [
+                    "Google Ads API",
+                    "Meta Ads API",
+                    "SEMRush",
+                    "Ahrefs",
+                    "Python"
+                ],
+                "image": "/assets/Portfolio/marketing-1.avif",
+                "performance": [
+                    {
+                        "label": "Organic Traffic",
+                        "value": "2X"
+                    },
+                    {
+                        "label": "Return on Ad Spend",
+                        "value": "5X"
                     }
                 ]
             }
