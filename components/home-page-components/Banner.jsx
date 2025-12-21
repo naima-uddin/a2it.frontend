@@ -9,15 +9,15 @@ const Banner = () => {
       className="relative w-full  mx-auto aspect-[16/9] sm:aspect-[16/7] md:aspect-[16/6] lg:aspect-auto lg:h-[90vh] overflow-hidden">
       {/* Banner Image */}
       <Image
-        src="/bannerImg.jpg"
+        src="/bannerImg.png"
         alt="Banner"
         fill
         priority
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1920px"
-        className="object-cover"
+        quality={100}
+        sizes="100vw"
+        className="object-cover object-center"
+        unoptimized
       />
-
-      
       
       {/* Content Container - Positioned at bottom-left with padding */}
       <div className="absolute bottom-4 sm:bottom-26 left-1/2 sm:left-10 md:left-20 lg:left-32 transform -translate-x-1/2 sm:translate-x-0 w-full px-4 sm:px-0">
