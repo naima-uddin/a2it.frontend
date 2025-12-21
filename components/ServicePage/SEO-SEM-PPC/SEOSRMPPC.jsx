@@ -463,7 +463,7 @@ const SEOSRMPPC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <span className="inline-block px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full mb-4">
+            <span className="inline-block px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full mb-4 text-sm">
               PROVEN RESULTS
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
@@ -682,7 +682,7 @@ const SEOSRMPPC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-400 text-white font-semibold rounded-full mb-4">
+            <span className="inline-block px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-400 text-white font-semibold rounded-full mb-4 text-sm">
               CONTENT CREATION
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -730,13 +730,13 @@ const SEOSRMPPC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-2">
               Choose Your{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -826,12 +826,8 @@ const SEOSRMPPC = () => {
                       <div className="p-6 sm:p-8 flex flex-col flex-grow">
                         {/* Header */}
                         <div className="text-center mb-6 sm:mb-8">
-                          <div className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl mb-4 ${
-                            hoveredCard === pkg.id 
-                              ? `bg-gradient-to-r ${getPackageColor(pkg, true)}` 
-                              : `bg-gradient-to-r ${getPackageColor(pkg)}`
-                          }`}>
-                            <div className={pkg.name === "Special" ? "text-white" : ""}>
+                          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl mb-4 bg-white border-2 border-gray-200 shadow-md">
+                            <div className={pkg.name === "Special" ? "text-gray-700" : "text-blue-600"}>
                               {getIconForPackage(pkg.name)}
                             </div>
                           </div>
@@ -917,13 +913,13 @@ const SEOSRMPPC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center mx-auto mb-8">
+            <div className="w-10 h-10 rounded-3xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center mx-auto mb-8">
               <FiTarget className="text-white text-4xl" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Transform</span> Your Digital Strategy?
             </h2>
-            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
               Let's build a comprehensive digital marketing approach that delivers measurable growth and engagement.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

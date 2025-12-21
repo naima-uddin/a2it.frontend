@@ -663,13 +663,13 @@ const EcommercePage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-3 shadow-lg">
               <FiGrid className="text-2xl text-white" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-2">
               OUR E-COMMERCE PORTFOLIO
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-2">
               Successful{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -860,13 +860,13 @@ const EcommercePage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-10"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-3 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-2">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-2">
               Choose Your{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -1047,15 +1047,15 @@ const EcommercePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-10"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiBox className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               QUESTIONS & ANSWERS
             </span>
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-bold mb-2">
               Frequently Asked{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 Questions

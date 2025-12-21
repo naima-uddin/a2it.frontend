@@ -77,9 +77,9 @@ const EcommerceServicePage = () => {
       case "Plus":
         return <FiStar className="text-xl sm:text-2xl text-white" />;
       case "Gold":
-        return <FiTool className="text-xl sm:text-2xl text-blue-600" />;
+        return <FiTool className="text-xl sm:text-2xl text-white" />;
       default:
-        return <FiShoppingBag className="text-xl sm:text-2xl text-blue-600" />;
+        return <FiShoppingBag className="text-xl sm:text-2xl text-white" />;
     }
   };
 
@@ -126,7 +126,7 @@ const EcommerceServicePage = () => {
               <span className="text-sm font-semibold">TRUSTED BY 10,000+ SELLERS</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
               <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 E-Commerce
               </span>
@@ -152,7 +152,7 @@ const EcommerceServicePage = () => {
             </div>
             
             {/* Stats */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {[
                 { value: "10K+", label: "Active Sellers" },
                 { value: "$500M+", label: "Monthly Sales" },
@@ -286,15 +286,6 @@ const EcommerceServicePage = () => {
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center group bg-white border-2 border-blue-200 text-blue-700 hover:border-blue-300 hover:bg-blue-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md"
-            >
-              View All Success Stories
-              <FiArrowRight className="ml-3 transition-transform group-hover:translate-x-2" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -490,7 +481,7 @@ const EcommerceServicePage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-3 shadow-lg">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-3 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -517,7 +508,7 @@ const EcommerceServicePage = () => {
           {/* Pricing Slider */}
           <div className="relative">
             {/* Navigation Arrows */}
-            <div className="flex justify-end items-center gap-4 mb-8">
+            <div className="flex justify-end items-center gap-4 mb-4">
               <motion.button
                 whileHover={{ scale: 1.1, x: -5 }}
                 whileTap={{ scale: 0.95 }}
@@ -678,7 +669,7 @@ const EcommerceServicePage = () => {
             className="text-center bg-white rounded-3xl p-12 shadow-2xl border border-gray-100"
           >
             {/* Floating Badges */}
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-full shadow-lg">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-full shadow-lg text-sm">
               🚀 LIMITED TIME OFFER
             </div>
             

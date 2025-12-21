@@ -1621,13 +1621,13 @@ const DesignDevelopmentPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-3 shadow-lg shadow-blue-500/30">
               <FiTrendingUp className="text-2xl text-white" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-2">
               OUR IMPACT
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-3">
               By The{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -1687,15 +1687,15 @@ const DesignDevelopmentPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-2 shadow-lg shadow-blue-500/30">
               <FiGrid className="text-2xl text-white" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-2">
               OUR PORTFOLIO
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-3">
               Featured{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -1714,7 +1714,7 @@ const DesignDevelopmentPage = () => {
           </motion.div>
           
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
@@ -1936,15 +1936,15 @@ const DesignDevelopmentPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-10"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-3 shadow-lg shadow-blue-500/30">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-3">
               Design & Development{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -1966,7 +1966,7 @@ const DesignDevelopmentPage = () => {
             <>
               {/* Pricing Slider Navigation */}
               {groupedPackages.length > 1 && (
-                <div className="flex justify-end items-center gap-4 mb-8">
+                <div className="flex justify-end items-center gap-4 mb-4">
                   <motion.button
                     whileHover={{ scale: 1.1, x: -5 }}
                     whileTap={{ scale: 0.95 }}
@@ -2137,15 +2137,15 @@ const DesignDevelopmentPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-3 shadow-lg shadow-blue-500/30">
               <FiBox className="text-2xl text-white" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-2">
               QUESTIONS & ANSWERS
             </span>
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-bold mb-3">
               Design & Development{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 FAQs

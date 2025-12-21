@@ -406,14 +406,17 @@ const AmazonServices = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-10"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+            <div className="flex items-center justify-center gap-2">
+
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 rounded-2xl mb-2">
               <FiBarChart2 className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               AMAZON MARKETING SERVICES
             </span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3">
               Amplify Your Amazon Presence
             </h2>
@@ -488,10 +491,10 @@ const AmazonServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 rounded-2xl mb-2">
               <FiGrid className="text-2xl text-blue-600" />
             </div>
-            <span className="text-blue-600 font-semibold tracking-widest text-sm">
+            <span className="text-blue-600 font-semibold tracking-widest text-sm -mt-1">
               OUR WORK
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3">
@@ -618,7 +621,7 @@ const AmazonServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 rounded-2xl mb-2">
               <FiTag className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
@@ -627,7 +630,7 @@ const AmazonServices = () => {
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-2">
               Choose Your Amazon Solution
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto -mt-1">
               Comprehensive Amazon services tailored to your business needs
             </p>
           </motion.div>
@@ -636,7 +639,7 @@ const AmazonServices = () => {
           <div className="relative">
             {/* Navigation Arrows */}
             {groupedPackages.length > 1 && (
-              <div className="flex justify-end items-center gap-4 mb-8">
+              <div className="flex justify-end items-center gap-4 mb-4">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -774,7 +777,7 @@ const AmazonServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 rounded-2xl mb-2">
               <FiPackage className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
@@ -820,7 +823,7 @@ const AmazonServices = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 rounded-2xl mb-2">
               <FiBox className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
