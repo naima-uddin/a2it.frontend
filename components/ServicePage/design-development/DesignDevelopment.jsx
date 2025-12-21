@@ -839,33 +839,75 @@ const webDevelopmentProjects = [
 
 const mobileProjects = [
   {
-    "id": 6,
-    "title": "BestGearBuy – Affiliate Product Discovery Platform",
-    "category": ["Affiliate Platform", "Web Development", "E-commerce"],
-    "type": "portfolio",
+    "id": 1,
+    "title": "SecureBank Mobile",
+    "category": ["Banking", "Finance", "Mobile App"],
+    "type": "mobile",
     "status": "live",
-    "description": "An affiliate platform dedicated to electric bike reviews, comparisons, and buying guides.",
-    "technologies": ["React Native", "Firebase", "Google Maps API", "Redux"],
-    "image": "/assets/Portfolio/best-gear-buy-1.png",
+    "description": "A secure mobile banking application for seamless transactions, bill payments, and financial management on the go.",
+    "technologies": ["React Native", "Biometric Auth", "Encryption API", "Redux"],
+    "image": "/assets/Portfolio/securebank-mobile.jpeg",
     "performance": [
-      { "label": "Active Users", "value": "10K+" },
-      { "label": "Battery Accuracy", "value": "98%" }
+      { "label": "Daily Transactions", "value": "50K+" },
+      { "label": "Security Rating", "value": "99.9%" }
     ]
   },
   {
-    "id": 8,
-    "title": "SwiftShip Tracking",
-    "category": ["Mobile Development", "Web Development", "Logistics"],
-    "type": "portfolio",
+    "id": 2,
+    "title": "LearnKids Academy",
+    "category": ["Education", "E-learning", "Mobile App"],
+    "type": "mobile",
     "status": "live",
-    "description": "A mobile app for real-time shipment tracking, notifications, and delivery management.",
-    "technologies": ["React Native", "Firebase", "Google Maps API", "Push Notifications"],
-    "image": "/assets/Portfolio/swiftship.png",
+    "description": "An interactive learning app for kids with educational games, progress tracking, and age-appropriate content.",
+    "technologies": ["React Native", "Firebase", "Interactive SDK", "Gamification"],
+    "image": "/assets/Portfolio/learnkids-academy.jpeg",
     "performance": [
-      { "label": "Delivery Accuracy", "value": "99.5%" },
-      { "label": "Customer Satisfaction", "value": "4.7/5" }
+      { "label": "Active Learners", "value": "25K+" },
+      { "label": "Learning Progress", "value": "85%" }
     ]
-  }
+  },
+  {
+    "id": 3,
+    "title": "FitLife Tracker",
+    "category": ["Health", "Fitness", "Mobile App"],
+    "type": "mobile",
+    "status": "live",
+    "description": "A comprehensive fitness application with workout plans, nutrition tracking, and health monitoring features.",
+    "technologies": ["React Native", "HealthKit API", "Firebase", "Chart Libraries"],
+    "image": "/assets/Portfolio/fitlife-tracker.jpeg",
+    "performance": [
+      { "label": "Active Users", "value": "75K+" },
+      { "label": "User Retention", "value": "92%" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "QuickShare Mobility",
+    "category": ["Transportation", "Car Sharing", "Mobile App"],
+    "type": "mobile",
+    "status": "live",
+    "description": "A car sharing platform for booking, unlocking, and managing shared vehicles through a mobile application.",
+    "technologies": ["React Native", "Google Maps API", "Bluetooth API", "Firebase"],
+    "image": "/assets/Portfolio/quickshare-mobility.jpeg",
+    "performance": [
+      { "label": "Monthly Rides", "value": "15K+" },
+      { "label": "Booking Accuracy", "value": "99.7%" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "TaskMaster Pro",
+    "category": ["Productivity", "Task Management", "Mobile App"],
+    "type": "mobile",
+    "status": "live",
+    "description": "A feature-rich to-do list and task management application with reminders, collaboration, and productivity analytics.",
+    "technologies": ["React Native", "Push Notifications", "Firebase", "Sync API"],
+    "image": "/assets/Portfolio/taskmaster-pro.jpeg",
+    "performance": [
+      { "label": "Tasks Completed", "value": "1M+" },
+      { "label": "User Productivity", "value": "+40%" }
+    ]
+  },
 ];
 
 const uiUxProjects = [  

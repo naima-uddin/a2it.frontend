@@ -1,5 +1,8 @@
 // Alternative robots.txt generator for Next.js
 // This provides dynamic robots.txt generation
+
+export const dynamic = "force-static";
+
 export default function robots() {
   return {
     rules: [

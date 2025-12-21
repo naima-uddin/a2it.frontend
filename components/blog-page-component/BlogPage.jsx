@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState, useEffect, useMemo, useTransition } from "react";
+import React, { useState, useEffect, useMemo, useTransition, Suspense } from "react";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronRight, Sparkles } from "lucide-react";
 
-export default function BlogPage({ initialBlogs = [] }) {
+function BlogPageContent({ initialBlogs = [] }) {
   const [blogs, setBlogs] = useState(initialBlogs);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -322,6 +322,15 @@ export default function BlogPage({ initialBlogs = [] }) {
     </div>
     </div>
     </>
+  );
+}
+
+// Main export wrapper with Suspense
+export default function BlogPage({ initialBlogs = [] }) {
+  return (
+    <Suspense fallback={<BlogPageSkeleton />}>
+      <BlogPageContent initialBlogs={initialBlogs} />
+    </Suspense>
   );
 }
 
