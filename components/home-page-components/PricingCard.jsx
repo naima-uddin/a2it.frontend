@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import ReviewCarousel from './Reviews';
 
@@ -10,6 +10,29 @@ export default function PricingPage() {
   const [loading, setLoading] = useState(true);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [showLeftIndicator, setShowLeftIndicator] = useState(false);
+  const [showRightIndicator, setShowRightIndicator] = useState(true);
+  const tabsContainerRef = useRef(null);
+
+  const handleScroll = () => {
+    if (tabsContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabsContainerRef.current;
+      setShowLeftIndicator(scrollLeft > 0);
+      setShowRightIndicator(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  const scrollLeft = () => {
+    if (tabsContainerRef.current) {
+      tabsContainerRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (tabsContainerRef.current) {
+      tabsContainerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     fetch('/pricing-data.json')
@@ -35,6 +58,12 @@ export default function PricingPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener('resize', handleScroll);
+    return () => window.removeEventListener('resize', handleScroll);
+  }, []);
+
   const services = pricingData?.services || [];
   const currentService = services.find(service => service.category === activeService);
   
@@ -44,17 +73,6 @@ export default function PricingPage() {
   const totalPages = currentService ? Math.ceil(currentService.packages.length / packagesPerPage) : 0;
   const startIndex = currentPage * packagesPerPage;
   const visiblePackages = currentService?.packages.slice(startIndex, startIndex + packagesPerPage) || [];
-
-  // Auto-rotate pages every 6 seconds for mobile, 5 seconds for desktop
-  useEffect(() => {
-    if (totalPages <= 1) return; // Don't rotate if only one page
-    
-    const interval = setInterval(() => {
-      setCurrentPage((prevPage) => (prevPage + 1) % totalPages);
-    }, isMobile ? 6000 : 5000);
-    
-    return () => clearInterval(interval);
-  }, [totalPages, isMobile]);
 
   // Navigation functions
   const nextPage = useCallback(() => {
@@ -150,23 +168,12 @@ export default function PricingPage() {
     }
   };
 
-  // Split services into two rows for mobile
-  const splitServicesForMobile = () => {
-    const midPoint = Math.ceil(services.length / 2);
-    return {
-      row1: services.slice(0, midPoint),
-      row2: services.slice(midPoint)
-    };
-  };
-
-  const mobileServices = splitServicesForMobile();
-
   return (
     <main className="pt-10 bg-white">
       {/* Pricing Section */}
       <section className="py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 md:mb-6 leading-tight">
               WE ARE <span className="text-blue-600">OPTIMISTS</span> WHO LOVE
               <br className="hidden md:block" />
@@ -177,83 +184,10 @@ export default function PricingPage() {
             </p>
 
             {/* Enhanced Service Tabs - Responsive for mobile and desktop */}
-            <div className={`w-full pb-2 ${isMobile ? '' : 'overflow-x-auto'}`}>
+            <div className={`w-full pb-2 relative ${isMobile ? '' : 'px-4'}`}>
               {isMobile ? (
-                // Mobile layout: Two rows of tabs
-                <div className="space-y-2 px-2">
-                  {/* First Row */}
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {mobileServices.row1.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => {
-                          setActiveService(service.category);
-                          setCurrentPage(0);
-                        }}
-                        className={`px-4 py-2 font-bold text-xs transition-all duration-300 rounded-sm whitespace-nowrap relative overflow-hidden group border flex-1 min-w-[120px] ${
-                          activeService === service.category
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 border-blue-600 transform scale-105'
-                            : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700'
-                        }`}
-                      >
-                        {/* Active indicator */}
-                        {activeService === service.category && (
-                          <>
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-100"></div>
-                            <span className="relative z-10 font-extrabold">{service.category}</span>
-                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white rounded-t-full z-20"></div>
-                          </>
-                        )}
-                        {activeService !== service.category && (
-                          <span className="relative">{service.category}</span>
-                        )}
-                        
-                        {/* Hover effect for inactive tabs */}
-                        {activeService !== service.category && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:to-blue-500/10 transition-all duration-300"></div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                  
-                  {/* Second Row */}
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {mobileServices.row2.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => {
-                          setActiveService(service.category);
-                          setCurrentPage(0);
-                        }}
-                        className={`px-4 py-2 font-bold text-xs transition-all duration-300 rounded-sm whitespace-nowrap relative overflow-hidden group border flex-1 min-w-[120px] ${
-                          activeService === service.category
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 border-blue-600 transform scale-105'
-                            : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700'
-                        }`}
-                      >
-                        {/* Active indicator */}
-                        {activeService === service.category && (
-                          <>
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-100"></div>
-                            <span className="relative z-10 font-extrabold">{service.category}</span>
-                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white rounded-t-full z-20"></div>
-                          </>
-                        )}
-                        {activeService !== service.category && (
-                          <span className="relative">{service.category}</span>
-                        )}
-                        
-                        {/* Hover effect for inactive tabs */}
-                        {activeService !== service.category && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:to-blue-500/10 transition-all duration-300"></div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                // Desktop layout: Single row with horizontal scroll
-                <div className="flex flex-nowrap justify-center gap-2 min-w-max px-2 md:px-4">
+                // Mobile layout: Grid with 2 items per row
+                <div className="grid grid-cols-2 gap-2 px-2">
                   {services.map((service) => (
                     <button
                       key={service.id}
@@ -261,7 +195,7 @@ export default function PricingPage() {
                         setActiveService(service.category);
                         setCurrentPage(0);
                       }}
-                      className={`px-4 py-2 md:px-6 md:py-3 font-bold text-xs md:text-sm transition-all duration-300 rounded-sm whitespace-nowrap relative overflow-hidden group border ${
+                      className={`px-3 py-2 font-bold text-xs transition-all duration-300 rounded-sm whitespace-nowrap relative overflow-hidden group border ${
                         activeService === service.category
                           ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 border-blue-600 transform scale-105'
                           : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700'
@@ -272,7 +206,7 @@ export default function PricingPage() {
                         <>
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-100"></div>
                           <span className="relative z-10 font-extrabold">{service.category}</span>
-                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 md:w-16 h-1 bg-white rounded-t-full z-20"></div>
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white rounded-t-full z-20"></div>
                         </>
                       )}
                       {activeService !== service.category && (
@@ -285,6 +219,78 @@ export default function PricingPage() {
                       )}
                     </button>
                   ))}
+                </div>
+              ) : (
+                // Desktop layout: Horizontal scroll with indicators
+                <div className="relative px-12">
+                  {/* Left indicator arrow - positioned outside the scroll area */}
+                  {showLeftIndicator && (
+                    <button 
+                      onClick={scrollLeft}
+                      className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30 cursor-pointer hover:scale-110 transition-transform"
+                      aria-label="Scroll left"
+                    >
+                      <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-gray-300 shadow-md hover:shadow-lg hover:border-blue-400">
+                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </div>
+                    </button>
+                  )}
+                  
+                  {/* Right indicator arrow - positioned outside the scroll area */}
+                  {showRightIndicator && (
+                    <button 
+                      onClick={scrollRight}
+                      className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 cursor-pointer hover:scale-110 transition-transform"
+                      aria-label="Scroll right"
+                    >
+                      <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-gray-300 shadow-md hover:shadow-lg hover:border-blue-400">
+                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </button>
+                  )}
+                  
+                  {/* Scrollable container */}
+                  <div 
+                    ref={tabsContainerRef}
+                    className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-1"
+                    onScroll={handleScroll}
+                  >
+                    {services.map((service) => (
+                      <button
+                        key={service.id}
+                        onClick={() => {
+                          setActiveService(service.category);
+                          setCurrentPage(0);
+                        }}
+                        className={`px-6 py-3 font-bold text-sm transition-all duration-300 rounded-sm whitespace-nowrap relative overflow-hidden group border flex-shrink-0 ${
+                          activeService === service.category
+                            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 border-blue-600 transform scale-105'
+                            : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700'
+                        }`}
+                      >
+                        {/* Active indicator */}
+                        {activeService === service.category && (
+                          <>
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-100"></div>
+                            <span className="relative z-10 font-extrabold">{service.category}</span>
+                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-white rounded-t-full z-20"></div>
+                          </>
+                        )}
+                        {activeService !== service.category && (
+                          <span className="relative">{service.category}</span>
+                        )}
+                        
+                        {/* Hover effect for inactive tabs */}
+                        {activeService !== service.category && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:to-blue-500/10 transition-all duration-300"></div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -425,34 +431,6 @@ export default function PricingPage() {
               })}
             </div>
 
-            {/* Enhanced Navigation with Auto-rotate indicator */}
-            {totalPages > 1 && (
-              <div className="flex flex-col items-center gap-6 md:gap-8 -mt-4 md:-mt-8">
-                <div className="flex justify-center items-center gap-4 md:gap-6">
-                  {/* Pagination with Indicators */}
-                  <div className="flex items-center gap-3 md:gap-4">
-                    {Array.from({ length: totalPages }).map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentPage(idx)}
-                        className={`relative rounded-xl flex items-center justify-center text-sm md:text-base font-bold transition-all duration-300 ${
-                          currentPage === idx 
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg scale-110' 
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800'
-                        } ${
-                          isMobile ? 'w-8 h-8' : 'w-10 h-10'
-                        }`}
-                      >
-                        {idx + 1}
-                        {currentPage === idx && (
-                          <span className="absolute -bottom-1.5 md:-bottom-2 left-1/2 transform -translate-x-1/2 w-4 md:w-6 h-0.5 md:h-1 bg-blue-500 rounded-full"></span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
