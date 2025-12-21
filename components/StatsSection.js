@@ -8,7 +8,7 @@ export default function StatsSection() {
           <div>
             <p className="text-gray-400 text-sm mb-2">Who We are?</p>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              WE'RE A GLOBALLY RECOGNIZED
+              WE ARE A GLOBALLY RECOGNIZED
               <br />
               <span className="text-yellow-500">DIGITAL DESIGN AGENCY</span>
             </h2>
@@ -32,7 +32,7 @@ export default function StatsSection() {
                 <div>
                   <h3 className="text-xl font-bold mb-2">NETWORKS THAT SPAN SECTORS</h3>
                   <p className="text-gray-400 text-sm">
-                    Over more than 20 years, we've fostered trusted relationships across government, industry and global forums.
+                    Over more than 20 years, we have fostered trusted relationships across government, industry and global forums.
                   </p>
                 </div>
               </div>
@@ -42,7 +42,7 @@ export default function StatsSection() {
                 <div>
                   <h3 className="text-xl font-bold mb-2">ATTENTION TO DETAIL</h3>
                   <p className="text-gray-400 text-sm">
-                    It's our attention to the small stuff, scheduling of timelines & keen project management that makes us stand out from the rest.
+                    It is our attention to the small stuff, scheduling of timelines & keen project management that makes us stand out from the rest.
                   </p>
                 </div>
               </div>
