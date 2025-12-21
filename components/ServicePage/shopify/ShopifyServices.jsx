@@ -145,46 +145,60 @@ const portfolioData = {
   "portfolio": {
     "portfolioProjects": [
       {
-        "id": 1,
-        "title": "Cargo Logistics Company – Corporate Website & Services Platform",
-        "category": ["WordPress", "Web Development", "Logistics"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A professional corporate website designed to present logistics services, cargo solutions, and global freight capabilities for international clients.",
-        "technologies": ["Next.js", "React", "EmailJS", "Tailwind CSS", "Node.js", "Express.js", "REST API", "C-panel Hosting", "SEO Optimization"],
-        "image": "/assets/Portfolio/cargo-logistics-1.png",
-        "performance": [
-          { "label": "Page Speed Score", "value": "90+" },
-          { "label": "Mobile Responsiveness", "value": "100%" }
-        ]
+          "id": 1,
+          "title": "TastyRecipe Hub – Recipe Discovery & Meal Planning Platform",
+          "category": ["UI/UX Design", "Mobile App", "Food & Cooking"],
+          "type": "portfolio",
+          "status": "live",
+          "description": "An intuitive recipe app with personalized meal planning, step-by-step cooking instructions, and grocery list integration for home cooks.",
+          "technologies": ["Figma", "Adobe XD", "User Research", "Wireframing", "Prototyping", "Usability Testing", "Design Systems"],
+          "image": "/assets/Portfolio/tastyrecipe-hub.jpeg",
+          "performance": [
+              { "label": "User Engagement", "value": "85%" },
+              { "label": "Task Success Rate", "value": "92%" }
+          ]
       },
       {
-        "id": 3,
-        "title": "BestBuyersView – Discover, Compare & Pick the Best Products",
-        "category": ["UI/UX Design", "Web Development", "Affiliate Platform", "E-commerce"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A scalable UI/UX design system created to support a high-performance affiliate review and content-driven platform.",
-        "technologies": ["Figma", "React", "Tailwind CSS", "Design Tokens", "Component-Based Architecture"],
-        "image": "/assets/Portfolio/bestbuyersview-1.png",
-        "performance": [
-          { "label": "Development Speed Increase", "value": "60%" },
-          { "label": "Reusable UI Components", "value": "80+" }
-        ]
+          "id": 2,
+          "title": "GlamourEssence – Beauty Products E-commerce & Consultation Platform",
+          "category": ["UI/UX Design", "E-commerce", "Beauty & Cosmetics"],
+          "type": "portfolio",
+          "status": "live",
+          "description": "A beauty e-commerce platform with virtual try-on features, personalized product recommendations, and expert consultation services.",
+          "technologies": ["Figma", "Sketch", "User Personas", "Journey Mapping", "A/B Testing", "Visual Design", "Interaction Design"],
+          "image": "/assets/Portfolio/glamouressence-beauty.jpeg",
+          "performance": [
+              { "label": "Conversion Rate", "value": "+35%" },
+              { "label": "User Satisfaction", "value": "4.8/5" }
+          ]
       },
       {
-        "id": 5,
-        "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
-        "category": ["E-commerce", "WordPress"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
-        "technologies": ["Shopify", "React", "Node.js", "Payment Gateway Integration", "SEO Optimization"],
-        "image": "/assets/Portfolio/jutecraftify-1.png",
-        "performance": [
-          { "label": "International Customer Growth", "value": "120%" },
-          { "label": "Conversion Rate Increase", "value": "30%" }
-        ]
+          "id": 3,
+          "title": "PawfectMatch – Pet Adoption & Rescue Platform",
+          "category": ["UI/UX Design", "Web Platform", "Animal Welfare"],
+          "type": "portfolio",
+          "status": "live",
+          "description": "A compassionate pet adoption platform connecting shelters with potential adopters through detailed profiles, matchmaking, and adoption process guidance.",
+          "technologies": ["Figma", "InVision", "User Interviews", "Accessibility Design", "Responsive Design", "Prototyping", "Design Thinking"],
+          "image": "/assets/Portfolio/pawfectmatch-adoption.jpeg",
+          "performance": [
+              { "label": "Adoption Success", "value": "78%" },
+              { "label": "User Task Completion", "value": "95%" }
+          ]
+      },
+      {
+          "id": 4,
+          "title": "AutoSelect Pro – Car Comparison & Selection Assistant",
+          "category": ["UI/UX Design", "Web App", "Automotive"],
+          "type": "portfolio",
+          "status": "live",
+          "description": "A comprehensive car selection platform with side-by-side comparisons, personalized recommendations, and dealer connectivity for informed purchasing decisions.",
+          "technologies": ["Adobe XD", "Figma", "User Testing", "Information Architecture", "Visual Hierarchy", "Prototyping", "Design Systems"],
+          "image": "/assets/Portfolio/autoselect-pro.jpeg",
+          "performance": [
+              { "label": "Decision Confidence", "value": "90%" },
+              { "label": "Time to Decision", "value": "-40%" }
+          ]
       }
     ]
   }
@@ -194,12 +208,8 @@ const ShopifyServices = () => {
   const shopifyPackages = pricingData.services.find(s => s.category === "Shopify")?.packages || [];
   const allProjects = portfolioData.portfolio.portfolioProjects;
   
-  // Filter Shopify-related projects
-  const shopifyProjects = allProjects.filter(project => 
-    project.category.includes("E-commerce") || 
-    project.category.includes("Shopify") ||
-    project.technologies.some(tech => tech.includes("Shopify"))
-  );
+  // Show all projects - they demonstrate our design and development capabilities
+  const shopifyProjects = allProjects;
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0);

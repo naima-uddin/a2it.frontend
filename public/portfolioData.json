@@ -623,6 +623,34 @@
                 ]
             },
             {
+                "id": 16,
+                "title": "TastyRecipe Hub",
+                "category": [
+                    "UI/UX Design",
+                    "Food & Cooking"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "An intuitive recipe app with personalized meal planning, step-by-step cooking instructions, and grocery list integration for home cooks.",
+                "technologies": [
+                    "Figma",
+                    "Adobe XD",
+                    "User Research",
+                    "Prototyping"
+                ],
+                "image": "/assets/Portfolio/tastyrecipe-hub.jpeg",
+                "performance": [
+                    {
+                        "label": "User Engagement",
+                        "value": "85%"
+                    },
+                    {
+                        "label": "Task Success Rate",
+                        "value": "92%"
+                    }
+                ]
+            },
+            {
                 "id": 3,
                 "title": "FitLife Tracker",
                 "category": [
@@ -858,59 +886,58 @@
                 ]
             },
             {
-                "id": 13,
-                "title": "Gym Equipment Tracker",
+                "id": 17,
+                "title": "GlamourEssence Beauty",
                 "category": [
-                    "Web Development",
-                    "WordPress"
+                    "UI/UX Design",
+                    "E-commerce",
+                    "Affiliate Platform"
                 ],
                 "type": "portfolio",
                 "status": "live",
-                "description": "A mobile app for gym equipment tracking, maintenance schedules, and fitness tips.",
+                "description": "A beauty e-commerce platform with virtual try-on features, personalized product recommendations, and expert consultation services.",
                 "technologies": [
-                    "React Native",
-                    "Expo",
-                    "SQLite",
-                    "Node.js"
+                    "Figma",
+                    "Sketch",
+                    "Journey Mapping",
+                    "A/B Testing"
                 ],
-                "image": "/assets/Portfolio/feature13.jpeg",
+                "image": "/assets/Portfolio/glamouressence-beauty.jpeg",
                 "performance": [
                     {
-                        "label": "Equipment Uptime",
-                        "value": "99%"
+                        "label": "Conversion Rate",
+                        "value": "+35%"
                     },
                     {
-                        "label": "Maintenance Alerts",
-                        "value": "100%"
+                        "label": "User Satisfaction",
+                        "value": "4.8/5"
                     }
                 ]
             },
             {
-                "id": 14,
-                "title": "Commercial Tyre UI/UX",
+                "id": 18,
+                "title": "PawfectMatch Adoption",
                 "category": [
                     "UI/UX Design",
-                    "Web Development",
-                    "Affiliate Platform",
-                    "E-commerce"
+                    "Animal Welfare"
                 ],
                 "type": "portfolio",
                 "status": "live",
-                "description": "UI/UX design for a tyre management system with user-friendly dashboards and checkout flow.",
+                "description": "A compassionate pet adoption platform connecting shelters with potential adopters through detailed profiles, matchmaking, and adoption process guidance.",
                 "technologies": [
                     "Figma",
-                    "Adobe XD",
-                    "Sketch",
-                    "InVision"
+                    "InVision",
+                    "Accessibility Design",
+                    "Responsive Design"
                 ],
-                "image": "/assets/Portfolio/ctyre-1.png",
+                "image": "/assets/Portfolio/pawfectmatch-adoption.jpeg",
                 "performance": [
                     {
-                        "label": "User Efficiency",
-                        "value": "45%"
+                        "label": "Adoption Success",
+                        "value": "78%"
                     },
                     {
-                        "label": "Task Completion",
+                        "label": "User Task Completion",
                         "value": "95%"
                     }
                 ]
@@ -1113,6 +1140,34 @@
                     {
                         "label": "Inventory Accuracy",
                         "value": "99.8%"
+                    }
+                ]
+            },
+            {
+                "id": 19,
+                "title": "AutoSelect Pro",
+                "category": [
+                    "UI/UX Design",
+                    "Automotive"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A comprehensive car selection platform with side-by-side comparisons, personalized recommendations, and dealer connectivity for informed purchasing decisions.",
+                "technologies": [
+                    "Adobe XD",
+                    "Figma",
+                    "User Testing",
+                    "Information Architecture"
+                ],
+                "image": "/assets/Portfolio/autoselect-pro.jpeg",
+                "performance": [
+                    {
+                        "label": "Decision Confidence",
+                        "value": "90%"
+                    },
+                    {
+                        "label": "Time to Decision",
+                        "value": "-40%"
                     }
                 ]
             }
