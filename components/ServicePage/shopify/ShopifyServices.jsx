@@ -144,62 +144,62 @@ const pricingData = {
 const portfolioData = {
   "portfolio": {
     "portfolioProjects": [
-      {
-          "id": 1,
-          "title": "TastyRecipe Hub – Recipe Discovery & Meal Planning Platform",
-          "category": ["UI/UX Design", "Mobile App", "Food & Cooking"],
-          "type": "portfolio",
-          "status": "live",
-          "description": "An intuitive recipe app with personalized meal planning, step-by-step cooking instructions, and grocery list integration for home cooks.",
-          "technologies": ["Figma", "Adobe XD", "User Research", "Wireframing", "Prototyping", "Usability Testing", "Design Systems"],
-          "image": "/assets/Portfolio/tastyrecipe-hub.jpeg",
-          "performance": [
-              { "label": "User Engagement", "value": "85%" },
-              { "label": "Task Success Rate", "value": "92%" }
-          ]
-      },
-      {
-          "id": 2,
-          "title": "GlamourEssence – Beauty Products E-commerce & Consultation Platform",
-          "category": ["UI/UX Design", "E-commerce", "Beauty & Cosmetics"],
-          "type": "portfolio",
-          "status": "live",
-          "description": "A beauty e-commerce platform with virtual try-on features, personalized product recommendations, and expert consultation services.",
-          "technologies": ["Figma", "Sketch", "User Personas", "Journey Mapping", "A/B Testing", "Visual Design", "Interaction Design"],
-          "image": "/assets/Portfolio/glamouressence-beauty.jpeg",
-          "performance": [
-              { "label": "Conversion Rate", "value": "+35%" },
-              { "label": "User Satisfaction", "value": "4.8/5" }
-          ]
-      },
-      {
-          "id": 3,
-          "title": "PawfectMatch – Pet Adoption & Rescue Platform",
-          "category": ["UI/UX Design", "Web Platform", "Animal Welfare"],
-          "type": "portfolio",
-          "status": "live",
-          "description": "A compassionate pet adoption platform connecting shelters with potential adopters through detailed profiles, matchmaking, and adoption process guidance.",
-          "technologies": ["Figma", "InVision", "User Interviews", "Accessibility Design", "Responsive Design", "Prototyping", "Design Thinking"],
-          "image": "/assets/Portfolio/pawfectmatch-adoption.jpeg",
-          "performance": [
-              { "label": "Adoption Success", "value": "78%" },
-              { "label": "User Task Completion", "value": "95%" }
-          ]
-      },
-      {
-          "id": 4,
-          "title": "AutoSelect Pro – Car Comparison & Selection Assistant",
-          "category": ["UI/UX Design", "Web App", "Automotive"],
-          "type": "portfolio",
-          "status": "live",
-          "description": "A comprehensive car selection platform with side-by-side comparisons, personalized recommendations, and dealer connectivity for informed purchasing decisions.",
-          "technologies": ["Adobe XD", "Figma", "User Testing", "Information Architecture", "Visual Hierarchy", "Prototyping", "Design Systems"],
-          "image": "/assets/Portfolio/autoselect-pro.jpeg",
-          "performance": [
-              { "label": "Decision Confidence", "value": "90%" },
-              { "label": "Time to Decision", "value": "-40%" }
-          ]
-      }
+ {
+    "id": 5,
+    "title": "UrbanStyle Fashion – Shopify E-commerce Store",
+    "category": ["Shopify Development", "E-commerce", "Fashion"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A modern fashion e-commerce store built on Shopify with custom theme development, product customization, and integrated payment solutions.",
+    "technologies": ["Shopify", "Liquid", "JavaScript", "CSS3", "Shopify Apps", "Payment Gateway", "SEO Optimization"],
+    "image": "/assets/Portfolio/urbanstyle-fashion.jpeg",
+    "performance": [
+      { "label": "Sales Growth", "value": "+60%" },
+      { "label": "Mobile Conversion", "value": "45%" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "GreenThumb Gardeners – Maintenance & Gardening Services Platform",
+    "category": ["Web Development", "Services Platform", "Gardening"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A comprehensive platform for gardening services, maintenance scheduling, plant care guidance, and professional gardener bookings.",
+    "technologies": ["React", "Node.js", "MongoDB", "Stripe API", "Google Maps API", "EmailJS", "Cloud Storage"],
+    "image": "/assets/Portfolio/greenthumb-gardeners.jpeg",
+    "performance": [
+      { "label": "Service Bookings", "value": "500+/month" },
+      { "label": "Customer Retention", "value": "88%" }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "TreeForLife – Plantation & Environmental Initiative Platform",
+    "category": ["Web Development", "Environmental", "Community"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "An environmental platform connecting donors with tree plantation initiatives, tracking growth progress, and promoting sustainable practices.",
+    "technologies": ["Next.js", "Firebase", "Google Maps API", "Payment Integration", "Progress Tracking", "Dashboard Analytics", "Cloud Functions"],
+    "image": "/assets/Portfolio/treeforlife-plantation.jpeg",
+    "performance": [
+      { "label": "Trees Planted", "value": "10,000+" },
+      { "label": "Donor Satisfaction", "value": "4.9/5" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "BackpackBuddy – Travel Planning & Budget Management App",
+    "category": ["Mobile App", "Travel", "Finance"],
+    "type": "portfolio",
+    "status": "live",
+    "description": "A comprehensive travel planning application with budget tracking, itinerary management, and expense sharing features for backpackers.",
+    "technologies": ["React Native", "Firebase", "Google Maps API", "Expense Tracking", "Group Features", "Offline Mode", "Push Notifications"],
+    "image": "/assets/Portfolio/backpackbuddy-travel.jpeg",
+    "performance": [
+      { "label": "Budget Accuracy", "value": "95%" },
+      { "label": "User Adoption", "value": "15K+" }
+    ]
+  }
     ]
   }
 };
@@ -814,12 +814,12 @@ const ShopifyServices = () => {
                       </div>
                     </div>
                     
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 min-h-[3.5rem]">
+                    <div className="p-3 flex flex-col flex-grow">
+                      <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1">
                         {project.title.split("–")[0].trim()}
                       </h3>
                       
-                      <p className="text-gray-600 text-sm mb-4 mt-2 line-clamp-2 min-h-[2.5rem]">
+                      <p className="text-gray-600 text-sm mb-3 line-clamp-2 min-h-[2.5rem]">
                         {project.description}
                       </p>
                       

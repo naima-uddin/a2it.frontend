@@ -320,6 +320,12 @@ const Footer = () => {
             >
               Terms of Service
             </a>
+            <a 
+              href="/advertiser-disclosure" 
+              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium"
+            >
+              Advertiser Disclosure
+            </a>
             
           </div>
         </div>

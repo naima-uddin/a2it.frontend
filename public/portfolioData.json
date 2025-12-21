@@ -857,6 +857,34 @@
                 ]
             },
             {
+                "id": 8,
+                "title": "BackpackBuddy",
+                "category": [
+                    "Mobile App",
+                    "Travel"
+                ],
+                "type": "portfolio",
+                "status": "live",
+                "description": "A comprehensive travel planning application with budget tracking, itinerary management, and expense sharing features for backpackers.",
+                "technologies": [
+                    "React Native",
+                    "Firebase",
+                    "Google Maps API",
+                    "Expense Tracking"
+                ],
+                "image": "/assets/Portfolio/backpackbuddy-travel.jpeg",
+                "performance": [
+                    {
+                        "label": "Budget Accuracy",
+                        "value": "95%"
+                    },
+                    {
+                        "label": "User Adoption",
+                        "value": "15K+"
+                    }
+                ]
+            },
+            {
                 "id": 11,
                 "title": "BestGearBuy – Affiliate Product Discovery Platform",
                 "category": [
@@ -1001,29 +1029,31 @@
                 ]
             },
             {
-                "id": 16,
-                "title": "Jute Boutique",
+                "id": 7,
+                "title": "TreeForLife",
                 "category": [
-                    "WordPress",
-                    "E-commerce"
+                    "Web Development",
+                    "Environmental",
+                    "WordPress"
                 ],
                 "type": "portfolio",
                 "status": "live",
-                "description": "A sustainable fashion e-commerce brand design system focused on jute-based products.",
+                "description": "An environmental platform connecting donors with tree plantation initiatives, tracking growth progress, and promoting sustainable practices.",
                 "technologies": [
-                    "Figma",
-                    "Canva",
-                    "Adobe Creative Suite"
+                    "Next.js",
+                    "Firebase",
+                    "Google Maps API",
+                    "Payment Integration"
                 ],
-                "image": "/assets/Portfolio/jute-1.avif",
+                "image": "/assets/Portfolio/treeforlife-plantation.jpeg",
                 "performance": [
                     {
-                        "label": "Brand Recognition",
-                        "value": "3X"
+                        "label": "Trees Planted",
+                        "value": "10,000+"
                     },
                     {
-                        "label": "Sales Increase",
-                        "value": "80%"
+                        "label": "Donor Satisfaction",
+                        "value": "4.9/5"
                     }
                 ]
             },
