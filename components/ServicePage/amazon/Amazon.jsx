@@ -399,14 +399,14 @@ const AmazonServices = () => {
 
 
       {/* Marketing Services Section */}
-      <section ref={marketingRef} className="py-20 bg-gray-50">
+      <section ref={marketingRef} className="py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
               <FiBarChart2 className="text-2xl text-blue-600" />
@@ -414,7 +414,7 @@ const AmazonServices = () => {
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               AMAZON MARKETING SERVICES
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3">
               Amplify Your Amazon Presence
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -479,14 +479,14 @@ const AmazonServices = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section ref={portfolioRef} className="py-20 bg-white">
+      <section ref={portfolioRef} className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
               <FiGrid className="text-2xl text-blue-600" />
@@ -494,8 +494,8 @@ const AmazonServices = () => {
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               OUR WORK
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-              Amazon & E-commerce Projects
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3">
+              Amazon Projects
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Successful e-commerce solutions we've built for businesses
@@ -609,22 +609,22 @@ const AmazonServices = () => {
       </section>
 
       {/* Pricing Section */}
-      <section ref={pricingRef} className="py-20 bg-gray-50">
+      <section ref={pricingRef} className="py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
               <FiTag className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               PRICING PLANS
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-2">
               Choose Your Amazon Solution
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -765,22 +765,22 @@ const AmazonServices = () => {
       </section>
 
             {/* FBA Services Section */}
-      <section ref={fbaRef} className="py-20 bg-gray-50">
+      <section ref={fbaRef} className="py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
               <FiPackage className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               AMAZON FBA SERVICES
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-3">
               Streamline Your E-Commerce Success
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -811,22 +811,22 @@ const AmazonServices = () => {
       </section>
 
       {/* FAQ Section */}
-      <section ref={faqRef} className="py-20 bg-white">
+      <section ref={faqRef} className="py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-2">
               <FiBox className="text-2xl text-blue-600" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm">
               FAQ
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-3">
               Frequently Asked Questions
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -902,7 +902,7 @@ const AmazonServices = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <section className="py-10 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}

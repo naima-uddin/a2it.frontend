@@ -121,12 +121,12 @@ const EcommerceServicePage = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-4">
               <FiStar className="text-blue-500" />
               <span className="text-sm font-semibold">TRUSTED BY 10,000+ SELLERS</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 leading-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight">
               <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 E-Commerce
               </span>
@@ -148,15 +148,7 @@ const EcommerceServicePage = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
               
-              <Link
-                href="/demo"
-                className="group border-2 border-blue-200 text-blue-700 font-semibold py-4 px-8 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 flex items-center justify-center gap-3 min-w-[200px]"
-              >
-                <span>Watch Demo</span>
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                  <FiChevronRight className="text-blue-600" />
-                </div>
-              </Link>
+              
             </div>
             
             {/* Stats */}
@@ -184,19 +176,19 @@ const EcommerceServicePage = () => {
       </section>
 
       {/* Marketplace Showcase */}
-      <section className="py-24 px-6 sm:px-12 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
               SUCCESS STORIES
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-2 text-gray-900">
               Transforming <span className="text-blue-600">Businesses</span> Globally
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -296,7 +288,7 @@ const EcommerceServicePage = () => {
 
           <div className="text-center mt-16">
             <Link
-              href="/success-stories"
+              href="/portfolio"
               className="inline-flex items-center group bg-white border-2 border-blue-200 text-blue-700 hover:border-blue-300 hover:bg-blue-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md"
             >
               View All Success Stories
@@ -307,7 +299,7 @@ const EcommerceServicePage = () => {
       </section>
 
       {/* Services */}
-      <section className="py-28 px-6 sm:px-12 relative">
+      <section className="py-10 px-6 sm:px-12 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white/50"></div>
         <div className="max-w-7xl mx-auto relative">
           <motion.div
@@ -315,14 +307,14 @@ const EcommerceServicePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-20"
+            className="text-center mb-4"
           >
             <div className="inline-flex items-center gap-2 text-blue-600 font-semibold tracking-wider text-sm mb-4">
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
               OUR E-COMMERCE SERVICES
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mt-4 mb-6 text-gray-900">
+            <h2 className="text-4xl sm:text-5xl font-bold mt-4 mb-3 text-gray-900">
               Complete Marketplace Solutions
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -410,7 +402,7 @@ const EcommerceServicePage = () => {
       </section>
 
       {/* Seller Process */}
-      <section className="py-28 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+      <section className="py-10 px-6 sm:px-12 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -422,7 +414,7 @@ const EcommerceServicePage = () => {
             <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
               STEP-BY-STEP PROCESS
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold mt-4 mb-6 text-gray-900">
+            <h2 className="text-4xl sm:text-5xl font-bold mt-4 mb-3 text-gray-900">
               From Setup to <span className="text-blue-600">Success</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -489,22 +481,22 @@ const EcommerceServicePage = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl mb-3 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-3">
               Choose Your{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
@@ -672,7 +664,7 @@ const EcommerceServicePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 px-6 sm:px-12 relative overflow-hidden">
+      <section className="py-10 px-6 sm:px-12 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50"></div>
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"></div>
@@ -700,7 +692,7 @@ const EcommerceServicePage = () => {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href="/get-started"
+                href="/contact"
                 className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-4 px-10 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 min-w-[220px]"
               >
                 <span className="relative z-10">Start Free Trial</span>
@@ -709,7 +701,7 @@ const EcommerceServicePage = () => {
               </Link>
               
               <Link
-                href="/demo"
+                href="/contact"
                 className="group border-2 border-gray-200 text-gray-700 font-semibold py-4 px-10 rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-3 min-w-[220px]"
               >
                 <span>Schedule a Demo</span>

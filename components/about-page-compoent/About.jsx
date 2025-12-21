@@ -56,7 +56,7 @@ const About = () => {
   return (
     <div className=" bg-white text-gray-900">
       {/* Hero Section with Image */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"></div>
@@ -95,11 +95,12 @@ const About = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <Link href="/contact-us" >
           <button className="btn-3d flex items-center justify-center gap-2 group w-full sm:w-auto">
             <span className="text-sm sm:text-base">Contact With Us</span>
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-
+</Link>
 <Link href="/portfolio">
                         <button className="btn-neon flex items-center justify-center gap-2 group w-full sm:w-auto">
                             <span className="text-sm sm:text-base">Watch Our Success Story</span>

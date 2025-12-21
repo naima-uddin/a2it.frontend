@@ -214,7 +214,7 @@ const ShopifyServices = () => {
       title: "Store Development",
       description: "Custom, high-converting Shopify stores built for your business",
       icon: <FiShoppingCart className="text-3xl" />,
-      color: "from-blue-500 to-indigo-600",
+      color: "from-blue-400 to-indigo-500",
       features: [
         "Custom theme development",
         "Mobile-optimized design",
@@ -226,7 +226,7 @@ const ShopifyServices = () => {
       title: "Platform Migration",
       description: "Seamless transition from other platforms to Shopify",
       icon: <FiServer className="text-3xl" />,
-      color: "from-emerald-500 to-teal-600",
+      color: "from-emerald-400 to-teal-500",
       features: [
         "Data migration",
         "SEO preservation",
@@ -238,7 +238,7 @@ const ShopifyServices = () => {
       title: "App Development",
       description: "Custom apps to extend your store's functionality",
       icon: <FiCpu className="text-3xl" />,
-      color: "from-violet-500 to-purple-600",
+      color: "from-violet-400 to-purple-500",
       features: [
         "Custom app development",
         "Private app creation",
@@ -250,7 +250,7 @@ const ShopifyServices = () => {
       title: "Marketing & SEO",
       description: "Drive traffic and increase conversions",
       icon: <FiTrendingUp className="text-3xl" />,
-      color: "from-rose-500 to-pink-600",
+      color: "from-blue-400 to-indigo-500",
       features: [
         "SEO optimization",
         "Conversion rate optimization",
@@ -262,7 +262,7 @@ const ShopifyServices = () => {
       title: "Maintenance & Support",
       description: "Ongoing care for your Shopify store",
       icon: <FiHeadphones className="text-3xl" />,
-      color: "from-amber-500 to-orange-600",
+      color: "from-emerald-400 to-teal-500",
       features: [
         "Regular updates",
         "Security monitoring",
@@ -634,14 +634,14 @@ const ShopifyServices = () => {
       </section>
 
       {/* **Comprehensive Shopify Solutions Section** */}
-      <section className="py-20 px-6 sm:px-12 relative">
+      <section className="py-10 -mt-6 px-6 sm:px-12 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-3"
           >
             <span className="text-[#7E6BF0] font-semibold tracking-widest text-sm uppercase">
               Our Services
@@ -672,19 +672,19 @@ const ShopifyServices = () => {
                     {service.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-gray-900">{service.title}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <p className="text-gray-800 mb-6">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-center">
                         <div className={`w-5 h-5 rounded-full bg-gradient-to-r ${service.color} bg-opacity-20 flex items-center justify-center mr-3`}>
                           <FiCheckCircle className={`text-xs ${service.color.split(' ')[1].replace('to-[', '').replace(']', '')}`} />
                         </div>
-                        <span className="text-sm text-gray-700">{feature}</span>
+                        <span className="text-sm text-[#FEEBE7]">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <button className="mt-6 text-sm font-medium flex items-center group text-white">
-                    <span>Learn more</span>
+                    <Link href="/contact">Learn more</Link>
                     <FiArrowRightIcon className="ml-2 transition-transform group-hover:translate-x-1" />
                   </button>
                 </motion.div>
@@ -695,14 +695,14 @@ const ShopifyServices = () => {
       </section>
 
       {/* **Shopify Projects Section** */}
-      <section id="portfolio" className="py-20 px-6 sm:px-12 bg-white">
+      <section id="portfolio" className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-4"
+            className="text-center mb-2"
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiGrid className="text-2xl text-white" />
@@ -883,16 +883,16 @@ const ShopifyServices = () => {
       </section>
 
       {/* **Pricing Section** */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -1071,16 +1071,16 @@ const ShopifyServices = () => {
       </section>
 
       {/* **FAQ Section** */}
-      <section className="py-20 px-6 sm:px-12 bg-white">
+      <section className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiBox className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -1183,7 +1183,7 @@ const ShopifyServices = () => {
       </section>
 
       {/* **Final CTA** */}
-      <section className="py-20 px-6 sm:px-12 relative overflow-hidden">
+      <section className="py-10 px-6 sm:px-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>

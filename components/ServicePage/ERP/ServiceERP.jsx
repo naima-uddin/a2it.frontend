@@ -430,7 +430,7 @@ const ServiceERP = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Link
-                    href="/demo"
+                    href="/contact"
                     className="group inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold py-3 px-8 rounded-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
                   >
                     <span className="flex items-center">
@@ -440,18 +440,7 @@ const ServiceERP = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <button
-                    onClick={() => setVideoModalOpen(true)}
-                    className="group inline-flex items-center justify-center bg-white text-gray-700 font-semibold py-3 px-8 rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
-                  >
-                    <FiPlay className="mr-3 text-blue-600" />
-                    Watch Demo
-                  </button>
-                </motion.div>
+                
               </div>
 
               {/* Trust Badges */}
@@ -595,13 +584,13 @@ const ServiceERP = () => {
       </section>
 
       {/* Key Features - Modern Cards */}
-      <section className="py-20 bg-gray-50/50">
+      <section className="py-10 bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium mb-4">
               CORE FEATURES
@@ -648,13 +637,13 @@ const ServiceERP = () => {
       </section>
 
       {/* Industry Solutions - Enhanced */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <div className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-lg text-sm font-medium mb-4">
               INDUSTRY SPECIALIZATIONS
@@ -715,13 +704,13 @@ const ServiceERP = () => {
       </section>
 
       {/* Implementation Process - Modern */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50/30">
+      <section className="py-10 bg-gradient-to-b from-white to-blue-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 rounded-lg text-sm font-medium mb-4">
               IMPLEMENTATION PROCESS
@@ -791,16 +780,16 @@ const ServiceERP = () => {
       </section>
 
 
-            <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+            <section id="pricing" className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
@@ -980,7 +969,7 @@ const ServiceERP = () => {
       </section>
 
       {/* Benefits Showcase - Enhanced */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -1021,15 +1010,7 @@ const ServiceERP = () => {
                 ))}
               </div>
 
-              <div className="mt-10">
-                <Link
-                  href="/case-studies"
-                  className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                >
-                  View case studies
-                  <FiArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
-                </Link>
-              </div>
+             
             </motion.div>
 
             <div className="grid grid-cols-2 gap-6">
@@ -1057,7 +1038,7 @@ const ServiceERP = () => {
       </section>
 
       {/* Final CTA - Modern */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
@@ -1089,7 +1070,7 @@ const ServiceERP = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="/demo"
+                  href="/contact"
                   className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold py-3 px-8 rounded-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
                 >
                   Schedule Demo

@@ -238,7 +238,7 @@ const ServiceHosting = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Link
-                  href="/get-started"
+                  href="/contact"
                   className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-4 px-8 rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   Start Free Trial
@@ -321,14 +321,14 @@ const ServiceHosting = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Why Choose{" "}
@@ -363,7 +363,7 @@ const ServiceHosting = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -494,22 +494,22 @@ const ServiceHosting = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-white">
+      <section id="pricing" className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl mb-3 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-3">
               Choose Your{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
@@ -677,7 +677,7 @@ const ServiceHosting = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-10 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -693,7 +693,7 @@ const ServiceHosting = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/get-started"
+                href="/contact"
                 className="inline-flex items-center justify-center bg-white text-blue-600 font-semibold py-4 px-8 rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 Start Free 14-Day Trial

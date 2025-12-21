@@ -352,7 +352,7 @@ const SEOSRMPPC = () => {
       </section>
 
       {/* Services Navigation */}
-      <section id="services" className="py-20 px-6 sm:px-12 bg-white">
+      <section id="services" className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -455,13 +455,13 @@ const SEOSRMPPC = () => {
       </section>
 
             {/* Transforming Social Presence */}
-      <section className="py-24 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <span className="inline-block px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full mb-4">
               PROVEN RESULTS
@@ -542,7 +542,7 @@ const SEOSRMPPC = () => {
       </section>
 
       {/* Paid Media Section */}
-      <section className="py-24 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -558,7 +558,7 @@ const SEOSRMPPC = () => {
                 </div>
                 <span className="text-blue-600 font-semibold tracking-wider">PAID MEDIA</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
                 Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">PPC & SEM</span> Campaigns
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
@@ -619,7 +619,7 @@ const SEOSRMPPC = () => {
       </section>
 
       {/* Platform-Specific Strategies */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-10 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -674,7 +674,7 @@ const SEOSRMPPC = () => {
       </section>
 
       {/* Content Types Showcase */}
-      <section className="py-24 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -721,22 +721,22 @@ const SEOSRMPPC = () => {
 
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-2 shadow-lg">
               <FiTag className="text-2xl text-white" />
             </div>
             <span className="text-blue-600 font-semibold tracking-widest text-sm block mb-3">
               TRANSPARENT PRICING
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
               Choose Your{" "}
               <span className="relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -910,7 +910,7 @@ const SEOSRMPPC = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+      <section className="py-10 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -938,12 +938,7 @@ const SEOSRMPPC = () => {
                   </svg>
                 </span>
               </Link>
-              <Link
-                href="/consultation"
-                className="px-12 py-5 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300"
-              >
-                Book Free Consultation
-              </Link>
+              
             </div>
           </motion.div>
         </div>

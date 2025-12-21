@@ -44,59 +44,17 @@ const portfolioData = {
   "portfolio": {
     "portfolioProjects": [
       {
-        "id": 1,
-        "title": "Cargo Logistics Company – Corporate Website & Services Platform",
-        "category": ["WordPress", "Web Development", "Logistics"],
+        "id": 10,
+        "title": "Best E-bike Store",
+        "category": ["E-commerce", "Affiliate Platform", "Web Development"],
         "type": "portfolio",
         "status": "live",
-        "description": "A professional corporate website designed to present logistics services, cargo solutions, and global freight capabilities for international clients.",
-        "technologies": ["Wordpress", "C-panel Hosting", "SEO Optimization"],
-        "image": "/assets/Portfolio/cargo-logistics-1.png",
+        "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
+        "technologies": ["WooCommerce", "React", "WordPress", "Stripe"],
+        "image": "/assets/Portfolio/bestbikereview-1.png",
         "performance": [
-          { "label": "Page Speed Score", "value": "90+" },
-          { "label": "Mobile Responsiveness", "value": "100%" }
-        ]
-      },
-      {
-        "id": 2,
-        "title": "BestBuyersView – Discover, Compare & Pick the Best Products",
-        "category": ["UI/UX Design", "Web Development", "Affiliate Platform", "E-commerce"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A scalable UI/UX design system created to support a high-performance affiliate review and content-driven platform.",
-        "technologies": ["Figma","Nextjs","Nodejs", "React", "Tailwind CSS", "Design Tokens", "Component-Based Architecture"],
-        "image": "/assets/Portfolio/bestbuyersview-1.png",
-        "performance": [
-          { "label": "Development Speed Increase", "value": "60%" },
-          { "label": "Reusable UI Components", "value": "80+" }
-        ]
-      },
-      {
-        "id": 3,
-        "title": "FinNess Trading Platform",
-        "category": ["Web Development", "Affiliate Platform", "WordPress"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A real-time trading platform for stocks and cryptocurrencies with live data feeds, interactive charts, and portfolio management tools.",
-        "technologies": ["React.js", "WebSocket", "Chart.js", "Node.js", "PostgreSQL"],
-        "image": "/assets/Portfolio/best-fitness-shop-1.png",
-        "performance": [
-          { "label": "Daily Trading Volume", "value": "$100M+" },
-          { "label": "Data Latency", "value": "100ms" }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
-        "category": ["E-commerce", "WordPress"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
-        "technologies": ["Wordpress", "C-panel Hosting", "SEO Optimization"],
-        "image": "/assets/Portfolio/jute-1.avif",
-        "performance": [
-          { "label": "International Customer Growth", "value": "120%" },
-          { "label": "Conversion Rate Increase", "value": "30%" }
+          { "label": "Monthly Sales", "value": "$150K+" },
+          { "label": "Conversion Rate", "value": "3.8%" }
         ]
       },
       {
@@ -114,31 +72,31 @@ const portfolioData = {
         ]
       },
       {
-        "id": 6,
-        "title": "BestGearBuy – Affiliate Product Discovery Platform",
-        "category": ["Affiliate Platform", "Web Development", "E-commerce"],
+        "id": 1,
+        "title": "Cargo Logistics Company – Corporate Website & Services Platform",
+        "category": ["WordPress", "Web Development", "Logistics"],
         "type": "portfolio",
         "status": "live",
-        "description": "An affiliate platform dedicated to electric bike reviews, comparisons, and buying guides.",
-        "technologies": ["React Native", "Firebase", "Google Maps API", "Redux"],
-        "image": "/assets/Portfolio/best-gear-buy-1.png",
+        "description": "A professional corporate website designed to present logistics services, cargo solutions, and global freight capabilities for international clients.",
+        "technologies": ["Wordpress", "C-panel Hosting", "SEO Optimization"],
+        "image": "/assets/Portfolio/cargo-logistics-1.png",
         "performance": [
-          { "label": "Active Users", "value": "10K+" },
-          { "label": "Battery Accuracy", "value": "98%" }
+          { "label": "Page Speed Score", "value": "90+" },
+          { "label": "Mobile Responsiveness", "value": "100%" }
         ]
       },
       {
-        "id": 7,
-        "title": "Gym Equipment Tracker",
-        "category": ["Mobile Development", "Web Development", "WordPress"],
+        "id": 4,
+        "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
+        "category": ["E-commerce", "WordPress"],
         "type": "portfolio",
         "status": "live",
-        "description": "A mobile app for gym equipment tracking, maintenance schedules, and fitness tips.",
-        "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
-        "image": "/assets/Portfolio/best-fitness-shop-2.png",
+        "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
+        "technologies": ["Wordpress", "C-panel Hosting", "SEO Optimization"],
+        "image": "/assets/Portfolio/jute-1.avif",
         "performance": [
-          { "label": "Equipment Uptime", "value": "99%" },
-          { "label": "Maintenance Alerts", "value": "100%" }
+          { "label": "International Customer Growth", "value": "120%" },
+          { "label": "Conversion Rate Increase", "value": "30%" }
         ]
       },
       {
@@ -169,20 +127,7 @@ const portfolioData = {
           { "label": "Sales Increase", "value": "80%" }
         ]
       },
-      {
-        "id": 10,
-        "title": "Best E-bike Store",
-        "category": ["E-commerce", "Affiliate Platform", "Web Development"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
-        "technologies": ["WooCommerce", "React", "WordPress", "Stripe"],
-        "image": "/assets/Portfolio/bestbikereview-1.png",
-        "performance": [
-          { "label": "Monthly Sales", "value": "$150K+" },
-          { "label": "Conversion Rate", "value": "3.8%" }
-        ]
-      },
+      
       {
         "id": 11,
         "title": "Asian Import Export Co.",
@@ -197,20 +142,6 @@ const portfolioData = {
           { "label": "Inventory Accuracy", "value": "99.8%" }
         ]
       },
-      {
-        "id": 12,
-        "title": "KitchenPro Supply",
-        "category": ["WordPress"],
-        "type": "portfolio",
-        "status": "live",
-        "description": "A WordPress-based e-commerce store specializing in kitchen supplies and appliances.",
-        "technologies": ["WordPress", "WooCommerce", "PHP", "MySQL", "Elementor"],
-        "image": "/assets/Portfolio/kitchenpro-supply.png",
-        "performance": [
-          { "label": "Order Processing Speed", "value": "50% faster" },
-          { "label": "Inventory Accuracy", "value": "99.8%" }
-        ]
-      }
     ]
   }
 };
@@ -366,6 +297,7 @@ const EcommercePage = () => {
 
   // Sample products for store preview
   const products = [
+    
     { 
       id: 1, 
       name: "KitchenPro Supply",  
@@ -919,14 +851,14 @@ const EcommercePage = () => {
       </section>
 
       {/* **Pricing Section** */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="py-10 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiTag className="text-2xl text-white" />
@@ -1108,14 +1040,14 @@ const EcommercePage = () => {
       </section>
 
       {/* **FAQ Section** */}
-      <section className="py-20 px-6 sm:px-12 bg-white">
+      <section className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg">
               <FiBox className="text-2xl text-white" />

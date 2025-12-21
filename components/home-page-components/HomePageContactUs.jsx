@@ -104,7 +104,7 @@ const HomePageContactUs = () => {
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]"></div>
 
       {/* Main Content Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full py-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full py-8">
         {/* Header */}
         <motion.div
           initial="hidden"
@@ -114,7 +114,7 @@ const HomePageContactUs = () => {
           className="text-center mb-12"
         >
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-white tracking-tight">
             GET IN <span className="text-blue-600">TOUCH</span>
           </h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
@@ -123,7 +123,7 @@ const HomePageContactUs = () => {
         </motion.div>
 
         {/* Contact Content - Swapped positions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12">
           {/* Right side: Contact Information */}
           <motion.div
             initial="hidden"

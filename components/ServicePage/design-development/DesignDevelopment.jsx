@@ -1680,7 +1680,7 @@ const DesignDevelopmentPage = () => {
       </section>
       
       {/* Portfolio Section with Slider */}
-      <section id="portfolio" className="py-20 px-6 sm:px-12 bg-white">
+      <section id="portfolio" className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1879,7 +1879,7 @@ const DesignDevelopmentPage = () => {
               {/* Slide Indicators - Below Cards */}
               {groupedProjects.length > 1 && (
                 <div className="flex justify-center items-center mt-8">
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-2">
                     {groupedProjects.map((_, index) => (
                       <motion.button
                         key={index}
@@ -1929,14 +1929,14 @@ const DesignDevelopmentPage = () => {
       </section>
       
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="py-6 px-6 sm:px-12 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl mb-6 shadow-lg shadow-blue-500/30">
               <FiTag className="text-2xl text-white" />
@@ -2130,7 +2130,7 @@ const DesignDevelopmentPage = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="py-20 px-6 sm:px-12 bg-white">
+      <section className="py-10 px-6 sm:px-12 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
