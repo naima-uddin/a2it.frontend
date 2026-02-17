@@ -1,0 +1,76 @@
+{
+    "portfolio": [
+        {
+            "id": 1,
+            "title": "BestBuyersReview – Affiliate Product Review Platform",
+            "description": "Affiliate-based product review and comparison platform helping users discover the best products with trusted insights.",
+            "image": "/promotionPortfolio/bestbuyersreview.jpeg"
+        },
+        {
+            "id": 2,
+            "title": "BestProductBuy – Affiliate Product Comparison Platform",
+            "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
+            "image": "/promotionPortfolio/bestproductbuy.jpeg"
+        },
+        {
+            "id": 3,
+            "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
+            "description": "An affiliate-driven kitchen appliance and equipment review platform helping users choose the best tools for home and professional kitchens.",
+            "image": "/promotionPortfolio/kitchenpro.jpeg"
+        },
+        {
+            "id": 4,
+            "title": "BestBikeReview – Affiliate Bike Review Platform",
+            "description": "Affiliate-based bicycle review and buying guide platform focused on helping users choose the best bikes and accessories.",
+            "image": "/promotionPortfolio/bestbikerview.jpeg"
+        },
+        {
+            "id": 5,
+            "title": "Best Fitness Shop – Fitness Gear & Equipment Review Platform",
+            "description": "An affiliate-driven fitness product review platform helping users choose the best gym equipment, accessories, and workout gear.",
+            "image": "/promotionPortfolio/fitnessshop.jpeg"
+        },
+        {
+            "id": 6,
+            "title": "BestGearBuy – Affiliate Product Discovery Platform",
+            "description": "Affiliate-driven product discovery and buying guide platform focused on electronics, tools, and everyday gear.",
+            "image": "/promotionPortfolio/bestgearbuy.jpeg"
+        },
+        {
+            "id": 7,
+            "title": "Best Baby Gears",
+            "description": "A centralized analytics dashboard to track affiliate performance, content growth, and traffic insights across multiple review websites.",
+            "image": "/promotionPortfolio/bestbabygear.jpeg"
+        },
+        {
+            "id": 8,
+            "title": "BestBuyersView – Discover, Compare &amp; Pick the Best Products",
+            "description": "A scalable UI/UX design system created to support a high-performance affiliate review and content-driven platform.",
+            "image": "/promotionPortfolio/buyersview.jpeg"
+        },
+        {
+            "id": 9,
+            "title": "JuteCraftify – Sustainable Jute E-commerce Platform",
+            "description": "A modern e-commerce platform dedicated to promoting sustainable jute products worldwide, featuring secure payments, streamlined inventory management, and export-ready workflows.",
+            "image": "/promotionPortfolio/jute.jpeg"
+        },
+        {
+            "id": 10,
+            "title": "Asian Import Export Co.",
+            "description": "An import-export e-commerce platform connecting Asian manufacturers with global buyers.",
+            "image": "/promotionPortfolio/asianbd.jpeg"
+        },
+        {
+            "id": 11,
+            "title": "Best E-bike Store",
+            "description": "E-commerce store for electric bikes with integrated payment and shipping solutions.",
+            "image": "/promotionPortfolio/asianthailend.jpeg"
+        },
+        {
+            "id": 12,
+            "title": "Gadget Zone – Tech Product Review Platform",
+            "description": "A tech product review platform providing in-depth analysis and affiliate links for the latest gadgets.",
+            "image": "/promotionPortfolio/shopify.jpeg"
+        }
+    ]
+}
