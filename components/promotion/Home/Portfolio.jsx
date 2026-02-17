@@ -137,7 +137,7 @@ export default function Portfolio() {
         <div className="flex justify-center mt-6 " ref={viewMoreRef}>
           {filtered.length > 4 && (
             <button onClick={() => setShowAll((s) => !s)} className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
-              <span className="bg-linear-to-r from-[#fdffff] to-[#000052] bg-clip-text text-transparent">{showAll ? 'View less' : 'View more'}</span>
+              <span className="bg-linear-to-r from-[#ffffff] to-[#c2c2ff] bg-clip-text text-transparent">{showAll ? 'View Less' : 'View More'}</span>
             </button>
           )}
         </div>
