@@ -8,9 +8,9 @@
         },
         {
             "id": 2,
-            "title": "BestProductBuy – Affiliate Product Comparison Platform",
-            "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
-            "image": "/promotionPortfolio/bestproductbuy.jpeg"
+            "title": "BackPack Pro – Affiliate Travel Gear Review Platform",
+            "description": "A travel gear review platform providing in-depth analysis and affiliate links for the latest backpacks and travel accessories.",
+            "image": "/promotionPortfolio/shopify.jpeg"
         },
         {
             "id": 3,
@@ -68,9 +68,9 @@
         },
         {
             "id": 12,
-            "title": "Gadget Zone – Tech Product Review Platform",
-            "description": "A tech product review platform providing in-depth analysis and affiliate links for the latest gadgets.",
-            "image": "/promotionPortfolio/shopify.jpeg"
+            "title": "BestProductBuy – Affiliate Product Comparison Platform",
+            "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
+            "image": "/promotionPortfolio/bestproductbuy.jpeg"
         }
     ]
 }
