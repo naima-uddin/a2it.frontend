@@ -100,14 +100,14 @@ export default function Slider({ autoplay = true, interval = 3000 }) {
           <button
             aria-label="Previous"
             onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-9 h-9 flex items-center justify-center shadow-md ml-2"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md ml-2"
           >
             ‹
           </button>
           <button
             aria-label="Next"
             onClick={goNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-9 h-9 flex items-center justify-center shadow-md mr-2"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md mr-2"
           >
             ›
           </button>
