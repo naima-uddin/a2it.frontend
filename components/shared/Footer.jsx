@@ -2,9 +2,12 @@
 
 import Logo from "./Logo";
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
   const [showAllServices, setShowAllServices] = useState(false);
+  const pathname = usePathname();
+  if (pathname?.startsWith('/promotions')) return null;
   
   const services = [
     { name: "Design & Development", url: "/services/design-development" },
