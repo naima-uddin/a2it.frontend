@@ -13,7 +13,7 @@ export default function PromotionFooter() {
   return (
     <footer
       className="relative w-full bg-center bg-cover"
-      style={{ backgroundImage: "url('/Footer.svg')" }}
+      style={{ backgroundImage: "url('/promotionPortfolio/footerbg.jpeg')" }}
     >
       <div className="absolute inset-0 bg-black/60 pointer-events-none" />
 
