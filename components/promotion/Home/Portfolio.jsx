@@ -28,9 +28,20 @@ export default function Portfolio() {
   }, []);
 
 
+  const categories = useMemo(() => {
+    const set = new Set();
+    projects.forEach((p) => {
+      (p.category || "").split(",").map((c) => c.trim()).forEach((c) => { if (c) set.add(c); });
+    });
+    return ["All", ...Array.from(set)];
+  }, [projects]);
+
   const filtered = useMemo(() => {
     if (active === "All") return projects;
-    return projects.filter((p) => p.category === active);
+    return projects.filter((p) => {
+      const cats = (p.category || "").split(",").map((c) => c.trim());
+      return cats.includes(active);
+    });
   }, [projects, active]);
 
   // visible subset (default 4) and currently selected item (by index in `filtered`)
@@ -71,6 +82,17 @@ export default function Portfolio() {
         </div>
 
        
+
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => { setActive(cat); setShowActive(true); }}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${showActive && active === cat ? 'bg-blue-600 text-white' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}>
+              {cat}
+            </button>
+          ))}
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
           {filtered.map((p, idx) => {
