@@ -2,10 +2,10 @@
     "portfolio": [
         {
             "id": 1,
-            "category": "Affiliate,WordPress",
-            "title": "BestBuyersReview – Affiliate Product Review Platform",
-            "description": "Affiliate-based product review and comparison platform helping users discover the best products with trusted insights.",
-            "image": "/promotionPortfolio/bestbuyersreview.jpeg"
+            "category": "Affiliate, E-commerce, WordPress",
+            "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
+            "description": "An affiliate-driven kitchen appliance and equipment review platform helping users choose the best tools for home and professional kitchens.",
+            "image": "/promotionPortfolio/kitchenpro.jpeg"
         },
         {
             "id": 2,
@@ -16,10 +16,10 @@
         },
         {
             "id": 3,
-            "category": "Affiliate, E-commerce, WordPress",
-            "title": "Kitchen Pro Supply – Kitchen Appliances & Equipment Review Platform",
-            "description": "An affiliate-driven kitchen appliance and equipment review platform helping users choose the best tools for home and professional kitchens.",
-            "image": "/promotionPortfolio/kitchenpro.jpeg"
+            "category": "Affiliate,WordPress",
+            "title": "BestBuyersReview – Affiliate Product Review Platform",
+            "description": "Affiliate-based product review and comparison platform helping users discover the best products with trusted insights.",
+            "image": "/promotionPortfolio/bestbuyersreview.jpeg"
         },
         {
             "id": 4,
