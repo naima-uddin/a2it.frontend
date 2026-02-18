@@ -20,17 +20,17 @@ const Enhancement = () => {
             <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-indigo-400 rounded-full" />
           </div>
           
-          <div className="relative w-full max-w-[740px] sm:max-w-[760px] md:max-w-[860px] lg:max-w-[920px] overflow-visible -ml-12">
+          <div className="relative w-full max-w-[860px] sm:max-w-[960px] md:max-w-[1080px] lg:max-w-[1160px] overflow-visible -ml-16">
             {/* Subtle glow behind image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-3xl blur-2xl scale-95" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/8 via-indigo-400/8 to-purple-400/8 rounded-3xl blur-2xl scale-95" />
             {/* contained bottom shadow so visible-bottom aligns with cards */}
-            <div className="absolute bottom-0 left-0 right-0 h-36 md:h-44 lg:h-56 bg-gradient-to-t from-blue-800/35 via-blue-800/80 to-transparent rounded-b-3xl -z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-44 md:h-56 lg:h-72 bg-gradient-to-t from-blue-800/30 via-blue-800/70 to-transparent rounded-b-3xl -z-10" />
             <Image
               src="/promotionPortfolio/serviceSectionImg.png"
               alt="Service mockups"
-              width={920}
-              height={720}
-              className="object-contain drop-shadow-2xl rounded-xl scale-110 md:scale-115 lg:scale-120 transition-transform duration-700 w-full h-auto relative z-10"
+              width={1160}
+              height={900}
+              className="object-contain drop-shadow-2xl rounded-xl scale-125 md:scale-150 lg:scale-150 transition-transform duration-700 w-full h-auto relative z-10"
               priority
             />
           </div>
