@@ -30,12 +30,12 @@ const Banner = () => {
             </div>
 
           <div className="mt-10 flex flex-wrap gap-4 pl-10">
-            <Link href="/contact" className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
-              <span className="bg-linear-to-r from-[#f9fafa] to-[#010158] bg-clip-text text-transparent">🚀 Start Your Project</span>
+            <Link href="/contact" className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
+              <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">🚀 Start Your Project</span>
             </Link>
 
             <Link href="/contact" className="inline-flex items-center gap-3 border border-white/20 text-white/90 font-semibold rounded-full px-5 py-2.5 hover:bg-white/5 transition">
-              <span className="bg-linear-to-r from-[#7ebaf5] to-[#00006d] bg-clip-text text-transparent">📞 Get Free Consultation</span>
+              <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">📞 Get Free Consultation</span>
             </Link>
           </div>
         </div>
