@@ -12,7 +12,7 @@ export default function PromotionFooter() {
 
   return (
     <footer
-      className="relative w-full bg-center bg-cover rounded-3xl overflow-hidden"
+      className="relative w-full bg-center bg-cover rounded-3xl overflow-hidden max-h-180"
       style={{ backgroundImage: "url('/promotionPortfolio/footerbg.jpeg')" }}
     >
       {/* Layered overlay - inspired by navbar styling */}
@@ -20,7 +20,9 @@ export default function PromotionFooter() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          
           <div className="text-white max-w-xl">
+            <Image src="/A2ITLogo.png" alt="A2it Logo" width={150} height={50} className="mb-6" />
             <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-6">
               Sign up now for the ultimate website experience!
             </h2>
@@ -59,7 +61,7 @@ export default function PromotionFooter() {
               <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm text-white placeholder:text-white/70 outline-none resize-none" />
 
               <div className="flex justify-center mt-2">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-10 py-3 shadow-md">Submit</button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full px-10 py-3 shadow-md">Submit</button>
               </div>
             </form>
           </div>
