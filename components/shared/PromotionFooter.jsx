@@ -21,17 +21,25 @@ export default function PromotionFooter() {
            {/* mask: white = show overlay, black = transparent (hole)  */}
             <mask id="footerMask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
               <rect x="0" y="0" width="100" height="100" fill="white" />
-              {/* <!-- left/top blob --> */}
-              <circle cx="8" cy="10" r="28" fill="black" />
-              {/* <!-- center/top blob --> */}
-              <circle cx="46" cy="8" r="32" fill="black" />
-              {/* <!-- right/top blob --> */}
-              <circle cx="92" cy="12" r="26" fill="black" />
+              {/* left/top - smaller reveal so left stays more overlaid */}
+              <circle cx="10" cy="12" r="20" fill="black" />
+              {/* center/top */}
+              <circle cx="56" cy="10" r="26" fill="black" />
+              {/* right/top - larger reveal on right */}
+              <circle cx="92" cy="14" r="32" fill="black" />
             </mask>
+
+            {/* gradient: darker on left, lighter on right; transparent at top-left to remove top border color */}
+            <linearGradient id="footerGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
+              <stop offset="0%" stopColor="#000" stopOpacity="0" />
+              <stop offset="20%" stopColor="#000" stopOpacity="0.66" />
+              <stop offset="60%" stopColor="#000" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#000" stopOpacity="0.14" />
+            </linearGradient>
           </defs>
 
-          {/* semi-opaque overlay clipped by mask so "holes" reveal the image edges */}
-          <rect x="0" y="0" width="100" height="100" fill="rgba(0,0,0,0.6)" mask="url(#footerMask)" />
+          {/* overlay uses gradient and mask (left-heavy; top area transparent) */}
+          <rect x="0" y="0" width="100" height="100" fill="url(#footerGrad)" mask="url(#footerMask)" />
         </svg>
       </div>
 

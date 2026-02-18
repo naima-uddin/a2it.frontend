@@ -37,7 +37,7 @@ const Enhancement = () => {
         </div>
 
         {/* Right - content + feature cards */}
-        <div className="flex flex-col space-y-6 lg:pl-8 lg:col-span-3 lg:self-end">
+        <div className="flex flex-col space-y-4 lg:pl-8 lg:col-span-3 lg:self-end">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
            Unlock Your  
             <span className="block lg:inline"> <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Next Level</span> of Professional  </span>
@@ -50,7 +50,7 @@ const Enhancement = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-auto">
             {/* Card 1 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible mr-6">
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible mr-6">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
                 <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={80} height={80} className="w-full h-full object-contain" />
               </div>
@@ -61,7 +61,7 @@ const Enhancement = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible ">
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible ">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
                 <Image src="/promotionPortfolio/satisfaction.png" alt="Customer satisfaction" width={80} height={80} className="w-full h-full object-contain" />
               </div>
@@ -72,7 +72,7 @@ const Enhancement = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible mr-6">
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible mr-6">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
                 <Image src="/promotionPortfolio/support.png" alt="24/7 support" width={80} height={80} className="w-full h-full object-contain" />
               </div>
@@ -83,7 +83,7 @@ const Enhancement = () => {
             </div>
 
             {/* Card 4 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
                 <Image src="/promotionPortfolio/design.png" alt="Custom design" width={80} height={80} className="w-full h-full object-contain" />
               </div>
