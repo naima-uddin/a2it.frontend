@@ -61,7 +61,7 @@ export default function PromotionFooter() {
               <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm text-white placeholder:text-white/70 outline-none resize-none" />
 
               <div className="flex justify-center mt-2">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full px-10 py-3 shadow-md">Submit</button>
+                <button className="bg-linear-to-r from-[#7ebaf5] to-[#00006d] hover:scale-95 text-white font-semibold rounded-full px-10 py-3 shadow-md">Submit</button>
               </div>
             </form>
           </div>
