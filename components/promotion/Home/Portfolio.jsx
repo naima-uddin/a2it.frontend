@@ -88,7 +88,7 @@ export default function Portfolio() {
             <button
               key={cat}
               onClick={() => { setActive(cat); setShowActive(true); }}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${showActive && active === cat ? 'bg-blue-600 text-white' : 'bg-blue-600/30 text-white/90 hover:bg-white/10'}`}>
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition ${showActive && active === cat ? 'bg-gradient-to-r from-blue-500 to-blue-900 text-white' : 'bg-blue-600/30 text-white/90 '}`}>
               {cat}
             </button>
           ))}
