@@ -12,10 +12,28 @@ export default function PromotionFooter() {
 
   return (
     <footer
-      className="relative w-full bg-center bg-cover"
+      className="relative w-full bg-center bg-cover rounded-3xl overflow-hidden"
       style={{ backgroundImage: "url('/promotionPortfolio/footerbg.jpeg')" }}
     >
-      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <defs>
+           {/* mask: white = show overlay, black = transparent (hole)  */}
+            <mask id="footerMask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+              <rect x="0" y="0" width="100" height="100" fill="white" />
+              {/* <!-- left/top blob --> */}
+              <circle cx="8" cy="10" r="28" fill="black" />
+              {/* <!-- center/top blob --> */}
+              <circle cx="46" cy="8" r="32" fill="black" />
+              {/* <!-- right/top blob --> */}
+              <circle cx="92" cy="12" r="26" fill="black" />
+            </mask>
+          </defs>
+
+          {/* semi-opaque overlay clipped by mask so "holes" reveal the image edges */}
+          <rect x="0" y="0" width="100" height="100" fill="rgba(0,0,0,0.6)" mask="url(#footerMask)" />
+        </svg>
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
