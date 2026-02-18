@@ -7,12 +7,12 @@ const Enhancement = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left - mockup image */}
         <div className="flex justify-center lg:justify-start">
-          <div className="relative w-[440px] sm:w-[520px] md:w-[620px] lg:w-[660px] h-[320px] sm:h-[380px] md:h-[460px] lg:h-[480px]">
+          <div className="relative w-[480px] sm:w-[560px] md:w-[640px] lg:w-[700px] h-[300px] sm:h-[380px] md:h-[460px] lg:h-[520px] overflow-visible lg:-ml-6">
             <Image
               src="/promotionPortfolio/serviceSectionImg.png"
               alt="Service mockups"
               fill
-              className="object-contain drop-shadow-2xl rounded-xl"
+              className="object-contain drop-shadow-2xl rounded-xl scale-105 md:scale-110 transition-transform duration-500"
               priority
             />
           </div>
