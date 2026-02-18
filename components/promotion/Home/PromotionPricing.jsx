@@ -196,42 +196,42 @@ const PromotionPricing = () => {
         headerBg: 'bg-gradient-to-br from-teal-400 to-teal-500',
         buttonBg: 'bg-teal-500',
         buttonHover: 'hover:bg-teal-600',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-teal-400'
       },
       orange: {
         headerBg: 'bg-gradient-to-br from-orange-400 to-orange-500',
         buttonBg: 'bg-orange-500',
         buttonHover: 'hover:bg-orange-600',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-orange-400'
       },
       red: {
         headerBg: 'bg-gradient-to-br from-red-500 to-red-600',
         buttonBg: 'bg-red-600',
         buttonHover: 'hover:bg-red-700',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-red-500'
       },
       blue: {
         headerBg: 'bg-gradient-to-br from-blue-500 to-blue-600',
         buttonBg: 'bg-blue-600',
         buttonHover: 'hover:bg-blue-700',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-blue-500'
       },
       purple: {
         headerBg: 'bg-gradient-to-br from-purple-500 to-purple-600',
         buttonBg: 'bg-purple-600',
         buttonHover: 'hover:bg-purple-700',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-purple-500'
       },
       indigo: {
         headerBg: 'bg-gradient-to-br from-indigo-500 to-indigo-600',
         buttonBg: 'bg-indigo-600',
         buttonHover: 'hover:bg-indigo-700',
-        ribbonBg: 'bg-black',
+        ribbonBg: 'bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600',
         iconBg: 'bg-indigo-500'
       }
     };
@@ -465,7 +465,7 @@ const PromotionPricing = () => {
                     {/* Discount Ribbon - Top Right */}
                     <div className="absolute top-0 right-0 z-20">
                       <div 
-                        className={`${style.ribbonBg} text-white px-6 py-2 font-bold text-sm shadow-lg`}
+                        className={`${style.ribbonBg} text-white px-6 py-2 font-bold text-sm shadow-lg ring-1 ring-black/10`}
                         style={{
                           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)',
                           minWidth: '120px',
