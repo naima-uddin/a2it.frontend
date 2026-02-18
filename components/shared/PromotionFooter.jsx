@@ -21,7 +21,7 @@ export default function PromotionFooter() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           
-          <div className="text-white max-w-xl">
+          <div className="text-white max-w-xl mt-10">
             <Image src="/A2ITLogo.png" alt="A2it Logo" width={150} height={50} className="mb-6" />
             <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-6">
               Sign up now for the ultimate website experience!
