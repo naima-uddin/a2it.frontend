@@ -70,44 +70,46 @@ export default function Slider({ autoplay = true, interval = 3000 }) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative overflow-hidden">
           {/* track (clipped to container to avoid page overflow) */}
-          <div
-            ref={trackRef}
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${(current * 100) / perView}%)` }}
-          >
-            {images.map((src, idx) => (
-              <div
-                key={src + idx}
-                className="shrink-0 p-4 flex items-center justify-center"
-                style={{ width: `${100 / perView}%` }}
-                aria-hidden={idx < current || idx >= current + perView}
-              >
-                <div className="w-full h-20 md:h-28 lg:h-32 flex items-center justify-center">
-                  <Image
-                    src={src}
-                    alt={src.split("/").pop()}
-                    width={240}
-                    height={120}
-                    className="object-contain opacity-90 hover:opacity-100 transition"
-                    priority={false}
-                  />
+          <div className="relative h-20 md:h-28 lg:h-32 overflow-hidden">
+            <div
+              ref={trackRef}
+              className="flex transition-transform duration-500 ease-out h-full"
+              style={{ transform: `translateX(-${(current * 100) / perView}%)` }}
+            >
+              {images.map((src, idx) => (
+                <div
+                  key={src + idx}
+                  className="shrink-0 px-4 flex items-center justify-center h-full"
+                  style={{ width: `${100 / perView}%` }}
+                  aria-hidden={idx < current || idx >= current + perView}
+                >
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Image
+                      src={src}
+                      alt={src.split("/").pop()}
+                      width={240}
+                      height={120}
+                      className="object-contain opacity-90 hover:opacity-100 transition"
+                      priority={false}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* arrows */}
           <button
             aria-label="Previous"
             onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md ml-2"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md z-10"
           >
             ‹
           </button>
           <button
             aria-label="Next"
             onClick={goNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md mr-2"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/10 border border-blue-600 hover:bg-white/20 text-blue-600 rounded-full w-9 h-9 flex items-center justify-center shadow-md z-10"
           >
             ›
           </button>
