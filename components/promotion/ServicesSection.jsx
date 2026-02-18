@@ -16,9 +16,15 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="w-full py-16 px-4 md:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+    <section
+      className="w-full px-4 md:px-6 lg:px-8 bg-center bg-cover bg-no-repeat mb-10"
+      style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}
+    >
+      {/* subtle overlay to keep text readable */}
+      <div className="absolute inset-0 bg-white/60 pointer-events-none rounded-none" />
+      <div className="relative">
+      <div className="max-w-7xl mx-auto relative">
+        <div className="flex flex-col lg:flex-row items-center gap-12 relative">
           {/* Left Content */}
           <div className="flex-1">
             {/* Header Text */}
@@ -66,6 +72,7 @@ const ServicesSection = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
