@@ -21,13 +21,13 @@ const Enhancement = () => {
         {/* Right - content + feature cards */}
         <div className="space-y-6 lg:pl-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
-            Achieve Professional
-            <span className="block lg:inline"> <span className="text-amber-500">Growth</span> through Brand </span>
-            <span className="text-amber-500">Enhancement</span>
+            Accelerate professional
+            <span className="block lg:inline"> <span className="text-amber-500">Growth</span> with high‑impact </span>
+            <span className="text-amber-500">Brand Design</span>
           </h2>
 
           <p className="text-gray-600 max-w-xl">
-            From the initial conceptualization till the final delivery of the designs, we make sure each and every step is smooth, transparent & flawless.
+            From concept to launch, we craft memorable brand and product experiences that convert — clear process, measurable results.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
@@ -36,8 +36,8 @@ const Enhancement = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
               </div>
               <div>
-                <div className="font-semibold text-gray-800">Money-Back Policy</div>
-                <div className="text-sm text-gray-500">Risk-free guarantee</div>
+                <div className="font-semibold text-gray-800">Money‑Back Guarantee</div>
+                <div className="text-sm text-gray-500">Risk‑free promise</div>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ const Enhancement = () => {
               </div>
               <div>
                 <div className="font-semibold text-gray-800">Customer Satisfaction</div>
-                <div className="text-sm text-gray-500">5‑star service</div>
+                <div className="text-sm text-gray-500">5‑star results</div>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ const Enhancement = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
               </div>
               <div>
-                <div className="font-semibold text-gray-800">Round‑the‑Clock Support</div>
+                <div className="font-semibold text-gray-800">24/7 Dedicated Support</div>
                 <div className="text-sm text-gray-500">Always available</div>
               </div>
             </div>
@@ -66,8 +66,8 @@ const Enhancement = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h18M12 3v18M7 7v10h10V7"/></svg>
               </div>
               <div>
-                <div className="font-semibold text-gray-800">Custom Crafted Designs</div>
-                <div className="text-sm text-gray-500">Tailored to your brand</div>
+                <div className="font-semibold text-gray-800">Custom‑Crafted Designs</div>
+                <div className="text-sm text-gray-500">Tailored to your audience</div>
               </div>
             </div>
           </div>
