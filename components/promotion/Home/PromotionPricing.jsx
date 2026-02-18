@@ -391,12 +391,12 @@ const PromotionPricing = () => {
           <section className="py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-3">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 md:mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 leading-tight" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
               WE ARE <span className="text-blue-600">OPTIMISTS</span> WHO LOVE
               <br className="hidden md:block" />
               TO WORK <span className="text-blue-600">TOGETHER</span>
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mb-4 px-4">
+            <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mb-6 px-4" style={{ fontFamily: "var(--font-oswald), sans-serif" ,letterSpacing: "0.02em"}}>
               Choose the perfect plan for your business needs. All packages come with our commitment to excellence.
             </p>
           </div>
