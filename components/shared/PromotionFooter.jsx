@@ -21,20 +21,20 @@ export default function PromotionFooter() {
            {/* mask: white = show overlay, black = transparent (hole)  */}
             <mask id="footerMask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
               <rect x="0" y="0" width="100" height="100" fill="white" />
-              {/* left/top - smaller reveal so left stays more overlaid */}
-              <circle cx="10" cy="12" r="20" fill="black" />
+              {/* left/top - minimize reveal so left stays deep */}
+              <circle cx="0" cy="12" r="8" fill="black" />
               {/* center/top */}
               <circle cx="56" cy="10" r="26" fill="black" />
               {/* right/top - larger reveal on right */}
               <circle cx="92" cy="14" r="32" fill="black" />
             </mask>
 
-            {/* gradient: darker on left, lighter on right; transparent at top-left to remove top border color */}
+            {/* gradient: make left side much deeper while top-left remains transparent */}
             <linearGradient id="footerGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
               <stop offset="0%" stopColor="#000" stopOpacity="0" />
-              <stop offset="20%" stopColor="#000" stopOpacity="0.66" />
-              <stop offset="60%" stopColor="#000" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#000" stopOpacity="0.14" />
+              <stop offset="10%" stopColor="#000" stopOpacity="0.96" />
+              <stop offset="40%" stopColor="#000" stopOpacity="0.88" />
+              <stop offset="100%" stopColor="#000" stopOpacity="0.18" />
             </linearGradient>
           </defs>
 
