@@ -51,7 +51,7 @@ export default function PromotionFooter() {
            
           </div>
 
-          <div className="bg-[#FFD6A7]/25 rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 shadow-2xl transparent">
+          <div className="bg-[#FFD6A7]/25 rounded-xl md:rounded-2xl p-5 md:p-6 lg:p-8 shadow-2xl transparent ">
             <h3 className="text-base md:text-lg lg:text-2xl font-semibold text-white mb-4 md:mb-6">SEND A MESSAGE</h3>
 
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
@@ -60,14 +60,14 @@ export default function PromotionFooter() {
               <input name="phone" type="tel" placeholder="Phone Number" className="w-full rounded-md p-2.5 md:p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-xs md:text-sm text-white placeholder:text-white/70 outline-none" required />
               <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-2.5 md:p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-xs md:text-sm text-white placeholder:text-white/70 outline-none resize-none" />
 
-              <div className="flex justify-center mt-2">
+              <div className="flex justify-center mt-2 mb-10 md:mb-0">
                 <button className="bg-linear-to-r from-[#7ebaf5] to-[#00006d] hover:scale-95 text-white text-sm md:text-base font-semibold rounded-full px-8 md:px-10 py-2.5 md:py-3 shadow-md">Submit</button>
               </div>
             </form>
           </div>
         </div>
 
-        <div className="mt-6 md:mt-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
+        <div className="mt-6 md:mt-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 ">
           <div className="flex items-center gap-4">
             <div className="w-48 md:w-64 lg:w-96 -mt-0 md:-mt-10">
               <Image src="/promotionPortfolio/cards.png" alt="Payment methods" width={384} height={56} className="object-contain w-full h-auto" />
