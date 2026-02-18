@@ -429,75 +429,81 @@ const PromotionPricing = () => {
                       isMobile ? 'w-full mb-8' : ''
                     } relative bg-white`}
                   >
-                    {/* Floating Badge for Special/Platinum */}
-                    {style.badge && (
-                      <div className={style.badge}>
-                        {style.badgeText}
-                      </div>
-                    )}
-
-                    {/* Package Header with Gradient */}
-                    <div className={`${style.headerBg} p-6 md:p-10 text-center relative overflow-hidden ${style.badge ? 'pt-14 md:pt-16' : 'pt-6 md:pt-10'}`}>
-                      {/* Package Name */}
-                      <div className="mb-4">
-                        <h3 className={`text-2xl md:text-3xl font-bold ${style.headerText} tracking-tight`}>{pkg.name}</h3>
-                      </div>
-                      
-                      {/* Price with Emphasis */}
-                      <div className="mb-4">
-                        <div className={`text-4xl md:text-5xl font-black ${style.priceColor} leading-none mb-2`}>
-                          {pkg.price}
-                        </div>
-                        <div className="h-px w-16 md:w-20 bg-white/40 mx-auto"></div>
-                      </div>
-                      
-                      {/* CTA Button */}
-                      <Link
-                        href="/contact"
-                        className={`inline-block w-full py-3 md:py-4 font-bold rounded-sm transition-all duration-300 transform hover:scale-[1.02] ${style.buttonBg} ${style.buttonText} ${style.buttonHover} shadow-lg hover:shadow-xl`}
+                    {/* Discount Ribbon - Top Right */}
+                    <div className="absolute top-0 right-0 z-20">
+                      <div 
+                        className={`${style.ribbonBg} text-white px-6 py-2 font-bold text-sm shadow-lg`}
+                        style={{
+                          clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)',
+                          minWidth: '120px',
+                          textAlign: 'right'
+                        }}
                       >
-                        GET STARTED
-                      </Link>
+                        {pkg.discount}
+                      </div>
                     </div>
 
-                    {/* Package Features */}
-                    <div className={`${style.bodyBg} p-6 md:p-8 transition-colors duration-300`}>
-                      <h4 className={`text-lg md:text-xl font-semibold mb-6 md:mb-8 text-center ${style.bodyText} relative pb-2`}>
-                        <span className="relative">
-                          What's Included
-                          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 md:w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
-                        </span>
-                      </h4>
-                      <ul className="space-y-3 md:space-y-4">
-                        {pkg.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start group">
-                            <div className="relative mr-3 md:mr-4">
-                              <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full ${style.iconColor} bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                                <svg
-                                  className="w-2.5 h-2.5 md:w-3 md:h-3"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clipRule="evenodd"
-                                  />
+                    {/* Package Header with Icon and Background */}
+                    <div className={`${style.headerBg} p-8 text-left relative`}>
+                      <div className="flex items-start gap-4">
+                        {/* Building Icon */}
+                        <div className="flex-shrink-0">
+                          <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M3 21V8l7-5 7 5v13h-4v-7H8v7H3zm2-2h2v-5h10v5h2V9.5l-5-3.575L7 9.5V19z"/>
+                              <rect x="9" y="11" width="2" height="2"/>
+                              <rect x="13" y="11" width="2" height="2"/>
+                              <rect x="9" y="14" width="2" height="2"/>
+                              <rect x="13" y="14" width="2" height="2"/>
+                            </svg>
+                          </div>
+                        </div>
+                        
+                        {/* Package Info */}
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold text-white mb-2 leading-tight">{pkg.name}</h3>
+                          <p className="text-sm text-white/90 font-medium">Best Value for Money Guaranteed!</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Price Section - Separate Background */}
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 px-8 py-6 text-center border-b border-gray-200">
+                      <div className="flex items-center justify-center gap-3 mb-1">
+                        <span className="text-5xl md:text-6xl font-black text-gray-900">{pkg.price.replace('.00', '')}</span>
+                        <span className="text-2xl text-red-500 line-through font-semibold">{pkg.originalPrice}</span>
+                      </div>
+                      <p className="text-gray-600 font-medium text-sm">Only</p>
+                    </div>
+
+                    {/* Package Features - Scrollable */}
+                    <div className="bg-white px-6 py-4 border-b border-gray-200">
+                      <div className="max-h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                        <ul className="space-y-3">
+                          {pkg.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <div className="mt-1 flex-shrink-0">
+                                <svg className={`w-4 h-4 ${style.headerBg.includes('teal') ? 'text-teal-500' : style.headerBg.includes('orange') ? 'text-orange-500' : style.headerBg.includes('red') ? 'text-red-500' : style.headerBg.includes('blue') ? 'text-blue-500' : style.headerBg.includes('purple') ? 'text-purple-500' : 'text-indigo-500'}`} fill="currentColor" viewBox="0 0 20 20">
+                                  <circle cx="10" cy="10" r="10"/>
                                 </svg>
                               </div>
-                            </div>
-                            <span className={`text-sm md:text-base ${style.bodyText} group-hover:text-gray-900 transition-colors duration-300 flex-1`}>
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                              <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
 
-                    {/* Special Highlight for Special/Platinum */}
-                    {(pkg.name === 'Special' || pkg.name === 'Platinum') && (
-                      <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 md:w-32 h-1.5 md:h-2 bg-gradient-to-r ${pkg.name === 'Special' ? 'from-blue-500 to-blue-600' : 'from-blue-500 to-blue-600'} rounded-full blur-sm opacity-70`}></div>
-                    )}
+                    {/* CTA Button */}
+                    <div className="p-6 bg-white">
+                      <Link href="/contact">
+                        <button 
+                          className={`w-full py-4 ${style.buttonBg} ${style.buttonText} ${style.buttonHover} font-bold text-base rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider`}
+                        >
+                          START PROJECT
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 );
               })}
