@@ -49,8 +49,8 @@ export default function PromotionFooter() {
            
           </div>
 
-          <div className="bg-white/95 rounded-2xl p-6 md:p-8 shadow-2xl transparent">
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-6">REQUEST A PHONE CALL</h3>
+          <div className="bg-[#FFD6A7]/25 rounded-2xl p-6 md:p-8 shadow-2xl transparent">
+            <h3 className="text-lg md:text-2xl font-semibold text-white mb-6">SEND A MESSAGE</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <input name="name" placeholder="Your Name" className="w-full rounded-md p-3 border border-gray-200 bg-white text-sm outline-none" required />
