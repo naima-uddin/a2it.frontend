@@ -350,28 +350,45 @@ const PromotionPricing = () => {
           opacity: 0.6;
         }
 
-        /* Extra-thin, styled scrollbar to match provided image */
+        /* Thick gray scrollbar with arrow buttons (matches provided screenshot) */
         .thin-scrollbar::-webkit-scrollbar {
-          width: 4px;
-          height: 4px;
+          width: 14px;
+          height: 14px;
         }
         .thin-scrollbar::-webkit-scrollbar-track {
-          background: #ecfbf6; /* very pale mint */
+          background: #fafafa; /* very light track */
           border-radius: 9999px;
           box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
         }
         .thin-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg,#34bfa1,#2a9d86);
+          background: #9b9b9b; /* medium gray */
           border-radius: 9999px;
-          min-height: 14px; /* visually short thumb */
-          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+          min-height: 40px; /* visually short thumb */
+          margin: 6px 2px; /* space for arrow buttons */
+          box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
+          border: 3px solid #ffffff;
         }
         .thin-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg,#2aa78c,#20856f);
+          background: #7f7f7f;
+        }
+        .thin-scrollbar::-webkit-scrollbar-button {
+          display: block;
+          height: 18px;
+          background: transparent;
+        }
+        .thin-scrollbar::-webkit-scrollbar-button:vertical:decrement {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 1 L7 5 H1 Z' fill='%236b6b6b'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .thin-scrollbar::-webkit-scrollbar-button:vertical:increment {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 7 L7 3 H1 Z' fill='%236b6b6b'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
         }
         .thin-scrollbar {
-          scrollbar-width: thin; /* Firefox */
-          scrollbar-color: #2a9d86 #ecfbf6;
+          scrollbar-width: thin;
+          scrollbar-color: #9b9b9b #fafafa; /* Firefox approximation */
         }
 
         /* Extra small devices (very small phones) */
