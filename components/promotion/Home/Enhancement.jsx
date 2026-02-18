@@ -4,9 +4,9 @@ import Image from 'next/image';
 const Enhancement = () => {
   return (
     <section className="bg-white pt-12 pb-6 md:pt-16 md:pb-8 lg:pt-20 lg:pb-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-24 items-center">
         {/* Left - mockup image */}
-        <div className="flex justify-start items-start relative">
+        <div className="flex justify-start items-start relative lg:col-span-2">
           {/* Decorative background elements */}
           <div className="absolute inset-0 -z-10">
             {/* Large gradient blob */}
@@ -29,14 +29,14 @@ const Enhancement = () => {
               src="/promotionPortfolio/serviceSectionImg.png"
               alt="Service mockups"
               fill
-              className="object-contain drop-shadow-2xl rounded-xl scale-110 md:scale-115 lg:scale-120 transition-transform duration-700 relative z-10"
+              className="object-contain drop-shadow-2xl rounded-xl scale-110 md:scale-115 lg:scale-120 transition-transform duration-700 relative z-10 "
               priority
             />
           </div>
         </div>
 
         {/* Right - content + feature cards */}
-        <div className="space-y-6 lg:pl-8">
+        <div className="space-y-6 lg:pl-8 lg:col-span-3">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
            Unlock Your  
             <span className="block lg:inline"> <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Next Level</span> of Professional  </span>
