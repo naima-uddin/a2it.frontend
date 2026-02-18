@@ -26,7 +26,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative flex flex-col lg:flex-row items-center gap-12">
         {/* Left - mockup */}
         <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
-          <div className="relative w-[320px] md:w-[420px] lg:w-[500px] h-[520px]">
+          <div className="relative w-[520px] md:w-[420px] lg:w-[700px] h-[520px]">
             <Image
               src="/promotionPortfolio/serviceSectionImg.png"
               alt="App mockup"
