@@ -13,6 +13,20 @@ export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
   const [autoScrollIndex, setAutoScrollIndex] = useState(0);
 
+  // responsive visible count: mobile -> 2, desktop -> 4
+  const [visibleCount, setVisibleCount] = useState(4);
+  useEffect(() => {
+    const update = () => {
+      if (typeof window === 'undefined') return;
+      const w = window.innerWidth;
+      // treat <768px as mobile
+      setVisibleCount(w < 768 ? 2 : 4);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   useEffect(() => {
     let mounted = true;
     fetch("/promotionPortfolio.json")
@@ -76,12 +90,10 @@ export default function Portfolio() {
           <h2 className="text-3xl md:text-4xl font-oswald font-bold bg-linear-to-r from-[#93c9ff] to-[#0202c1] bg-clip-text text-transparent pb-2">
             Experience Our High-Impact Digital Projects
           </h2>
-          <p className="mt-3 text-[#989897] max-w-2xl mx-auto">
+          <p className=" text-[#989897] max-w-2xl mx-auto">
            Explore our latest work across custom web development, scalable eCommerce platforms, ERP system integrations, marketplace solutions, and performance-driven marketing campaigns.
           </p>
         </div>
-
-       
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
           {categories.map((cat) => (
@@ -96,8 +108,8 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
           {filtered.map((p, idx) => {
-            // show only first 4 unless "showAll" is enabled
-            if (!showAll && idx >= 4) return null;
+            // show only `visibleCount` unless "showAll" is enabled
+            if (!showAll && idx >= visibleCount) return null;
             const isAuto = autoScrollIndex === idx;
             const isSelected = selectedIndex === idx;
             return (
@@ -157,7 +169,7 @@ export default function Portfolio() {
 
         {/* View more / View less button */}
         <div className="flex justify-center mt-6 " ref={viewMoreRef}>
-          {filtered.length > 4 && (
+          {filtered.length > visibleCount && (
             <button onClick={() => setShowAll((s) => !s)} className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
               <span className="bg-linear-to-r from-[#ffffff] to-[#c2c2ff] bg-clip-text text-transparent">{showAll ? 'View Less' : 'View More'}</span>
             </button>
