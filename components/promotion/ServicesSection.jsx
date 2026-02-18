@@ -5,19 +5,18 @@ import { Megaphone, Users } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
-    "Website Design & Development",
-    "Ecommerce Website Development",
-    "Web Application Development",
-    "Mobile Application Development",
-    "Website Maintenance",
-    "Domain and Hosting",
-    "Branding And Stationary Design",
-    "Video Animation",
-    "Search Engine Optimization"
+    "Design & Development",
+    "E-Commerce",
+    "Amazon",
+    "Shopify",
+    "ERP System Development",
+    "SEO / SEM / PPC",
+    "Server and Hosting Services",
+    "E-bay"
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
+    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-30" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
       {/* subtle overlay to keep text readable */}
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
       {/* decorative faint circles */}
@@ -53,29 +52,18 @@ const ServicesSection = () => {
 
           <p className="text-white/85 max-w-lg mb-8">Choose the perfect plan for your business needs. All packages come with our commitment to excellence.</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 max-w-md">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white">
-                <Megaphone size={18} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-md">
+            {services.map((svc, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <div className="mt-1 flex-shrink-0">
+                  <svg className="w-2.5 h-2.5 text-white/90" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+                </div>
+                <div className="text-sm text-white/90">{svc}</div>
               </div>
-              <div>
-                <div className="text-sm font-semibold">Promotion Time:</div>
-                <div className="text-white/80 mt-1">5 months</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white">
-                <Users size={18} />
-              </div>
-              <div>
-                <div className="text-sm font-semibold">Followers:</div>
-                <div className="text-white/80 mt-1">+10,000</div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-400 to-pink-500 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
+          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-200 to-blue-800 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
         </div>
       </div>
 
