@@ -70,10 +70,9 @@ export default function PromotionFooter() {
         <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-white/60 text-sm">Copyright © 2026 A2IT LLC | All rights reserved.</div>
           <div className="flex items-center gap-4">
-            <div className="w-12 h-8 bg-white/20 rounded-md flex items-center justify-center text-xs text-white/80">VISA</div>
-            <div className="w-12 h-8 bg-white/20 rounded-md flex items-center justify-center text-xs text-white/80">MC</div>
-            <div className="w-12 h-8 bg-white/20 rounded-md flex items-center justify-center text-xs text-white/80">AMEX</div>
-            <div className="w-12 h-8 bg-white/20 rounded-md flex items-center justify-center text-xs text-white/80">PayPal</div>
+            <div className="w-200">
+              <Image src="/promotionPortfolio/cards.png" alt="Payment methods" width={220} height={32} className="object-contain" />
+            </div>
           </div>
         </div>
       </div>
