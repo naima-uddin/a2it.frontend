@@ -63,7 +63,7 @@ const ServicesSection = () => {
             ))}
           </div>
 
-          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-teal-200 to-blue-800 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
+          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
         </div>
       </div>
 
