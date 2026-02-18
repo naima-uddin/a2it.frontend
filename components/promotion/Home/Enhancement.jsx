@@ -52,7 +52,7 @@ const Enhancement = () => {
             {/* Card 1 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible mr-6">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
-                <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={80} height={80} className="w-full h-full object-contain" />
+                <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={70} height={70} className="w-full h-full object-contain" />
               </div>
               <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Money-Back Policy</div>
