@@ -8,6 +8,8 @@ const PromotionPricing = () => {
   // Component fixed to show only the "Design & Development" category — tab/scroll states removed
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   // Inlined Design & Development data (component-local)
   const designService = {
     id: 1,
@@ -202,52 +204,8 @@ const PromotionPricing = () => {
   return (
     <>
       <section className="relative py-20 flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/pricing-img.avif')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-30"></div>
-        </div>
-
-        {/* Geometric Overlay */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-blue-500/30 rotate-45"></div>
-          <div className="absolute bottom-40 left-32 w-40 h-40 border border-orange-500/20 rotate-12"></div>
-          <div className="absolute top-1/3 left-1/4 w-32 h-32 border border-blue-600/10 -rotate-12"></div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full mb-8 border border-white/20">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">Since 2015 • Redefining Technology</span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-none">
-              <span className="text-white">Flexible Plans</span>
-              <div className="relative inline-block ml-2 sm:ml-4">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-800">
-                  For Everyone
-                </span>
-                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
-              </div>
-            </h1>
-            
-            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-10 max-w-xl leading-relaxed">
-              Choose the perfect package that fits your needs and budget. 
-              Quality services at competitive prices with transparent pricing and no hidden fees.
-            </p>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="text-white text-sm font-medium mb-2">Scroll to explore</div>
-          <div className="w-px h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
-        </div>
      
-                 <style jsx>{`
+      <style jsx>{`
         .btn-3d {
           padding: 18px 45px;
           font-size: 18px;
