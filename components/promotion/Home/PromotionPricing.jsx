@@ -349,18 +349,29 @@ const PromotionPricing = () => {
           border-radius: 10px 10px 0 0;
           opacity: 0.6;
         }
-        
-        /* Responsive */
-        /* Responsive */
-        @media (max-width: 640px) {
-          .btn-3d,
-          .btn-neon {
-            padding: 8px 10px;
-            font-size: 12px;
-            min-width: auto;     /* 🔑 allow buttons to shrink */
-            width: auto;
-            letter-spacing: 0.4px;
-          }
+
+        /* Extra-thin, styled scrollbar to match provided image */
+        .thin-scrollbar::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .thin-scrollbar::-webkit-scrollbar-track {
+          background: #ecfbf6; /* very pale mint */
+          border-radius: 9999px;
+          box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+        }
+        .thin-scrollbar::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg,#34bfa1,#2a9d86);
+          border-radius: 9999px;
+          min-height: 14px; /* visually short thumb */
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+        }
+        .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg,#2aa78c,#20856f);
+        }
+        .thin-scrollbar {
+          scrollbar-width: thin; /* Firefox */
+          scrollbar-color: #2a9d86 #ecfbf6;
         }
 
         /* Extra small devices (very small phones) */
@@ -372,7 +383,7 @@ const PromotionPricing = () => {
           }
         }
 
-      `}</style>
+      `}</style> 
       </section>
     
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
@@ -502,7 +513,7 @@ const PromotionPricing = () => {
 
                     {/* Package Features - Scrollable */}
                     <div className="bg-white px-6 py-4 border-b border-gray-200">
-                      <div className="max-h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                      <div className="max-h-64 overflow-y-auto pr-2 thin-scrollbar">
                         <ul className="space-y-3">
                           {pkg.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-3">
