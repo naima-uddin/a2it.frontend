@@ -123,7 +123,7 @@ const Banner = () => {
       {/* Bottom Arrow */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 banner-arrow">
         <Image
-          src="/home/down-arrow-home.png"
+          src="/promotionPortfolio/down-arrow-home.png"
           width={104}
           height={104}
           alt="Scroll Down"
