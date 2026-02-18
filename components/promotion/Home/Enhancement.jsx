@@ -6,13 +6,28 @@ const Enhancement = () => {
     <section className="bg-white pt-12 pb-6 md:pt-16 md:pb-8 lg:pt-20 lg:pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         {/* Left - mockup image */}
-        <div className="flex justify-start items-start">
-          <div className="relative w-[560px] sm:w-[680px] md:w-[760px] lg:w-[820px] h-[360px] sm:h-[460px] md:h-[540px] lg:h-[620px] overflow-visible  translate-y-6 md:translate-y-10 lg:translate-y-16 -ml-12">
+        <div className="flex justify-start items-start relative">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 -z-10">
+            {/* Large gradient blob */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-50 rounded-full blur-3xl opacity-60" />
+            {/* Secondary gradient */}
+            <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-tl from-blue-50 via-cyan-50 to-transparent rounded-full blur-2xl opacity-50" />
+            {/* Decorative shapes */}
+            <div className="absolute top-12 right-16 w-24 h-24 border-4 border-blue-200/30 rounded-full animate-pulse" />
+            <div className="absolute bottom-24 left-12 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-2xl rotate-45" />
+            <div className="absolute top-1/2 right-8 w-3 h-3 bg-blue-400 rounded-full animate-bounce" />
+            <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-indigo-400 rounded-full" />
+          </div>
+          
+          <div className="relative w-[560px] sm:w-[680px] md:w-[760px] lg:w-[820px] h-[360px] sm:h-[460px] md:h-[540px] lg:h-[620px] overflow-visible translate-y-6 md:translate-y-10 lg:translate-y-16 -ml-12">
+            {/* Subtle glow behind image */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-3xl blur-2xl scale-95" />
             <Image
               src="/promotionPortfolio/serviceSectionImg.png"
               alt="Service mockups"
               fill
-              className="object-contain drop-shadow-2xl rounded-xl scale-110 md:scale-115 lg:scale-120 transition-transform duration-700"
+              className="object-contain drop-shadow-2xl rounded-xl scale-110 md:scale-115 lg:scale-120 transition-transform duration-700 relative z-10"
               priority
             />
           </div>
