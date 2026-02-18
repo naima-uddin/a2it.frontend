@@ -1,64 +1,104 @@
 "use client";
 // Add this useState import at the top
 import { useCallback, useEffect, useState } from 'react';
-import PricingPage from '../home-page-components/PricingCard';
 import Link from 'next/link';
 import { ChevronRight, Sparkles } from 'lucide-react';
 const PromotionPricing = () => {
     const [activeFaq, setActiveFaq] = useState(null);
   // Component fixed to show only the "Design & Development" category — tab/scroll states removed
 
-
-  const faqs = [
-    {
-      question: "Can I change plans anytime?",
-      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.",
-      icon: "🔄"
-    },
-    {
-      question: "Is there a free trial?",
-      answer: "Yes, all plans come with a 14-day free trial. No credit card required.",
-      icon: "🎯"
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, PayPal, and bank transfers for annual plans.",
-      icon: "💳"
-    },
-    {
-      question: "Do you offer discounts for nonprofits?",
-      answer: "Yes, we offer a 25% discount for registered nonprofit organizations.",
-      icon: "🏛️"
-    },
-    {
-      question: "Can I cancel anytime?",
-      answer: "Absolutely. Cancel anytime with no hidden fees or penalties.",
-      icon: "🚫"
-    },
-    {
-      question: "Is there a setup fee?",
-      answer: "No setup fees for any of our plans. What you see is what you pay.",
-      icon: "🎁"
-    }
-  ];
   const [currentPage, setCurrentPage] = useState(0);
-  const [pricingData, setPricingData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    fetch('/pricing-data.json')
-      .then(res => res.json())
-      .then(data => {
-        setPricingData(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error loading pricing data:', error);
-        setLoading(false);
-      });
-  }, []);
+  // Inlined Design & Development data (component-local)
+  const designService = {
+    id: 1,
+    category: 'Design & Development',
+    packages: [
+      {
+        id: 'design-special',
+        name: 'Special',
+        price: '$299.00',
+        color: 'blue',
+        features: [
+          'Custom Website Design',
+          'Responsive Layout',
+          '5 Page Website',
+          'Contact Form',
+          'Basic SEO Setup',
+          '1 Month Support'
+        ]
+      },
+      {
+        id: 'design-plus',
+        name: 'Plus',
+        price: '$599.00',
+        color: 'blue',
+        features: [
+          'Everything in Special',
+          '10 Page Website',
+          'CMS Integration',
+          'Custom Animations',
+          'E-commerce Ready',
+          '3 Months Support'
+        ]
+      },
+      {
+        id: 'design-gold',
+        name: 'Gold',
+        price: '$999.00',
+        color: 'black',
+        features: [
+          'Everything in Plus',
+          '15 Page Website',
+          'Advanced SEO',
+          'Performance Optimization',
+          'Custom Admin Panel',
+          '6 Months Support'
+        ]
+      },
+      {
+        id: 'design-platinum',
+        name: 'Platinum',
+        price: '$1499.00',
+        color: 'blue',
+        features: [
+          'Everything in Gold',
+          '20 Page Website',
+          'Custom Plugins',
+          'API Integration',
+          'Multi-language Support',
+          '1 Year Support'
+        ]
+      },
+      {
+        id: 'design-boss',
+        name: 'The Boss',
+        price: '$2499.00',
+        color: 'blue',
+        features: [
+          'Everything in Platinum',
+          'Unlimited Pages',
+          'Custom Frameworks',
+          'Progressive Web App',
+          'Advanced Security',
+          'Lifetime Updates'
+        ]
+      },
+      {
+        id: 'design-diamond',
+        name: 'Diamond',
+        price: '$3999.00',
+        color: 'blue',
+        features: [
+          'Everything in The Boss',
+          'Enterprise Solution',
+          'Dedicated Team',
+          'Custom AI Features',
+          'White Label',
+          '24/7 Priority Support'
+        ]
+      }
+    ]
+  };
 
   // Check if device is mobile
   useEffect(() => {
@@ -71,8 +111,7 @@ const PromotionPricing = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const services = pricingData?.services || [];
-  const currentService = services.find(service => service.category === 'Design & Development');
+  const currentService = designService;
   
   // Determine packages per page based on screen size
   const packagesPerPage = isMobile ? 1 : 3;
@@ -106,25 +145,7 @@ const PromotionPricing = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [prevPage, nextPage, totalPages]);
 
-  if (loading) {
-    return (
-      <main className="pt-20 bg-white min-h-screen">
-        <div className="flex justify-center items-center h-64">
-          <div className="text-xl text-blue-600">Loading pricing data...</div>
-        </div>
-      </main>
-    );
-  }
 
-  if (!pricingData) {
-    return (
-      <main className="pt-20 bg-white min-h-screen">
-        <div className="flex justify-center items-center h-64">
-          <div className="text-xl text-red-600">Failed to load pricing data</div>
-        </div>
-      </main>
-    );
-  }
 
   if (!currentService) {
     return null;
@@ -217,22 +238,6 @@ const PromotionPricing = () => {
               Choose the perfect package that fits your needs and budget. 
               Quality services at competitive prices with transparent pricing and no hidden fees.
             </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Link href="/contact" >
-                      <button className="btn-3d flex items-center gap-2 group">
-                        Contact With Us
-                        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </button>
-              </Link>
-
-              <Link href="/portfolio" >
-                                    <button className="btn-neon flex items-center gap-2 group">
-                                        Watch Our Success Story
-                                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                    </button>
-              </Link>
-                        </div>
           </div>
         </div>
 
@@ -522,147 +527,6 @@ const PromotionPricing = () => {
           </div>
         </div>
       </section>
-
-
-        {/* Interactive FAQ Section */}
-        <div className="max-w-7xl mx-auto mb-20 mt-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Questions? We've got answers.
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Everything you need to know about our pricing and plans
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index}
-                className={`relative overflow-hidden rounded-2xl border transition-all duration-500 cursor-pointer ${
-                  activeFaq === index 
-                    ? 'border-blue-300 bg-blue-50 shadow-lg scale-[1.02]' 
-                    : 'border-gray-200 bg-white hover:shadow-md'
-                }`}
-                onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-              >
-                <div className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-4">
-                      <span className="text-2xl">{faq.icon}</span>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                          {faq.question}
-                        </h3>
-                        <div className={`overflow-hidden transition-all duration-500 ${
-                          activeFaq === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-                        }`}>
-                          <p className="text-gray-600">{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`transform transition-transform duration-500 ${
-                      activeFaq === index ? 'rotate-180' : ''
-                    }`}>
-                      <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Animated background effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 transition-opacity duration-500 ${
-                  activeFaq === index ? 'opacity-100' : 'opacity-0'
-                }`}></div>
-              </div>
-            ))}
-          </div>
-          
-          {/* FAQ CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              Still have questions? We're here to help!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact">
-                <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                  Chat with Support
-                </button>
-              </Link>
-              
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA - Floating Card Design */}
-        <div className="relative mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 rounded-3xl blur-xl"></div>
-          <div className="relative bg-gradient-to-r from-blue-900 to-blue-600 rounded-3xl p-12 text-white overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24"></div>
-            
-            <div className="relative z-10 text-center">
-              <h3 className="text-3xl font-bold mb-4">
-                Ready to transform your business?
-              </h3>
-              <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-                Join thousands of successful companies using our platform. Start your free trial today.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                  Start Free 14-Day Trial
-                  <span className="block text-sm font-normal mt-1 text-blue-500">No credit card required</span>
-                </button>
-                
-                <div className="flex items-center text-white">
-                  <div className="w-24 h-px bg-white/30"></div>
-                  <span className="px-4 text-sm">OR</span>
-                  <div className="w-24 h-px bg-white/30"></div>
-                </div>
-                
-                <Link href="/contact">
-                  <button className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 group">
-                    <div className="flex items-center">
-                      <svg className="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                      </svg>
-                    Schedule Personalized Demo
-                  </div>
-                </button>
-                </Link>
-              </div>
-              
-              <div className="mt-8 text-blue-100/80 text-sm">
-                <div className="flex items-center justify-center space-x-6">
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    No setup fees
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Cancel anytime
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    24/7 support
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
