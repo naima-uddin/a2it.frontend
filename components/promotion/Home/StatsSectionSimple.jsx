@@ -68,7 +68,7 @@ const StatsSectionSimple = () => {
       suffix: '%', 
       label: 'SUCCESSFUL PROJECTS',
       icon: (
-        <img src="https://img.icons8.com/fluency/48/trophy.png" alt="Trophy" className="w-8 h-8" />
+        <img src="https://img.icons8.com/fluency/48/trophy.png" alt="Trophy" className="w-6 h-6 sm:w-8 sm:h-8" />
       ),
       gradient: 'from-emerald-400 to-teal-500'
     },
@@ -77,7 +77,7 @@ const StatsSectionSimple = () => {
       suffix: '%', 
       label: 'SATISFACTION',
       icon: (
-        <img src="https://img.icons8.com/fluency/48/like.png" alt="Satisfaction" className="w-8 h-8" />
+        <img src="https://img.icons8.com/fluency/48/like.png" alt="Satisfaction" className="w-6 h-6 sm:w-8 sm:h-8" />
       ),
       gradient: 'from-purple-400 to-pink-500'
     },
@@ -86,7 +86,7 @@ const StatsSectionSimple = () => {
       suffix: '+', 
       label: 'SUCCESSFUL DEALS',
       icon: (
-        <img src="https://img.icons8.com/fluency/48/handshake.png" alt="Deals" className="w-8 h-8" />
+        <img src="https://img.icons8.com/fluency/48/handshake.png" alt="Deals" className="w-6 h-6 sm:w-8 sm:h-8" />
       ),
       gradient: 'from-blue-400 to-indigo-500'
     }
@@ -100,7 +100,7 @@ const StatsSectionSimple = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.08),transparent_50%)]" />
           
-          <div className="relative p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="relative p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Left - Heading */}
             <div className="flex-shrink-0 text-center md:text-left">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
@@ -110,17 +110,17 @@ const StatsSectionSimple = () => {
             </div>
 
             {/* Right - Stats */}
-            <div className="flex items-center justify-center gap-8 lg:gap-12">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-12">
               {stats.map((stat, idx) => (
-                <div key={idx} className="group flex items-center gap-4 relative">
+                <div key={idx} className="group flex flex-col sm:flex-row items-center gap-3 sm:gap-4 relative text-center sm:text-left">
                   {/* Icon */}
-                  <div className={`flex-shrink-0 w-14 h-14 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
+                  <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
                     {stat.icon}
                   </div>
                   
                   {/* Text */}
-                  <div className="text-white">
-                    <div className="text-4xl md:text-5xl font-extrabold leading-none mb-1">
+                  <div className="text-white text-center sm:text-left">
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-none mb-1">
                       <CountUp end={stat.end} duration={1500} suffix={stat.suffix} />
                     </div>
                     <div className="text-xs md:text-sm uppercase tracking-wider text-white/90 font-medium">
