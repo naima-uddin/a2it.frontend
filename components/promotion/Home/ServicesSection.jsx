@@ -129,7 +129,14 @@ const ServicesSection = () => {
             ))}
           </div>
 
-          <button  className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
+          <a 
+            href={`https://wa.me/18083015039?text=${encodeURIComponent("Hi, I'm interested in getting started with your services!")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5"
+          >
+            Let&apos;s Get Started
+          </a>
         </div>
       </div>
 
