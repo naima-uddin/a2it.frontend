@@ -172,7 +172,7 @@ const PromotionNavbar = () => {
                   </div>
                 </div>
 
-                <div className="text-xs text-slate-400 mt-4">We typically respond within a few hours — available Mon–Fri, 8am–6pm HST.</div>
+                <div className="text-xs text-slate-400 mt-4">We typically respond within a few hours — available Mon–Fri, 8am–6pm EST.</div>
               </div>              
             </div>
           </div>
