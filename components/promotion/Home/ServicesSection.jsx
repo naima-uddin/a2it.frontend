@@ -16,7 +16,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-20 " style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
+    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
       {/* subtle overlay to keep text readable */}
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
       {/* decorative faint circles */}
