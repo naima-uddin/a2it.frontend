@@ -52,7 +52,7 @@ const Enhancement = () => {
             {/* Card 1 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible mr-6">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
-                <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={70} height={70} className="w-full h-full object-contain" />
+                <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={160} height={160} quality={100} className="w-full h-full object-contain" />
               </div>
               <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Money-Back Policy</div>
@@ -63,7 +63,7 @@ const Enhancement = () => {
             {/* Card 2 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible ">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
-                <Image src="/promotionPortfolio/satisfaction.png" alt="Customer satisfaction" width={80} height={80} className="w-full h-full object-contain" />
+                <Image src="/promotionPortfolio/satisfaction.png" alt="Customer satisfaction" width={160} height={160} quality={100} className="w-full h-full object-contain" />
               </div>
               <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Customer Satisfaction</div>
@@ -74,7 +74,7 @@ const Enhancement = () => {
             {/* Card 3 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible mr-6">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
-                <Image src="/promotionPortfolio/support.png" alt="24/7 support" width={80} height={80} className="w-full h-full object-contain" />
+                <Image src="/promotionPortfolio/support.png" alt="24/7 support" width={160} height={160} quality={100} className="w-full h-full object-contain" />
               </div>
               <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Round-the-Clock Support</div>
@@ -85,7 +85,7 @@ const Enhancement = () => {
             {/* Card 4 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border  hover:shadow-xl transition-shadow overflow-visible">
               <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
-                <Image src="/promotionPortfolio/design.png" alt="Custom design" width={80} height={80} className="w-full h-full object-contain" />
+                <Image src="/promotionPortfolio/design.png" alt="Custom design" width={160} height={160} quality={100} className="w-full h-full object-contain" />
               </div>
               <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Custom Crafted Designs</div>
