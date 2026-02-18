@@ -42,7 +42,7 @@ const Banner = () => {
       </div>
 
       {/* Social Media Strip - Right Side */}
-      <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-6 md:right-12 lg:right-18 flex-col items-center gap-4 z-10 social-strip">
+      <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-6 -mt-16 md:right-12 lg:right-18 flex-col items-center gap-4 z-10 social-strip">
         <div className="w-px h-10 bg-linear-to-b from-transparent via-white/30 to-white/50" />
         <a
           href="https://wa.me/60167554178"
@@ -57,23 +57,6 @@ const Banner = () => {
             width={24}
             height={24}
             alt="WhatsApp"
-            className="w-5 h-5 lg:w-6 lg:h-6 opacity-70 hover:opacity-100 transition-opacity"
-          />
-        </a>
-
-        <a
-          href="https://www.facebook.com/Kltintstudio"
-          aria-label="Facebook - Kltintstudio"
-          title="Facebook"
-          className="p-2"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src="/facebook.svg"
-            width={24}
-            height={24}
-            alt="Facebook"
             className="w-5 h-5 lg:w-6 lg:h-6 opacity-70 hover:opacity-100 transition-opacity"
           />
         </a>
