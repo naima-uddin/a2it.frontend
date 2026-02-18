@@ -45,8 +45,8 @@ const Banner = () => {
       <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-6 -mt-16 md:right-12 lg:right-18 flex-col items-center gap-4 z-10 social-strip">
         <div className="w-px h-10 bg-linear-to-b from-transparent via-white/30 to-white/50" />
         <a
-          href="https://wa.me/60167554178"
-          aria-label="WhatsApp to +60 167554178"
+          href="https://wa.me/18083015039"
+          aria-label="WhatsApp to +1 (808) 301-5039"
           title="WhatsApp"
           className="p-2"
           target="_blank"
@@ -62,8 +62,8 @@ const Banner = () => {
         </a>
 
         <a
-          href="mailto:hello@kltintstudio.com"
-          aria-label="Email - hello@kltintstudio.com"
+          href="mailto:info@a2itllc.com"
+          aria-label="Email - info@a2itllc.com"
           title="Email"
           className="p-2"
         >
@@ -77,16 +77,18 @@ const Banner = () => {
         </a>
 
         <a
-          href="tel:+60167554178"
-          aria-label="Call +60 167554178"
-          title="Call"
+          href="https://www.google.com/maps/search/?api=1&query=16192+Coastal+Highway,+Lewes,+DE+19958"
+          aria-label="Map - 16192 Coastal Highway, Lewes, DE 19958"
+          title="Map"
           className="p-2"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <Image
             src="/map.svg"
             width={24}
             height={24}
-            alt="Call"
+            alt="Map"
             className="w-5 h-5 lg:w-6 lg:h-6 opacity-70 hover:opacity-100 transition-opacity"
           />
         </a>
