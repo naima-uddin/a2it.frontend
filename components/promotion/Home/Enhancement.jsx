@@ -13,6 +13,8 @@ const Enhancement = () => {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-50 rounded-full blur-3xl opacity-60" />
             {/* Secondary gradient */}
             <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-tl from-blue-50 via-cyan-50 to-transparent rounded-full blur-2xl opacity-50" />
+            {/* Dark shade at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-blue-800/35 via-blue-800/80 to-transparent" />
             {/* Decorative shapes */}
             <div className="absolute top-12 right-16 w-24 h-24 border-4 border-blue-200/30 rounded-full animate-pulse" />
             <div className="absolute bottom-24 left-12 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-2xl rotate-45" />
@@ -36,9 +38,9 @@ const Enhancement = () => {
         {/* Right - content + feature cards */}
         <div className="space-y-6 lg:pl-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
-            Accelerate professional
-            <span className="block lg:inline"> <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Growth</span> with high‑impact </span>
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Brand Design</span>
+           Unlock Your  
+            <span className="block lg:inline"> <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Next Level</span> of Professional  </span>
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Growth</span>
           </h2>
 
           <p className="text-gray-600 max-w-xl">
