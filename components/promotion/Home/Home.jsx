@@ -5,6 +5,7 @@ import Portfolio from './Portfolio'
 import PromotionPricing from './PromotionPricing'
 import ServicesSection from './ServicesSection'
 import StatsSectionSimple from './StatsSectionSimple'
+import Enhancement from './Enhancement'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <PromotionPricing/>
       <StatsSectionSimple/>
       <ServicesSection />
+      <Enhancement/>
       </main>
     </>
   )
