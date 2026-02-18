@@ -53,10 +53,10 @@ export default function PromotionFooter() {
             <h3 className="text-lg md:text-2xl font-semibold text-white mb-6">SEND A MESSAGE</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input name="name" placeholder="Your Name" className="w-full rounded-md p-3 border border-gray-200 bg-white text-sm outline-none" required />
-              <input name="email" type="email" placeholder="Email Address" className="w-full rounded-md p-3 border border-gray-200 bg-white text-sm outline-none" required />
-              <input name="phone" type="tel" placeholder="Phone Number" className="w-full rounded-md p-3 border border-gray-200 bg-white text-sm outline-none" required />
-              <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-3 border border-gray-200 bg-white text-sm outline-none resize-none" />
+              <input name="name" placeholder="Your Name" className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm placeholder:text-white/70 outline-none" required />
+              <input name="email" type="email" placeholder="Email Address" className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm placeholder:text-white/70 outline-none" required />
+              <input name="phone" type="tel" placeholder="Phone Number" className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm placeholder:text-white/70 outline-none" required />
+              <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-sm placeholder:text-white/70 outline-none resize-none" />
 
               <div className="flex justify-center mt-2">
                 <button className="bg-orange-500 hover:bg-orange-600 text-black font-semibold rounded-full px-10 py-3 shadow-md">Submit</button>
