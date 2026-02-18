@@ -172,13 +172,6 @@ const PromotionNavbar = () => {
                   </div>
                 </div>
 
-                <div className="w-full flex flex-wrap gap-3 justify-center mt-3">
-                  <Link href="/" onClick={() => setIsOpen(false)} className="px-4 py-2 rounded-full bg-white/5 text-slate-200 hover:bg-white/10 transition">Home</Link>
-                  <Link href="#services" onClick={() => setIsOpen(false)} className="px-4 py-2 rounded-full bg-white/5 text-slate-200 hover:bg-white/10 transition">Services</Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="px-4 py-2 rounded-full bg-white/5 text-slate-200 hover:bg-white/10 transition">About</Link>
-                  <Link href="/contact" onClick={() => setIsOpen(false)} className="px-4 py-2 rounded-full bg-[#1A8B9B] text-white hover:brightness-110 transition">Contact</Link>
-                </div>
-
                 <div className="text-xs text-slate-400 mt-4">We typically respond within a few hours — available Mon–Fri, 8am–6pm HST.</div>
               </div>              
             </div>
