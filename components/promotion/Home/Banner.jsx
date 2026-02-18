@@ -30,13 +30,13 @@ const Banner = () => {
             </div>
 
           <div className="mt-10 flex flex-wrap gap-4 pl-10">
-            <Link href="/contact" className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
+            <a href="https://wa.me/18083015039" target="_blank" rel="noopener noreferrer" aria-label="Start your project on WhatsApp" className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">🚀 Start Your Project</span>
-            </Link>
+            </a>
 
-            <Link href="/contact" className="inline-flex items-center gap-3 border border-white/20 text-white/90 font-semibold rounded-full px-5 py-2.5 hover:bg-white/5 transition">
+            <a href="tel:+18083015039" aria-label="Call for free consultation" className="inline-flex items-center gap-3 border border-white/20 text-white/90 font-semibold rounded-full px-5 py-2.5 hover:bg-white/5 transition">
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">📞 Get Free Consultation</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
