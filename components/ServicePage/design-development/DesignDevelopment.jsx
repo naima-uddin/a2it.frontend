@@ -1512,8 +1512,10 @@ const DesignDevelopmentPage = () => {
                 transition={{ delay: 0.6 }}
                 className="flex flex-col sm:flex-row flex-wrap gap-4"
               >
-                <Link
-                  href="/contact"
+                <a
+                  href={"https://wa.me/18083015039?text=" + encodeURIComponent("Hello, I'm interested in starting a project.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative overflow-hidden inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-xl hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 text-sm sm:text-base"
                 >
                   <span className="relative z-10 flex items-center">
@@ -1526,7 +1528,7 @@ const DesignDevelopmentPage = () => {
                     transition={{ duration: 0.6 }}
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   />
-                </Link>
+                </a>
                 
                 <Link
                   href="#portfolio"

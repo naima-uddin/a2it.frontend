@@ -924,11 +924,11 @@ const Portfolio = () => {
               Let's collaborate to bring your vision to life with our expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact">
+              <a href={"https://wa.me/18083015039?text=" + encodeURIComponent("Hello, I'm interested in starting a project.")} target="_blank" rel="noopener noreferrer">
               <button className="px-6 py-2.5 sm:px-8 sm:py-3 bg-white text-blue-600 font-bold rounded-full hover:bg-gray-100 transition-colors text-sm sm:text-base">
                 Start a Project
               </button>
-              </Link>
+              </a>
               
             </div>
           </div>

@@ -407,7 +407,7 @@ const PromotionPricing = () => {
             {totalPages > 1 && (
               <button
                 onClick={prevPage}
-                className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-300 hover:border-blue-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group ${
+                className={`absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-300 hover:border-blue-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group ${
                   isMobile ? 'w-10 h-10 -translate-x-4' : 'w-12 h-12 md:w-16 md:h-16 -translate-x-6 md:-translate-x-12'
                 }`}
                 aria-label="Previous page"
@@ -429,7 +429,7 @@ const PromotionPricing = () => {
             {totalPages > 1 && (
               <button
                 onClick={nextPage}
-                className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-300 hover:border-blue-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group ${
+                className={`absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/90 hover:bg-white border border-gray-300 hover:border-blue-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group ${
                   isMobile ? 'w-10 h-10 translate-x-4' : 'w-12 h-12 md:w-16 md:h-16 translate-x-6 md:translate-x-12'
                 }`}
                 aria-label="Next page"
