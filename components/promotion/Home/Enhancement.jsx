@@ -50,42 +50,33 @@ const Enhancement = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-auto">
             {/* Card 1 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
-              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M11 8c1.2 0 2 .7 2 1.7 0 .9-.8 1.3-1.8 1.6C10.6 11.6 10 12 10 13c0 1 .9 1.6 2.2 1.6" />
-                  <path d="M12 6v1M12 17v1" />
-                </svg>
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible mr-6">
+              <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
+                <Image src="/promotionPortfolio/cashback.png" alt="Money back" width={80} height={80} className="w-full h-full object-contain" />
               </div>
-              <div className="pl-8">
+              <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Money-Back Policy</div>
                 <div className="text-sm text-gray-500 mt-1">Risk-free promise</div>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
-              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 17.3L15.09 19l-0.58-3.38L17.5 13l-3.45-0.5L12 9l-1.99 3.5L6.56 13 9 15.62 8.42 19z" />
-                </svg>
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible ">
+              <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
+                <Image src="/promotionPortfolio/satisfaction.png" alt="Customer satisfaction" width={80} height={80} className="w-full h-full object-contain" />
               </div>
-              <div className="pl-8">
+              <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Customer Satisfaction</div>
                 <div className="text-sm text-gray-500 mt-1">5‑star results</div>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
-              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M12 8v4l2 1" />
-                </svg>
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible mr-6">
+              <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
+                <Image src="/promotionPortfolio/support.png" alt="24/7 support" width={80} height={80} className="w-full h-full object-contain" />
               </div>
-              <div className="pl-8">
+              <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Round-the-Clock Support</div>
                 <div className="text-sm text-gray-500 mt-1">Always available</div>
               </div>
@@ -93,13 +84,10 @@ const Enhancement = () => {
 
             {/* Card 4 */}
             <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
-              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="6" width="14" height="10" rx="2" />
-                  <path d="M8 9l5 3-5 3V9z" />
-                </svg>
+              <div className="absolute top-4 -left-8 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 overflow-visible">
+                <Image src="/promotionPortfolio/design.png" alt="Custom design" width={80} height={80} className="w-full h-full object-contain" />
               </div>
-              <div className="pl-8">
+              <div className="pl-8 sm:pl-8">
                 <div className="font-semibold text-gray-800">Custom Crafted Designs</div>
                 <div className="text-sm text-gray-500 mt-1">Tailored to your audience</div>
               </div>
