@@ -70,7 +70,7 @@ export default function Portfolio() {
   }, [showAll]);
 
   return (
-    <section className="w-full py-16 bg-[#071331]/0" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+    <section className="w-full pt-16 bg-[#071331]/0" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-oswald font-bold bg-linear-to-r from-[#93c9ff] to-[#0202c1] bg-clip-text text-transparent pb-2">
