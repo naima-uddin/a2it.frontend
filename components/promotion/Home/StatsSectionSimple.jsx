@@ -68,9 +68,7 @@ const StatsSectionSimple = () => {
       suffix: '%', 
       label: 'SUCCESSFUL PROJECTS',
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-        </svg>
+        <img src="https://img.icons8.com/fluency/48/trophy.png" alt="Trophy" className="w-8 h-8" />
       ),
       gradient: 'from-emerald-400 to-teal-500'
     },
@@ -79,9 +77,7 @@ const StatsSectionSimple = () => {
       suffix: '%', 
       label: 'SATISFACTION',
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-        </svg>
+        <img src="https://img.icons8.com/fluency/48/like.png" alt="Satisfaction" className="w-8 h-8" />
       ),
       gradient: 'from-purple-400 to-pink-500'
     },
@@ -90,9 +86,7 @@ const StatsSectionSimple = () => {
       suffix: '+', 
       label: 'SUCCESSFUL DEALS',
       icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" />
-        </svg>
+        <img src="https://img.icons8.com/fluency/48/handshake.png" alt="Deals" className="w-8 h-8" />
       ),
       gradient: 'from-blue-400 to-indigo-500'
     }
