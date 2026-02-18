@@ -20,7 +20,7 @@ const Enhancement = () => {
             <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-indigo-400 rounded-full" />
           </div>
           
-          <div className="relative w-full max-w-[640px] sm:max-w-[760px] md:max-w-[860px] lg:max-w-[920px] overflow-visible -ml-12">
+          <div className="relative w-full max-w-[740px] sm:max-w-[760px] md:max-w-[860px] lg:max-w-[920px] overflow-visible -ml-12">
             {/* Subtle glow behind image */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-3xl blur-2xl scale-95" />
             {/* contained bottom shadow so visible-bottom aligns with cards */}
@@ -48,44 +48,60 @@ const Enhancement = () => {
             From concept to launch, we craft memorable brand and product experiences that convert — clear process, measurable results.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
-            <div className="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center border border-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-auto">
+            {/* Card 1 */}
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
+              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M11 8c1.2 0 2 .7 2 1.7 0 .9-.8 1.3-1.8 1.6C10.6 11.6 10 12 10 13c0 1 .9 1.6 2.2 1.6" />
+                  <path d="M12 6v1M12 17v1" />
+                </svg>
               </div>
-              <div>
-                <div className="font-semibold text-gray-800">Money‑Back Guarantee</div>
-                <div className="text-sm text-gray-500">Risk‑free promise</div>
+              <div className="pl-8">
+                <div className="font-semibold text-gray-800">Money-Back Policy</div>
+                <div className="text-sm text-gray-500 mt-1">Risk-free promise</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center border border-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            {/* Card 2 */}
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
+              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 17.3L15.09 19l-0.58-3.38L17.5 13l-3.45-0.5L12 9l-1.99 3.5L6.56 13 9 15.62 8.42 19z" />
+                </svg>
               </div>
-              <div>
+              <div className="pl-8">
                 <div className="font-semibold text-gray-800">Customer Satisfaction</div>
-                <div className="text-sm text-gray-500">5‑star results</div>
+                <div className="text-sm text-gray-500 mt-1">5‑star results</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center border border-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+            {/* Card 3 */}
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
+              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 8v4l2 1" />
+                </svg>
               </div>
-              <div>
-                <div className="font-semibold text-gray-800">24/7 Dedicated Support</div>
-                <div className="text-sm text-gray-500">Always available</div>
+              <div className="pl-8">
+                <div className="font-semibold text-gray-800">Round-the-Clock Support</div>
+                <div className="text-sm text-gray-500 mt-1">Always available</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center border border-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h18M12 3v18M7 7v10h10V7"/></svg>
+            {/* Card 4 */}
+            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow overflow-visible">
+              <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="6" width="14" height="10" rx="2" />
+                  <path d="M8 9l5 3-5 3V9z" />
+                </svg>
               </div>
-              <div>
-                <div className="font-semibold text-gray-800">Custom‑Crafted Designs</div>
-                <div className="text-sm text-gray-500">Tailored to your audience</div>
+              <div className="pl-8">
+                <div className="font-semibold text-gray-800">Custom Crafted Designs</div>
+                <div className="text-sm text-gray-500 mt-1">Tailored to your audience</div>
               </div>
             </div>
           </div>
