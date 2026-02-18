@@ -28,7 +28,11 @@ const PromotionPricing = () => {
           '5 Page Website',
           'Contact Form',
           'Basic SEO Setup',
-          '1 Month Support'
+          '1 Month Support',
+          'Google Analytics Setup',
+          'Image Optimization',
+          'Basic Accessibility',
+          'Deployment to Hosting'
         ]
       },
       {
@@ -44,7 +48,11 @@ const PromotionPricing = () => {
           'CMS Integration',
           'Custom Animations',
           'E-commerce Ready',
-          '3 Months Support'
+          '3 Months Support',
+          'Performance Optimization',
+          'SEO Audit & Fixes',
+          'Form Integrations (Mail/CRM)',
+          'Staging Environment'
         ]
       },
       {
@@ -60,7 +68,11 @@ const PromotionPricing = () => {
           'Advanced SEO',
           'Performance Optimization',
           'Custom Admin Panel',
-          '6 Months Support'
+          '6 Months Support',
+          'A/B Testing Setup',
+          'Security Hardening',
+          'Third-party API Integration',
+          'Monthly Analytics Report'
         ]
       },
       {
@@ -76,7 +88,11 @@ const PromotionPricing = () => {
           'Custom Plugins',
           'API Integration',
           'Multi-language Support',
-          '1 Year Support'
+          '1 Year Support',
+          'Progressive Web App (PWA)',
+          'CDN Configuration',
+          'Advanced Performance Tuning',
+          'Dedicated Project Manager'
         ]
       },
       {
@@ -92,7 +108,11 @@ const PromotionPricing = () => {
           'Custom Frameworks',
           'Progressive Web App',
           'Advanced Security',
-          'Lifetime Updates'
+          'Lifetime Updates',
+          'SLA & Priority Support',
+          'On-site Training',
+          'Enterprise Integrations',
+          'Dedicated Dev Team'
         ]
       },
       {
@@ -108,7 +128,11 @@ const PromotionPricing = () => {
           'Dedicated Team',
           'Custom AI Features',
           'White Label',
-          '24/7 Priority Support'
+          '24/7 Priority Support',
+          'SLA & Dedicated Account Manager',
+          'Multi-region Deployments',
+          'Custom Integrations & Automation',
+          'Continuous Optimization & Monitoring'
         ]
       }
     ]
@@ -473,7 +497,7 @@ const PromotionPricing = () => {
                         <span className="text-5xl md:text-6xl font-black text-gray-900">{pkg.price.replace('.00', '')}</span>
                         <span className="text-2xl text-red-500 line-through font-semibold">{pkg.originalPrice}</span>
                       </div>
-                      <p className="text-gray-600 font-medium text-sm">Only</p>
+                      
                     </div>
 
                     {/* Package Features - Scrollable */}
