@@ -380,14 +380,6 @@ const PromotionPricing = () => {
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mb-4 px-4">
               Choose the perfect plan for your business needs. All packages come with our commitment to excellence.
             </p>
-
-            {/* Category (fixed) */}
-            <div className={`w-full pb-2 relative ${isMobile ? '' : 'px-4'}`}>
-              <div className="inline-flex items-center gap-3 bg-white/5 text-black/90 px-4 py-2 rounded-full mb-6 border border-gray-200">
-                <strong className="text-sm">Category:</strong>
-                <span className="text-sm font-bold text-blue-600">Design & Development</span>
-              </div>
-            </div>
           </div>
 
           {/* Enhanced Pricing Cards with Navigation */}
