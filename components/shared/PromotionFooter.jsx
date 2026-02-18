@@ -29,12 +29,13 @@ export default function PromotionFooter() {
               <circle cx="92" cy="14" r="32" fill="black" />
             </mask>
 
-            {/* gradient: make left side much deeper while top-left remains transparent */}
+            {/* gradient: left = gray-100 (deep), right = gray-50 @ ~10% — keep top-left transparent */}
             <linearGradient id="footerGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
-              <stop offset="0%" stopColor="#000" stopOpacity="0" />
-              <stop offset="10%" stopColor="#000" stopOpacity="0.96" />
-              <stop offset="40%" stopColor="#000" stopOpacity="0.88" />
-              <stop offset="100%" stopColor="#000" stopOpacity="0.18" />
+              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0" />
+              <stop offset="6%" stopColor="#f3f4f6" stopOpacity="0.96" />
+              <stop offset="30%" stopColor="#f3f4f6" stopOpacity="0.9" />
+              <stop offset="65%" stopColor="#f9fafb" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#f9fafb" stopOpacity="0.12" />
             </linearGradient>
           </defs>
 

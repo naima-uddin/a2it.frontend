@@ -108,7 +108,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Right - content (previous text restored) */}
-        <div className="w-full lg:w-1/2 text-left">
+        <div className="w-full lg:w-1/2 text-left -mt-10">
           <p className="text-white/85 mb-4">In the ever-connected, attention-challenged digital era.</p>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
             Scale faster: award‑winning web & app experiences
