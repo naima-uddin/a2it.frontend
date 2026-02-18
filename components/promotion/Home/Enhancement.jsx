@@ -20,7 +20,7 @@ const Enhancement = () => {
             <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-indigo-400 rounded-full" />
           </div>
           
-          <div className="relative w-full max-w-[860px] sm:max-w-[960px] md:max-w-[1080px] lg:max-w-[1160px] overflow-visible -ml-16">
+          <div className="relative w-full max-w-[1000px] sm:max-w-[1260px] md:max-w-[1260px] lg:max-w-[1320px] overflow-visible -ml-12 mb-12">
             {/* Subtle glow behind image */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400/8 via-indigo-400/8 to-purple-400/8 rounded-3xl blur-2xl scale-95" />
             {/* contained bottom shadow so visible-bottom aligns with cards */}
