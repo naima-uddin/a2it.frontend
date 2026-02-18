@@ -86,7 +86,7 @@ export default function Portfolio() {
   return (
     <section className="w-full pt-16 bg-[#071331]/0" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="text-center mb-4 md:mb-10">
           <h2 className="text-3xl md:text-4xl font-oswald font-bold bg-linear-to-r from-[#93c9ff] to-[#0202c1] bg-clip-text text-transparent pb-2">
             Experience Our High-Impact Digital Projects
           </h2>
@@ -95,7 +95,7 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-4 md:mb-8">
           {categories.map((cat) => (
             <button
               key={cat}
