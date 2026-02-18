@@ -28,10 +28,10 @@ export default function Slider({ autoplay = true, interval = 3000 }) {
     if (typeof window === "undefined") return;
     const w = window.innerWidth;
     if (w >= 1280) setPerView(6);
-    else if (w >= 1024) setPerView(5);
-    else if (w >= 768) setPerView(4);
-    else if (w >= 640) setPerView(3);
-    else setPerView(2);
+    else if (w >= 1024) setPerView(6);
+    else if (w >= 768) setPerView(5);
+    else if (w >= 640) setPerView(4);
+    else setPerView(3);
   }, []);
 
   useEffect(() => {
