@@ -19,7 +19,9 @@ const PromotionPricing = () => {
         id: 'design-special',
         name: 'Special',
         price: '$299.00',
-        color: 'blue',
+        originalPrice: '$349',
+        discount: '70% Off',
+        color: 'teal',
         features: [
           'Custom Website Design',
           'Responsive Layout',
@@ -33,7 +35,9 @@ const PromotionPricing = () => {
         id: 'design-plus',
         name: 'Plus',
         price: '$599.00',
-        color: 'blue',
+        originalPrice: '$949',
+        discount: '70% Off',
+        color: 'orange',
         features: [
           'Everything in Special',
           '10 Page Website',
@@ -47,7 +51,9 @@ const PromotionPricing = () => {
         id: 'design-gold',
         name: 'Gold',
         price: '$999.00',
-        color: 'black',
+        originalPrice: '$1798',
+        discount: '70% Off',
+        color: 'red',
         features: [
           'Everything in Plus',
           '15 Page Website',
@@ -61,6 +67,8 @@ const PromotionPricing = () => {
         id: 'design-platinum',
         name: 'Platinum',
         price: '$1499.00',
+        originalPrice: '$2499',
+        discount: '70% Off',
         color: 'blue',
         features: [
           'Everything in Gold',
@@ -75,7 +83,9 @@ const PromotionPricing = () => {
         id: 'design-boss',
         name: 'The Boss',
         price: '$2499.00',
-        color: 'blue',
+        originalPrice: '$3999',
+        discount: '70% Off',
+        color: 'purple',
         features: [
           'Everything in Platinum',
           'Unlimited Pages',
@@ -89,7 +99,9 @@ const PromotionPricing = () => {
         id: 'design-diamond',
         name: 'Diamond',
         price: '$3999.00',
-        color: 'blue',
+        originalPrice: '$5999',
+        discount: '70% Off',
+        color: 'indigo',
         features: [
           'Everything in The Boss',
           'Enterprise Solution',
@@ -153,49 +165,65 @@ const PromotionPricing = () => {
     return null;
   }
 
-  // Function to determine card style based on package name
+  // Function to determine card style based on package color
   const getCardStyle = (pkg, isHovered) => {
-    const isSpecialPackage = pkg.name === 'Special' || pkg.name === 'Platinum';
+    const colorMap = {
+      teal: {
+        headerBg: 'bg-gradient-to-br from-teal-500 to-teal-600',
+        buttonBg: 'bg-teal-600',
+        buttonHover: 'hover:bg-teal-700',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-teal-500'
+      },
+      orange: {
+        headerBg: 'bg-gradient-to-br from-orange-500 to-yellow-600',
+        buttonBg: 'bg-orange-600',
+        buttonHover: 'hover:bg-orange-700',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-orange-500'
+      },
+      red: {
+        headerBg: 'bg-gradient-to-br from-red-600 to-red-700',
+        buttonBg: 'bg-red-700',
+        buttonHover: 'hover:bg-red-800',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-red-600'
+      },
+      blue: {
+        headerBg: 'bg-gradient-to-br from-blue-600 to-blue-700',
+        buttonBg: 'bg-blue-700',
+        buttonHover: 'hover:bg-blue-800',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-blue-600'
+      },
+      purple: {
+        headerBg: 'bg-gradient-to-br from-purple-600 to-purple-700',
+        buttonBg: 'bg-purple-700',
+        buttonHover: 'hover:bg-purple-800',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-purple-600'
+      },
+      indigo: {
+        headerBg: 'bg-gradient-to-br from-indigo-600 to-indigo-700',
+        buttonBg: 'bg-indigo-700',
+        buttonHover: 'hover:bg-indigo-800',
+        ribbonBg: 'bg-black',
+        iconBg: 'bg-indigo-600'
+      }
+    };
+
+    const colors = colorMap[pkg.color] || colorMap.blue;
     
-    if (isSpecialPackage) {
-      // Special and Platinum packages - Elegant Black Theme
-      return {
-        headerBg: isHovered ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900' : 'bg-gradient-to-br from-gray-900 via-black to-gray-900',
-        headerText: 'text-white',
-        bodyBg: isHovered ? 'bg-gray-50' : 'bg-white',
-        bodyText: 'text-gray-700',
-        buttonBg: isHovered ? 'bg-blue-600' : 'bg-blue-500',
-        buttonText: 'text-white',
-        buttonHover: 'hover:bg-blue-600',
-        borderColor: isHovered ? 'border-blue-500' : 'border-gray-300',
-        shadow: isHovered ? 'shadow-2xl ring-2 ring-blue-500/10' : 'shadow-xl',
-        iconColor: 'text-blue-500',
-        transform: isHovered ? 'translateY(-10px) scale-[1.02]' : 'translateY(0) scale-100',
-        priceColor: 'text-white',
-        accentTop: 'relative before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-to-r before:from-blue-500 before:to-blue-600',
-        badge: 'absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg',
-        badgeText: pkg.name.toUpperCase()
-      };
-    } else {
-      // Standard packages - Professional Blue Theme
-      return {
-        headerBg: isHovered ? 'bg-gradient-to-br from-blue-600 via-blue-500 to-blue-600' : 'bg-gradient-to-br from-blue-600 via-blue-500 to-blue-600',
-        headerText: 'text-white',
-        bodyBg: isHovered ? 'bg-blue-50' : 'bg-white',
-        bodyText: 'text-gray-700',
-        buttonBg: isHovered ? 'bg-black' : 'bg-gray-900',
-        buttonText: 'text-white',
-        buttonHover: 'hover:bg-black',
-        borderColor: isHovered ? 'border-blue-400' : 'border-gray-300',
-        shadow: isHovered ? 'shadow-xl ring-1 ring-blue-400/10' : 'shadow-lg',
-        iconColor: 'text-blue-500',
-        transform: isHovered ? 'translateY(-8px) scale-[1.01]' : 'translateY(0) scale-100',
-        priceColor: 'text-white',
-        accentTop: '',
-        badge: null,
-        badgeText: null
-      };
-    }
+    return {
+      ...colors,
+      headerText: 'text-white',
+      bodyBg: 'bg-white',
+      bodyText: 'text-gray-700',
+      buttonText: 'text-white',
+      borderColor: 'border-gray-200',
+      shadow: isHovered ? 'shadow-2xl' : 'shadow-xl',
+      transform: isHovered ? 'translateY(-8px) scale-[1.02]' : 'translateY(0) scale-100'
+    };
   };
 
 
@@ -397,9 +425,9 @@ const PromotionPricing = () => {
                     key={pkg.id}
                     onMouseEnter={() => setHoveredCard(pkg.id)}
                     onMouseLeave={() => setHoveredCard(null)}
-                    className={`rounded-sm border-2 ${style.borderColor} ${style.shadow} transition-all duration-500 overflow-hidden ${style.transform} ${style.accentTop} ${
-                      isMobile ? 'w-full' : ''
-                    }`}
+                    className={`rounded-lg overflow-hidden ${style.shadow} transition-all duration-500 ${style.transform} ${ 
+                      isMobile ? 'w-full mb-8' : ''
+                    } relative bg-white`}
                   >
                     {/* Floating Badge for Special/Platinum */}
                     {style.badge && (
