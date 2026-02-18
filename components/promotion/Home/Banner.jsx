@@ -19,17 +19,17 @@ const Banner = () => {
           
 
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-3 ">
-            <div className="text-white/90 font-semibold text-4xl pl-16">Starting from <span className="text-[#66B2FF]">$199</span> Only</div>
+            <div className="text-white/90 font-semibold text-4xl md:pl-16">Starting from <span className="text-[#66B2FF]">$199</span> Only</div>
 
           </div>
-            <div className="mt-4 text-slate-300 space-y-1 text-md pl-16">
+            <div className="mt-4 text-slate-300 space-y-1 text-md md:pl-16 pl-4">
               <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Design. Develop. Dominate.</div>
               <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Scale Your Brand Without Limits.</div>
               <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Optimize, and scale for global success.
             </div>
             </div>
 
-          <div className="mt-10 flex flex-wrap gap-4 pl-10">
+          <div className="mt-10 flex flex-wrap gap-4 pl-4 md:pl-10">
             <a href="https://wa.me/18083015039" target="_blank" rel="noopener noreferrer" aria-label="Start your project on WhatsApp" className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">🚀 Start Your Project</span>
             </a>
@@ -38,6 +38,8 @@ const Banner = () => {
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">📞 Get Free Consultation</span>
             </a>
           </div>
+
+         
         </div>
       </div>
 
@@ -162,10 +164,9 @@ const Banner = () => {
             height: 20px !important;
           }
 
-          /* Slightly smaller vertical contact label */
+          /* Hide vertical contact label on small screens (we show a mobile contact row instead) */
           .social-strip span {
-            font-size: 11px !important;
-            margin-top: 4px !important;
+            display: none !important;
           }
 
           .banner-arrow {
