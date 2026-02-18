@@ -150,7 +150,7 @@ export default function Portfolio() {
                     </div>
 
                     <div className="absolute bottom-6 left-4 right-4 z-20">
-                      <div className="text-black">
+                      <div className="text-blue-600">
                         <h3 className="text-sm font-bold leading-tight line-clamp-2 drop-shadow-lg mb-1">{p.title}</h3>
                        
                       </div>
@@ -202,7 +202,7 @@ export default function Portfolio() {
               <div className="text-sm text-slate-300 mb-4">{selectedItem.description}</div>
 
               <div className="flex items-center gap-4">
-                <a href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full px-5 py-2 transition">
+                <a href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-5 py-2 transition">
                   🚀 Start a project
                 </a>
                 
