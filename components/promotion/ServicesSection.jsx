@@ -40,11 +40,17 @@ const ServicesSection = () => {
           </div>
         </div>
 
-        {/* Right - content */}
+        {/* Right - content (previous text restored) */}
         <div className="w-full lg:w-1/2 text-left">
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">We Got 2000+<br/>Subscribers In First 2 Weeks</h3>
+          <p className="text-white/85 mb-4">In the ever-connected, attention-challenged digital era.</p>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+            A2IT specializes in creating captivating brand experiences
+            <span className="text-white/80"> that inspire audiences that truly count.</span>
+          </h3>
+
           <div className="w-16 h-1 bg-white/20 rounded-full mb-6" />
-          <p className="text-white/85 max-w-lg mb-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+
+          <p className="text-white/85 max-w-lg mb-8">Choose the perfect plan for your business needs. All packages come with our commitment to excellence.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 max-w-md">
             <div className="flex items-start gap-4">
@@ -68,7 +74,7 @@ const ServicesSection = () => {
             </div>
           </div>
 
-          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-400 to-pink-500 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Read More</button>
+          <button className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-400 to-pink-500 px-6 py-3 rounded-full font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5">Let&apos;s Get Started</button>
         </div>
       </div>
 
