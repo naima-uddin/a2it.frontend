@@ -17,7 +17,9 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-br from-blue-600 via-purple-500 to-pink-700 text-white py-20">
+    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
+      {/* subtle overlay to keep text readable */}
+      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
       {/* decorative faint circles */}
       <div className="absolute -left-20 -top-8 w-96 h-96 bg-white/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute right-0 top-10 w-72 h-72 bg-white/4 rounded-full blur-2xl pointer-events-none" />
@@ -43,9 +45,8 @@ const ServicesSection = () => {
         {/* Right - content (previous text restored) */}
         <div className="w-full lg:w-1/2 text-left">
           <p className="text-white/85 mb-4">In the ever-connected, attention-challenged digital era.</p>
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-            A2IT specializes in creating captivating brand experiences
-            <span className="text-white/80"> that inspire audiences that truly count.</span>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+            Scale faster: award‑winning web & app experiences
           </h3>
 
           <div className="w-16 h-1 bg-white/20 rounded-full mb-6" />
