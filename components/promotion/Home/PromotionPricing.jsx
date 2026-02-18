@@ -196,7 +196,7 @@ const PromotionPricing = () => {
         headerBg: 'bg-gradient-to-br from-teal-400 to-teal-500',
         buttonBg: 'bg-teal-500',
         buttonHover: 'hover:bg-teal-600',
-        ribbonBg: 'bg-gold',
+        ribbonBg: 'bg-black',
         iconBg: 'bg-teal-400'
       },
       orange: {
@@ -255,7 +255,7 @@ const PromotionPricing = () => {
 
   return (
     <>
-      <section style={{ fontFamily: "var(--font-oswald), sans-serif" }} className="relative py-20 flex items-center justify-center overflow-hidden">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden">
      
       <style jsx>{`
         .btn-3d {
@@ -384,7 +384,7 @@ const PromotionPricing = () => {
       `}</style> 
       </section>
     
-    <div style={{ fontFamily: "var(--font-oswald), sans-serif" }} className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
 
       {/* Header */}
       <div className="container mx-auto px-4">
