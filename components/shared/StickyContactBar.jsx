@@ -53,6 +53,19 @@ const StickyContactBar = ({
           </div>
         </a>
       </div>
+
+      {/* Mobile - vertical right-middle bar (same position as desktop) */}
+      <div className="fixed right-0 top-1/4 transform -translate-y-1/2 z-50 flex md:hidden flex-col items-end gap-0">
+        <a href={callHref} aria-label={`Call ${phone}`} title={`Call ${phone}`} className="w-8 h-8 bg-blue-600 text-white  flex items-center justify-center shadow-lg ring-1 ring-white/10">
+          <FaPhoneAlt className="w-3 h-3" />
+        </a>
+        <a href={waHref} target="_blank" rel="noopener noreferrer" aria-label={`Chat on WhatsApp (${whatsapp})`} title={`Chat on WhatsApp`} className="w-8 h-8 bg-green-500 text-white flex items-center justify-center shadow-lg ring-1 ring-white/10 mt-2">
+          <FaWhatsapp className="w-3 h-3" />
+        </a>
+        <a href={mailHref} aria-label={`Email ${email}`} title={`Email ${email}`} className="w-8 h-8 bg-red-500 text-white  flex items-center justify-center shadow-lg ring-1 ring-white/10 mt-2">
+          <FaEnvelope className="w-3 h-3" />
+        </a>
+      </div>
     </>
   );
 };
