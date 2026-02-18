@@ -515,8 +515,8 @@ const PromotionPricing = () => {
                         <ul className="space-y-3">
                           {pkg.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-3">
-                              <div className="mt-1 flex-shrink-0">
-                                <svg className={`w-4 h-4 ${style.headerBg.includes('teal') ? 'text-teal-500' : style.headerBg.includes('orange') ? 'text-orange-500' : style.headerBg.includes('red') ? 'text-red-500' : style.headerBg.includes('blue') ? 'text-blue-500' : style.headerBg.includes('purple') ? 'text-purple-500' : 'text-indigo-500'}`} fill="currentColor" viewBox="0 0 20 20">
+                              <div className="mt-1 flex-shrink-0 ml-3">
+                                <svg className={`w-2 h-2 ${style.headerBg.includes('teal') ? 'text-teal-500' : style.headerBg.includes('orange') ? 'text-orange-500' : style.headerBg.includes('red') ? 'text-red-500' : style.headerBg.includes('blue') ? 'text-blue-500' : style.headerBg.includes('purple') ? 'text-purple-500' : 'text-indigo-500'}`} fill="currentColor" viewBox="0 0 20 20">
                                   <circle cx="10" cy="10" r="10"/>
                                 </svg>
                               </div>
