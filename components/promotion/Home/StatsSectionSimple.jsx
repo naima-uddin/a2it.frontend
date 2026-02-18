@@ -93,7 +93,7 @@ const StatsSectionSimple = () => {
   ];
 
   return (
-    <section className="w-full py-8 px-4 md:px-6 lg:px-8">
+    <section className="w-full py-6 md:py-8 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-blue-700 via-blue-500 to-pink-400 shadow-2xl">
           {/* Subtle pattern overlay */}
