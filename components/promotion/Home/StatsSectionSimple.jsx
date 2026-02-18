@@ -101,7 +101,7 @@ const StatsSectionSimple = () => {
   return (
     <section className="w-full py-8 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-700 via-blue-500 to-pink-400 shadow-2xl">
+        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-blue-700 via-blue-500 to-pink-400 shadow-2xl">
           {/* Subtle pattern overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.08),transparent_50%)]" />
