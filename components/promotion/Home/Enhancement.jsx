@@ -6,7 +6,7 @@ const Enhancement = () => {
     <section className="bg-white pt-12 pb-6 md:pt-16 md:pb-8 lg:pt-20 lg:pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         {/* Left - mockup image */}
-        <div className="flex justify-center lg:justify-start self-end">
+        <div className="flex justify-start items-start">
           <div className="relative w-[560px] sm:w-[680px] md:w-[760px] lg:w-[820px] h-[360px] sm:h-[460px] md:h-[540px] lg:h-[620px] overflow-visible  translate-y-6 md:translate-y-10 lg:translate-y-16 -ml-12">
             <Image
               src="/promotionPortfolio/serviceSectionImg.png"
