@@ -68,12 +68,12 @@ export default function PromotionFooter() {
         </div>
 
         <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-white/60 text-sm">Copyright © 2026 A2IT LLC | All rights reserved.</div>
           <div className="flex items-center gap-4">
-            <div className="w-200">
-              <Image src="/promotionPortfolio/cards.png" alt="Payment methods" width={220} height={32} className="object-contain" />
+            <div className="w-84 md:w-126 -mt-10">
+              <Image src="/promotionPortfolio/cards.png" alt="Payment methods" width={384} height={56} className="object-contain w-full h-auto" />
             </div>
           </div>
+          <div className="text-white/60 text-sm">Copyright © 2026 A2IT LLC | All rights reserved.</div>
         </div>
       </div>
     </footer>
