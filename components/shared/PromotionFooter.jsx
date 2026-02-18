@@ -15,34 +15,8 @@ export default function PromotionFooter() {
       className="relative w-full bg-center bg-cover rounded-3xl overflow-hidden"
       style={{ backgroundImage: "url('/promotionPortfolio/footerbg.jpeg')" }}
     >
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <defs>
-           {/* mask: white = show overlay, black = transparent (hole)  */}
-            <mask id="footerMask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
-              <rect x="0" y="0" width="100" height="100" fill="white" />
-              {/* left/top - minimize reveal so left stays deep */}
-              <circle cx="0" cy="12" r="8" fill="black" />
-              {/* center/top */}
-              <circle cx="56" cy="10" r="26" fill="black" />
-              {/* right/top - larger reveal on right */}
-              <circle cx="92" cy="14" r="32" fill="black" />
-            </mask>
-
-            {/* gradient: left = gray-100 (deep), right = gray-50 @ ~10% — keep top-left transparent */}
-            <linearGradient id="footerGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="100">
-              <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0" />
-              <stop offset="6%" stopColor="#f3f4f6" stopOpacity="0.96" />
-              <stop offset="30%" stopColor="#f3f4f6" stopOpacity="0.9" />
-              <stop offset="65%" stopColor="#f9fafb" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#f9fafb" stopOpacity="0.12" />
-            </linearGradient>
-          </defs>
-
-          {/* overlay uses gradient and mask (left-heavy; top area transparent) */}
-          <rect x="0" y="0" width="100" height="100" fill="url(#footerGrad)" mask="url(#footerMask)" />
-        </svg>
-      </div>
+      {/* Layered overlay - inspired by navbar styling */}
+      <div className="absolute inset-0 bg-[#0F1B32]/55 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -72,10 +46,10 @@ export default function PromotionFooter() {
               </div>
             </div>
 
-            <div className="mt-12 text-white/70">Copyright © 2026 A2IT LLC | All rights reserved.</div>
+           
           </div>
 
-          <div className="bg-white/95 rounded-2xl p-6 md:p-8 shadow-2xl">
+          <div className="bg-white/95 rounded-2xl p-6 md:p-8 shadow-2xl transparent">
             <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-6">REQUEST A PHONE CALL</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
