@@ -193,46 +193,46 @@ const PromotionPricing = () => {
   const getCardStyle = (pkg, isHovered) => {
     const colorMap = {
       teal: {
-        headerBg: 'bg-gradient-to-br from-teal-500 to-teal-600',
-        buttonBg: 'bg-teal-600',
-        buttonHover: 'hover:bg-teal-700',
+        headerBg: 'bg-gradient-to-br from-teal-400 to-teal-500',
+        buttonBg: 'bg-teal-500',
+        buttonHover: 'hover:bg-teal-600',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-teal-500'
+        iconBg: 'bg-teal-400'
       },
       orange: {
-        headerBg: 'bg-gradient-to-br from-orange-500 to-yellow-600',
-        buttonBg: 'bg-orange-600',
-        buttonHover: 'hover:bg-orange-700',
+        headerBg: 'bg-gradient-to-br from-orange-400 to-orange-500',
+        buttonBg: 'bg-orange-500',
+        buttonHover: 'hover:bg-orange-600',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-orange-500'
+        iconBg: 'bg-orange-400'
       },
       red: {
-        headerBg: 'bg-gradient-to-br from-red-600 to-red-700',
-        buttonBg: 'bg-red-700',
-        buttonHover: 'hover:bg-red-800',
+        headerBg: 'bg-gradient-to-br from-red-500 to-red-600',
+        buttonBg: 'bg-red-600',
+        buttonHover: 'hover:bg-red-700',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-red-600'
+        iconBg: 'bg-red-500'
       },
       blue: {
-        headerBg: 'bg-gradient-to-br from-blue-600 to-blue-700',
-        buttonBg: 'bg-blue-700',
-        buttonHover: 'hover:bg-blue-800',
+        headerBg: 'bg-gradient-to-br from-blue-500 to-blue-600',
+        buttonBg: 'bg-blue-600',
+        buttonHover: 'hover:bg-blue-700',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-blue-600'
+        iconBg: 'bg-blue-500'
       },
       purple: {
-        headerBg: 'bg-gradient-to-br from-purple-600 to-purple-700',
-        buttonBg: 'bg-purple-700',
-        buttonHover: 'hover:bg-purple-800',
+        headerBg: 'bg-gradient-to-br from-purple-500 to-purple-600',
+        buttonBg: 'bg-purple-600',
+        buttonHover: 'hover:bg-purple-700',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-purple-600'
+        iconBg: 'bg-purple-500'
       },
       indigo: {
-        headerBg: 'bg-gradient-to-br from-indigo-600 to-indigo-700',
-        buttonBg: 'bg-indigo-700',
-        buttonHover: 'hover:bg-indigo-800',
+        headerBg: 'bg-gradient-to-br from-indigo-500 to-indigo-600',
+        buttonBg: 'bg-indigo-600',
+        buttonHover: 'hover:bg-indigo-700',
         ribbonBg: 'bg-black',
-        iconBg: 'bg-indigo-600'
+        iconBg: 'bg-indigo-500'
       }
     };
 
@@ -350,45 +350,26 @@ const PromotionPricing = () => {
           opacity: 0.6;
         }
 
-        /* Thick gray scrollbar with arrow buttons (matches provided screenshot) */
+        /* Styled scrollbar - visible gray with proper track */
         .thin-scrollbar::-webkit-scrollbar {
-          width: 14px;
-          height: 14px;
+          width: 4px;
+          height: 4px;
         }
         .thin-scrollbar::-webkit-scrollbar-track {
-          background: #fafafa; /* very light track */
-          border-radius: 9999px;
-          box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+          background: #f1f5f9;
+          border-radius: 4px;
         }
         .thin-scrollbar::-webkit-scrollbar-thumb {
-          background: #9b9b9b; /* medium gray */
-          border-radius: 9999px;
-          min-height: 40px; /* visually short thumb */
-          margin: 6px 2px; /* space for arrow buttons */
-          box-shadow: inset 0 2px 0 rgba(255,255,255,0.25);
-          border: 3px solid #ffffff;
+          background: #94a3b8;
+          border-radius: 4px;
+          border: 2px solid #f1f5f9;
         }
         .thin-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #7f7f7f;
-        }
-        .thin-scrollbar::-webkit-scrollbar-button {
-          display: block;
-          height: 18px;
-          background: transparent;
-        }
-        .thin-scrollbar::-webkit-scrollbar-button:vertical:decrement {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 1 L7 5 H1 Z' fill='%236b6b6b'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-        .thin-scrollbar::-webkit-scrollbar-button:vertical:increment {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 7 L7 3 H1 Z' fill='%236b6b6b'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: center;
+          background: #64748b;
         }
         .thin-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: #9b9b9b #fafafa; /* Firefox approximation */
+          scrollbar-color: #94a3b8 #f1f5f9;
         }
 
         /* Extra small devices (very small phones) */
