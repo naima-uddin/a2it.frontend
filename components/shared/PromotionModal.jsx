@@ -1,12 +1,24 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT NOW" }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  console.log('PromotionModal rendered. isOpen:', isOpen, 'mounted:', mounted);
+
   useEffect(() => {
     if (isOpen) {
+      console.log('Modal is open, hiding body scroll');
       document.body.style.overflow = 'hidden';
     } else {
+      console.log('Modal is closed, restoring body scroll');
       document.body.style.overflow = 'unset';
     }
     return () => {
@@ -36,11 +48,14 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
     e.target.reset();
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  console.log('Modal IS OPEN - rendering modal UI');
+
+  const modalContent = (
     <div 
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 md:p-6 animate-fadeIn"
+      className="fixed inset-0 flex items-center justify-center bg-black/60 p-4 md:p-6 animate-fadeIn"
+      style={{ zIndex: 999999, position: 'fixed' }}
       onClick={onClose}
     >
       <div 
@@ -162,6 +177,8 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
       `}</style>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default PromotionModal;
