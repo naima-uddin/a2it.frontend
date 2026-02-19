@@ -1,10 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import PromotionModal from "@/components/shared/PromotionModal";
 
 const Banner = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
+    <>
+      <PromotionModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Big Discount Going ON!!"
+        subtitle="Everywhere & Every Device, Your Site Should Flow Seamlessly!"
+        buttonText="START YOUR PROJECT NOW"
+      />
     <section className="relative w-full h-160 overflow-hidden bg-[#0A0A0C] banner-section" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
       {/* Background image */}
       <div
@@ -29,9 +41,13 @@ const Banner = () => {
             </div>
 
           <div className="mt-10 flex flex-wrap gap-4 pl-4 md:pl-10">
-            <a href="https://wa.me/18083015039" target="_blank" rel="noopener noreferrer" aria-label="Start your project on WhatsApp" className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              aria-label="Start your project" 
+              className="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-900 hover:bg-purple-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition cursor-pointer"
+            >
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">🚀 Start Your Project</span>
-            </a>
+            </button>
 
             <a href="tel:+18083015039" aria-label="Call for free consultation" className="inline-flex items-center gap-3 border border-white/20 text-white/90 font-semibold rounded-full px-5 py-2.5 hover:bg-white/5 transition">
               <span className="bg-linear-to-r from-[#ffffff] to-[#e7e7fd] bg-clip-text text-transparent">📞 Get Free Consultation</span>
@@ -178,6 +194,7 @@ const Banner = () => {
         }
       `}</style>
     </section>
+    </>
   );
 };
 

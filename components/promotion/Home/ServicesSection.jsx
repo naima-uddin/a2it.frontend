@@ -1,9 +1,13 @@
 // components/ServicesSection.jsx
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Megaphone, Users } from 'lucide-react';
+import PromotionModal from "@/components/shared/PromotionModal";
 
 const ServicesSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const services = [
     "Design & Development",
     "E-Commerce",
@@ -16,7 +20,16 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-10 md:py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
+    <>
+      <PromotionModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Big Discount Going ON!!"
+        subtitle="Everywhere & Every Device, Your Site Should Flow Seamlessly!"
+        buttonText="START YOUR PROJECT NOW"
+      />
+      
+      <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-10 md:py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
       {/* subtle overlay to keep text readable */}
       <div className="absolute inset-0 bg-black/25 pointer-events-none" />
       {/* decorative faint circles */}
@@ -129,14 +142,12 @@ const ServicesSection = () => {
             ))}
           </div>
 
-          <a 
-            href={`https://wa.me/18083015039?text=${encodeURIComponent("Hi, I'm interested in getting started with your services!")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5"
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5 cursor-pointer"
           >
             Let&apos;s Get Started
-          </a>
+          </button>
         </div>
       </div>
 
@@ -147,6 +158,7 @@ const ServicesSection = () => {
         </svg>
       </div>
     </section>
+    </>
   );
 };
 
