@@ -50,6 +50,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
           name: data.fullName,
           email: data.email,
           phone: data.phone,
+          package: data.package || "",
           message: data.message || "Customer wants to start a project!",
           type: "promotion_modal"
         }),
@@ -154,6 +155,24 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
                 required
                 className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
               />
+            </div>
+
+            <div>
+              <label htmlFor="package" className="sr-only">Select Package</label>
+              <select
+                id="package"
+                name="package"
+                defaultValue=""
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-800 placeholder:text-gray-500 text-sm md:text-base bg-white"
+              >
+                <option value="" disabled>Select Package Type</option>
+                <option value="Special">Special</option>
+                <option value="Plus">Plus</option>
+                <option value="Gold">Gold</option>
+                <option value="Platinum">Platinum</option>
+                <option value="The Boss">The Boss</option>
+                <option value="Diamond">Diamond</option>
+              </select>
             </div>
 
             <div>
