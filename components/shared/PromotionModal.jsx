@@ -4,8 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import toast from 'react-hot-toast';
 
-const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT NOW" }) => {
+const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT NOW", selectedPackage = "" }) => {
   const [mounted, setMounted] = useState(false);
+  const [packageValue, setPackageValue] = useState(selectedPackage);
+
+  useEffect(() => {
+    if (isOpen) {
+      setPackageValue(selectedPackage);
+    }
+  }, [isOpen, selectedPackage]);
 
   useEffect(() => {
     setMounted(true);
@@ -162,7 +169,8 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
               <select
                 id="package"
                 name="package"
-                defaultValue=""
+                value={packageValue}
+                onChange={(e) => setPackageValue(e.target.value)}
                 className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-800 placeholder:text-gray-500 text-sm md:text-base bg-white"
               >
                 <option value="" disabled>Select Package Type</option>

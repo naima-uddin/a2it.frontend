@@ -8,6 +8,7 @@ import PromotionModal from "@/components/shared/PromotionModal";
 const PromotionPricing = () => {
     const [activeFaq, setActiveFaq] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPackage, setSelectedPackage] = useState("");
   // Component fixed to show only the "Design & Development" category — tab/scroll states removed
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -264,6 +265,7 @@ const PromotionPricing = () => {
         title="Activate Your 70% Off Coupon!"
         subtitle="Everywhere & Every Device, Your Site Should Flow Seamlessly!"
         buttonText="ACTIVATE YOUR COUPON NOW"
+        selectedPackage={selectedPackage}
       />
       
       <section className="relative py-20 flex items-center justify-center overflow-hidden">
@@ -541,7 +543,10 @@ const PromotionPricing = () => {
                     {/* CTA Button */}
                     <div className="p-6 bg-white">
                       <button 
-                        onClick={() => setIsModalOpen(true)}
+                        onClick={() => {
+                          setSelectedPackage(pkg.name);
+                          setIsModalOpen(true);
+                        }}
                         className={`w-full py-4 ${style.buttonBg} ${style.buttonText} ${style.buttonHover} font-bold text-base rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider cursor-pointer`}
                       >
                         START PROJECT
