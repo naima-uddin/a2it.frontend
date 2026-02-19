@@ -58,7 +58,6 @@ export default function Portfolio() {
     });
   }, [projects, active]);
 
-  // visible subset (default 4) and currently selected item (by index in `filtered`)
   const selectedItem = selectedIndex !== null ? filtered[selectedIndex] : null;
 
   useEffect(() => {
@@ -99,7 +98,7 @@ export default function Portfolio() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => { setActive(cat); setShowActive(true); }}
+              onClick={() => { setActive(cat); setShowActive(true); setShowAll(false); }}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition ${showActive && active === cat ? 'bg-gradient-to-r from-blue-500 to-blue-900 text-white' : 'bg-blue-600/30 text-white/90 '}`}>
               {cat}
             </button>
@@ -108,8 +107,10 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
           {filtered.map((p, idx) => {
-            // show only `visibleCount` unless "showAll" is enabled
-            if (!showAll && idx >= visibleCount) return null;
+            // Skip items beyond visibleCount when showAll is false
+            if (!showAll && idx >= visibleCount) {
+              return null;
+            }
             const isAuto = autoScrollIndex === idx;
             const isSelected = selectedIndex === idx;
             return (
@@ -168,13 +169,28 @@ export default function Portfolio() {
         </div>
 
         {/* View more / View less button */}
-        <div className="flex justify-center mt-6 " ref={viewMoreRef}>
-          {filtered.length > visibleCount && (
-            <button onClick={() => setShowAll((s) => !s)} className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition">
-              <span className="bg-linear-to-r from-[#ffffff] to-[#c2c2ff] bg-clip-text text-transparent">{showAll ? 'View Less' : 'View More'}</span>
+        {filtered.length > visibleCount && (
+          <div className="flex justify-center mt-6" ref={viewMoreRef}>
+            <button 
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Button clicked! showAll before:', showAll, 'filtered.length:', filtered.length, 'visibleCount:', visibleCount);
+                setShowAll(prev => {
+                  const newValue = !prev;
+                  console.log('Setting showAll to:', newValue);
+                  return newValue;
+                });
+              }} 
+              className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-6 py-2.5 shadow-lg transition cursor-pointer z-10 relative"
+            >
+              <span className="text-white font-bold">
+                {showAll ? 'View Less' : 'View More'} 
+              </span>
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
       </div>
 
