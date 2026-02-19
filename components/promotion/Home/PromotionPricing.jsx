@@ -21,8 +21,8 @@ const PromotionPricing = () => {
       {
         id: 'design-special',
         name: 'Special',
-        price: '$299.00',
-        originalPrice: '$349',
+        price: '$99.00',
+        originalPrice: '$199',
         discount: '70% Off',
         color: 'teal',
         features: [
@@ -41,8 +41,8 @@ const PromotionPricing = () => {
       {
         id: 'design-plus',
         name: 'Plus',
-        price: '$599.00',
-        originalPrice: '$949',
+        price: '$199.00',
+        originalPrice: '$339',
         discount: '70% Off',
         color: 'orange',
         features: [
@@ -61,8 +61,8 @@ const PromotionPricing = () => {
       {
         id: 'design-gold',
         name: 'Gold',
-        price: '$999.00',
-        originalPrice: '$1798',
+        price: '$299.00',
+        originalPrice: '$799',
         discount: '70% Off',
         color: 'red',
         features: [
@@ -81,8 +81,8 @@ const PromotionPricing = () => {
       {
         id: 'design-platinum',
         name: 'Platinum',
-        price: '$1499.00',
-        originalPrice: '$2499',
+        price: '$399.00',
+        originalPrice: '$799',
         discount: '70% Off',
         color: 'blue',
         features: [
@@ -101,8 +101,8 @@ const PromotionPricing = () => {
       {
         id: 'design-boss',
         name: 'The Boss',
-        price: '$2499.00',
-        originalPrice: '$3999',
+        price: '$499.00',
+        originalPrice: '$899',
         discount: '70% Off',
         color: 'purple',
         features: [
@@ -121,8 +121,8 @@ const PromotionPricing = () => {
       {
         id: 'design-diamond',
         name: 'Diamond',
-        price: '$3999.00',
-        originalPrice: '$5999',
+        price: '$599.00',
+        originalPrice: '$999',
         discount: '70% Off',
         color: 'indigo',
         features: [
