@@ -3,11 +3,41 @@ import React from "react";
 import Image from "next/image";
 
 export default function PromotionFooter() {
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     const form = new FormData(e.target);
-    console.log(Object.fromEntries(form.entries()));
-    alert("Request submitted — we'll contact you shortly.");
+    const data = Object.fromEntries(form.entries());
+    
+    try {
+      const res = await fetch("https://a2-it-backend.vercel.app/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message || "Customer sent a message from footer form",
+          type: "footer_inquiry"
+        }),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        alert("Request submitted — we'll contact you shortly.");
+        e.target.reset();
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -61,7 +91,13 @@ export default function PromotionFooter() {
               <textarea name="message" placeholder="Your Message" rows={4} className="w-full rounded-md p-2.5 md:p-3 border border-[#FFD6A7] bg-[#FFD6A7]/70 text-xs md:text-sm text-white placeholder:text-white/70 outline-none resize-none" />
 
               <div className="flex justify-center mt-2 mb-10 md:mb-0">
-                <button className="bg-linear-to-r from-[#7ebaf5] to-[#00006d] hover:scale-95 text-white text-sm md:text-base font-semibold rounded-full px-8 md:px-10 py-2.5 md:py-3 shadow-md">Submit</button>
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-linear-to-r from-[#7ebaf5] to-[#00006d] hover:scale-95 text-white text-sm md:text-base font-semibold rounded-full px-8 md:px-10 py-2.5 md:py-3 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Submit"}
+                </button>
               </div>
             </form>
           </div>

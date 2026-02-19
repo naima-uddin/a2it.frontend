@@ -32,15 +32,42 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
     return () => window.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     
-    // Here you can add your form submission logic (API call, etc.)
-    alert('Thank you! We will contact you shortly.');
-    onClose();
-    e.target.reset();
+    try {
+      const res = await fetch("https://a2-it-backend.vercel.app/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          message: data.message || "Customer wants to start a project!",
+          type: "promotion_modal"
+        }),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        alert('Thank you! We will contact you shortly.');
+        onClose();
+        e.target.reset();
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen || !mounted) return null;
@@ -130,10 +157,11 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-2.5 md:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base uppercase tracking-wide"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-2.5 md:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base uppercase tracking-wide disabled:opacity-70 disabled:cursor-not-allowed"
               style={{ fontFamily: "var(--font-oswald), sans-serif" }}
             >
-              {buttonText}
+              {isSubmitting ? "SENDING..." : buttonText}
             </button>
           </form>
         </div>
