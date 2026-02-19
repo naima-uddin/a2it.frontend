@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import toast from 'react-hot-toast';
 
 const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT NOW" }) => {
   const [mounted, setMounted] = useState(false);
@@ -56,15 +57,26 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
       const result = await res.json();
       if (result.success) {
-        alert('Thank you! We will contact you shortly.');
+        toast.success('Message sent successfully! We\'ll contact you shortly.', {
+          duration: 4000,
+          style: {
+            background: '#10b981',
+            color: '#fff',
+            padding: '16px',
+          },
+        });
         onClose();
         e.target.reset();
       } else {
-        alert('Failed to send message. Please try again.');
+        toast.error('Failed to send message. Please try again.', {
+          duration: 4000,
+        });
       }
     } catch (err) {
       console.error(err);
-      alert('Something went wrong. Please try again.');
+      toast.error('Something went wrong. Please try again.', {
+        duration: 4000,
+      });
     } finally {
       setIsSubmitting(false);
     }

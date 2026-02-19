@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import toast from 'react-hot-toast';
 
 export default function PromotionFooter() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -27,14 +28,25 @@ export default function PromotionFooter() {
 
       const result = await res.json();
       if (result.success) {
-        alert("Request submitted — we'll contact you shortly.");
+        toast.success('Message sent successfully! We\'ll contact you shortly.', {
+          duration: 4000,
+          style: {
+            background: '#10b981',
+            color: '#fff',
+            padding: '16px',
+          },
+        });
         e.target.reset();
       } else {
-        alert('Failed to send message. Please try again.');
+        toast.error('Failed to send message. Please try again.', {
+          duration: 4000,
+        });
       }
     } catch (err) {
       console.error(err);
-      alert('Something went wrong. Please try again.');
+      toast.error('Something went wrong. Please try again.', {
+        duration: 4000,
+      });
     } finally {
       setIsSubmitting(false);
     }
