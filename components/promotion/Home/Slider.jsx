@@ -70,7 +70,7 @@ export default function Slider({ autoplay = true, interval = 3000 }) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative overflow-hidden">
           {/* track (clipped to container to avoid page overflow) */}
-          <div className="relative h-20 md:h-28 lg:h-32 overflow-hidden">
+          <div className="relative h-30 md:h-38 lg:h-42 overflow-hidden">
             <div
               ref={trackRef}
               className="flex transition-transform duration-500 ease-out h-full"
