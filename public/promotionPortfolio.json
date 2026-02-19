@@ -83,6 +83,27 @@
             "title": "BestProductBuy – Affiliate Product Comparison Platform",
             "description": "A scalable affiliate product discovery platform helping users find the best products through comparisons, reviews, and buying guides.",
             "image": "/promotionPortfolio/bestproductbuy.jpeg"
+        },
+        {
+            "id": 13,
+            "category": "Shopify, E-commerce",
+            "title": "CarView - Car Buying Platform",
+            "description": "A scalable car buying platform built on Shopify, offering a seamless user experience for purchasing vehicles.",
+            "image": "/promotionPortfolio/shopify2.jpeg"
+        },
+        {
+            "id": 14,
+            "category": "Shopify, E-commerce",
+            "title": "TIBICO FERMENTATION – Fermentation Product E-commerce Store",
+            "description": "A scalable e-commerce store for fermentation products, built on Shopify with a focus on user experience and product discovery.",
+            "image": "/promotionPortfolio/shopify3.jpeg"
+        },
+        {
+            "id": 15,
+            "category": "Shopify, E-commerce",
+            "title": "Fitness and Health Store",
+            "description": "A scalable e-commerce store for fitness and health products, built on Shopify with a focus on user experience and product discovery.",
+            "image": "/promotionPortfolio/shopify4.jpeg"
         }
     ]
 }
