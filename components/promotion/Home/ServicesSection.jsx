@@ -8,8 +8,6 @@ import PromotionModal from "@/components/shared/PromotionModal";
 const ServicesSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log('ServicesSection rendered. isModalOpen:', isModalOpen);
-
   const services = [
     "Design & Development",
     "E-Commerce",
@@ -23,64 +21,6 @@ const ServicesSection = () => {
 
   return (
     <>
-      {/* Debug indicator */}
-      <div style={{ 
-        position: 'fixed', 
-        top: 10, 
-        right: 10, 
-        background: isModalOpen ? 'green' : 'red', 
-        color: 'white', 
-        padding: '10px', 
-        zIndex: 99999,
-        borderRadius: '5px'
-      }}>
-        Modal State: {isModalOpen ? 'OPEN' : 'CLOSED'}
-      </div>
-
-      {/* Simple test modal */}
-      {isModalOpen && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 999999
-        }}
-        onClick={() => setIsModalOpen(false)}
-        >
-          <div style={{
-            backgroundColor: 'white',
-            padding: '40px',
-            borderRadius: '10px',
-            maxWidth: '500px'
-          }}
-          onClick={(e) => e.stopPropagation()}
-          >
-            <h2 style={{ color: 'black', marginBottom: '20px' }}>TEST MODAL - IT WORKS!</h2>
-            <p style={{ color: 'black' }}>If you see this, the state is working!</p>
-            <button 
-              onClick={() => setIsModalOpen(false)}
-              style={{
-                marginTop: '20px',
-                padding: '10px 20px',
-                backgroundColor: 'blue',
-                color: 'white',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer'
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
       <PromotionModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -204,15 +144,8 @@ const ServicesSection = () => {
 
           <button 
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log('Button clicked! Opening modal...');
-              setIsModalOpen(true);
-              console.log('isModalOpen set to true');
-            }}
-            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5 cursor-pointer relative z-10"
-            style={{ pointerEvents: 'auto' }}
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5 cursor-pointer"
           >
             Let&apos;s Get Started
           </button>

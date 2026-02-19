@@ -11,14 +11,10 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
     return () => setMounted(false);
   }, []);
 
-  console.log('PromotionModal rendered. isOpen:', isOpen, 'mounted:', mounted);
-
   useEffect(() => {
     if (isOpen) {
-      console.log('Modal is open, hiding body scroll');
       document.body.style.overflow = 'hidden';
     } else {
-      console.log('Modal is closed, restoring body scroll');
       document.body.style.overflow = 'unset';
     }
     return () => {
@@ -40,7 +36,6 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log('Form submitted:', data);
     
     // Here you can add your form submission logic (API call, etc.)
     alert('Thank you! We will contact you shortly.');
@@ -50,16 +45,14 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
   if (!isOpen || !mounted) return null;
 
-  console.log('Modal IS OPEN - rendering modal UI');
-
   const modalContent = (
     <div 
-      className="fixed inset-0 flex items-center justify-center bg-black/60 p-4 md:p-6 animate-fadeIn"
+      className="fixed inset-0 flex items-center justify-center bg-black/60 p-3 md:p-6 animate-fadeIn"
       style={{ zIndex: 999999, position: 'fixed' }}
       onClick={onClose}
     >
       <div 
-        className="bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn relative"
+        className="bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-scaleIn relative max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -73,21 +66,21 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
           </svg>
         </button>
 
-        <div className="p-6 md:p-8">
+        <div className="p-4 md:p-8">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+          <h2 className="text-xl md:text-3xl font-bold text-center mb-2 md:mb-3" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
             <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent">
               {title}
             </span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-center text-gray-700 font-medium text-sm md:text-base mb-6">
+          <p className="text-center text-gray-700 font-medium text-xs md:text-base mb-4 md:mb-6">
             {subtitle}
           </p>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
             <div>
               <label htmlFor="fullName" className="sr-only">Full Name</label>
               <input
@@ -96,7 +89,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
                 name="fullName"
                 placeholder="Full Name *"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
               />
             </div>
 
@@ -108,7 +101,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
                 name="email"
                 placeholder="Email Address *"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
               />
             </div>
 
@@ -120,7 +113,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
                 name="phone"
                 placeholder="Phone Number *"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 text-sm md:text-base"
               />
             </div>
 
@@ -130,14 +123,14 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
                 id="message"
                 name="message"
                 placeholder="To help us understand better, enter a brief description about your project."
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 resize-none text-sm md:text-base"
+                rows={3}
+                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 resize-none text-sm md:text-base"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base uppercase tracking-wide"
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-2.5 md:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base uppercase tracking-wide"
               style={{ fontFamily: "var(--font-oswald), sans-serif" }}
             >
               {buttonText}
