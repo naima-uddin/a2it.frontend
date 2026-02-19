@@ -121,7 +121,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Right - content (previous text restored) */}
-        <div className="w-full lg:w-1/2 text-left mt-0 lg:-mt-10">
+        <div className="w-full lg:w-1/2 text-left mt-0 lg:-mt-10 relative z-10">
           <p className="text-white/85 mb-3 md:mb-4 text-sm md:text-base">In the ever-connected, attention-challenged digital era.</p>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 md:mb-4" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
             Scale faster: award‑winning web & app experiences
@@ -145,7 +145,8 @@ const ServicesSection = () => {
           <button 
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5 cursor-pointer"
+            className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-400 to-blue-900 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold shadow-2xl transition-transform transform hover:-translate-y-0.5 cursor-pointer relative"
+            style={{ zIndex: 100, pointerEvents: 'auto' }}
           >
             Let&apos;s Get Started
           </button>
@@ -153,7 +154,7 @@ const ServicesSection = () => {
       </div>
 
       {/* white wave at bottom */}
-      <div className="absolute inset-x-0 bottom-0 -mb-1">
+      <div className="absolute inset-x-0 bottom-0 -mb-1 pointer-events-none">
         <svg viewBox="0 0 1440 320" className="w-full h-24 md:h-36 lg:h-48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path fill="#ffffff" d="M0,192L48,186.7C96,181,192,171,288,170.7C384,171,480,181,576,176C672,171,768,149,864,128C960,107,1056,85,1152,90.7C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
