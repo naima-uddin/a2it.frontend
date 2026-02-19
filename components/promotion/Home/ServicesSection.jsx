@@ -27,6 +27,7 @@ const ServicesSection = () => {
         title="Big Discount Going ON!!"
         subtitle="Everywhere & Every Device, Your Site Should Flow Seamlessly!"
         buttonText="START YOUR PROJECT NOW"
+        selectedPackage=""
       />
       
       <section className="relative w-full overflow-hidden bg-center bg-cover bg-no-repeat text-white py-10 md:py-20" style={{ backgroundImage: "url('/promotionPortfolio/shape.png')" }}>
