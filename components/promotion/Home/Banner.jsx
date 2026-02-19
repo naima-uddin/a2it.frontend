@@ -16,6 +16,7 @@ const Banner = () => {
         title="Big Discount Going ON!!"
         subtitle="Everywhere & Every Device, Your Site Should Flow Seamlessly!"
         buttonText="START YOUR PROJECT NOW"
+        selectedPackage=""
       />
     <section className="relative w-full h-160 overflow-hidden bg-[#0A0A0C] banner-section" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
       {/* Background image */}
