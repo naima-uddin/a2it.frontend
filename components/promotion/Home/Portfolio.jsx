@@ -203,22 +203,21 @@ export default function Portfolio() {
           onClick={() => setSelectedIndex(null)}
         >
           <div 
-            className="relative w-full max-w-4xl bg-gradient-to-b from-[#0a1628] to-[#071331] rounded-2xl shadow-2xl overflow-hidden"
+            className="relative w-full max-w-4xl bg-gradient-to-b from-[#0a1628] to-[#071331] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-2 right-10 z-20 bg-blue-600 hover:bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-lg hover:scale-110 text-lg font-bold"
+              className="absolute top-4 right-4 z-20 bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-lg hover:scale-110 text-xl font-bold"
               aria-label="Close"
             >
               ✕
             </button>
 
-            {/* Scrollable content */}
-            <div className="max-h-[88vh] overflow-y-auto">
-              {/* Image section */}
-              <div className="w-full  p-4 flex items-center justify-center">
+            {/* Scrollable Image section */}
+            <div className="flex-1 overflow-y-auto">
+              <div className="w-full p-6 flex items-center justify-center">
                 <div className="w-full max-w-2xl">
                   <Image 
                     src={selectedItem.image} 
@@ -231,28 +230,30 @@ export default function Portfolio() {
                   />
                 </div>
               </div>
+            </div>
 
-              {/* Content section */}
-              <div className="p-4 md:p-4">
-                <div className="max-w-3xl mx-auto">
-                  <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
+            {/* Fixed Content section - Always visible */}
+            <div className="border-t border-blue-500/20 bg-gradient-to-b from-[#071331] to-[#050d1a] px-4 py-2 md:px-6">
+              <div className="max-w-4xl mx-auto flex justify-between items-center gap-4">
+                <div>
+                  <h3 className="text-xl font-oswald font-bold text-white mb-1.5 leading-tight mt-1">
                     {selectedItem.title}
                   </h3>
-                  <p className="text-sm md:text-base text-slate-300 mb-6 leading-relaxed">
+                  <p className="text-sm text-slate-300 mb-3 leading-relaxed line-clamp-2">
                     {selectedItem.description}
                   </p>
+                </div>
 
-                  <div className="flex flex-wrap items-center gap-4">
-                    <a 
-                      href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-6 py-3 transition-all shadow-lg hover:shadow-xl hover:scale-105"
-                    >
-                      <span className="text-xl">🚀</span>
-                      <span>Start a project</span>
-                    </a>
-                  </div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a 
+                    href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-4 py-2 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                  >
+                    <span className="text-lg">🚀</span>
+                    <span>Start a project</span>
+                  </a>
                 </div>
               </div>
             </div>
