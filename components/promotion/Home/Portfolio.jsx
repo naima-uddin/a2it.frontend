@@ -197,31 +197,63 @@ export default function Portfolio() {
       {/* Modal / Lightbox */}
       {selectedIndex !== null && selectedItem && (
         <div
-          className="fixed inset-0 z-60 flex items-center justify-center bg-black/60 p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm p-4"
           role="dialog"
           aria-modal="true"
+          onClick={() => setSelectedIndex(null)}
         >
-          <div className="bg-[#071331] w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl">
-            <div className="relative h-64 md:h-96 bg-black">
-              <Image src={selectedItem.image} alt={selectedItem.title} fill className="object-cover" />
-              <button
-                onClick={() => setSelectedIndex(null)}
-                className="absolute top-3 right-4 bg-blue-600/90 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700/80 transition"
-                aria-label="Close"
-              >
-                ✕
-              </button>
-            </div>
+          <div 
+            className="relative w-full max-w-4xl bg-gradient-to-b from-[#0a1628] to-[#071331] rounded-2xl shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedIndex(null)}
+              className="absolute top-2 right-10 z-20 bg-blue-600 hover:bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-lg hover:scale-110 text-lg font-bold"
+              aria-label="Close"
+            >
+              ✕
+            </button>
 
-            <div className="p-6">
-              <h3 className="text-2xl font-oswald font-bold text-white mb-2">{selectedItem.title}</h3>
-              <div className="text-sm text-slate-300 mb-4">{selectedItem.description}</div>
+            {/* Scrollable content */}
+            <div className="max-h-[88vh] overflow-y-auto">
+              {/* Image section */}
+              <div className="w-full  p-4 flex items-center justify-center">
+                <div className="w-full max-w-2xl">
+                  <Image 
+                    src={selectedItem.image} 
+                    alt={selectedItem.title} 
+                    width={1200} 
+                    height={1600} 
+                    className="w-full h-auto rounded-lg shadow-2xl"
+                    quality={95}
+                    priority
+                  />
+                </div>
+              </div>
 
-              <div className="flex items-center gap-4">
-                <a href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full px-5 py-2 transition">
-                  🚀 Start a project
-                </a>
-                
+              {/* Content section */}
+              <div className="p-4 md:p-4">
+                <div className="max-w-3xl mx-auto">
+                  <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
+                    {selectedItem.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-slate-300 mb-6 leading-relaxed">
+                    {selectedItem.description}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    <a 
+                      href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-6 py-3 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                    >
+                      <span className="text-xl">🚀</span>
+                      <span>Start a project</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
