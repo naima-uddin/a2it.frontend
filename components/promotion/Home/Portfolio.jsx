@@ -256,6 +256,17 @@ export default function Portfolio() {
               className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/60 backdrop-blur-md rounded-lg p-8 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Chat bubble tail */}
+              <div 
+                className="absolute -right-3 bottom-1/16 -translate-y-1/2"
+                style={{
+                  width: 0,
+                  height: 0,
+                  borderTop: '12px solid transparent',
+                  borderBottom: '12px solid transparent',
+                  borderLeft: '12px solid rgba(0, 0, 0, 0.6)',
+                }}
+              />
               <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
                 {selectedItem.title}
               </h3>
