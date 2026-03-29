@@ -197,7 +197,7 @@ export default function Portfolio() {
       {/* Modal / Lightbox */}
       {selectedIndex !== null && selectedItem && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black"
           role="dialog"
           aria-modal="true"
           onClick={() => setSelectedIndex(null)}
@@ -205,15 +205,15 @@ export default function Portfolio() {
           {/* Close button */}
           <button
             onClick={() => setSelectedIndex(null)}
-            className="fixed top-6 right-6 z-50 bg-blue-600 hover:bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold"
+            className="fixed top-6 right-6 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold"
             aria-label="Close"
           >
             ✕
           </button>
 
           {/* Image - Full viewport height */}
-          <div className="flex-1 w-full flex items-center justify-center px-4 pb-2">
-            <div className="relative h-full w-full max-w-3xl flex items-center justify-center">
+          <div className="relative w-full h-screen flex items-center justify-center">
+            <div className="relative w-full h-full">
               <Image 
                 src={selectedItem.image} 
                 alt={selectedItem.title} 
@@ -226,33 +226,33 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Fixed Content section at bottom */}
+          {/* Content overlay on the left */}
           <div 
-            className="w-full bg-gradient-to-t from-black via-[#0a1628]/95 to-transparent backdrop-blur-md border-t border-white/10 px-6 py-4"
+            className="absolute left-8 bottom-8 z-[55] max-w-xl bg-black/70 backdrop-blur-md rounded-2xl p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="max-w-5xl mx-auto flex justify-between items-center gap-6">
-              <div className="flex-1">
-                <h3 className="text-xl md:text-2xl font-oswald font-bold text-white mb-1 leading-tight">
-                  {selectedItem.title}
-                </h3>
-                <p className="text-sm text-slate-300 leading-relaxed line-clamp-1">
-                  {selectedItem.description}
-                </p>
-              </div>
+            <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight drop-shadow-lg">
+              {selectedItem.title}
+            </h3>
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed drop-shadow-md">
+              {selectedItem.description}
+            </p>
+          </div>
 
-              <div className="flex items-center">
-                <a 
-                  href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-6 py-3 transition-all shadow-xl hover:shadow-2xl hover:scale-105 whitespace-nowrap"
-                >
-                  <span className="text-xl">🚀</span>
-                  <span>Start a project</span>
-                </a>
-              </div>
-            </div>
+          {/* Button overlay on the right */}
+          <div 
+            className="absolute right-8 bottom-8 z-[55]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <a 
+              href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-8 py-3.5 transition-all shadow-xl hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+            >
+              <span className="text-xl">🚀</span>
+              <span>Start a project</span>
+            </a>
           </div>
         </div>
       )}
