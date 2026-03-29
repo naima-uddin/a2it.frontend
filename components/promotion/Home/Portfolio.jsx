@@ -197,23 +197,14 @@ export default function Portfolio() {
       {/* Modal / Lightbox */}
       {selectedIndex !== null && selectedItem && (
         <div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm "
+          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm "
           role="dialog"
           aria-modal="true"
           onClick={() => setSelectedIndex(null)}
         >
-          {/* Close button */}
-          <button
-            onClick={() => setSelectedIndex(null)}
-            className="fixed top-6 right-6 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-
-          {/* Image - Full viewport height */}
+          {/* Image - centered full viewport */}
           <div className="relative w-full h-screen flex items-center justify-center">
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full max-w-6xl">
               <Image 
                 src={selectedItem.image} 
                 alt={selectedItem.title} 
@@ -223,36 +214,43 @@ export default function Portfolio() {
                 priority
                 onClick={(e) => e.stopPropagation()}
               />
+              
+              {/* Close button - positioned relative to image */}
+              <button
+                onClick={() => setSelectedIndex(null)}
+                className="absolute top-4 right-4 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-xl font-bold"
+                aria-label="Close"
+              >
+                ✕
+              </button>
             </div>
-          </div>
 
-          {/* Content overlay on the left - vertically centered */}
-          <div 
-            className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/50 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-xl md:text-2xl font-oswald font-bold text-white mb-2 leading-tight drop-shadow-lg">
-              {selectedItem.title}
-            </h3>
-            <p className="text-xs md:text-sm text-slate-200 leading-relaxed drop-shadow-md line-clamp-3">
-              {selectedItem.description}
-            </p>
-          </div>
-
-          {/* Button overlay on the right - vertically centered */}
-          <div 
-            className="absolute right-8 top-1/2 -translate-y-1/2 z-[55]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <a 
-              href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-8 py-3.5 transition-all shadow-xl hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+            {/* Left content box - absolutely positioned overlay */}
+            <div 
+              className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/80 backdrop-blur-md rounded-lg p-8 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="text-xl">🚀</span>
-              <span>Start a project</span>
-            </a>
+              <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
+                {selectedItem.title}
+              </h3>
+              <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-6">
+                {selectedItem.description}
+              </p>
+              
+              {/* Start project button */}
+              <a 
+                href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="relative inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-full px-10 py-4 transition-all shadow-2xl hover:scale-110 whitespace-nowrap animate-pulse"
+                style={{
+                  boxShadow: '0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.3)'
+                }}
+              >
+                <span className="text-2xl">🚀</span>
+                <span className="text-lg">Start a project</span>
+              </a>
+            </div>
           </div>
         </div>
       )}
