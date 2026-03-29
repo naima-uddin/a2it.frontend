@@ -218,7 +218,7 @@ export default function Portfolio() {
               {/* Close button - positioned relative to image */}
               <button
                 onClick={() => setSelectedIndex(null)}
-                className="absolute top-4 right-4 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-xl font-bold"
+                className="absolute top-4 right-30 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-xl font-bold"
                 aria-label="Close"
               >
                 ✕
@@ -227,7 +227,7 @@ export default function Portfolio() {
 
             {/* Left content box - absolutely positioned overlay */}
             <div 
-              className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/80 backdrop-blur-md rounded-lg p-8 shadow-2xl"
+              className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/60 backdrop-blur-md rounded-lg p-8 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
@@ -242,7 +242,7 @@ export default function Portfolio() {
                 href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="relative inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-full px-10 py-4 transition-all shadow-2xl hover:scale-110 whitespace-nowrap animate-pulse"
+                className="relative inline-flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white font-bold rounded-full px-4 py-3 transition-all shadow-2xl hover:scale-110 whitespace-nowrap animate-pulse"
                 style={{
                   boxShadow: '0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.3)'
                 }}
