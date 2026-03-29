@@ -231,10 +231,10 @@ export default function Portfolio() {
                   const newIndex = selectedIndex > 0 ? selectedIndex - 1 : filtered.length - 1;
                   setSelectedIndex(newIndex);
                 }}
-                className="absolute left-4 bottom-8 z-[60] bg-gradient-to-l from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold backdrop-blur-sm"
+                className="absolute left-4 bottom-8 z-[60] bg-gradient-to-l from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-3xl font-bold backdrop-blur-sm leading-none"
                 aria-label="Previous"
               >
-                ‹
+                <span className="block -mt-2">‹</span>
               </button>
 
               {/* Next arrow button */}
@@ -244,10 +244,10 @@ export default function Portfolio() {
                   const newIndex = selectedIndex < filtered.length - 1 ? selectedIndex + 1 : 0;
                   setSelectedIndex(newIndex);
                 }}
-                className="absolute right-4 bottom-8 z-[60] bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold backdrop-blur-sm"
+                className="absolute right-4 bottom-8 z-[60] bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-3xl font-bold backdrop-blur-sm leading-none"
                 aria-label="Next"
               >
-                ›
+                <span className="block -mt-2">›</span>
               </button>
             </div>
 
