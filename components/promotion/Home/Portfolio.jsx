@@ -197,64 +197,60 @@ export default function Portfolio() {
       {/* Modal / Lightbox */}
       {selectedIndex !== null && selectedItem && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           onClick={() => setSelectedIndex(null)}
         >
+          {/* Close button */}
+          <button
+            onClick={() => setSelectedIndex(null)}
+            className="fixed top-6 right-6 z-50 bg-blue-600 hover:bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          {/* Image - Full viewport height */}
+          <div className="flex-1 w-full flex items-center justify-center px-4 pb-2">
+            <div className="relative h-full w-full max-w-3xl flex items-center justify-center">
+              <Image 
+                src={selectedItem.image} 
+                alt={selectedItem.title} 
+                fill
+                className="object-contain"
+                quality={95}
+                priority
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+
+          {/* Fixed Content section at bottom */}
           <div 
-            className="relative w-full max-w-4xl bg-gradient-to-b from-[#0a1628] to-[#071331] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            className="w-full bg-gradient-to-t from-black via-[#0a1628]/95 to-transparent backdrop-blur-md border-t border-white/10 px-6 py-4"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedIndex(null)}
-              className="absolute top-4 right-4 z-20 bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-lg hover:scale-110 text-xl font-bold"
-              aria-label="Close"
-            >
-              ✕
-            </button>
-
-            {/* Scrollable Image section */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="w-full p-6 flex items-center justify-center">
-                <div className="w-full max-w-2xl">
-                  <Image 
-                    src={selectedItem.image} 
-                    alt={selectedItem.title} 
-                    width={1200} 
-                    height={1600} 
-                    className="w-full h-auto rounded-lg shadow-2xl"
-                    quality={95}
-                    priority
-                  />
-                </div>
+            <div className="max-w-5xl mx-auto flex justify-between items-center gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl md:text-2xl font-oswald font-bold text-white mb-1 leading-tight">
+                  {selectedItem.title}
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed line-clamp-1">
+                  {selectedItem.description}
+                </p>
               </div>
-            </div>
 
-            {/* Fixed Content section - Always visible */}
-            <div className="border-t border-blue-500/20 bg-gradient-to-b from-[#071331] to-[#050d1a] px-4 py-2 md:px-6">
-              <div className="max-w-4xl mx-auto flex justify-between items-center gap-4">
-                <div>
-                  <h3 className="text-xl font-oswald font-bold text-white mb-1.5 leading-tight mt-1">
-                    {selectedItem.title}
-                  </h3>
-                  <p className="text-sm text-slate-300 mb-3 leading-relaxed line-clamp-2">
-                    {selectedItem.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-4">
-                  <a 
-                    href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-4 py-2 transition-all shadow-lg hover:shadow-xl hover:scale-105"
-                  >
-                    <span className="text-lg">🚀</span>
-                    <span>Start a project</span>
-                  </a>
-                </div>
+              <div className="flex items-center">
+                <a 
+                  href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-full px-6 py-3 transition-all shadow-xl hover:shadow-2xl hover:scale-105 whitespace-nowrap"
+                >
+                  <span className="text-xl">🚀</span>
+                  <span>Start a project</span>
+                </a>
               </div>
             </div>
           </div>
