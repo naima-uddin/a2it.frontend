@@ -47,7 +47,7 @@ const Footer = () => {
               <div className="space-y-3">
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">Call Toll Free</p>
-                  <p className="text-blue-600 font-bold text-sm">+1 (321) 800-2759</p>
+                  <p className="text-blue-600 font-bold text-sm">+1 (808) 301-5039</p>
                 </div>
                 
                 <div>

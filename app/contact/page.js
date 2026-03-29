@@ -70,9 +70,16 @@ export default function Page() {
               {
                 "@type": "ContactPoint",
                 contactType: "customer support",
-                telephone: "+880XXXXXXXXXX",
+                telephone: "+18083015039",
                 email: "info@a2itllc.com",
                 areaServed: "Worldwide",
+              },
+              {
+                "@type": "ContactPoint",
+                contactType: "Bangladesh office",
+                telephone: "+8801846937397",
+                email: "info@a2itllc.com",
+                areaServed: "Bangladesh",
               },
             ],
           }),

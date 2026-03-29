@@ -146,7 +146,7 @@ export default function RootLayout({ children }) {
                 {
                   "@type": "ContactPoint",
                   contactType: "customer support",
-                  telephone: "+8801846937397",
+                  telephone: "+18083015039",
                   email: "info@a2itllc.com",
                   areaServed: "Worldwide",
                 },

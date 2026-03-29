@@ -82,7 +82,7 @@ const AmazonAffiliateAdvertiserDisclosure = () => {
               <p className="text-gray-700">
                 If you have any questions about our disclosure, feel free to
                 contact us at <span className="font-semibold text-blue-600">info@a2itllc.com</span> or call us at{" "}
-                <span className="font-semibold text-blue-600">+1 (321) 800-2759</span>.
+                <span className="font-semibold text-blue-600">+1 (808) 301-5039</span>.
               </p>
             </div>
           </div>

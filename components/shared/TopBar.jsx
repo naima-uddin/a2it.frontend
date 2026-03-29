@@ -16,7 +16,7 @@ const TopBar = () => {
       <div className="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-1 sm:space-y-0">
         <div className="flex items-center space-x-1">
           <FaPhoneAlt className="text-[#0066ff]" />
-          <span className="font-semibold">+88 01846 937397</span>
+          <span className="font-semibold">+1 (808) 301-5039</span>
         </div>
         <div className="flex items-center space-x-1">
           <FaEnvelope className="text-[#0066ff]" />

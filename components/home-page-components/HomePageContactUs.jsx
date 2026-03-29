@@ -173,11 +173,6 @@ const HomePageContactUs = () => {
                     </div>
                   </div>
                 </div>
-
-
-
-
-
                 {/* Email */}
                 <div className="group transform transition-all duration-300 hover:translate-x-1">
                   <div className="flex items-start">

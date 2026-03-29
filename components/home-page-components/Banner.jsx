@@ -1,9 +1,12 @@
 "use client"
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Banner = () => {
+  const router = useRouter();
+
   return (
     <div
       className="relative w-full  mx-auto aspect-[16/9] sm:aspect-[16/7] md:aspect-[16/6] lg:aspect-auto lg:h-[90vh] overflow-hidden">
@@ -24,12 +27,20 @@ const Banner = () => {
         {/* Buttons Container */}
         <div className="flex flex-row sm:flex-row gap-4 justify-center sm:justify-start"
         >
-          <button className="btn-3d flex items-center gap-2 group">
+          <button
+            type="button"
+            className="btn-3d flex justify-center items-center gap-2 group"
+            onClick={() => router.push("/contact")}
+          >
             Contact With Us
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
 
-          <button className="btn-neon flex items-center gap-2 group">
+          <button
+            type="button"
+            className="btn-neon flex items-center gap-2 group"
+            onClick={() => router.push("/about")}
+          >
             Learn More About Us
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
@@ -39,7 +50,7 @@ const Banner = () => {
 
       <style jsx>{`
         .btn-3d {
-          padding: 18px 45px;
+          padding: 18px 45px;j
           font-size: 18px;
           font-weight: 700;
           color: white;
