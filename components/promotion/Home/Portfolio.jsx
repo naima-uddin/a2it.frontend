@@ -231,7 +231,7 @@ export default function Portfolio() {
                   const newIndex = selectedIndex > 0 ? selectedIndex - 1 : filtered.length - 1;
                   setSelectedIndex(newIndex);
                 }}
-                className="absolute left-4 bottom-8 z-[60] bg-gradient-to-l from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-3xl font-bold backdrop-blur-sm leading-none"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 md:bottom-8 z-[60] bg-gradient-to-l from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-9 h-9 md:w-10 md:h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl md:text-3xl font-bold backdrop-blur-sm leading-none"
                 aria-label="Previous"
               >
                 <span className="block -mt-2">‹</span>
@@ -244,7 +244,7 @@ export default function Portfolio() {
                   const newIndex = selectedIndex < filtered.length - 1 ? selectedIndex + 1 : 0;
                   setSelectedIndex(newIndex);
                 }}
-                className="absolute right-4 bottom-8 z-[60] bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-3xl font-bold backdrop-blur-sm leading-none"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 md:bottom-8 z-[60] bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full w-9 h-9 md:w-10 md:h-10 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl md:text-3xl font-bold backdrop-blur-sm leading-none"
                 aria-label="Next"
               >
                 <span className="block -mt-2">›</span>
