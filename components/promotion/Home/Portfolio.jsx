@@ -226,22 +226,22 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Content overlay on the left */}
+          {/* Content overlay on the left - vertically centered */}
           <div 
-            className="absolute left-8 bottom-8 z-[55] max-w-xl bg-black/70 backdrop-blur-md rounded-2xl p-6 shadow-2xl"
+            className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/50 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight drop-shadow-lg">
+            <h3 className="text-xl md:text-2xl font-oswald font-bold text-white mb-2 leading-tight drop-shadow-lg">
               {selectedItem.title}
             </h3>
-            <p className="text-sm md:text-base text-slate-200 leading-relaxed drop-shadow-md">
+            <p className="text-xs md:text-sm text-slate-200 leading-relaxed drop-shadow-md line-clamp-3">
               {selectedItem.description}
             </p>
           </div>
 
-          {/* Button overlay on the right */}
+          {/* Button overlay on the right - vertically centered */}
           <div 
-            className="absolute right-8 bottom-8 z-[55]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 z-[55]"
             onClick={(e) => e.stopPropagation()}
           >
             <a 
