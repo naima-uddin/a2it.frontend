@@ -218,10 +218,36 @@ export default function Portfolio() {
               {/* Close button - positioned relative to image */}
               <button
                 onClick={() => setSelectedIndex(null)}
-                className="absolute top-4 right-30 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-xl font-bold"
+                className="absolute top-4 right-4 z-[60] bg-blue-600 hover:bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-xl font-bold"
                 aria-label="Close"
               >
                 ✕
+              </button>
+
+              {/* Previous arrow button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const newIndex = selectedIndex > 0 ? selectedIndex - 1 : filtered.length - 1;
+                  setSelectedIndex(newIndex);
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] bg-blue-600/80 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold backdrop-blur-sm"
+                aria-label="Previous"
+              >
+                ‹
+              </button>
+
+              {/* Next arrow button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const newIndex = selectedIndex < filtered.length - 1 ? selectedIndex + 1 : 0;
+                  setSelectedIndex(newIndex);
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] bg-blue-600/80 hover:bg-blue-700 text-white rounded-full w-14 h-14 flex items-center justify-center transition-all shadow-2xl hover:scale-110 text-2xl font-bold backdrop-blur-sm"
+                aria-label="Next"
+              >
+                ›
               </button>
             </div>
 
