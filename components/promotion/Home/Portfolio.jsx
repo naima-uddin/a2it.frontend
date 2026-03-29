@@ -197,7 +197,7 @@ export default function Portfolio() {
       {/* Modal / Lightbox */}
       {selectedIndex !== null && selectedItem && (
         <div
-          className="fixed inset-0 z-50 bg-black"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm "
           role="dialog"
           aria-modal="true"
           onClick={() => setSelectedIndex(null)}
