@@ -251,14 +251,20 @@ export default function Portfolio() {
               </button>
             </div>
 
-            {/* Left content box - absolutely positioned overlay */}
+            {/* Content box - left on desktop, bottom bar on mobile */}
             <div 
-              className="absolute left-8 top-1/2 -translate-y-1/2 z-[55] max-w-md bg-black/60 backdrop-blur-md rounded-lg p-8 shadow-2xl"
+              className="absolute left-0 right-0 bottom-0 md:left-8 md:right-auto md:top-1/2 md:-translate-y-1/2 md:bottom-auto z-[55] md:max-w-md bg-gradient-to-t from-black via-black/90 to-transparent md:bg-none md:from-transparent backdrop-blur-none md:backdrop-blur-md md:rounded-lg p-4 pt-10 md:p-8 md:shadow-2xl"
               onClick={(e) => e.stopPropagation()}
+              style={{
+                background: 'linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.7) 60%, transparent)'
+              }}
             >
-              {/* Chat bubble tail */}
+              {/* Desktop background overlay */}
+              <div className="hidden md:block absolute inset-0 bg-black/60 rounded-lg -z-10" />
+              
+              {/* Chat bubble tail - only visible on desktop */}
               <div 
-                className="absolute -right-3 bottom-1/16 -translate-y-1/2"
+                className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2"
                 style={{
                   width: 0,
                   height: 0,
@@ -267,10 +273,11 @@ export default function Portfolio() {
                   borderLeft: '12px solid rgba(0, 0, 0, 0.6)',
                 }}
               />
-              <h3 className="text-2xl md:text-3xl font-oswald font-bold text-white mb-3 leading-tight">
+              <h3 className="text-base md:text-2xl lg:text-3xl font-oswald font-bold text-white mb-2 md:mb-3 leading-tight">
                 {selectedItem.title}
               </h3>
-              <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-6">
+              {/* Description - hidden on mobile */}
+              <p className="hidden md:block text-sm lg:text-base text-slate-200 leading-relaxed mb-6">
                 {selectedItem.description}
               </p>
               
@@ -279,13 +286,13 @@ export default function Portfolio() {
                 href={"https://wa.me/18083015039?text=" + encodeURIComponent(`Hello, I'm interested in starting a project: ${selectedItem?.title || ''}`)} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="relative inline-flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white font-bold rounded-full px-4 py-3 transition-all shadow-2xl hover:scale-110 whitespace-nowrap animate-pulse"
+                className="relative inline-flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 text-white font-bold rounded-full px-3 py-2 md:px-4 md:py-3 transition-all shadow-2xl hover:scale-110 whitespace-nowrap animate-pulse text-sm md:text-base"
                 style={{
                   boxShadow: '0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.3)'
                 }}
               >
-                <span className="text-2xl">🚀</span>
-                <span className="text-lg">Start a project</span>
+                <span className="text-lg md:text-2xl">🚀</span>
+                <span className="text-sm md:text-lg">Start a project</span>
               </a>
             </div>
           </div>
