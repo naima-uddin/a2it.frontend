@@ -264,7 +264,7 @@ export default function Portfolio() {
               
               {/* Chat bubble tail - only visible on desktop */}
               <div 
-                className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2"
+                className="hidden md:block absolute -right-3 bottom-1/16 -translate-y-1/2"
                 style={{
                   width: 0,
                   height: 0,
