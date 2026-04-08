@@ -28,11 +28,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} antialiased`}
       >
-      
         <StickyContactBar />
         {children}
-       
-        
       </body>
     </html>
   );

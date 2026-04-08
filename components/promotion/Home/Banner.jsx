@@ -18,7 +18,7 @@ const Banner = () => {
         buttonText="START YOUR PROJECT NOW"
         selectedPackage=""
       />
-    <section className="relative w-full h-160 overflow-hidden bg-[#0A0A0C] banner-section" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+    <section className="relative w-full h-160 overflow-hidden  banner-section" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat banner-bg h-120 md:h-auto -mt-12 -ml-2"
@@ -26,16 +26,16 @@ const Banner = () => {
       />
 
       {/* Main content - left-aligned, matches provided image */}
-      <div className="relative z-10 h-full flex flex-col items-center md:items-start md:pt-48 sm:pt-1 lg:pt-50 sm:pr-2 md:pr-0 md:px-4 banner-title text-center md:text-left">
+      <div className="relative z-10 h-full flex flex-col items-center md:items-start md:pt-48 sm:pt-1 lg:pt-50 sm:pr-2 md:pr-0 md:px-4  banner-title text-center md:text-left">
         <div className="w-full max-w-4xl ">
           <p className="text-slate-200/90 text-xl font-medium md:mb-3   lg:pl-10 hidden md:block"> From high-performance websites to full-scale <span className="text-blue-600"> eCommerce, ERP systems, and digital marketing.</span> </p>
           
           <div className="mt-20 md:mt-8 flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-3 ">
-            <div className="text-white/90 font-semibold text-4xl md:pl-16">Starting from <span className="text-[#66B2FF]">$99</span> Only</div>
+            <div className="text-white/90 font-semibold text-4xl md:pl-16 xl:pl-28">Starting from <span className="text-[#66B2FF]">$99</span> Only</div>
 
           </div>
-            <div className="mt-4 text-slate-300 space-y-1 text-md md:pl-16 pl-4">
-              <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Design. Develop. Dominate.</div>
+            <div className="mt-4 text-blue-600 md:text-slate-300 lg:text-slate-300 xl:text-slate-300 space-y-1 text-md md:pl-16 xl:pl-28 pl-4">
+              <div className="flex items-center gap-3"><span className="text-[#66B2FF]  font-bold">.</span> Design. Develop. Dominate.</div>
               <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Scale Your Brand Without Limits.</div>
               <div className="flex items-center gap-3"><span className="text-[#66B2FF] font-bold">.</span> Optimize, and scale for global success.
             </div>
@@ -130,7 +130,7 @@ const Banner = () => {
           width={104}
           height={104}
           alt="Scroll Down"
-          className="animate-bounce h-16 w-16 md:h-20 md:w-20 lg:h-26 lg:w-26"
+          className="animate-bounce h-14 w-14 md:h-20 md:w-20 lg:h-26 lg:w-26 hidden md:block"
         />
       </div>
 

@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono,Oswald } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
+import NavbarSwitcher from "@/components/shared/NavbarSwitcher";
 import Footer from "@/components/shared/Footer";
 import WhatsAppFloating from "@/components/shared/WhatsAppFloating";
 import { Toaster } from 'react-hot-toast';
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
             },
           }}
         />
-        <Navbar />
+        <NavbarSwitcher />
         <WhatsAppFloating />
         {children}
         <Footer />

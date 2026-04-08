@@ -1,0 +1,17 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Navbar from "@/components/shared/Navbar";
+import PromotionNavbar from "@/components/shared/PromotionNavbar";
+
+const NavbarSwitcher = () => {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/promotions/website")) {
+    return <PromotionNavbar />;
+  }
+
+  return <Navbar />;
+};
+
+export default NavbarSwitcher;

@@ -114,10 +114,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
+      className={`fixed top-0 left-0 right-0 w-full px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 z-50
         ${isScrolled
-          ? "sticky top-0 bg-gray-900/80 backdrop-blur-sm shadow-sm"
-          : "absolute top-0 left-0 right-0 bg-gray-900/20 text-black"
+          ? "bg-gray-900/80 backdrop-blur-sm shadow-sm"
+          : "bg-gray-900/20 text-black"
         }`}
     >
       <Link href="/" className="flex items-center space-x-2">
