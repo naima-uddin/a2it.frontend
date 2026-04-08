@@ -89,7 +89,10 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const selectedOption = PACKAGE_OPTIONS.find((option) => option.value === data.package);
     const packageWithPrice = getPackageLabel(data.package);
+    const packageName = selectedOption?.name || data.package || '';
+    const packagePrice = selectedOption?.price || '';
     
     try {
       const res = await fetch("https://a2-it-backend.vercel.app/api/send-email", {
@@ -100,6 +103,8 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
           email: data.email,
           phone: data.phone,
           package: packageWithPrice,
+          packageName,
+          price: packagePrice,
           message: data.message || "Customer wants to start a project!",
           type: "promotion_modal"
         }),
