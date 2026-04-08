@@ -1,18 +1,59 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import toast from 'react-hot-toast';
 
+const PACKAGE_OPTIONS = [
+  { value: 'Special', name: 'Special', price: '$99/month' },
+  { value: 'Plus', name: 'Plus', price: '$199/month' },
+  { value: 'Gold', name: 'Gold', price: '$299/month' },
+  { value: 'Platinum', name: 'Platinum', price: '$399/month' },
+  { value: 'The Boss', name: 'The Boss', price: '$499/month' },
+  { value: 'Diamond', name: 'Diamond', price: '$599/month' },
+];
+
+const normalizePackageValue = (pkg) => {
+  if (!pkg) return '';
+  const match = PACKAGE_OPTIONS.find(
+    (option) => pkg === option.value || pkg === `${option.name} (${option.price})`
+  );
+  return match ? match.value : pkg;
+};
+
+const getPackageLabel = (pkg) => {
+  if (!pkg) return '';
+  const match = PACKAGE_OPTIONS.find(
+    (option) => pkg === option.value || pkg === `${option.name} (${option.price})`
+  );
+  return match ? `${match.name} (${match.price})` : pkg;
+};
+
 const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT NOW", selectedPackage = "" }) => {
   const [mounted, setMounted] = useState(false);
-  const [packageValue, setPackageValue] = useState(selectedPackage);
+  const [packageValue, setPackageValue] = useState(normalizePackageValue(selectedPackage));
+  const [isPackageOpen, setIsPackageOpen] = useState(false);
+  const packageDropdownRef = useRef(null);
+  const selectedPackageOption = PACKAGE_OPTIONS.find((option) => option.value === packageValue);
 
   useEffect(() => {
     if (isOpen) {
-      setPackageValue(selectedPackage);
+      setPackageValue(normalizePackageValue(selectedPackage));
+      return;
     }
+    setIsPackageOpen(false);
   }, [isOpen, selectedPackage]);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (packageDropdownRef.current && !packageDropdownRef.current.contains(e.target)) {
+        setIsPackageOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -48,6 +89,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const packageWithPrice = getPackageLabel(data.package);
     
     try {
       const res = await fetch("https://a2-it-backend.vercel.app/api/send-email", {
@@ -57,7 +99,7 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
           name: data.fullName,
           email: data.email,
           phone: data.phone,
-          package: data.package || "",
+          package: packageWithPrice,
           message: data.message || "Customer wants to start a project!",
           type: "promotion_modal"
         }),
@@ -166,21 +208,55 @@ const PromotionModal = ({ isOpen, onClose, title, subtitle, buttonText = "SUBMIT
 
             <div>
               <label htmlFor="package" className="sr-only">Select Package</label>
-              <select
-                id="package"
-                name="package"
-                value={packageValue}
-                onChange={(e) => setPackageValue(e.target.value)}
-                className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-800 placeholder:text-gray-500 text-sm md:text-base bg-white"
-              >
-                <option value="" disabled>Select Package Type</option>
-                <option value="Special">Special</option>
-                <option value="Plus">Plus</option>
-                <option value="Gold">Gold</option>
-                <option value="Platinum">Platinum</option>
-                <option value="The Boss">The Boss</option>
-                <option value="Diamond">Diamond</option>
-              </select>
+              <div className="relative" ref={packageDropdownRef}>
+                <input type="hidden" id="package" name="package" value={packageValue} />
+                <button
+                  type="button"
+                  onClick={() => setIsPackageOpen((prev) => !prev)}
+                  className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white text-left flex items-center justify-between"
+                >
+                  {selectedPackageOption ? (
+                    <span className="flex items-center gap-2">
+                      <span className="text-gray-900 text-sm md:text-base font-normal">{selectedPackageOption.name}</span>
+                      <span className="text-[11px] md:text-xs font-normal text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full border border-orange-200">
+                        ({selectedPackageOption.price})
+                      </span>
+                    </span>
+                  ) : (
+                    <span className="text-gray-500 text-sm md:text-base">Select Package Type</span>
+                  )}
+
+                  <svg
+                    className={`w-4 h-4 text-gray-500 transition-transform ${isPackageOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isPackageOpen && (
+                  <div className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
+                    {PACKAGE_OPTIONS.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setPackageValue(option.value);
+                          setIsPackageOpen(false);
+                        }}
+                        className={`w-full px-3 md:px-4 py-2.5 text-left hover:bg-blue-500 transition-colors flex items-center justify-between ${packageValue === option.value ? 'bg-blue-300' : ''}`}
+                      >
+                        <span className="text-gray-900 text-md font-normal">{option.name}</span>
+                        <span className="text-[12px]  font-normal text-orange-700 bg-rose-50 px-2 py-0.5 rounded-full border border-orange-200">
+                          ({option.price})
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div>
