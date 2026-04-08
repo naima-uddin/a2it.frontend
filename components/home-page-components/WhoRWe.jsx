@@ -233,7 +233,8 @@ const WhoRWe = () => {
               return (
                 <motion.div
                   key={service.name}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  style={{ zIndex: hoveredCard === index ? 999 : 30 }}
                   initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                   animate={{
                     opacity: isActive ? 1 : 0,
@@ -290,7 +291,7 @@ const WhoRWe = () => {
                     <AnimatePresence>
                       {hoveredCard === index && (
                         <motion.div
-                          className="absolute -top-24 sm:-top-28 left-1/2 transform -translate-x-1/2 z-40"
+                          className="absolute -top-24 sm:-top-28 left-1/2 transform -translate-x-1/2 z-[999]"
                           initial={{ opacity: 0, y: 10, scale: 0.8 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.8 }}
@@ -314,7 +315,7 @@ const WhoRWe = () => {
 
             {/* Center Logo for Mobile */}
             <motion.div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-0"
               onClick={() => setIsActive(!isActive)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -521,7 +522,8 @@ const WhoRWe = () => {
               return (
                 <motion.div
                   key={service.name}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  style={{ zIndex: hoveredCard === index ? 999 : 20 }}
                   initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                   animate={{
                     opacity: isActive ? 1 : 0,
