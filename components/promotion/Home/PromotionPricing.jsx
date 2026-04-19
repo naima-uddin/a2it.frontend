@@ -254,7 +254,9 @@ const PromotionPricing = () => {
       bodyText: 'text-gray-700',
       buttonText: 'text-white',
       borderColor: 'border-gray-200',
-      shadow: isHovered ? 'shadow-2xl' : 'shadow-xl',
+      shadow: isHovered
+        ? 'shadow-[0_30px_90px_-45px_rgba(15,23,42,0.32)]'
+        : 'shadow-[0_20px_50px_-30px_rgba(15,23,42,0.18)]',
       transform: isHovered ? 'translateY(-8px) scale-[1.02]' : 'translateY(0) scale-100'
     };
   };
@@ -407,11 +409,11 @@ const PromotionPricing = () => {
       {/* Header */}
       <div className="container mx-auto">
           <section className="py-2">
-        <div className="max-w-7xl mx-auto px-2 md:px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-3">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 leading-tight" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
               WE ARE <span className="text-blue-600">OPTIMISTS</span> WHO LOVE
-              <br className="hidden md:block" />
+              <br className="block" />
               TO WORK <span className="text-blue-600">TOGETHER</span>
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mb-6 px-4" style={{ fontFamily: "var(--font-oswald), sans-serif" ,letterSpacing: "0.02em"}}>
@@ -466,7 +468,7 @@ const PromotionPricing = () => {
             )}
 
             {/* Cards Container - Different grid for mobile vs desktop */}
-            <div className={`mb-10 ${isMobile ? 'px-1' : 'grid grid-cols-1 md:grid-cols-3 gap-8'}`}>
+            <div className={`mb-10 ${isMobile ? 'px-1' : 'grid grid-cols-1 md:grid-cols-3 gap-8 '}`}>
               {visiblePackages.map((pkg, index) => {
                 const isHovered = hoveredCard === pkg.id;
                 const style = getCardStyle(pkg, isHovered);
