@@ -156,11 +156,16 @@ const PromotionPricing = () => {
   const currentService = designService;
   
   // Determine packages per page based on screen size
-  const packagesPerPage = isMobile ? 1 : 3;
+  const packagesPerPage = isMobile ? currentService.packages.length : 3;
   
   const totalPages = currentService ? Math.ceil(currentService.packages.length / packagesPerPage) : 0;
   const startIndex = currentPage * packagesPerPage;
   const visiblePackages = currentService?.packages.slice(startIndex, startIndex + packagesPerPage) || [];
+
+  // Reset page when switching between mobile and desktop views
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [isMobile]);
 
   // Navigation functions
   const nextPage = useCallback(() => {
@@ -400,9 +405,9 @@ const PromotionPricing = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
 
       {/* Header */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
           <section className="py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-2 md:px-4">
           <div className="text-center mb-3">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 leading-tight" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
               WE ARE <span className="text-blue-600">OPTIMISTS</span> WHO LOVE

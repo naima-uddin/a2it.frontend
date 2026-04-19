@@ -34,6 +34,7 @@ const Enhancement = () => {
               priority
             />
           </div>
+          
         </div>
 
         {/* Right - content + feature cards */}
