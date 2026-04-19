@@ -495,11 +495,11 @@ const PromotionPricing = () => {
                     </div>
 
                     {/* Package Header with Icon and Background */}
-                    <div className={`${style.headerBg} p-8 text-left relative`}>
+                    <div className={`${style.headerBg} p-4 md:p-8 text-left relative`}>
                       <div className="flex items-start gap-4">
                         {/* Building Icon */}
                         <div className="flex-shrink-0">
-                          <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                          <div className="h-10 w-10 md:w-16 md:h-16 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                             <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M3 21V8l7-5 7 5v13h-4v-7H8v7H3zm2-2h2v-5h10v5h2V9.5l-5-3.575L7 9.5V19z"/>
                               <rect x="9" y="11" width="2" height="2"/>
@@ -512,25 +512,25 @@ const PromotionPricing = () => {
                         
                         {/* Package Info */}
                         <div className="flex-1">
-                          <h3 className="text-2xl font-bold text-white mb-2 leading-tight">{pkg.name}</h3>
+                          <h3 className="text-2xl font-bold text-white mb-1 md:mb-2 leading-tight">{pkg.name}</h3>
                           <p className="text-sm text-white/90 font-medium">Best Value for Money Guaranteed!</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Price Section - Separate Background */}
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 px-8 py-6 text-center border-b border-gray-200">
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 px-8 py-2 md:py-6 text-center border-b border-gray-200">
                       <div className="flex items-center justify-center gap-3 mb-1">
-                        <span className="text-5xl md:text-6xl font-black text-gray-900">{pkg.price.replace('.00', '')}</span>
-                        <span className="text-2xl text-red-500 line-through font-semibold">{pkg.originalPrice}</span>
+                        <span className="text-2xl md:text-6xl font-black text-gray-900">{pkg.price.replace('.00', '')}</span>
+                        <span className="text-sm md:text-2xl text-red-500 line-through font-semibold">{pkg.originalPrice}</span>
                       </div>
                       
                     </div>
 
                     {/* Package Features - Scrollable */}
-                    <div className="bg-white px-6 py-4 border-b border-gray-200">
+                    <div className="bg-white px-6 py-2 md:py-4 border-b border-gray-200">
                       <div className="max-h-64 overflow-y-auto pr-2 thin-scrollbar">
-                        <ul className="space-y-3">
+                        <ul className="space-y-1 md:space-y-3">
                           {pkg.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-3">
                               <div className="mt-1 flex-shrink-0 ml-3">
@@ -538,7 +538,7 @@ const PromotionPricing = () => {
                                   <circle cx="10" cy="10" r="10"/>
                                 </svg>
                               </div>
-                              <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
+                              <span className="text-xs md:text-sm text-gray-700 leading-relaxed">{feature}</span>
                             </li>
                           ))}
                         </ul>
@@ -546,13 +546,13 @@ const PromotionPricing = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="p-6 bg-white">
+                    <div className="p-3 md:p-6 bg-white">
                       <button 
                         onClick={() => {
                           setSelectedPackage(pkg.name);
                           setIsModalOpen(true);
                         }}
-                        className={`w-full py-4 ${style.buttonBg} ${style.buttonText} ${style.buttonHover} font-bold text-base rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider cursor-pointer`}
+                        className={`w-full py-2 md:py-4 ${style.buttonBg} ${style.buttonText} ${style.buttonHover} font-bold md:text-base text-sm rounded-md transition-all duration-300 transform hover:scale-[1.02] shadow-lg uppercase tracking-wider cursor-pointer`}
                       >
                         START PROJECT
                       </button>
