@@ -483,10 +483,11 @@ const PromotionPricing = () => {
                     {/* Discount Ribbon - Top Right */}
                     <div className="absolute top-0 right-0 z-20">
                       <div 
-                        className={`${style.ribbonBg} text-white px-6 py-2 font-bold text-sm shadow-lg ring-1 ring-black/10`}
+                        className={`${style.ribbonBg} text-white px-3 py-1 sm:px-5 sm:py-2 font-bold text-xs sm:text-sm shadow-lg ring-1 ring-black/10 whitespace-nowrap max-w-[140px]`}
                         style={{
                           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)',
-                          minWidth: '120px',
+                          minWidth: '90px',
+                          maxWidth: '140px',
                           textAlign: 'right'
                         }}
                       >
